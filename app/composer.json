@@ -7,7 +7,9 @@
             "name": "Mark de Haan (Ahrnuld)"
         }
     ],
-    "require": {},
+    "require": {
+        "stripe/stripe-php": "^16.5"
+    },
     "autoload": {
         "psr-4": {
             "App\\": ".",

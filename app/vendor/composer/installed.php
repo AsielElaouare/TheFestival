@@ -1,20 +1,20 @@
 <?php return array(
     'root' => array(
-        'name' => '__root__',
+        'name' => 'ahrnuld/php-mvc-basic',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cdb7db6a33b445af9072d0a5009feddc1228092b',
-        'type' => 'library',
+        'reference' => 'ff013c9c0f377fc3f86d8fa9592b616f5601b08a',
+        'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
+        'ahrnuld/php-mvc-basic' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cdb7db6a33b445af9072d0a5009feddc1228092b',
-            'type' => 'library',
+            'reference' => 'ff013c9c0f377fc3f86d8fa9592b616f5601b08a',
+            'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,

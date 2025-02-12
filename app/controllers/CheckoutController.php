@@ -5,7 +5,6 @@ namespace App\Controllers;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
-
 class CheckoutController {
     public $checkout_session;
 
@@ -13,13 +12,20 @@ class CheckoutController {
         $stripeConfig = require __DIR__ . '/../config/stripe.php';
 
         Stripe::setApiKey($stripeConfig['secret_key']); 
+    }
 
-      
+    public function paymentPortal(){
+        $quantityItems = 1;
+
+        if(isset($_GET['quantity'])){
+            $quantityItems = $_GET['quantity'];
+         };
+
         $this->checkout_session = Session::create([
             "mode" => "payment",
             "line_items" => [  
                 [
-                    "quantity" => 1,
+                    "quantity" => $quantityItems,
                     "price_data" => [
                         "currency" => "eur",
                         "unit_amount" => 2000,
@@ -29,12 +35,9 @@ class CheckoutController {
                     ]
                 ]
             ],
-            "success_url" => "https://localhost/success",
-            "cancel_url" => "https://localhost/index"
+            "success_url" => "http://localhost/success",
+            "cancel_url" => "http://localhost/"
         ]);
-    }
-
-    public function paymentPortal(){
         header("Location: " .$this->checkout_session->url);
     }
 }
