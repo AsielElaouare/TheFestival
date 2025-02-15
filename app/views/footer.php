@@ -1,6 +1,5 @@
 
 
-</div>
 
 <footer class="fixed-bottom">
     <img src="/uploads/skyline.svg" alt="" class="w-100">
