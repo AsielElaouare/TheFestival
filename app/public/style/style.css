@@ -1,0 +1,75 @@
+
+.impact-font{
+    font-family: Impact;
+}
+
+.icon-size{
+    font-size: 2.2rem ;
+}
+
+
+ /***** Website color classes *****/  
+.purple{
+    color: #800080;
+}
+
+.pink{
+    color: #E60077;
+}
+
+.light-coral{
+    color: #FF7367 ;
+}
+
+.light-orange{
+    color: #FFA54F;
+}
+
+.light-yellow{
+    color: #FFD150;
+}
+
+.yellow{
+    color: #F9F871;
+}
+
+.bg-purple-footer{
+    background-color: #622262;
+}
+
+.bg-yellow{
+    background-color: #F9F871 ;
+}
+
+/***** End Website color classes *****/
+
+
+ /***** Buttons classes *****/  
+
+.primary-button{
+    border-radius: 40px;
+    border-style: none;
+    padding: 8px 40px 8px 40px;
+    background-color: #E60077;
+    color: #FFD150;
+}
+
+ /***** End buttons classes *****/  
+
+
+.header-section {
+    height: 310px;
+}
+
+
+.header-video{
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.object-fit-cover{
+    object-fit: cover;
+    object-position: center 100%;
+}

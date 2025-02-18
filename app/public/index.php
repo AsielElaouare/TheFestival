@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $uri = trim($_SERVER['REQUEST_URI'], '/');
 
