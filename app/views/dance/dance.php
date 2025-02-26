@@ -1,9 +1,9 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
-
+<link rel="stylesheet" href="/style/style.css">
 <main class="container my-5">
-    
+
     <!-- Header Section -->
     <div class="row mb-5 header-section">
         <div class="col text-center p-5">
@@ -20,12 +20,12 @@ include __DIR__ . '/../header.php';
         <h2 class="impact-font purple mb-4">Featured Artists</h2>
         <div class="row justify-content-center">
             <div class="col-md-3 text-center mb-4">
-                <img src="/public/uploads/martin-garrix.jpg" class="img-fluid rounded-circle mb-2" style="max-width: 150px;">
+                <img src="/uploads/martingarrixfirst.jpg" class="img-fluid rounded-circle mb-2" style="max-width: 150px;">
                 <h5 class="pink">Martin Garrix</h5>
             </div>
 
             <div class="col-md-3 text-center mb-4">
-                <img src="/public/uploads/hardwell.jpg" class="img-fluid rounded-circle mb-2" style="max-width: 150px;">
+                <img src="/uploads/hardwellfirst.jpg" class="img-fluid rounded-circle mb-2" style="max-width: 150px;">
                 <h5 class="pink">Hardwell</h5>
             </div>
         </div>
@@ -37,7 +37,7 @@ include __DIR__ . '/../header.php';
         <div class="row">
             <div class="col-md-4 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="/public/uploads/armin-van-buuren.jpg" class="card-img-top object-fit-cover">
+                    <img src="/uploads/arminvanbuurennoback.png" class="card-img-top object-fit-cover">
                     <div class="card-body text-center p-2">
                         <h6 class="mb-0 pink">Armin van Buuren</h6>
                     </div>
@@ -46,7 +46,7 @@ include __DIR__ . '/../header.php';
 
             <div class="col-md-4 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="/public/uploads/nicky-romero.jpg" class="card-img-top object-fit-cover">
+                    <img src="/uploads/nickyromero.jpg" class="card-img-top object-fit-cover">
                     <div class="card-body text-center p-2">
                         <h6 class="mb-0 pink">Nicky Romero</h6>
                     </div>
@@ -55,7 +55,7 @@ include __DIR__ . '/../header.php';
 
             <div class="col-md-4 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="/public/uploads/afrojack.jpg" class="card-img-top object-fit-cover">
+                    <img src="/uploads/afrojack.jpg" class="card-img-top object-fit-cover">
                     <div class="card-body text-center p-2">
                         <h6 class="mb-0 pink">Afrojack</h6>
                     </div>
@@ -64,7 +64,7 @@ include __DIR__ . '/../header.php';
 
             <div class="col-md-4 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="/public/uploads/tiesto.jpg" class="card-img-top object-fit-cover">
+                    <img src="/uploads/tietsonoback.png" class="card-img-top object-fit-cover">
                     <div class="card-body text-center p-2">
                         <h6 class="mb-0 pink">Tiësto</h6>
                     </div>
@@ -73,7 +73,7 @@ include __DIR__ . '/../header.php';
 
             <div class="col-md-4 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="/public/uploads/hardwell.jpg" class="card-img-top object-fit-cover">
+                    <img src="/uploads/hardwellnoback.png" class="card-img-top object-fit-cover">
                     <div class="card-body text-center p-2">
                         <h6 class="mb-0 pink">Hardwell</h6>
                     </div>
@@ -82,7 +82,7 @@ include __DIR__ . '/../header.php';
 
             <div class="col-md-4 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="/public/uploads/martin-garrix.jpg" class="card-img-top object-fit-cover">
+                    <img src="/uploads/martingarrix.jpg" class="card-img-top object-fit-cover">
                     <div class="card-body text-center p-2">
                         <h6 class="mb-0 pink">Martin Garrix</h6>
                     </div>
