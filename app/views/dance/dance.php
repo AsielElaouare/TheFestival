@@ -1,7 +1,6 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
-<link rel="stylesheet" href="/style/style.css">
 <main class="container my-5">
 
     <!-- Header Section -->
