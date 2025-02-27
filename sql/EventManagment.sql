@@ -1,0 +1,128 @@
+CREATE DATABASE IF NOT EXISTS EventManagement;
+USE EventManagement;
+
+CREATE TABLE USER (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone_number VARCHAR(20) UNIQUE NOT NULL,
+    pass_hash VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'customer') NOT NULL
+);
+
+CREATE TABLE `ORDER` (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10,2) NOT NULL,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES USER(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE TICKET (
+    ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    FOREIGN KEY (order_id) REFERENCES `ORDER`(order_id) ON DELETE CASCADE
+);
+
+CREATE TABLE MUSIC_TICKET (
+    music_ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+    price DECIMAL(10,2) NOT NULL,
+    ticket_id INT,
+    FOREIGN KEY (ticket_id) REFERENCES TICKET(ticket_id) ON DELETE CASCADE
+);
+CREATE TABLE SESSION (
+    session_id INT AUTO_INCREMENT PRIMARY KEY,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    restaurant_id INT,
+    FOREIGN KEY (restaurant_id) REFERENCES RESTAURANT(restaurant_id) ON DELETE CASCADE
+);
+
+CREATE TABLE RESERVATION (
+    reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+    reservation_date DATETIME NOT NULL,
+    session_id INT,
+    price_adult DECIMAL(10,2) NOT NULL,
+    price_child DECIMAL(10,2) NOT NULL,
+    ticket_id INT,
+    FOREIGN KEY (ticket_id) REFERENCES TICKET(ticket_id) ON DELETE CASCADE,
+    FOREIGN KEY (session_id) REFERENCES SESSION(session_id) ON DELETE CASCADE
+);
+
+CREATE TABLE TOUR_TICKET (
+    tour_ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+    tour_id INT,
+    qr_code VARCHAR(255) UNIQUE NOT NULL,
+    ticket_id INT,
+    FOREIGN KEY (tour_id) REFERENCES TOUR(tour_id) ON DELETE CASCADE,
+    FOREIGN KEY (ticket_id) REFERENCES TICKET(ticket_id) ON DELETE CASCADE
+);
+
+CREATE TABLE ACCESS_PASS (
+    pass_id INT AUTO_INCREMENT PRIMARY KEY,
+    validity_period INT NOT NULL,
+    music_ticket_id INT,
+    FOREIGN KEY (music_ticket_id) REFERENCES MUSIC_TICKET(music_ticket_id) ON DELETE CASCADE
+);
+
+CREATE TABLE RESTAURANT (
+    restaurant_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE RESTAURANT_GENRE (
+    genre_id INT AUTO_INCREMENT PRIMARY KEY,
+    genre_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE RESTAURANT_GENRE_MAPPING (
+    restaurant_id INT,
+    genre_id INT,
+    PRIMARY KEY (restaurant_id, genre_id),
+    FOREIGN KEY (restaurant_id) REFERENCES RESTAURANT(restaurant_id) ON DELETE CASCADE,
+    FOREIGN KEY (genre_id) REFERENCES RESTAURANT_GENRE(genre_id) ON DELETE CASCADE
+);
+
+CREATE TABLE TOUR (
+    tour_id INT AUTO_INCREMENT PRIMARY KEY,
+    tour_name VARCHAR(255) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE TOUR_GUIDE (
+    guide_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    contact_info VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE LOCATION (
+    location_id INT AUTO_INCREMENT PRIMARY KEY,
+    address VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE `SHOW` (
+    show_id INT AUTO_INCREMENT PRIMARY KEY,
+    show_name VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    location_id INT,
+    FOREIGN KEY (location_id) REFERENCES LOCATION(location_id) ON DELETE CASCADE
+);
+
+CREATE TABLE ARTIST (
+    artist_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    genre VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE SHOW_ARTIST (
+    show_id INT,
+    artist_id INT,
+    PRIMARY KEY (show_id, artist_id),
+    FOREIGN KEY (show_id) REFERENCES `SHOW`(show_id) ON DELETE CASCADE,
+    FOREIGN KEY (artist_id) REFERENCES ARTIST(artist_id) ON DELETE CASCADE
+);
