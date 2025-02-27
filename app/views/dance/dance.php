@@ -3,7 +3,7 @@ include __DIR__ . '/../header.php';
 ?>
 <main class="container my-5">
 
-    <!-- Header Section -->
+    <!-- Header  -->
     <div class="row mb-5 header-section">
         <div class="col text-center p-5">
             <h1 class="display-4 impact-font pink">Dance Haarlem</h1>
@@ -14,7 +14,7 @@ include __DIR__ . '/../header.php';
         </div>
     </div>
 
-    <!-- Featured Artists Section -->
+    <!-- Featured Artists  -->
     <section class="my-5 text-center" id="featured-artists">
         <h2 class="impact-font purple mb-4">Featured Artists</h2>
         <div class="row justify-content-center">
@@ -30,7 +30,7 @@ include __DIR__ . '/../header.php';
         </div>
     </section>
 
-    <!-- Line-Up Section -->
+    <!-- Line-Up  -->
     <section class="my-5" id="line-up">
         <h2 class="impact-font purple mb-4 text-center">Line-Up</h2>
         <div class="row">
@@ -90,7 +90,7 @@ include __DIR__ . '/../header.php';
         </div>
     </section>
 
-    <!-- Schedule Section -->
+    <!-- Schedule -->
     <section class="my-5" id="schedule">
         <h2 class="impact-font purple mb-4 text-center">Schedule</h2>
         <p class="font-weight-bold pink">Dance Event</p>
@@ -147,7 +147,7 @@ include __DIR__ . '/../header.php';
                     <span>15:00 - HARDWELL</span> <span>[Caprera]</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>17:00 - AFROJACK</span> <span>[OpenKikker]</span>
+                    <span>17:00 - AFROJACK</span> <span>[Openluchttheater]</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>19:00 - ARMIN VAN BUUREN</span> <span>[The Club]</span>
