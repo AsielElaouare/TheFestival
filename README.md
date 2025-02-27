@@ -1,5 +1,5 @@
-# Basic PHP MVC demo
-This repository demonstrates how the MVC design pattern can be implemented using PHP.
+# TheFestival
+This repository demonstrates the development of project 2.3 using PHP and the MVC pattern.
 
 It contains a docker configuration with:
 * NGINX webserver
