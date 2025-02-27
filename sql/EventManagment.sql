@@ -1,4 +1,4 @@
-CREATE DATABASE EventManagement;
+CREATE DATABASE IF NOT EXISTS EventManagement;
 USE EventManagement;
 
 CREATE TABLE USER (
