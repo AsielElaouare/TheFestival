@@ -1,30 +1,32 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
-<main class="container my-5">
 
     <!-- Header  -->
-    <div class="row mb-5 header-section">
-        <div class="col text-center p-5">
-            <h1 class="display-4 impact-font pink">Dance Haarlem</h1>
-            <p class="lead purple">
-                Join us for a three-day celebration of the best in dance music.
-                Below you’ll find our featured artists, full line-up, and event schedule.
-            </p>
-        </div>
+<div class="hero-section text-center">
+    <div class="hero-overlay">
+        <h1 class="impact-font hero-title">DANCE HAARLEM!</h1>
+        <p class="hero-description">
+            Get ready for an unforgettable weekend filled with electrifying beats, spectacular performances, and world-class DJs! 
+            wheter you’re here for the biggest names in electronic music or discovering new favorites, DANCE brings you three days 
+            of nonstop music and energy across stunning venues. Explore our lineup, check out the schedules, and prepare to immerse 
+            yourself in a celebration of sound, rhythm, and pure joy. Let’s make this a dance event to remember!
+        </p>
     </div>
+</div>
+
 
     <!-- Featured Artists  -->
     <section class="my-5 text-center" id="featured-artists">
         <h2 class="impact-font purple mb-4">Featured Artists</h2>
         <div class="row justify-content-center">
             <div class="col-md-3 text-center mb-4">
-                <img src="/uploads/martingarrixfirst.jpg" class="img-fluid rounded-circle mb-2" style="max-width: 150px;">
+                <img src="/uploads/martingarrixfirst.jpg" class="img-fluid rounded-circle mb-2" style="width: 150px; height: 150px; object-fit: cover;">
                 <h5 class="pink">Martin Garrix</h5>
             </div>
 
             <div class="col-md-3 text-center mb-4">
-                <img src="/uploads/hardwellfirst.jpg" class="img-fluid rounded-circle mb-2" style="max-width: 150px;">
+                <img src="/uploads/hardwellfirst.jpg" class="img-fluid rounded-circle mb-2" style="width: 150px; height: 150px; object-fit: cover;">
                 <h5 class="pink">Hardwell</h5>
             </div>
         </div>
@@ -163,7 +165,6 @@ include __DIR__ . '/../header.php';
         <button class="primary-button impact-font icon-size">View Full Line-Up</button>
     </div>
 
-</main>
 
 <?php
 include __DIR__ . '/../footer.php';
