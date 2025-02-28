@@ -2,25 +2,27 @@
 
 namespace App\Models;
 
+use App\Models\Enums\UserRole;
+
 class User
 {
   private $userId;
-  private $role;
+  private UserRole $role;
   private $name;
   private $address;
   private $email;
-  private $password;
+  private $passwordHash;
   private $phoneNumber;
 
   //Constructor
-  public function __construct($userId, $role, $name, $address, $email, $password, $phoneNumber)
+  public function __construct($userId, $role, $name, $address, $email, $passwordHash, $phoneNumber)
   {
     $this->userId = $userId;
     $this->role = $role;
     $this->name = $name;
     $this->address = $address;
     $this->email = $email;
-    $this->password = $password;
+    $this->passwordHash = $passwordHash;
     $this->phoneNumber = $phoneNumber;
   }
 
@@ -52,7 +54,7 @@ class User
 
   public function getPassword()
   {
-    return $this->password;
+    return $this->passwordHash;
   }
 
   public function getPhoneNumber()

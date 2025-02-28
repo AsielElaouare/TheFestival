@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Enums\MusicGenre;
+
+
 class Artist
 {
   private $artistID;
   private $eventID;
-  private $genre;
+  private MusicGenre $genre;
 
   //Constructor
   public function __construct($artistID, $eventID, $genre)

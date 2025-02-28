@@ -2,7 +2,7 @@
 
 namespace App\Models\Enums;
 
-enum musicGenre: string
+enum MusicGenre: string
 {
   case DANCE = "dance";
   case JAZZ = "jazz";
