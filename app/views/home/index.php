@@ -18,19 +18,19 @@ include __DIR__. '/../header.php';
 <section class="bg-yellow">
     <div class="d-flex flex-wrap justify-content-center pt-5">
         <div>
-            <img src="uploads/dance_event.svg" alt="">
+            <img src="uploads/dance_event.svg" class="img-fluid" alt="">
         </div>
         <div>
-            <img src="uploads/jazz_event.svg" alt="">
+            <img src="uploads/jazz_event.svg" class="img-fluid" alt="">
         </div>
         <div>
-            <img src="uploads/magic_tylers.svg" alt="">
+            <img src="uploads/magic_tylers.svg" class="img-fluid" alt="">
         </div>
         <div>
-            <img src="uploads/yummy_event.svg" alt="">
+            <img src="uploads/yummy_event.svg" class="img-fluid" alt="">
         </div>
         <div>
-            <img src="uploads/haarlem_history.png" alt="">
+            <img src="uploads/haarlem_history.png"class="img-fluid" alt="">
         </div>
     </div>
 </section>
@@ -38,15 +38,16 @@ include __DIR__. '/../header.php';
 <section class="bg-yellow pt-5">
     <div class="position-relative">
         <img src="uploads/bg_section2.svg" class="w-100" alt="">
-        <div class="position-absolute top-50 d-flex start-50 translate-middle text-center text-white">
-            
-        <div class="m-2">
-                <h1 class="impact-font yellow">Welcome to The Festival in Haarlem</h2>
-                <p class="yellow">Discover the best of Haarlem at The Festival, a vibrant celebration of culture, music, and community taking place across the city’s iconic venues. Savor delicious food at Yummy, groove to soulful tunes at the Jazz Event, and dance the night away at the high-energy Dance Event. Dive into the city’s past with Haarlem History experiences, and let kids explore the enchanting Magic@Tylers—a special event just for them. Join us for an unforgettable day filled with fun, flavor, and festivities for everyone!</p>
+        <div class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100">
+            <div class="text-center m-5 p-5 w-50 ">
+                <h1 class="impact-font yellow">Welcome to The Festival in Haarlem</h1>
+                <p class="yellow text-wrap">Discover the best of Haarlem at The Festival, a vibrant celebration of culture, music, and community taking place across the city’s iconic venues. Savor delicious food at Yummy, groove to soulful tunes at the Jazz Event, and dance the night away at the high-energy Dance Event. Dive into the city’s past with Haarlem History experiences, and let kids explore the enchanting Magic@Tylers—a special event just for them. Join us for an unforgettable day filled with fun, flavor, and festivities for everyone!</p>
             </div>
-            <img src="uploads/img_section2.svg" width="500px" class="p-3" alt="">
+            <img src="uploads/img_section2.svg" class="img-fluid p-3 m-5" alt="" style="max-width: 600px;">
+        </div>
     </div>
-</section>  
+</section>
+
 
 <form action="checkout/paymentPortal">
     <span>Enter ammount of tickets</span>
