@@ -18,6 +18,9 @@
         <label for="password" class="form-label">Password:</label>
         <input type="password" name="password" id="password" class="form-control" required>
       </div>
+      <?php if (isset($error)): ?>
+        <div class="alert alert-danger"><?php echo $error; ?></div>
+    <?php endif; ?>
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </div>

@@ -1,22 +1,15 @@
 <?php
 namespace App\Repositories;
 
-use App\Models\User;
 use PDO;
+use App\Models\User;
 
-class UserRepository
+class UserRepository extends Repository
 {
-    private $pdo;
-
-    public function __construct(PDO $pdo)
-    {
-        $this->pdo = $pdo;
-    }
-
     // user zoeken via email
     public function findByEmail($email)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+        $stmt = $this->connection->prepare("SELECT * FROM USER WHERE email = :email LIMIT 1");
         $stmt->execute([':email' => $email]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -33,10 +26,19 @@ class UserRepository
         return null;
     }
 
+    public function checkEmailOrPhoneNumberExists($email, $phoneNumber){
+        $stmt = $this->connection->prepare("SELECT * FROM USER WHERE email = :email OR phone_number = :phoneNumber LIMIT 1");
+        $stmt->execute([':email' => $email, ':phoneNumber' => $phoneNumber]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user) {
+            return true;
+        }
+        return false;
+    }
     // maak nieuwe user aan
     public function createUser($name, $email, $passHash, $role = 'visitor', $phoneNumber = null)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO users (name, email, pass_hash, role, phone_number) VALUES (:name, :email, :hash, :role, :phone)");
+        $stmt = $this->connection->prepare("INSERT INTO USER (name, email, pass_hash, role, phone_number) VALUES (:name, :email, :hash, :role, :phone)");
         $stmt->execute([
             ':name' => $name,
             ':email' => $email,
@@ -44,6 +46,6 @@ class UserRepository
             ':role' => $role,
             ':phone' => $phoneNumber
         ]);
-        return $this->pdo->lastInsertId();
+        return $this->connection->lastInsertId();
     }
 }

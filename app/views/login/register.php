@@ -9,7 +9,7 @@
 <body>
   <div class="container my-5">
     <h1>Register</h1>
-    <form action="/login/processRegister" method="post">
+    <form action="/register/processRegister" method="post">
       <div class="mb-3">
         <label for="name" class="form-label">Name:</label>
         <input type="text" name="name" id="name" class="form-control" required>
@@ -26,6 +26,9 @@
         <label for="phone_number" class="form-label">Phone Number:</label>
         <input type="text" name="phone_number" id="phone_number" class="form-control">
       </div>
+      <?php if (isset($error)): ?>
+        <div class="alert alert-danger"><?php echo $error; ?></div>
+    <?php endif; ?>
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
