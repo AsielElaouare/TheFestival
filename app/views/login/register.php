@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link rel="stylesheet" href="/style/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php
+include __DIR__ . '/../header.php';
+?>
   <div class="container my-5">
     <h1>Register</h1>
     <form action="/register/processRegister" method="post">
@@ -32,10 +26,6 @@
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
-</body>
-</html>
-
-
 
 <?php
 include __DIR__ . '/../footer.php';

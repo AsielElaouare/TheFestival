@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="/style/style.css">
   <title>TheFestival</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
  <main>
    <div class="container ">
-    <nav class="d-flex justify-content-center align-items-center py-3 ">
+    <nav class="d-flex justify-content-center align-items-center  ">
       <picture class="me-auto">
         <img src="/uploads/logo.svg" alt="Logo the Festival">
       </picture>
@@ -20,10 +20,10 @@
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">Dance</a></li>
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">History</a></li>
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tylers</a></li>
-      <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tickets</a></li>
+      <li class="nav-item impact-font"><a href="/tickets" class="nav-link purple">Tickets</a></li>
               <!-- Login Button with User Icon -->
       <li class="nav-item">
-        <a href="/login" class="btn primary-button">
+        <a href="/login" class="btn primary-button ps-3 pe-3">
           <i class="fa-solid fa-user"></i>
         </a>
       </li>

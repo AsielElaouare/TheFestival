@@ -1,0 +1,60 @@
+<?php
+
+
+namespace App\Models;
+
+use DateTime;
+
+class BaseEvent{
+    public $id;
+    public $name;
+    public DateTime $startDate;
+    public DateTime $endDate;
+    public $price;
+    public Location $location;
+    public $availableSpots;
+
+    public function __construct($id, $name, DateTime $startDate, DateTime $endDate, $price, Location $location, $availableSpots){ 
+        $this->id = $id;
+        $this->name = $name;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
+        $this->price = $price;
+        $this->location = $location;
+        $this->availableSpots = $availableSpots;
+    }
+
+    public function getShowID()
+  {
+    return $this->id;
+  }
+
+  public function getShowName()
+  {
+    return $this->name;
+  }
+
+  public function getStartDate()
+  {
+    return $this->startDate->format('Y-m-d H:i');
+  }
+  public function getEndDate()
+  {
+    return $this->endDate->format('Y-m-d H:i');;
+  }
+
+
+  public function getAvailableSpots()
+  {
+    return $this->availableSpots;
+  }
+
+  public function getPrice()
+  {
+    return $this->price;
+  }
+
+  public function getDayFromDate(){
+    return $this->startDate->format('l'); 
+}
+}

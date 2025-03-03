@@ -33,13 +33,23 @@
     color: #F9F871;
 }
 
+
+.bg-purple{
+    background-color: #800080;
+}
+
 .bg-purple-footer{
     background-color: #622262;
 }
 
 .bg-yellow{
-    background-color: #F9F871 ;
+    background-color: #F9F871;
 }
+.bg-coral{
+    background-color: #FF7367;
+}
+
+
 
 /***** End Website color classes *****/
 
@@ -52,6 +62,10 @@
     padding: 8px 40px 8px 40px;
     background-color: #E60077;
     color: #FFD150;
+}
+
+.btn-font-size{
+    font-size: 2.0rem;
 }
 
  /***** End buttons classes *****/  
@@ -75,7 +89,6 @@
 }
 
 
-/*Hero sectie  */
 .hero-section {
     position: relative;
     width: 100%;
@@ -85,14 +98,12 @@
     justify-content: center;
 }
 
-/* hero overlay  */
 .hero-overlay {
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
     padding: 20px;
 }
 
-/* hero title */
 .hero-title {
     font-size: 3rem;
     font-weight: bold;
@@ -107,4 +118,18 @@
     margin: 0 auto;
     font-size: 1rem;
     font-weight: 500;
+}
+
+.footer{
+    position: sticky;
+    bottom: 0;
+}
+
+.logo-tickets-page {
+    transform: scale(1.8); 
+    transform-origin: center; 
+}
+
+.round-boreder-4px{
+    border-radius: 4px;
 }
