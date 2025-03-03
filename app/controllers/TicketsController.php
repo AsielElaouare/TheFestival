@@ -21,13 +21,13 @@ class TicketsController{
 
     public function showMusicTickets(){
         $genreString = $_GET['genre'] ?? 'dance'; 
-        $shows = $this->eventService->getAllShowsByGenre($genreString);
+        $events = $this->eventService->getAllShowsByGenre($genreString);
         require __DIR__ .'/../views/tickets/ticketsTable.php';
     }
 
     public function showHistoryTickets(){
-        $tours = $this->eventService->getAllTours();
-        var_dump($tours);
+        $events = $this->eventService->getAllTours(); 
         require __DIR__ .'/../views/tickets/ticketsTable.php';
     }
+    
 }

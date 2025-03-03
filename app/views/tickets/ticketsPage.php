@@ -37,6 +37,15 @@ require __DIR__ ."/../header.php";
 </div>
 <div class="tickets-container">
 
+
+<form action="checkout/paymentPortal">
+    <span>Enter ammount of tickets</span>
+    <input type="number" name="quantity" min="1" value="1" required>
+    <button>
+        pay button test
+    </button>
+</form>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
@@ -58,6 +67,7 @@ require __DIR__ ."/../header.php";
 });
 
 </script>
+
 
 <?php
 require __DIR__ ."/../footer.php";
