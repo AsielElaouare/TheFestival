@@ -21,6 +21,12 @@
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">History</a></li>
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tylers</a></li>
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tickets</a></li>
+              <!-- Login Button with User Icon -->
+      <li class="nav-item">
+        <a href="/login" class="btn primary-button">
+          <i class="fa-solid fa-user"></i>
+        </a>
+      </li>
     </ul>
     </nav>
   </div>
