@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-class jazzController
+class JazzController
 {
 
     public function index(){
