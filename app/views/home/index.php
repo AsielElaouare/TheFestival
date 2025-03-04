@@ -38,15 +38,22 @@ include __DIR__. '/../header.php';
 <section class="bg-yellow pt-5">
     <div class="position-relative">
         <img src="uploads/bg_section2.svg" class="w-100" alt="">
-        <div class="position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center w-100">
-            <div class="text-center m-5 p-5 w-50 ">
+        <div class="position-absolute top-50 start-0 translate-middle-y w-100 d-flex justify-content-start">
+            <div class="text-start ms-5 p-5 w-50">
                 <h1 class="impact-font yellow">Welcome to The Festival in Haarlem</h1>
-                <p class="yellow text-wrap">Discover the best of Haarlem at The Festival, a vibrant celebration of culture, music, and community taking place across the city’s iconic venues. Savor delicious food at Yummy, groove to soulful tunes at the Jazz Event, and dance the night away at the high-energy Dance Event. Dive into the city’s past with Haarlem History experiences, and let kids explore the enchanting Magic@Tylers—a special event just for them. Join us for an unforgettable day filled with fun, flavor, and festivities for everyone!</p>
+                <p class="yellow text-wrap">
+                    Discover the best of Haarlem at The Festival, a vibrant celebration of culture, music, and community 
+                    taking place across the city’s iconic venues. Savor delicious food at Yummy, groove to soulful tunes at 
+                    the Jazz Event, and dance the night away at the high-energy Dance Event. Dive into the city’s past with 
+                    Haarlem History experiences, and let kids explore the enchanting Magic@Tylers—a special event just for them. 
+                    Join us for an unforgettable day filled with fun, flavor, and festivities for everyone!
+                </p>
             </div>
-            <img src="uploads/img_section2.svg" class="img-fluid p-3 m-5" alt="" style="max-width: 600px;">
         </div>
     </div>
 </section>
+
+
 
 <section class="w-100 bg-yellow pt-5 pb-5">
     <div class="d-flex justify-content-between align-items-center m-5">

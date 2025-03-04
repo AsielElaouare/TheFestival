@@ -58,7 +58,6 @@ class EventService{
     }
 
     private function mapToEntity(array $data, string $type) {
-        var_dump($data);
         $commonParams = [
             $data[$type . '_id'],
             $data[$type . '_name'],

@@ -37,7 +37,6 @@ class TicketsController{
         $showIdsArray = [];
         $toursIdsArray = [];
         $tickets = $_SESSION['cart'] ?? [];
-        //var_dump($tickets);
 
         if (empty($tickets)) {
             $error = "You haven't selected any tickets for your personal program yet";
