@@ -32,6 +32,7 @@ class CheckoutController {
                 ];
             }
         }
+        var_dump($lineItems);
         $this->checkout_session = Session::create([
             "mode" => "payment",
             "line_items" => $lineItems,
