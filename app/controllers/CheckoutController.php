@@ -33,12 +33,12 @@ class CheckoutController {
                 ];
             }
         }
-        var_dump($lineItems);
+        
         $this->checkout_session = Session::create([
             "mode" => "payment",
             "line_items" => $lineItems,
             "success_url" => "http://localhost/SuccessCheckout",
-            "cancel_url" => "http://localhost/"
+            "cancel_url" => "http://localhost/tickets"
         ]);
         header("Location: " . $this->checkout_session->url);
     }
