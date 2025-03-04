@@ -24,6 +24,7 @@ class CheckoutController {
                 $lineItems[] = [
                     "quantity" => $item['quantity'], 
                     "price_data" => [
+                        "currency" => "eur", // <-- Add this line (change to your currency)
                         "unit_amount" => $item['price'] * 100,  
                         "product_data" => [
                             "name" => $item['eventName'] 
