@@ -1,7 +1,6 @@
 <h1 class="pink bold ms-5 ps-2">Day</h1>
 <div class="show-grid m-5">
     <?php if (!empty($events)): ?>
-
         <?php 
         $dayNames = ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Access Pass'];
         $groupedEvents = [
@@ -41,9 +40,16 @@
                     <span hidden class="artists-name"><?php echo htmlspecialchars($event->getArtistName()); ?></span>
                 <?php endif; ?>
 
+                <?php
+ 
+                        // Retrieve the quantity from the session
+                        $ticketKey = md5($event->getEventName() . $event->location->getAddressName());
+                        $quantityInCart = isset($_SESSION['cart'][$ticketKey]) ? $_SESSION['cart'][$ticketKey]['quantity'] : 0;
+                        ?>
+
                 <div class="button-group">
                     <button class="min-selector btn primary-button ps-2 pe-2 p-0" onclick="updateTicketQuantity(this, 'min')">-</button>
-                    <span class="span-quantity me-1 ms-1">0</span>
+                    <span class="span-quantity me-1 ms-1"><?php echo $quantityInCart?></span>
                     <button class="plus-selector btn primary-button ps-2 pe-2 p-0" onclick="updateTicketQuantity(this, 'plus')">+</button>
                 </div>
             </div>
