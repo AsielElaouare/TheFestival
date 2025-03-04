@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use PDO;
 use App\Models\User;
+use App\Models\Enums\UserRole;
 
 class UserRepository extends Repository
 {
@@ -16,7 +17,8 @@ class UserRepository extends Repository
         if ($row) {
             return new User(
                 $row['user_id'],
-                $row['role'],
+                // Convert the string to a UserRole enum instance.
+                UserRole::from($row['role']),
                 $row['name'],
                 $row['email'],
                 $row['pass_hash'],
@@ -35,6 +37,7 @@ class UserRepository extends Repository
         }
         return false;
     }
+    
     // maak nieuwe user aan
     public function createUser($name, $email, $passHash, $role = 'visitor', $phoneNumber = null)
     {

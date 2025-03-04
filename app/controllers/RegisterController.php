@@ -40,12 +40,8 @@ public function processRegister()
     // Create a new user with the role 'customer'
     $newUserId = $this->userRepo->createUser($name, $email, $passHash, 'customer', $phoneNumber);
 
-    session_start();
-    $_SESSION['user_id'] = $newUserId;
-    $_SESSION['role']    = 'customer';
-    $_SESSION['email']   = $email;
-
-    header('Location: /');
+    // Instead of logging in and redirecting, show a success page
+    require __DIR__ . '/../views/login/register_success.php';
 }
 }
 
