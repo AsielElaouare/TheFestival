@@ -13,6 +13,7 @@ class BaseEvent{
     public $price;
     public Location $location;
     public $availableSpots;
+    public int $wantedQuantity;
 
     public function __construct($id, $name, DateTime $startDate, DateTime $endDate, $price, Location $location, $availableSpots){ 
         $this->id = $id;
@@ -24,12 +25,12 @@ class BaseEvent{
         $this->availableSpots = $availableSpots;
     }
 
-    public function getShowID()
+    public function getEventID()
   {
     return $this->id;
   }
 
-  public function getShowName()
+  public function getEventName()
   {
     return $this->name;
   }
@@ -56,5 +57,9 @@ class BaseEvent{
 
   public function getDayFromDate(){
     return $this->startDate->format('l'); 
-}
+  }
+
+  public function getWantedQuantity(){
+    return $this->wantedQuantity;
+  }
 }

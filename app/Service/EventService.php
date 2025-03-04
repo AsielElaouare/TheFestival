@@ -28,34 +28,59 @@ class EventService{
 
             $showsData = $this->eventRepo->getAllShowsByGenre($musicGenre);
             
-            return array_map([$this, 'mapToShow'], $showsData);
+            return array_map(fn($data) => $this->mapToEntity($data, 'show'), $showsData);
             
         
     }
 
     public function getAllTours(){
         $tourData = $this->eventRepo->getAllTours();
-        return array_map([$this,'mapToTour'], $tourData);
+        return array_map(fn($data) => $this->mapToEntity($data, 'tour'), $tourData);
     }
 
-    private function mapToShow(array $data): Show {
-        $show = new Show($data['show_id'],$data['show_name'], 
-        new DateTime($data['start_date']), new DateTime(), $data['price'], 
-        new Location($data['location_id'],
-        $data['address_name'], $data['postal_code'], 
-        $data['street_name'], $data['city'] ), 
-        $data['available_spots'], $data['artist_names'] );
-        return $show;
+
+    public function getAllToursByIds(array $ids) {
+        $tourData = $this->eventRepo->getToursByIds($ids);
+        if(!empty($tourData)){
+            return array_map(fn($data) => $this->mapToEntity($data, 'tour'), $tourData);
+        }
+        return null;
+        
     }
 
-    private function mapToTour(array $data): Tour{
-        $tour = new Tour($data['tour_id'],$data['tour_name'], 
-        new DateTime($data['start_date']), new DateTime($data['end_date']), 
-        $data['price'], 
-        new Location($data['location_id'],
-        $data['address_name'], $data['postal_code'], 
-        $data['street_name'], $data['city'] ), 
-        $data['available_spots'], $data['language'], $data['guide_id'] );
-        return $tour;
+    public function getAllShowsByIds(array $ids) {
+        $showsData = $this->eventRepo->getShowsByIds($ids);
+        if(!empty($showsData)){
+            return array_map(fn($data) => $this->mapToEntity($data, 'show'), $showsData);
+        }
+        return null;
+
+    }
+
+    private function mapToEntity(array $data, string $type) {
+        var_dump($data);
+        $commonParams = [
+            $data[$type . '_id'],
+            $data[$type . '_name'],
+            new DateTime($data['start_date']),
+            new DateTime($data['end_date'] ?? 'now'), // 'end_date' only for tours
+            $data['price'],
+            new Location(
+                $data['location_id'],
+                $data['address_name'],
+                $data['postal_code'],
+                $data['street_name'],
+                $data['city']
+            ),
+            $data['available_spots']
+        ];
+    
+        if ($type === 'show') {
+            return new Show(...array_merge($commonParams, [$data['artist_names']]));
+        } elseif ($type === 'tour') {
+            return new Tour(...array_merge($commonParams, [$data['language'], $data['guide_id']]));
+        } else {
+            throw new \InvalidArgumentException("Invalid entity type: " . $type);
+        }
     }
 }

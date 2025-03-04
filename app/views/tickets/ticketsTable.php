@@ -32,10 +32,15 @@
         <h3 class="day-name bg-yellow pink d-inline ps-2 pe-2 round-boreder-10px"><?php echo $day; ?></h3>
         <?php foreach ($dayEvents as $event): ?>
             <div class="ticket d-flex justify-content-between flex-wrap">
-                <p class="bold"><?php echo htmlspecialchars($event->getShowName()); ?></p>
-                <p><?php echo htmlspecialchars($event->getStartDate()); ?></p>
-                <p><?php echo htmlspecialchars("€ " . $event->getPrice()); ?></p>
-                <p><?php echo htmlspecialchars($event->location->getAddressName()); ?></p>
+                <span class="event-id" hidden><?php echo htmlspecialchars($event->getEventId())?></span>
+                <p class="bold"><?php echo htmlspecialchars($event->getEventName()); ?></p>
+                <p class="startd-date"><?php echo htmlspecialchars($event->getStartDate()); ?></p>
+                <p class="price"><?php echo htmlspecialchars("€ " . $event->getPrice()); ?></p>
+                <p class="location"><?php echo htmlspecialchars($event->location->getAddressName()); ?></p>
+                <?php if (get_class($event) === 'Show'): ?>
+                    <span hidden class="artists-name"><?php echo htmlspecialchars($event->getArtistName()); ?></span>
+                <?php endif; ?>
+
                 <div class="button-group">
                     <button class="min-selector btn primary-button ps-2 pe-2 p-0" onclick="updateTicketQuantity(this, 'min')">-</button>
                     <span class="span-quantity me-1 ms-1">0</span>
@@ -45,73 +50,68 @@
         <?php endforeach; ?>
     </div>
 <?php endforeach; ?>
+</div>
 
-<?php else: ?>
-    <div class="alert alert-danger text-center">No shows found for the selected genre.</div>
-<?php endif; ?>
+<div class="d-flex justify-content-center">
+    <?php else: ?>
+        <div class="alert alert-danger text-center"><?php echo $error ?></div>
+    <?php endif; ?>
 </div>
 
 <script>
-        function updateTicketQuantity(button, action) {
-            const spanQuantity = button.parentElement.querySelector('.span-quantity');
-            let quantity = parseInt(spanQuantity.innerText);
-            
-            if (action === "min" && quantity > 0) {
-                quantity -= 1;
-            } else if (action === "plus") {
-                quantity += 1;
-            }
-            
-            spanQuantity.innerText = quantity;
+    const checkoutButton = document.querySelector('#checkoutButton');
+    let ticketCount = 0;
+
+    function toggleCheckoutButton() {
+        if (ticketCount > 0) {
+            checkoutButton.disabled = false;  
+        } else {
+            checkoutButton.disabled = true;   
         }
-        
+    }
+
+    function updateTicketQuantity(button, action) {
+    const ticketElement = button.closest('.ticket');
+    const spanQuantity = ticketElement.querySelector('.span-quantity');
+    let quantity = parseInt(spanQuantity.innerText);
+
+    const ticketData = {
+        eventId: ticketElement.querySelector('span.event-id').innerText,
+        eventName: ticketElement.querySelector('p.bold').innerText,
+        price: ticketElement.querySelector('p.price').innerText.replace(/[^\d,.]/g, ''),  
+        startDate: ticketElement.querySelector('p.startd-date').innerText,  
+        location: ticketElement.querySelector('p.location').innerText,
+        artistsName: ticketElement.querySelector('span.artists-name') ? ticketElement.querySelector('span.artists-name').innerText : ''
+    };
+
+
+    if (action === "min" && quantity > 0) {
+        quantity -= 1;
+        ticketCount--;
+        toggleCheckoutButton();
+
+    } else if (action === "plus") {
+        quantity += 1;
+        ticketCount++;
+        toggleCheckoutButton();
+    }
+
+    spanQuantity.innerText = quantity;
+
+    $.ajax({
+        url: "/tickets/saveSelectedTicketinShopingCart", 
+        type: "POST",
+        data: { ticket: ticketData, quantity: quantity },
+        success: function(response) {
+            console.log("Cart updated:", response);
+        }
+    });
+}
+
+
+toggleCheckoutButton()
 </script>
 
 
 <style>
-.show-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.day-column {
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-}
-
-.day-name {
-    text-align: left; 
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-.ticket {
-    background-color: #ffffff;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.ticket p {
-    margin: 5px 0;
-}
-
-.ticket strong {
-    color: #007bff;
-}
-
-.alert-danger {
-    margin-top: 20px;
-    color: red;
-    font-size: 1.1rem;
-}
-
-.round-boreder-10px{
-    border-radius: 10px;
-}
 </style>

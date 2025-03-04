@@ -14,7 +14,7 @@ require __DIR__ ."/../header.php";
                     <button id="dance-tickets-btn" class=" p-0 btn text-white btn-font-size">Dance</button>
                     <button id="jazz-tickets-btn" class=" p-1 btn text-white btn-font-size">| Jazz</button>
                     <button id="history-tickets-btn" class=" p-1 btn text-white btn-font-size ">| History</button>
-                    <button class=" p-1 btn text-white btn-font-size">| Personal Program</button>
+                    <button id="personal-program-tickets-btn" class=" p-1 btn text-white btn-font-size">| Personal Program</button>
             </div>
         </div>
     </div>
@@ -36,34 +36,36 @@ require __DIR__ ."/../header.php";
     </ul>
 </div>
 <div class="tickets-container">
-
-
-<form action="checkout/paymentPortal">
-    <span>Enter ammount of tickets</span>
-    <input type="number" name="quantity" min="1" value="1" required>
-    <button>
-        pay button test
+    <!-- load tickets here -->
+     
+</div>
+<form action="checkout/paymentPortal" method="post">
+    <button id="checkoutButton" class="btn primary-button" onclick="">
+        Checkout
     </button>
 </form>
-
-</div>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 <script>
     $(document).ready(function() {
     
-    $('.tickets-container').load("/tickets/showMusicTickets?genre=dance");
+        $('.tickets-container').load("/tickets/showMusicTickets?genre=dance"); //default tickets screen
 
-    $("#dance-tickets-btn").on("click", function() {
-        $('.tickets-container').load("/tickets/showMusicTickets?genre=dance");
-    });
+        $("#dance-tickets-btn").on("click", function() {
+            $('.tickets-container').load("/tickets/showMusicTickets?genre=dance");
+        });
 
-    $("#jazz-tickets-btn").on("click", function() {
-        $('.tickets-container').load("/tickets/showMusicTickets?genre=jazz");
-    });
-    $("#history-tickets-btn").on("click", function() {
-        $('.tickets-container').load("/tickets/showHistoryTickets");
-    });
+        $("#jazz-tickets-btn").on("click", function() {
+            $('.tickets-container').load("/tickets/showMusicTickets?genre=jazz");
+        });
+
+        $("#history-tickets-btn").on("click", function() {
+            $('.tickets-container').load("/tickets/showHistoryTickets");
+        });
+
+        $("#personal-program-tickets-btn").on("click", function() {
+            $('.tickets-container').load("/tickets/showPersonalProgram");
+        });
 });
 
 </script>

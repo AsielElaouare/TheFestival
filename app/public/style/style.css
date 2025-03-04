@@ -133,3 +133,54 @@
 .round-boreder-4px{
     border-radius: 4px;
 }
+
+/* Ticekts page style */
+
+
+.show-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.day-column {
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-name {
+    text-align: left; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.ticket {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ticket p {
+    margin: 5px 0;
+}
+
+.ticket strong {
+    color: #007bff;
+}
+
+.alert-danger {
+    margin-top: 20px;
+    color: red;
+    font-size: 1.1rem;
+}
+
+.round-boreder-10px{
+    border-radius: 10px;
+}
+
+/* End tickets page style */
