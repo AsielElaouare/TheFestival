@@ -15,7 +15,7 @@ class QrCodeGenerationController {
     private $result;
 
     public function __construct() {
-        $this->text = "Dance ticket 16:00 uur";
+        $this->text = "Dance ticket 16:00 uur"; //hard code test
 
         $this->qrCode = new QrCode($this->text);
         $this->writer = new PngWriter();
