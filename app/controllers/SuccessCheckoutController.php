@@ -8,9 +8,8 @@ class SuccessCheckoutController{
 
     public function index(){
         session_start();
-        //clear session kart
-        // update personal program table
-        //save tickets indb
+        //clear session cart
+        //save tickets in db
         // send tickets via email
 
         require __DIR__ ."/../views/successCheckout/success.php";

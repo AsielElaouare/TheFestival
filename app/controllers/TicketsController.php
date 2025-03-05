@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\BaseEvent;
 use App\Service\EventService;
 use App\Service\TicketService;
+use Stripe\Issuing\CardDetails;
 
 class TicketsController{
 
@@ -16,31 +17,34 @@ class TicketsController{
     }
 
     public function index(){
-        //show default ticket page
+        $shoppingCart = [];
+        if(isset($_SESSION['cart'])){
+            $shoppingCart =$_SESSION['cart'];
+        }
         require __DIR__ ."/../views/tickets/ticketsPage.php";
     }
 
     public function showMusicTickets(){
         $genreString = $_GET['genre'] ?? 'dance'; 
         $events = $this->eventService->getAllShowsByGenre($genreString);
+        if(isset($_SESSION['cart'])){
+            $this->showWantedQuantity($events);
+        }
         require __DIR__ .'/../views/tickets/ticketsTable.php';
     }
 
     public function showHistoryTickets(){
         $events = $this->eventService->getAllTours();
+        if(isset($_SESSION['cart'])){
+            $this->showWantedQuantity($events);
+        }
         require __DIR__ .'/../views/tickets/ticketsTable.php';
     }
     
     public function showPersonalProgram() {
-        session_start();
-        $error = "";
-        $showIdsArray = [];
-        $toursIdsArray = [];
-        $tickets = $_SESSION['cart'] ?? [];
-
+        $tickets = [] ;
         if (empty($tickets)) {
-            $error = "You haven't selected any tickets for your personal program yet";
-
+            $error = "You haven't purchased any tickets to display it in your personal program yet";
         } else{
             foreach ($tickets as $ticket) {
                 if(array_key_exists('artistsName', $ticket)){
@@ -50,14 +54,13 @@ class TicketsController{
                     $toursIdsArray[] = $ticket['eventId'];
                 }
             }
-            $tours = $this->eventService->getAllToursByIds($toursIdsArray);
-            $shows = $this->eventService->getAllShowsByIds($toursIdsArray);
+           
         }
-        $events = array_merge($tours, $shows);
+        $events = $tickets;
         require __DIR__ . "/../views/tickets/ticketsTable.php";
     }
 
-
+    
 
     public function saveSelectedTicketinShopingCart() {
         session_start(); 
@@ -94,4 +97,11 @@ class TicketsController{
         echo json_encode(["status" => "success", "cart" => $_SESSION['cart']]);
     }
     
+    private function showWantedQuantity(array $events){
+            foreach ($events as $event) {
+                $ticketKey = md5($event->getEventName() . $event->location->getAddressName());
+                $quantityInCart = isset($_SESSION['cart'][$ticketKey]) ? $_SESSION['cart'][$ticketKey]['quantity'] : 0;
+                $event->setWantedQuantity($quantityInCart);
+            }
+    }
 }

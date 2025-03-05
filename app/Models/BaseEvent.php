@@ -62,4 +62,8 @@ class BaseEvent{
   public function getWantedQuantity(){
     return $this->wantedQuantity;
   }
+
+  public function setWantedQuantity($wantedQuantity){
+    $this->wantedQuantity = $wantedQuantity;
+  }
 }

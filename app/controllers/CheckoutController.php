@@ -15,7 +15,6 @@ class CheckoutController {
     }
 
     public function paymentPortal(){
-        session_start();
         $lineItems = [];
     
         if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {

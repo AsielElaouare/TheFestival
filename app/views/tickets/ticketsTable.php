@@ -4,14 +4,9 @@
         <?php 
         $dayNames = ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Access Pass'];
         $groupedEvents = [
-            'Thursday' => [],
-            'Friday' => [],
-            'Saturday' => [],
-            'Sunday' => [],
-            'Access Pass' => []
+            'Thursday' => [], 'Friday' => [],'Saturday' => [],'Sunday' => [], 'Access Pass' => []
         ];
-        
-        // Group the shows by day
+
         foreach ($events as $event) {
             $dayOfWeek = $event->getDayFromDate(); 
 
@@ -20,7 +15,6 @@
             }
         }
         
-        // Filter out days with no shows
         $groupedEvents = array_filter($groupedEvents, function($dayEvents) {
             return !empty($dayEvents);
         });
@@ -39,17 +33,9 @@
                 <?php if (get_class($event) === 'Show'): ?>
                     <span hidden class="artists-name"><?php echo htmlspecialchars($event->getArtistName()); ?></span>
                 <?php endif; ?>
-
-                <?php
- 
-                        // Retrieve the quantity from the session
-                        $ticketKey = md5($event->getEventName() . $event->location->getAddressName());
-                        $quantityInCart = isset($_SESSION['cart'][$ticketKey]) ? $_SESSION['cart'][$ticketKey]['quantity'] : 0;
-                        ?>
-
                 <div class="button-group">
                     <button class="min-selector btn primary-button ps-2 pe-2 p-0" onclick="updateTicketQuantity(this, 'min')">-</button>
-                    <span class="span-quantity me-1 ms-1"><?php echo $quantityInCart?></span>
+                    <span class="span-quantity me-1 ms-1"><?php echo $event->getWantedQuantity()?></span>
                     <button class="plus-selector btn primary-button ps-2 pe-2 p-0" onclick="updateTicketQuantity(this, 'plus')">+</button>
                 </div>
             </div>
@@ -66,7 +52,8 @@
 
 <script>
     const checkoutButton = document.querySelector('#checkoutButton');
-    let ticketCount = 0;
+    const cartBadgeCount = document.querySelector('#cart-count');
+    let ticketCount = cartBadgeCount.innerText;
 
     function toggleCheckoutButton() {
         if (ticketCount > 0) {
@@ -112,6 +99,7 @@
             console.log("Cart updated:", response);
         }
     });
+    cartBadgeCount.innerText =ticketCount;
 }
 
 
