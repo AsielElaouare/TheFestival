@@ -1,4 +1,4 @@
-<footer class="mt-auto w-100 bg-yellow">
+<footer class="mt-auto w-100 mt-auto">
     <img src="/uploads/skyline.svg" alt="" class="w-100">
     <div class="container-fluid p-0 bg-purple-footer d-flex justify-content-between">
         <div class="d-flex">

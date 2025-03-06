@@ -32,13 +32,23 @@
     color: #F9F871;
 }
 
+
+.bg-purple{
+    background-color: #800080;
+}
+
 .bg-purple-footer{
     background-color: #622262;
 }
 
 .bg-yellow{
-    background-color: #F9F871 ;
+    background-color: #F9F871;
 }
+.bg-coral{
+    background-color: #FF7367;
+}
+
+
 
 .bg-pink{
     background-color: #E60077;
@@ -55,6 +65,10 @@
     padding: 8px 40px 8px 40px;
     background-color: #E60077;
     color: #FFD150;
+}
+
+.btn-font-size{
+    font-size: 2.0rem;
 }
 
  /***** End buttons classes *****/  
@@ -85,7 +99,6 @@
 }
 
 
-/*Hero sectie  */
 .hero-section {
     position: relative;
     width: 100%;
@@ -95,14 +108,12 @@
     justify-content: center;
 }
 
-/* hero overlay  */
 .hero-overlay {
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
     padding: 20px;
 }
 
-/* hero title */
 .hero-title {
     font-size: 3rem;
     font-weight: bold;
@@ -118,3 +129,68 @@
     font-size: 1rem;
     font-weight: 500;
 }
+
+.footer{
+    position: sticky;
+    bottom: 0;
+}
+
+.logo-tickets-page {
+    transform: scale(1.8); 
+    transform-origin: center; 
+}
+
+.round-boreder-4px{
+    border-radius: 4px;
+}
+
+/* Ticekts page style */
+
+
+.show-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.day-column {
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-name {
+    text-align: left; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.ticket {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ticket p {
+    margin: 5px 0;
+}
+
+.ticket strong {
+    color: #007bff;
+}
+
+.alert-danger {
+    margin-top: 20px;
+    color: red;
+    font-size: 1.1rem;
+}
+
+.round-boreder-10px{
+    border-radius: 10px;
+}
+
+/* End tickets page style */

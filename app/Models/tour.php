@@ -1,52 +1,25 @@
 <?php
-class Tour
+
+namespace App\Models;
+
+class Tour extends BaseEvent
 {
-  private $tourId;
-  private $guideId;
-  private DateTime $dateTime;
+  private $tourGuide;
   private $language;
-  private $availableSpots;
-  private $price;
 
-  //Constructor
-  public function __construct($tourId, $guideId, $dateTime, $language, $availableSpots, $price)
-  {
-    $this->tourId = $tourId;
-    $this->guideId = $guideId;
-    $this->dateTime = new DateTime($dateTime);
+  public function __construct($id, $name, $startDate, $endDate, $price, $location, $availableSpots, $language, $tourGuide){
+    parent::__construct($id, $name, $startDate, $endDate, $price, $location, $availableSpots);
+    $this->tourGuide = $tourGuide;
     $this->language = $language;
-    $this->availableSpots = $availableSpots;
-    $this->price = $price;
   }
-
   //Getters
-  public function getTourId()
+  public function getTourGuide()
   {
-    return $this->tourId;
+    return $this->tourGuide;
   }
-
-  public function getGuideId()
-  {
-    return $this->guideId;
-  }
-
-  public function getDateTime()
-  {
-    return $this->dateTime;
-  }
-
   public function getLanguage()
   {
     return $this->language;
   }
-
-  public function getAvailableSpots()
-  {
-    return $this->availableSpots;
-  }
-
-  public function getPrice()
-  {
-    return $this->price;
-  }
+  
 }

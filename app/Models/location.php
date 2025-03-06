@@ -4,24 +4,42 @@ namespace App\Models;
 
 class Location
 {
-  private $locationID;
-  private $locationAddress;
+  private $locationId;
+  private $addressName;
+  private $postalCode;
+  private $streetName;
+  private $city;
 
-  //Constructor
-  public function __construct($locationID, $locationAddress)
-  {
-    $this->locationID = $locationID;
-    $this->locationAddress = $locationAddress;
+  public function __construct($locationId, $addressName, $postalCode, $streetName, $city){
+    $this->locationId = $locationId;
+    $this->addressName = $addressName;
+    $this->postalCode = $postalCode;
+    $this->streetName = $streetName;
+    $this->city = $city;
   }
 
   //Getters
-  public function getLocationID()
+  public function getLocationId()
   {
-    return $this->locationID;
+    return $this->locationId;
   }
 
-  public function getLocationAddress()
-  {
-    return $this->locationAddress;
+  public function getPostalCode(){
+    return $this->postalCode;
   }
+
+  public function getStreetName(){
+    return $this->streetName;
+  }
+
+  public function getCity(){
+    return $this->city;
+  }
+
+  public function getAddressName(): string
+  {
+    return $this->addressName;
+  }
+
+  
 }

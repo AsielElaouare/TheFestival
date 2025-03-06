@@ -2,61 +2,18 @@
 
 namespace App\Models;
 
-class Show
+class Show extends BaseEvent
 {
-  private $showID;
-  private $locationID;
-  private $name;
-  private $date;
-  private $type;
-  private $availableSpots;
-  private $price;
+  private $artistName;
 
-  //Constructor
-  public function __construct($showID, $locationID, $name, $date, $type, $availableSpots, $price)
-  {
-    $this->showID = $showID;
-    $this->locationID = $locationID;
-    $this->name = $name;
-    $this->date = $date;
-    $this->type = $type;
-    $this->availableSpots = $availableSpots;
-    $this->price = $price;
+  public function __construct($id, $name, $startDate, $endDate, $price, Location $location, $availableSpots, $ArtistName){
+    parent::__construct($id, $name, $startDate, $endDate, $price, $location, $availableSpots);
+    $this->artistName = $ArtistName;
   }
 
   //Getters
-  public function getShowID()
-  {
-    return $this->showID;
+  public function getArtistName(){
+    return $this->artistName;
   }
-
-  public function getLocationID()
-  {
-    return $this->locationID;
-  }
-
-  public function getName()
-  {
-    return $this->name;
-  }
-
-  public function getDate()
-  {
-    return $this->date;
-  }
-
-  public function getType()
-  {
-    return $this->type;
-  }
-
-  public function getAvailableSpots()
-  {
-    return $this->availableSpots;
-  }
-
-  public function getPrice()
-  {
-    return $this->price;
-  }
+  
 }
