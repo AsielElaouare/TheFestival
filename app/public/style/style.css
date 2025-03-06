@@ -7,7 +7,6 @@
     font-size: 2.2rem ;
 }
 
-
  /***** Website color classes *****/  
 .purple{
     color: #800080;
@@ -41,6 +40,10 @@
     background-color: #F9F871 ;
 }
 
+.bg-pink{
+    background-color: #E60077;
+}
+
 /***** End Website color classes *****/
 
 
@@ -69,9 +72,16 @@
     object-position: center 20%;
 }
 
+
 .object-fit-cover{
     object-fit: cover;
     object-position: center 100%;
+}
+
+/* custom css jazz */
+.card-40 {
+    width: 40vw;  
+    max-width: 100%; 
 }
 
 

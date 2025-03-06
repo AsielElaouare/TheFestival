@@ -46,7 +46,7 @@ include __DIR__. '/../header.php';
             </div>
             <img src="uploads/img_section2.svg" width="500px" class="p-3" alt="">
     </div>
-</section>  
+
 
 <form action="checkout/paymentPortal">
     <span>Enter ammount of tickets</span>
@@ -55,6 +55,7 @@ include __DIR__. '/../header.php';
         pay button test
     </button>
 </form>
+</section>  
 <?php
 include __DIR__. '/../footer.php';
 ?>
