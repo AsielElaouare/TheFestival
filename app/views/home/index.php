@@ -51,6 +51,7 @@ include __DIR__. '/../header.php';
             </div>
         </div>
     </div>
+
 </section>
 
 
@@ -103,3 +104,8 @@ include __DIR__. '/../header.php';
     require __DIR__ ."/../footer.php";
     ?>
 </div>
+
+<?php
+include __DIR__. '/../footer.php';
+?>
+
