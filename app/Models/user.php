@@ -11,9 +11,11 @@ class User
     private $email;
     private $passwordHash;
     private $phoneNumber;
+    private $registrationDate;
+
 
     // Constructor
-    public function __construct($userId, $role, $name, $email, $passwordHash, $phoneNumber)
+    public function __construct($userId, $role, $name, $email, $passwordHash, $phoneNumber, $registrationDate = null)
     {
         $this->userId       = $userId;
         $this->role         = $role;
@@ -21,6 +23,8 @@ class User
         $this->email        = $email;
         $this->passwordHash = $passwordHash;
         $this->phoneNumber  = $phoneNumber;
+        $this->registrationDate = $registrationDate;
+
     }
 
     // Getters
@@ -46,6 +50,10 @@ class User
 
     public function getPhoneNumber() { 
         return $this->phoneNumber; 
+    }
+
+    public function getRegistrationDate() { 
+        return $this->registrationDate; 
     }
 
     // Setters 

@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>TheFestival</title>
-  <!-- Bootstrap CSS (no integrity or crossorigin) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4c23360f25.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/style/style.css">
@@ -52,7 +51,6 @@
     </nav>
   </div>
  </main>
- <!-- Bootstrap JS (no integrity or crossorigin) -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

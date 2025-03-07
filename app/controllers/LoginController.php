@@ -17,7 +17,7 @@ class LoginController
         require __DIR__ . '/../views/login/login.php';
     }
 
-    // Process login
+    // login processen 
     public function processLogin()
     {
         try {
@@ -53,7 +53,7 @@ class LoginController
     {
         session_start();
         session_destroy();
-        header("Location: /");  // Redirect to home page
+        header("Location: /");  
         exit;
     }
 }
