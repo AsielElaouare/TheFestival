@@ -7,8 +7,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <?php include __DIR__ . '/../partials/header.php'; ?>
-  <div class="container my-5">
+<?php include __DIR__ . '/../header.php'; ?>
+<div class="container my-5">
     <h2>Edit Account</h2>
     <?php if(isset($_GET['error'])): ?>
       <div class="alert alert-danger"><?php echo htmlspecialchars($_GET['error']); ?></div>
@@ -27,14 +27,18 @@
         <label for="phone_number" class="form-label">Phone Number:</label>
         <input type="text" name="phone_number" id="phone_number" class="form-control" value="<?php echo htmlspecialchars($user->getPhoneNumber()); ?>">
       </div>
+      <!-- For password changes -->
       <div class="mb-3">
-        <label for="password" class="form-label">New Password (leave blank to keep current):</label>
-        <input type="password" name="password" id="password" class="form-control">
+        <label for="current_password" class="form-label">Current Password (required to change password):</label>
+        <input type="password" name="current_password" id="current_password" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="new_password" class="form-label">New Password (leave blank to keep current):</label>
+        <input type="password" name="new_password" id="new_password" class="form-control">
       </div>
       <button type="submit" class="btn btn-primary">Update Account</button>
       <a href="/" class="btn btn-secondary">Cancel</a>
     </form>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

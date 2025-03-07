@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,35 +24,39 @@
         <li class="nav-item impact-font"><a href="/" class="nav-link purple">History</a></li>
         <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tylers</a></li>
         <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tickets</a></li>
-        <?php
-          // Only show the Dashboard link if the user is an admin
-          if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
-              echo '<li class="nav-item impact-font"><a href="/admin/dashboard" class="nav-link purple">Dashboard</a></li>';
-          }
-        ?>
-        <!-- Show Account dropdown if logged in, else show Login button -->
-        <li class="nav-item">
-          <?php if (isset($_SESSION['user_id'])): ?>
-            <div class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                Account
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                <li><a class="dropdown-item" href="/account/edit">Edit Account</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/logout">Logout</a></li>
-              </ul>
-            </div>
-          <?php else: ?>
-            <a href="/login" class="btn btn-primary">
-              <i class="fa-solid fa-user"></i> Login
+        
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+          <li class="nav-item">
+            <a href="/admin/dashboard" class="nav-link purple" title="Admin Dashboard">
+              <i class="fa-solid fa-tachometer-alt" style="font-size:1.5rem;"></i>
             </a>
+          </li>
+        <?php else: ?>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                  <li><a class="dropdown-item" href="/account/edit">Edit Account</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+              </div>
+            </li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a href="/login" class="btn btn-primary">
+                <i class="fa-solid fa-user"></i> Login
+              </a>
+            </li>
           <?php endif; ?>
-        </li>
+        <?php endif; ?>
       </ul>
     </nav>
   </div>
- </main>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

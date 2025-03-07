@@ -7,10 +7,6 @@ class AccountController {
     private $userRepo;
     
     public function __construct() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        // Ensure the user is logged in
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
             exit();
@@ -18,7 +14,7 @@ class AccountController {
         $this->userRepo = new UserRepository();
     }
     
-    // Display the edit account form for the logged-in user.
+    // laat edit form zien
     public function edit() {
         $userId = $_SESSION['user_id'];
         $user = $this->userRepo->getUserById($userId);
@@ -29,7 +25,7 @@ class AccountController {
         include __DIR__ . '/../views/account/edit.php';
     }
     
-    // Process updating the account.
+    // proces van het updaten van account details
     public function update() {
         $userId = $_POST['user_id'] ?? null;
         if (!$userId) {
@@ -37,25 +33,47 @@ class AccountController {
             exit();
         }
         
-        $name = trim($_POST['name'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $phoneNumber = $_POST['phone_number'] ?? '';
-        $newPassword = $_POST['password'] ?? '';
+        // krijg form input
+        $name        = trim($_POST['name'] ?? '');
+        $email       = trim($_POST['email'] ?? '');
+        $phoneNumber = trim($_POST['phone_number'] ?? '');
+        $newPassword = $_POST['new_password'] ?? ''; 
+        $currentPassword = $_POST['current_password'] ?? ''; 
         
+        // haal oude user data op via de repository
         $user = $this->userRepo->getUserById($userId);
         if (!$user) {
             header("Location: /account/edit?error=User+not+found");
             exit();
         }
         
+        // controleer of email is veranderd
+        $emailChanged = ($email !== $user->getEmail());
+        
+        // als password wordt geupdate, als er een nieuw wachtwoord wordt ingevoerd, verifieer het huidige wachtwoord.
         if (!empty($newPassword)) {
+            if (empty($currentPassword) || !password_verify($currentPassword, $user->getPasswordHash())) {
+                header("Location: /account/edit?error=Current+password+is+incorrect");
+                exit();
+            }
             $passHash = password_hash($newPassword, PASSWORD_DEFAULT);
         } else {
             $passHash = $user->getPasswordHash();
         }
         
-        // Update user data in repository.
+        // update user data in repository
         $this->userRepo->updateUser($userId, $name, $email, $passHash, $user->getRole()->value, $phoneNumber);
+        
+        // als email is veranderd stuur een confirmation mail.
+        if ($emailChanged) {
+            mail(
+                $email,
+                "Email Updated",
+                "Your email has been updated to: " . $email,
+                "From: no-reply@example.com"
+            );
+        }
+        
         header("Location: /?message=Account+updated");
         exit();
     }

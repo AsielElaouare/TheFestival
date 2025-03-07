@@ -22,11 +22,10 @@ class ForgotPasswordController {
             return;
         }
 
-        // Load database configuration from dbconfig1.php.
+        // laad database configuratie van dbconfig1.php.
         require __DIR__ . '/../config/dbconfig1.php';
-        // Now we have: $type, $servername, $username, $password, $database
 
-        // Create a PDO connection.
+        // maakt een pdo connectie
         try {
             $dsn = "$type:host=$servername;dbname=$database;charset=utf8";
             $pdo = new \PDO($dsn, $username, $password);
@@ -36,7 +35,7 @@ class ForgotPasswordController {
             return;
         }
 
-        // Check if the email exists in the 'USER' table.
+        // controleert of email bestaat
         $stmt = $pdo->prepare("SELECT * FROM `USER` WHERE email = :email");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
