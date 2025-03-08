@@ -25,27 +25,26 @@ class MailHelper{
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom("thefestival.haarlem.events@gmail.com","Test");
-            $mail->addAddress("elaouareasiel82@gmail.com","Asiel  test");
+            $mail->setFrom("thefestival.haarlem.events@gmail.com","no-reply");
+            $mail->addAddress("relaouare@gmail.com",""); //change tobe dynamic
 
             $mail->isHTML(true);
-            $mail->Subject = "TEsting from php app";
-            $mail->Body = "
-            <html>
-                <h1>
-                    this is a test inside a h1
-                </h1>
-            </html>
-            ";
+            $mail->Subject = "TheFestival Tickets | Haarlem";
+            $mail->Body = $this->mailBodyHtml();
             
             $mail->addAttachment($attachmentPath);
-
             $mail->send();
 
         }catch(Exception $e){
             $mail->ErrorInfo = $e->getMessage();
             var_dump($mail->ErrorInfo);
         }
+    }
+
+    private function mailBodyHtml(): string {
+        ob_start();
+        include __DIR__ . "/../views/mail/mailTemplate.php";
+        return ob_get_clean();
     }
 
 
