@@ -15,6 +15,7 @@ class BaseEvent{
     public $availableSpots;
     public int $wantedQuantity;
 
+
     public function __construct($id, $name, DateTime $startDate, DateTime $endDate, $price, Location $location, $availableSpots){ 
         $this->id = $id;
         $this->name = $name;

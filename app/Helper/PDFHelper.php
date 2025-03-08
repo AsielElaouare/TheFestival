@@ -29,7 +29,6 @@ class PDFHelper {
 
         $filePath = __DIR__ . "/../storage/pdfs_tickets/{$pdfName}";
         file_put_contents($filePath, $this->dompdf->output());
-    
         return $filePath;  
     }
 
@@ -37,7 +36,6 @@ class PDFHelper {
         $eventName = $ticket->getEventName();
         $eventDate = $ticket->getEventDate();
         $qrCodePath = $ticket->getQrCode();
-        var_dump($qrCodePath);
         $qrCodeBase64 = base64_encode(file_get_contents($qrCodePath));
         $qrCodeUrl = "data:image/png;base64," . $qrCodeBase64;
 

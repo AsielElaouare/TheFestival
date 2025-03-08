@@ -7,7 +7,7 @@ class TourTicket extends BaseTicket{
     public ?TourGuide $tourGuide;
 
     public function __construct( $eventId, $startDateTime, $id = null, $orderId = null, $qrCode = null, $isScanned = null, $eventName = null,  $tourGuide = null){
-        parent::__construct( $eventId,  $startDateTime, $id = null, $orderId = null, $qrCode = null, $isScanned = null, $eventName);
+        parent::__construct( $eventId,  $startDateTime, $id, $orderId, $qrCode, $isScanned, $eventName);
         $this->tourGuide = $tourGuide;
     }
 
