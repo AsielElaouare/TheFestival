@@ -16,13 +16,25 @@ class TicketsController{
         $this->eventService = new EventService();
     }
 
+   
     public function index(){
-        $shoppingCart = [];
+        $shoppingCartItemCount = 0;
         if(isset($_SESSION['cart'])){
             $shoppingCart =$_SESSION['cart'];
+            $shoppingCartItemCount =  array_sum(array_column($shoppingCart, 'quantity'));
         }
+
         require __DIR__ ."/../views/tickets/ticketsPage.php";
     }
+
+    public function shoppingCart(){
+        $shoppingCart = [];
+        if(isset($_SESSION['cart'])){
+            $shoppingCart = $_SESSION['cart'];
+        }
+        require __DIR__ . '/../views/tickets/shoppingCart.php';
+    }
+
 
     public function showMusicTickets(){
         $genreString = $_GET['genre'] ?? 'dance'; 
@@ -63,7 +75,6 @@ class TicketsController{
     
 
     public function saveSelectedTicketinShopingCart() {
-        session_start(); 
     
         $ticket = $_POST['ticket'] ?? null;
         $quantity = $_POST['quantity'] ?? 0;

@@ -2,9 +2,9 @@
 <div class="show-grid m-5">
     <?php if (!empty($events)): ?>
         <?php 
-        $dayNames = ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Access Pass'];
+        $dayNames = ['Thursday', 'Friday', 'Saturday', 'Sunday'];
         $groupedEvents = [
-            'Thursday' => [], 'Friday' => [],'Saturday' => [],'Sunday' => [], 'Access Pass' => []
+            'Thursday' => [], 'Friday' => [],'Saturday' => [],'Sunday' => []
         ];
 
         foreach ($events as $event) {
@@ -30,7 +30,7 @@
                 <p class="startd-date"><?php echo htmlspecialchars($event->getStartDate()); ?></p>
                 <p class="price"><?php echo htmlspecialchars("€ " . $event->getPrice()); ?></p>
                 <p class="location"><?php echo htmlspecialchars($event->location->getAddressName()); ?></p>
-                <?php if (get_class($event) === 'Show'): ?>
+                <?php if (get_class($event) === 'App\Models\Show'): ?>
                     <span hidden class="artists-name"><?php echo htmlspecialchars($event->getArtistName()); ?></span>
                 <?php endif; ?>
                 <div class="button-group">
