@@ -25,22 +25,16 @@ class SuccessCheckoutController{
 
 
     public function index(){
+        if(isset($_SESSION['cart'])){
+            $orderId = $this->orderService->saveUserOrder($_SESSION['user_id'], $_SESSION['cart']);
 
-        //save tickets in db
-        $orderId = $this->orderService->saveUserOrder($_SESSION['user_id'], $_SESSION['cart']);
+            $tickets = $this->ticketService->getUserTickets($_SESSION['user_id']);
 
-        $tickets = $this->ticketService->getUserTickets($_SESSION['user_id']);
-        //create pdf with tickets
-
-        $pdf = $this->pdfHelper->generatePDF($tickets);
-        //var_dump($pdf);
-        
-        $this->mailHelper->sendTicketsViaEmail($pdf);
-        //clear session cart
-
-        require __DIR__ ."/../views/successCheckout/success.php";
-
+            $pdf = $this->pdfHelper->generatePDF($tickets);
+            $this->mailHelper->sendTicketsViaEmail($pdf);
+            unset($_SESSION['cart']);
+            require __DIR__ ."/../views/success/success.php";
+        }
+        header("Location: /");
     }
-
-
 }
