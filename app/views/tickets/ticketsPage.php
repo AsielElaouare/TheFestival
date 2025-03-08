@@ -8,58 +8,30 @@ require __DIR__ ."/../header.php";
                 <div class="d-flex justify-content-between ms-5 me-5">
                 <a href="/" class="ps-3 pe-3 btn primary-button impact-font mt-3 align-self-center">Back Home</a>
                 <div class=" mt-3">
-                <button class="btn position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+                <button id="shopping-cart-button" class="btn position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
                     <i class="bi bi-cart-fill yellow" style="font-size: 3rem;"></i>
                     <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    <?= array_sum(array_column($shoppingCart, 'quantity')) ?: 0 ?>
+                    <?= $shoppingCartItemCount?>
                 </span>
                 </button>
                 </div>
-<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <?php 
-                $totalAmount = 0; 
-                if (!empty($shoppingCart)) { ?>
-                    <div class="list-group">
-                        <?php foreach ($shoppingCart as $key => $item) { 
-                            $itemTotal = (float)$item['price'] * (int)$item['quantity']; 
-                            $totalAmount += $itemTotal;
-                        ?>
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-column">
-                                    <span class="fw-bold purple"><?= htmlspecialchars($item['eventName']) ?></span>
-                                    <span><?= !empty($item['artistsName']) ? htmlspecialchars($item['artistsName']) : 'N/A' ?></span>
-                                    <span>Location: <?= htmlspecialchars($item['location']) ?></span>
-                                    <span>Date: <?= date("F j, Y - g:i A", strtotime($item['startDate'])) ?></span>
-                                    <span>Price: €<?= number_format((float)$item['price'], 2) ?></span>
-                                </div>
-                                <div class="d-flex flex-column align-items-end">
-                                    <span class="badge bg-primary" style="font-size: 0.9rem;">Qty: <?= htmlspecialchars($item['quantity']) ?></span>
-                                </div>
+                <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <hr>
-                        <?php } ?>
+                            <div id="shopping-cart-body" class="modal-body">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
-                <?php } else { ?>
-                    <div class="alert alert-danger text-center">Your Shopping Cart is Empty</div>
-                <?php } ?>
-            </div>
-            <div class="modal-footer">
-                <div class="d-flex justify-content-between w-100">
-                    <span class="fw-bold">Total: </span>
-                    <span class="text-success fw-bold">€<?= number_format($totalAmount, 2) ?></span>
                 </div>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
                 </div>
                 <div class="d-flex justify-content-center ">
                     <img src="/uploads/logo.svg" class="logo-tickets-page" width="200px m-0">
@@ -104,27 +76,46 @@ require __DIR__ ."/../header.php";
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 <script>
-    $(document).ready(function() {
-    
-        $('.tickets-container').load("/tickets/showMusicTickets?genre=dance"); //default tickets screen
+    document.addEventListener("DOMContentLoaded", () => {
+    function loadContent(url, containerSelector) {
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                const container = document.querySelector(containerSelector);
+                container.innerHTML = data;
+                reinitializeScripts(container);
+            });
+    }
 
-        $("#dance-tickets-btn").on("click", function() {
-            $('.tickets-container').load("/tickets/showMusicTickets?genre=dance");
+    function reinitializeScripts(container) {
+        const scripts = container.querySelectorAll("script");
+        scripts.forEach(script => {
+            const newScript = document.createElement("script");
+            newScript.textContent = script.textContent;
+            document.head.appendChild(newScript).parentNode.removeChild(newScript);
         });
+    }
 
-        $("#jazz-tickets-btn").on("click", function() {
-            $('.tickets-container').load("/tickets/showMusicTickets?genre=jazz");
-        });
+    loadContent("/tickets/showMusicTickets?genre=dance", '.tickets-container');
 
-        $("#history-tickets-btn").on("click", function() {
-            $('.tickets-container').load("/tickets/showHistoryTickets");
-        });
+    document.getElementById("dance-tickets-btn").addEventListener("click", () => {
+        loadContent("/tickets/showMusicTickets?genre=dance", '.tickets-container');
+    });
 
-        $("#personal-program-tickets-btn").on("click", function() {
-            $('.tickets-container').load("/tickets/showPersonalProgram");
-        });
+    document.getElementById("jazz-tickets-btn").addEventListener("click", () => {
+        loadContent("/tickets/showMusicTickets?genre=jazz", '.tickets-container');
+    });
+
+    document.getElementById("history-tickets-btn").addEventListener("click", () => {
+        loadContent("/tickets/showHistoryTickets", '.tickets-container');
+    });
+
+   
+
+    document.getElementById("shopping-cart-button").addEventListener("click", () => {
+        loadContent("/tickets/shoppingCart", '#shopping-cart-body' )
+    })
 });
-
 </script>
 
 
