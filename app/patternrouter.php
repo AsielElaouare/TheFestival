@@ -35,7 +35,7 @@ class PatternRouter
         try {            
             $controllerObj = new $controllerName();
             $controllerObj->$methodName();
-        } catch(Error $e) {
+        } catch(\Error $e) {
             http_response_code(500);
         }
     }

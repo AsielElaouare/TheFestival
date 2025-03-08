@@ -16,6 +16,11 @@ include __DIR__ . '/../header.php';
         <div class="alert alert-danger"><?php echo $error; ?></div>
     <?php endif; ?>
       <button type="submit" class="btn btn-primary">Login</button>
+      <p>Don't have an account? <a href="/register">Register here</a></p>
+      <p><a href="/forgotPassword">Forgot your password?</a></p>
+      
+
+
     </form>
   </div>
 <?php
