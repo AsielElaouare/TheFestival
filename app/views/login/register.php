@@ -39,10 +39,6 @@
       <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
-</body>
-</html>
-
-
 
 <?php
 include __DIR__ . '/../footer.php';

@@ -21,6 +21,7 @@ services:
             MYSQL_ROOT_PASSWORD: secret123
             MYSQL_USER: user
             MYSQL_PASSWORD: password
+            MYSQL_DATABASE: EventManagement
         volumes:
             - mysqldata:/var/lib/mysql
             - ./sql:/docker-entrypoint-initdb.d

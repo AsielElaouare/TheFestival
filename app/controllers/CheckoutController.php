@@ -15,29 +15,31 @@ class CheckoutController {
     }
 
     public function paymentPortal(){
-        $quantityItems = 1;
-
-        if(isset($_GET['quantity'])){
-            $quantityItems = $_GET['quantity'];
-         };
-
-        $this->checkout_session = Session::create([
-            "mode" => "payment",
-            "line_items" => [  
-                [
-                    "quantity" => $quantityItems,
+        $lineItems = [];
+    
+        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                
+                $lineItems[] = [
+                    "quantity" => $item['quantity'], 
                     "price_data" => [
-                        "currency" => "eur",
-                        "unit_amount" => 2000,
+                        "currency" => "eur", // <-- Add this line (change to your currency)
+                        "unit_amount" => $item['price'] * 100,  
                         "product_data" => [
-                            "name" => "Ticket Dance"
+                            "name" => $item['eventName'] 
                         ]
                     ]
-                ]
-            ],
-            "success_url" => "http://localhost/success",
-            "cancel_url" => "http://localhost/"
+                ];
+            }
+        }
+        
+        $this->checkout_session = Session::create([
+            "mode" => "payment",
+            "line_items" => $lineItems,
+            "success_url" => "http://localhost/SuccessCheckout",
+            "cancel_url" => "http://localhost/tickets"
         ]);
-        header("Location: " .$this->checkout_session->url);
+        header("Location: " . $this->checkout_session->url);
     }
+    
 }

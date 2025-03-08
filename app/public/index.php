@@ -2,6 +2,7 @@
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
+session_start();
 
 $uri = trim($_SERVER['REQUEST_URI'], '/');
 

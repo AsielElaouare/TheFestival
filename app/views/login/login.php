@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" href="/style/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php
+include __DIR__ . '/../header.php';
+?>
   <div class="container my-5">
     <h1>Login</h1>
     <form action="/login/processLogin" method="post">
@@ -29,10 +23,6 @@
 
     </form>
   </div>
-</body>
-</html>
-
-
 <?php
 include __DIR__ . '/../footer.php';
 ?>
