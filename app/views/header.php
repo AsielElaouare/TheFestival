@@ -18,8 +18,8 @@
       <ul class="nav  nav-pills">
       <li class="nav-item impact-font "><a href="/" class="nav-link purple">Home</a></li>
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">Yummy</a></li>
-      <li class="nav-item impact-font"><a href="/" class="nav-link purple">Jazz</a></li>
-      <li class="nav-item impact-font"><a href="/" class="nav-link purple">Dance</a></li>
+      <li class="nav-item impact-font"><a href="/jazz" class="nav-link purple">Jazz</a></li>
+      <li class="nav-item impact-font"><a href="/dance" class="nav-link purple">Dance</a></li>
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">History</a></li>
       <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tylers</a></li>
       <li class="nav-item impact-font"><a href="/tickets" class="nav-link purple">Tickets</a></li>
