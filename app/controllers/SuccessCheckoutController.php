@@ -34,7 +34,7 @@ class SuccessCheckoutController{
 
         $pdf = $this->pdfHelper->generatePDF($tickets);
         //var_dump($pdf);
-        // send tickets via email
+        
         $this->mailHelper->sendTicketsViaEmail($pdf);
         //clear session cart
 

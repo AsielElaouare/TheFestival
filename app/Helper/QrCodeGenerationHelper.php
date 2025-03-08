@@ -23,11 +23,10 @@ class QrCodeGenerationHelper {
     }
 
     public function saveQrCode(): string {
-        $targetDir = __DIR__ . "/../public/uploads/qrcodes_tickets/";
+        $targetDir = __DIR__ . "/../storage/qr_codes/";
         $fileName = 'qr_' . uniqid() . '.png';  
         $filePath = $targetDir . $fileName;
         file_put_contents($filePath, $this->result->getString());
-        $result = preg_replace('/\/app\/Helper/', '', $filePath);
-        return $result;
+        return $filePath;
     }
 }
