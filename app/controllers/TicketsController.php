@@ -62,7 +62,7 @@ class TicketsController{
 
     
 
-    public function saveSelectedTicketinShopingCart() {
+    public function saveSelectedTicketinShopingCart() { //this fucntion should save tickets as objects in the session 
         session_start(); 
     
         $ticket = $_POST['ticket'] ?? null;

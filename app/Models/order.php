@@ -7,16 +7,31 @@ class Order
   private $orderID;
   private $userID;
   private $orderDate;
-  private $isPaid;
+  private $amount;
 
   //Constructor
-  public function __construct($orderID, $userID, $orderDate, $isPaid)
+  private function __construct()
   {
-    $this->orderID = $orderID;
-    $this->userID = $userID;
-    $this->orderDate = $orderDate;
-    $this->isPaid = $isPaid;
+    
   }
+
+  public static function create($orderID, $userID, $orderDate, $amount){
+    $order = new Order();
+    $order->orderID = $orderID;
+    $order->userID = $userID;
+    $order->orderDate = $orderDate;
+    $order->amount = $amount;
+    return $order;
+  }
+ 
+  public static function createOrderObj($userID, $orderDate, $amount){
+    $order = new Order();
+    $order->userID = $userID;
+    $order->orderDate = $orderDate;
+    $order->amount = $amount;
+    return $order;
+  }
+ 
 
   //Getters
   public function getOrderID()
@@ -34,8 +49,7 @@ class Order
     return $this->orderDate;
   }
 
-  public function isPaid()
-  {
-    return $this->isPaid;
+  public function getAmount(){
+    return $this->amount;
   }
 }

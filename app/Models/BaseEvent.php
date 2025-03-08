@@ -23,6 +23,7 @@ class BaseEvent{
         $this->price = $price;
         $this->location = $location;
         $this->availableSpots = $availableSpots;
+        $this->wantedQuantity = 0; 
     }
 
     public function getEventID()

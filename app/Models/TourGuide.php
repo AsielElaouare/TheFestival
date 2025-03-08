@@ -1,10 +1,11 @@
 <?php
+namespace App\Models;
 class TourGuide
 {
   private $guideId;
   private $name;
   private $phoneNumber;
-  private $email;
+ 
 
   //Constructor
   public function __construct($guideId, $name, $phoneNumber, $email)
@@ -12,7 +13,6 @@ class TourGuide
     $this->guideId = $guideId;
     $this->name = $name;
     $this->phoneNumber = $phoneNumber;
-    $this->email = $email;
   }
 
   //Getters
@@ -31,8 +31,8 @@ class TourGuide
     return $this->phoneNumber;
   }
 
-  public function getEmail()
+  public function __toString()
   {
-    return $this->email;
+    return "Guide name" . $this->name. "contact" . $this->phoneNumber;
   }
 }

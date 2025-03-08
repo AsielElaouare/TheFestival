@@ -12,6 +12,11 @@ class CheckoutController {
         $stripeConfig = require __DIR__ . '/../config/stripe.php';
 
         Stripe::setApiKey($stripeConfig['secret_key']); 
+
+        //only for testing 
+        $_SESSION['user_id'] = 4;
+        $_SESSION['user_email'] = 'test@live.nl';
+        $_SESSION['username'] = 'JohnDoe';
     }
 
     public function paymentPortal(){
@@ -23,7 +28,7 @@ class CheckoutController {
                 $lineItems[] = [
                     "quantity" => $item['quantity'], 
                     "price_data" => [
-                        "currency" => "eur", // <-- Add this line (change to your currency)
+                        "currency" => "eur", 
                         "unit_amount" => $item['price'] * 100,  
                         "product_data" => [
                             "name" => $item['eventName'] 
@@ -35,6 +40,10 @@ class CheckoutController {
         
         $this->checkout_session = Session::create([
             "mode" => "payment",
+            'phone_number_collection' => [
+                'enabled' => false 
+            ],
+            "customer_email" => $_SESSION["user_email"],
             "line_items" => $lineItems,
             "success_url" => "http://localhost/SuccessCheckout",
             "cancel_url" => "http://localhost/tickets"
