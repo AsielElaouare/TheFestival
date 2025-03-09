@@ -12,7 +12,7 @@ class MailHelper{
         $this->password_smtp =  require __DIR__ ."/../config/SMTPconfig.php";
     }
 
-    public function sendTicketsViaEmail($attachmentPath){
+    public function sendTicketsViaEmail($attachmentPath, $customerMail){
         $mail = new PHPMailer();
 
         try{
@@ -26,7 +26,7 @@ class MailHelper{
             $mail->Port = 587;
 
             $mail->setFrom("thefestival.haarlem.events@gmail.com","no-reply");
-            $mail->addAddress("relaouare@gmail.com",""); //change tobe dynamic
+            $mail->addAddress("{$customerMail}"); 
 
             $mail->isHTML(true);
             $mail->Subject = "TheFestival Tickets | Haarlem";

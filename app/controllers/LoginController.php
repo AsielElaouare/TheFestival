@@ -14,6 +14,10 @@ class LoginController
     // Display login form
     public function index()
     {
+        if(isset($_SESSION['user_id'])){
+            header("Location: /");
+            exit;
+        }
         require __DIR__ . '/../views/login/login.php';
     }
 
@@ -21,14 +25,11 @@ class LoginController
     public function processLogin()
     {
         try {
-            
             $email    = htmlspecialchars($_POST['email']) ?? '';
             $password = $_POST['password'] ?? '';
 
             // Find user by email
             $user = $this->userRepo->findByEmail($email);
-
-            
 
             // Verify password (ensure that getPasswordHash() returns the stored hash)
             if ($user && password_verify($password, $user->getPasswordHash())) {

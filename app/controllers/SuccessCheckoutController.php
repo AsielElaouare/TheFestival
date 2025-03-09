@@ -31,10 +31,14 @@ class SuccessCheckoutController{
             $tickets = $this->ticketService->getUserTickets($_SESSION['user_id']);
 
             $pdf = $this->pdfHelper->generatePDF($tickets);
-            $this->mailHelper->sendTicketsViaEmail($pdf);
+
+            $this->mailHelper->sendTicketsViaEmail($pdf, $_SESSION["email"]);
+
             unset($_SESSION['cart']);
             require __DIR__ ."/../views/success/success.php";
         }
-        header("Location: /");
+        else{
+            header("Location: /");
+        }
     }
 }

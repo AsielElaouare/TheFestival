@@ -26,7 +26,11 @@ require __DIR__ ."/../header.php";
                                 
                             </div>
                             <div class="modal-footer">
-                                
+                            <form action="/checkout/paymentPortal" method="post">
+                                    <button id="checkoutButton" class="btn primary-button" onclick="">
+                                        Checkout
+                                    </button>
+                                </form>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -68,11 +72,7 @@ require __DIR__ ."/../header.php";
 </div>
 
 
-<form action="/checkout/paymentPortal" method="post">
-    <button id="checkoutButton" class="btn primary-button" onclick="">
-        Checkout
-    </button>
-</form>
+
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 <script>
@@ -109,8 +109,6 @@ require __DIR__ ."/../header.php";
     document.getElementById("history-tickets-btn").addEventListener("click", () => {
         loadContent("/tickets/showHistoryTickets", '.tickets-container');
     });
-
-   
 
     document.getElementById("shopping-cart-button").addEventListener("click", () => {
         loadContent("/tickets/shoppingCart", '#shopping-cart-body' )
