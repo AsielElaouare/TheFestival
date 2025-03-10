@@ -111,7 +111,7 @@ require __DIR__ ."/../header.php";
     });
 
     document.getElementById("shopping-cart-button").addEventListener("click", () => {
-        loadContent("/tickets/shoppingCart", '#shopping-cart-body' )
+        loadContent("/cart/shoppingCart", '#shopping-cart-body' )
     })
 });
 </script>
