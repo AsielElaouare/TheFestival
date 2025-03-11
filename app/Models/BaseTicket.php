@@ -11,11 +11,12 @@ class BaseTicket{
     private $qrCode;
     private $isScanned;
     private DateTime $startDateTime;
-
+    private $costumerName;
     private $eventName;
+    private $location;
 
     //Constructor
-    public function __construct($eventId, $startDateTime, $id = null, $orderId = null, $qrCode = null, $isScanned = null, $eventName = null)  
+    public function __construct($eventId, $startDateTime, $id = null, $orderId = null, $qrCode = null, $isScanned = null, $eventName = null, $costumerName = null, $location=null)  
     {
         $this->id = $id;
         $this->eventId = $eventId;
@@ -24,6 +25,8 @@ class BaseTicket{
         $this->isScanned = $isScanned;
         $this->startDateTime = $startDateTime;
         $this->eventName = $eventName;
+        $this->costumerName = $costumerName;
+        $this->location = $location;
 
     }
 
@@ -54,7 +57,7 @@ class BaseTicket{
   }
 
   public function getText(){
-    return "Customer name:  " . "Start Date: " . $this->startDateTime->format("Y-m-d") . " Quantity:  ";
+    return "Event name: " . $this->getEventName() . " Start Date: " . $this->startDateTime->format("Y-m-d") . " Customer name:  " . $this->getCostumerName();
   }
 
   public function setQrCode($qrCode){
@@ -66,5 +69,12 @@ class BaseTicket{
   }
   public function getEventName(){
     return $this->eventName;  
+  }
+  public function getCostumerName(){
+    return $this->costumerName;
+  }
+  
+  public function getLocation(){
+    return $this->location;
   }
 }

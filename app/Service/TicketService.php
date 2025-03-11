@@ -36,7 +36,10 @@ class TicketService{
                     null, 
                     $ticket["qr_code"], 
                     null, 
-                    $ticket["tour_name"]
+                    $ticket["tour_name"], 
+                    null, 
+                    $ticket['customer_name'],
+                    $ticket['full_location'],
                 );
             } else if ($ticket["ticket_type"] == TicketTypeEnum::MUSIC_TICKET->value) {
                 $ticketObjects[] = new MusicTicket(
@@ -46,7 +49,10 @@ class TicketService{
                     null, 
                     $ticket['qr_code'], 
                     null, 
-                    $ticket['show_name']
+                    $ticket['show_name'], 
+                    null, 
+                    $ticket['customer_name'],
+                    $ticket['full_location']
                 );
             }
         }

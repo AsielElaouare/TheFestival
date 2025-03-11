@@ -21,6 +21,9 @@
                             <hr>
                         <?php } ?>
                     </div>
+                    <div class="d-flex">
+                        <p style="font-size: 2rem;" class="ms-auto fw-bold purple me-2">Total:  &#8364; <? echo number_format($totalAmount, 2)?></p>
+                    </div>
                 <?php } else { ?>
                     <div class="alert alert-danger text-center">Your Shopping Cart is Empty</div>
 <?php } ?>

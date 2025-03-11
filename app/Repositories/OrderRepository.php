@@ -6,26 +6,7 @@ use PDOException;
 
 class OrderRepository extends Repository{
 
-    public function saveUserOrder(Order $order) {
-        try {
-            $stmt = $this->connection->prepare("INSERT INTO `ORDER` (order_date, total_amount, user_id) VALUES (:order_date, :total_amount, :user_id)");
-            $stmt->execute([
-                ':order_date' => $order->getOrderDate(),
-                ':total_amount' => $order->getAmount(),
-                ':user_id' => $order->getUserID()
-            ]);
-            if ($stmt->rowCount() > 0) {
-                $lastInsertId = $this->connection->lastInsertId();
-                return $lastInsertId;
-            } else {
-                return false;
-            }
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
-        }
-    }
-
+    
     public function saveUserOrderWithTickets(Order $order, array $tickets) {
         try {
             $this->connection->beginTransaction();

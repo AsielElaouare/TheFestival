@@ -25,36 +25,13 @@ class EventService{
             if ($musicGenre === null) {
                 return;
             } 
-
             $showsData = $this->eventRepo->getAllShowsByGenre($musicGenre);
-            
             return array_map(fn($data) => $this->mapToEntity($data, 'show'), $showsData);
-            
-        
     }
 
     public function getAllTours(){
         $tourData = $this->eventRepo->getAllTours();
         return array_map(fn($data) => $this->mapToEntity($data, 'tour'), $tourData);
-    }
-
-
-    public function getAllToursByIds(array $ids) {
-        $tourData = $this->eventRepo->getToursByIds($ids);
-        if(!empty($tourData)){
-            return array_map(fn($data) => $this->mapToEntity($data, 'tour'), $tourData);
-        }
-        return null;
-        
-    }
-
-    public function getAllShowsByIds(array $ids) {
-        $showsData = $this->eventRepo->getShowsByIds($ids);
-        if(!empty($showsData)){
-            return array_map(fn($data) => $this->mapToEntity($data, 'show'), $showsData);
-        }
-        return null;
-
     }
 
     private function mapToEntity(array $data, string $type) {

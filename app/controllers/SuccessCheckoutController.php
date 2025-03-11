@@ -30,9 +30,9 @@ class SuccessCheckoutController{
 
             $tickets = $this->ticketService->getUserTickets($_SESSION['user_id']);
 
-            $pdf = $this->pdfHelper->generatePDF($tickets);
+            $pdfFilePath = $this->pdfHelper->generatePDF($tickets);
 
-            $this->mailHelper->sendTicketsViaEmail($pdf, $_SESSION["email"]);
+            $this->mailHelper->sendTicketsViaEmail($pdfFilePath, $_SESSION["email"]);
 
             unset($_SESSION['cart']);
             require __DIR__ ."/../views/success/success.php";

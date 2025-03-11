@@ -34,6 +34,7 @@ class LoginController
             // Verify password (ensure that getPasswordHash() returns the stored hash)
             if ($user && password_verify($password, $user->getPasswordHash())) {
                 $_SESSION['user_id'] = $user->getUserId();
+                $_SESSION['userName'] = $user->getName();
                 // Convert the enum to its string value for session storage
                 $_SESSION['role']    = $user->getRole()->value;
                 $_SESSION['email']   = $user->getEmail();
