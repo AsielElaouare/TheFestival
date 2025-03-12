@@ -2,7 +2,6 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepository;
-use App\Helper\MailHelper;
 
 class AccountController {
     private $userRepo;
@@ -64,12 +63,6 @@ class AccountController {
         
         // Werk de gebruikersgegevens bij in de repository
         $this->userRepo->updateUser($userId, $name, $email, $passHash, $user->getRole()->value, $phoneNumber);
-        
-        // Als het e-mailadres is gewijzigd, stuur dan een bevestigingsmail met MailHelper
-        if ($emailChanged) {
-            $mailHelper = new MailHelper();
-            $mailHelper->sendAccountConfirmation($email, $name);
-        }
         
         header("Location: /?message=Account+updated");
         exit();
