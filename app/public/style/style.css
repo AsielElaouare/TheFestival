@@ -1,172 +1,118 @@
-
-.impact-font{
+.impact-font {
     font-family: Impact;
 }
 
-.icon-size{
-    font-size: 2.2rem ;
+.icon-size {
+    font-size: 2.2rem;
 }
 
- /***** Website color classes *****/  
-.purple{
-    color: #800080;
-}
+/***** Website color classes *****/
+.purple { color: #800080; }
+.pink { color: #E60077; }
+.light-coral { color: #FF7367; }
+.light-orange { color: #FFA54F; }
+.light-yellow { color: #FFD150; }
+.yellow { color: #F9F871; }
 
-.pink{
-    color: #E60077;
-}
+.bg-purple { background-color: #800080; }
+.bg-purple-footer { background-color: #622262; }
+.bg-yellow { background-color: #F9F871; }
+.bg-coral { background-color: #FF7367; }
+.bg-pink { background-color: #E60077; }
 
-.light-coral{
-    color: #FF7367 ;
-}
-
-.light-orange{
-    color: #FFA54F;
-}
-
-.light-yellow{
-    color: #FFD150;
-}
-
-.yellow{
-    color: #F9F871;
-}
-
-
-.bg-purple{
-    background-color: #800080;
-}
-
-.bg-purple-footer{
-    background-color: #622262;
-}
-
-.bg-yellow{
-    background-color: #F9F871;
-}
-.bg-coral{
-    background-color: #FF7367;
-}
-
-
-
-.bg-pink{
-    background-color: #E60077;
-}
-
-/***** End Website color classes *****/
-
-
- /***** Buttons classes *****/  
-
-.primary-button{
+/***** Buttons *****/
+.primary-button {
     border-radius: 40px;
     border-style: none;
-    padding: 8px 40px 8px 40px;
+    padding: 8px 40px;
     background-color: #E60077;
     color: #FFD150;
 }
 
-.btn-font-size{
-    font-size: 2.0rem;
+.btn-font-size {
+    font-size: 2rem;
 }
 
- /***** End buttons classes *****/  
-
-
+/***** Hero Section Classes *****/
 .header-section {
     height: 310px;
 }
 
-
-.header-video{
+.header-video {
     width: 100%;
     height: 310px;
     object-fit: cover;
     object-position: center 20%;
 }
 
-
-.object-fit-cover{
+.object-fit-cover {
     object-fit: cover;
     object-position: center 100%;
 }
 
-/* custom css jazz */
+/* Example card-40 */
 .card-40 {
-    width: 40vw;  
-    max-width: 100%; 
+    width: 40vw;
+    max-width: 100%;
 }
 
-
+/* Hero Section for the dance page */
 .hero-section {
     position: relative;
     width: 100%;
-    height: 300px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 400px; /* Adjust as needed */
+    background: url('/uploads/bar_dancinghead.jpg') center center no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
 }
 
+/* Dark overlay on top of hero image */
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hero-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #FF5733; 
+    color: #FF5733; /* or #fff if you prefer */
     text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
-/* hero description */
 .hero-description {
-    color: white;
+    color: #fff;
     max-width: 80%;
     margin: 0 auto;
     font-size: 1rem;
     font-weight: 500;
 }
 
-.footer{
+/* Sticky footer example */
+.footer {
     position: sticky;
     bottom: 0;
 }
 
-.logo-tickets-page {
-    transform: scale(1.8); 
-    transform-origin: center; 
-}
-
-.round-boreder-4px{
-    border-radius: 4px;
-}
-
-/* Ticekts page style */
-
-
+/* For tickets page or other grids */
 .show-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
 }
 
-.day-column {
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-}
-
-.day-name {
-    text-align: left; 
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+/* More ticket styling... */
 .ticket {
     background-color: #ffffff;
     margin-bottom: 10px;
@@ -175,25 +121,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.ticket p {
-    margin: 5px 0;
-}
-
-.ticket strong {
-    color: #007bff;
-}
+.ticket p { margin: 5px 0; }
+.ticket strong { color: #007bff; }
 
 .alert-danger {
     margin-top: 20px;
     color: red;
     font-size: 1.1rem;
 }
-
-.round-boreder-10px{
-    border-radius: 10px;
-}
-
-/* End tickets page style */
 
 .success-container {
     max-width: 600px;
@@ -207,4 +142,22 @@
 .success-icon {
     font-size: 60px;
     color: #28a745;
+}
+
+/* The entire dance page background */
+.dance-page {
+    background-color: #2C0A37; /* Dark purple background */
+    color: #fff;              /* White text on dark background */
+    min-height: 100vh;
+    padding: 0px;
+}
+
+/* Schedule section specifically with a yellow background */
+#schedule {
+    background-color: #FFD150;
+    color: #000; /* black text for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
