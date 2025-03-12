@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepository;
+use App\Helper\MailHelper;
 
 class AccountController {
     private $userRepo;
@@ -25,7 +26,7 @@ class AccountController {
         include __DIR__ . '/../views/account/edit.php';
     }
     
-    // proces van het updaten van account details
+    // Verwerk de accountupdate en verstuur bevestigingsmail als het e-mailadres is gewijzigd
     public function update() {
         $userId = $_POST['user_id'] ?? null;
         if (!$userId) {
@@ -33,24 +34,24 @@ class AccountController {
             exit();
         }
         
-        // krijg form input
+        // Haal formulierinvoer op
         $name        = trim($_POST['name'] ?? '');
         $email       = trim($_POST['email'] ?? '');
         $phoneNumber = trim($_POST['phone_number'] ?? '');
         $newPassword = $_POST['new_password'] ?? ''; 
         $currentPassword = $_POST['current_password'] ?? ''; 
         
-        // haal oude user data op via de repository
+        // Haal bestaande gebruikersgegevens op
         $user = $this->userRepo->getUserById($userId);
         if (!$user) {
             header("Location: /account/edit?error=User+not+found");
             exit();
         }
         
-        // controleer of email is veranderd
+        // Controleer of het e-mailadres is gewijzigd
         $emailChanged = ($email !== $user->getEmail());
         
-        // als password wordt geupdate, als er een nieuw wachtwoord wordt ingevoerd, verifieer het huidige wachtwoord.
+        // Als er een nieuw wachtwoord is ingevoerd, controleer dan het huidige wachtwoord en maak een hash van het nieuwe wachtwoord.
         if (!empty($newPassword)) {
             if (empty($currentPassword) || !password_verify($currentPassword, $user->getPasswordHash())) {
                 header("Location: /account/edit?error=Current+password+is+incorrect");
@@ -61,17 +62,13 @@ class AccountController {
             $passHash = $user->getPasswordHash();
         }
         
-        // update user data in repository
+        // Werk de gebruikersgegevens bij in de repository
         $this->userRepo->updateUser($userId, $name, $email, $passHash, $user->getRole()->value, $phoneNumber);
         
-        // als email is veranderd stuur een confirmation mail.
+        // Als het e-mailadres is gewijzigd, stuur dan een bevestigingsmail met MailHelper
         if ($emailChanged) {
-            mail(
-                $email,
-                "Email Updated",
-                "Your email has been updated to: " . $email,
-                "From: no-reply@example.com"
-            );
+            $mailHelper = new MailHelper();
+            $mailHelper->sendAccountConfirmation($email, $name);
         }
         
         header("Location: /?message=Account+updated");

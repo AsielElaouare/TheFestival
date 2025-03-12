@@ -10,12 +10,12 @@ class ResetPasswordController {
         $this->userRepo = new UserRepository();
     }
 
-    // Display the password reset form
+    // Toon het formulier voor het opnieuw instellen van het wachtwoord
     public function index() {
         $token = $_GET['token'] ?? '';
         $email = $_GET['email'] ?? '';
 
-        // Basic check: if token or email is missing, show an error
+        // Basiscontrole: als token of e-mail ontbreekt, toon een foutmelding
         if (empty($token) || empty($email)) {
             echo "Invalid password reset link.";
             return;
@@ -25,7 +25,7 @@ class ResetPasswordController {
         include __DIR__ . '/../views/login/reset_password.php';
     }
 
-    // Process the submitted new password
+    // Verwerk het ingezonden nieuwe wachtwoord
     public function processReset() {
         $token = $_POST['token'] ?? '';
         $email = $_POST['email'] ?? '';
@@ -36,17 +36,17 @@ class ResetPasswordController {
             return;
         }
 
-        // Optionally: Validate token and email here using your password_resets table.
-        // For simplicity, assume it's valid.
-
-        // Get the user by email
+          // Optioneel: valideer hier het token en de e-mail met behulp van je password_resets-tabel.
+        // Voor eenvoud, ga ervan uit dat het geldig is.
+        
+        // Haal de gebruiker op basis van e-mail
         $user = $this->userRepo->findByEmail($email);
         if (!$user) {
             echo "User not found.";
             return;
         }
 
-        // Update the user's password
+        // Werk het wachtwoord van de gebruiker bij
         $passHash = password_hash($newPassword, PASSWORD_DEFAULT);
         $this->userRepo->updateUser(
             $user->getUserId(),
@@ -57,7 +57,7 @@ class ResetPasswordController {
             $user->getPhoneNumber()
         );
 
-        // Optionally: Delete the token from password_resets table here.
+        // verwijder token uit password_reset tabel.
 
         echo "Your password has been reset successfully. <a href='/login'>Click here to login</a>.";
     }
