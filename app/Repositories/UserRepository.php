@@ -94,7 +94,7 @@ class UserRepository extends Repository
         $stmt->execute([':id' => $id]);
     }
 
-    // Update an existing user.
+    // update bestaande user .
     public function updateUser($id, $name, $email, $passHash, $role, $phoneNumber) {
         $stmt = $this->connection->prepare("UPDATE USER SET name = :name, email = :email, pass_hash = :passHash, role = :role, phone_number = :phoneNumber WHERE user_id = :id");
         $stmt->execute([

@@ -2,22 +2,29 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepository;
+use App\Service\ShowService;
+use App\Repositories\ShowRepository;
+
+
 
 class AdminController {
 
     private $userRepo;
+
+    private $showService;  
+
     
     public function __construct() {
-        // sesion start
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+
         // alleen voor admins access
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
             header("Location: /");
             exit();
         }
         $this->userRepo = new UserRepository();
+
+        $this->showService = new ShowService(new ShowRepository());
+
     }
     
     // dashboard laat alle user in een lijst zien met search,filter en sort.
@@ -27,6 +34,9 @@ class AdminController {
         $sortDirection = $_GET['direction'] ?? 'DESC';
         
         $users = $this->userRepo->getAllUsers($search, $sortColumn, $sortDirection);
+
+        $shows = $this->showService->getAllShows();
+
         
         include __DIR__ . '/../views/admin/dashboard.php';
     }
@@ -42,7 +52,7 @@ class AdminController {
         $role        = $_POST['role'] ?? 'visitor';
         $phoneNumber = $_POST['phone_number'] ?? '';
     
-        // Basic validation.
+        // basis validatie naam,email,ww verplicht.
         if(empty($name) || empty($email) || empty($password)) {
             $error = "Name, email, and password are required.";
             include __DIR__ . '/../views/admin/users/create.php';
@@ -63,7 +73,7 @@ class AdminController {
         include __DIR__ . '/../views/admin/users/edit.php';
     }
     
-   // Process updating the user.
+   // verwerken van bijwerken gebruiker
    public function update() {
     $id = $_POST['user_id'] ?? null;
     if (!$id) {
@@ -76,15 +86,15 @@ class AdminController {
     $phoneNumber = $_POST['phone_number'] ?? '';
     $newPassword = $_POST['password'] ?? '';
 
-    // Retrieve current user data.
-    $user = $this->userRepo->getUserById($id);
-    if (!$user) {
+        // Haal de huidige gegevens van de gebruiker op.
+        $user = $this->userRepo->getUserById($id);
+        if (!$user) {
         header("Location: /admin/dashboard?error=User+not+found");
         exit();
     }
     
-    // Use new password hash if provided; otherwise, keep existing hash.
-    if (!empty($newPassword)) {
+        // Gebruik de nieuwe wachtwoord-hash indien verstrekt; anders behoud de bestaande hash.
+        if (!empty($newPassword)) {
         $passHash = password_hash($newPassword, PASSWORD_DEFAULT);
     } else {
         $passHash = $user->getPasswordHash();
@@ -95,7 +105,7 @@ class AdminController {
     exit();
 }
     
-    // Show delete confirmation page.
+    // laat delete confirmatie pagina zien.
     public function delete() {
         $id = $_GET['id'] ?? null;
         if (!$id) {

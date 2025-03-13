@@ -22,10 +22,10 @@ class ForgotPasswordController {
             return;
         }
 
-        // laad database configuratie van dbconfig1.php.
+        // Load database configuration from dbconfig1.php
         require __DIR__ . '/../config/dbconfig1.php';
 
-        // maakt een pdo connectie
+        // Create a PDO connection
         try {
             $dsn = "$type:host=$servername;dbname=$database;charset=utf8";
             $pdo = new \PDO($dsn, $username, $password);
@@ -35,17 +35,14 @@ class ForgotPasswordController {
             return;
         }
 
-        // controleert of email bestaat
+        // Check if email exists (for security, we do not reveal this information)
         $stmt = $pdo->prepare("SELECT * FROM `USER` WHERE email = :email");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-        // For security, we don't reveal whether the email exists or not.
+        // We don't reveal whether the email exists or not
 
         // Generate a secure random token.
         $token = bin2hex(random_bytes(16));
-
-        // Insert the token into the 'password_resets' table.
-        // Ensure your 'password_resets' table exists with columns: email, token, expires_at.
         $expires_at = date('Y-m-d H:i:s', strtotime('+1 hour'));
         $stmt = $pdo->prepare("INSERT INTO password_resets (email, token, expires_at) VALUES (:email, :token, :expires_at)");
         $stmt->execute([
@@ -57,18 +54,7 @@ class ForgotPasswordController {
         // Compose the password reset link.
         $resetLink = "http://127.0.0.1/resetPassword?token=" . urlencode($token) . "&email=" . urlencode($email);
 
-        // Compose the email.
-        $subject = "Password Reset Request";
-        $message = "Hello,\n\nWe received a request to reset your password. To reset your password, please click the link below:\n\n"
-                 . $resetLink . "\n\n"
-                 . "If you did not request a password reset, please ignore this email.\n\nThank you.";
-        $headers = "From: no-reply@example.com\r\n";
-
-        // Send the email.
-        if (mail($email, $subject, $message, $headers)) {
-            echo "If the email exists in our system, a password reset link has been sent to " . htmlspecialchars($email) . ".";
-        } else {
-            echo "There was an error sending the email.";
-        }
+        // Instead of sending the email, display the reset link on a success page.
+        include __DIR__ . '/../views/login/forgot_password_success.php';
     }
 }

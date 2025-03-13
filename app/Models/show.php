@@ -15,5 +15,9 @@ class Show extends BaseEvent
   public function getArtistName(){
     return $this->artistName;
   }
+
+  public function setArtistName(string $artistName): void {
+    $this->artistName = $artistName;
+}
   
 }
