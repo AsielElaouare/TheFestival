@@ -28,7 +28,7 @@ class TicketRepository extends Repository{
                                     COALESCE(TOUR.tour_id, SHOW.show_id) AS event_id,
                                     COALESCE(
                                         CONCAT(
-                                            LOCATION.address_name, ', ',
+                                            LOCATION.venue_name, ', ',
                                             LOCATION.street_name, ', ',
                                             LOCATION.city, ' ',
                                             LOCATION.postal_code

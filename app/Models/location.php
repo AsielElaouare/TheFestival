@@ -37,4 +37,6 @@ class Location
     public function getCity() {
         return $this->city;
     }
+
+    
 }

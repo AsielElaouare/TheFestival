@@ -49,7 +49,7 @@ class TicketsController{
 
     private function showWantedQuantity(array $events){
             foreach ($events as $event) {
-                $ticketKey = md5($event->getEventName() . $event->location->getAddressName());
+                $ticketKey = md5($event->getEventName() . $event->location->getVenueName());
                 $quantityInCart = isset($_SESSION['cart'][$ticketKey]) ? $_SESSION['cart'][$ticketKey]['quantity'] : 0;
                 $event->setWantedQuantity($quantityInCart);
             }

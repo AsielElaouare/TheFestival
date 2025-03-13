@@ -17,7 +17,7 @@ class EventRepository extends Repository{
                                             s.price, 
                                             s.available_spots, 
                                             l.location_id, 
-                                            l.address_name, 
+                                            l.venue_name, 
                                             l.postal_code, 
                                             l.street_name, 
                                             l.city, 
@@ -28,7 +28,7 @@ class EventRepository extends Repository{
                                         JOIN SHOW_ARTIST sa ON s.show_id = sa.show_id
                                         JOIN ARTIST a ON sa.artist_id = a.artist_id
                                         WHERE a.genre = :genre
-                                        GROUP BY s.show_id, s.show_name, s.start_date, s.price, s.available_spots, l.location_id, l.address_name, l.postal_code, l.street_name, l.city
+                                        GROUP BY s.show_id, s.show_name, s.start_date, s.price, s.available_spots, l.location_id, l.venue_name, l.postal_code, l.street_name, l.city
                                         ");
         $stmt->execute([':genre' => $musicGenre->value]);
         $show = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -44,7 +44,7 @@ class EventRepository extends Repository{
                                             T.price, 
                                             T.available_spots, 
                                             L.location_id, 
-                                            L.address_name, 
+                                            L.venue_name, 
                                             L.postal_code, 
                                             L.street_name, 
                                             L.city, 

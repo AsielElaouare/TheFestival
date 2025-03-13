@@ -29,7 +29,7 @@
                 <p class="bold"><?php echo htmlspecialchars($event->getEventName()); ?></p>
                 <p class="startd-date"><?php echo htmlspecialchars($event->getStartDate()); ?></p>
                 <p class="price"><?php echo htmlspecialchars("€ " . $event->getPrice()); ?></p>
-                <p class="location"><?php echo htmlspecialchars($event->location->getAddressName()); ?></p>
+                <p class="location"><?php echo htmlspecialchars($event->location->getVenueName()); ?></p>
                 <?php if (get_class($event) === 'App\Models\Show'): ?>
                     <span hidden class="artists-name"><?php echo htmlspecialchars($event->getArtistName()); ?></span>
                 <?php endif; ?>

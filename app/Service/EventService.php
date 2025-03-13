@@ -43,7 +43,7 @@ class EventService{
             $data['price'],
             new Location(
                 $data['location_id'],
-                $data['address_name'],
+                $data['venue_name'],
                 $data['postal_code'],
                 $data['street_name'],
                 $data['city']

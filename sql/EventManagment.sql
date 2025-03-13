@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 10, 2025 at 08:16 PM
--- Server version: 11.5.2-MariaDB-ubu2404
--- PHP Version: 8.2.25
+-- Gegenereerd op: 12 mrt 2025 om 22:11
+-- Serverversie: 11.7.2-MariaDB-ubu2404
+-- PHP-versie: 8.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ACCESS_PASS`
+-- Tabelstructuur voor tabel `ACCESS_PASS`
 --
 
 CREATE TABLE `ACCESS_PASS` (
@@ -36,7 +36,7 @@ CREATE TABLE `ACCESS_PASS` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ARTIST`
+-- Tabelstructuur voor tabel `ARTIST`
 --
 
 CREATE TABLE `ARTIST` (
@@ -46,7 +46,7 @@ CREATE TABLE `ARTIST` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `ARTIST`
+-- Gegevens worden geëxporteerd voor tabel `ARTIST`
 --
 
 INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
@@ -61,33 +61,32 @@ INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `LOCATION`
+-- Tabelstructuur voor tabel `LOCATION`
 --
 
 CREATE TABLE `LOCATION` (
   `location_id` int(11) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `address_name` varchar(255) NOT NULL,
+  `venue_name` varchar(255) NOT NULL,
   `postal_code` varchar(7) NOT NULL,
   `street_name` varchar(100) NOT NULL,
   `city` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `LOCATION`
+-- Gegevens worden geëxporteerd voor tabel `LOCATION`
 --
 
-INSERT INTO `LOCATION` (`location_id`, `address`, `address_name`, `postal_code`, `street_name`, `city`) VALUES
-(1, '', 'Lichtfabriek', '2031 TC', 'Energieplein 73', 'Haarlem'),
-(2, '', 'Slachthuis', '2033 KK', 'Rockplein 6', 'Haarlem'),
-(3, '', 'Jopenkerk', '2011 WD', 'Gedempte Voldersgracht 2', 'Haarlem'),
-(4, '', 'Main Hall, Patronaat', '2013 DN', 'Zijlsingel 2', 'Haarlem'),
-(5, '', 'Bravo Church', '2011 RD', 'Grote Markt 22', ' Haarlem');
+INSERT INTO `LOCATION` (`location_id`, `venue_name`, `postal_code`, `street_name`, `city`) VALUES
+(1, 'Lichtfabriek', '2031 TC', 'Energieplein 73', 'Haarlem'),
+(2, 'Slachthuis', '2033 KK', 'Rockplein 6', 'Haarlem'),
+(3, 'Jopenkerk', '2011 WD', 'Gedempte Voldersgracht 2', 'Haarlem'),
+(4, 'Main Hall, Patronaat', '2013 DN', 'Zijlsingel 2', 'Haarlem'),
+(5, 'Bravo Church', '2011 RD', 'Grote Markt 22', ' Haarlem');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `MUSIC_TICKET`
+-- Tabelstructuur voor tabel `MUSIC_TICKET`
 --
 
 CREATE TABLE `MUSIC_TICKET` (
@@ -98,7 +97,7 @@ CREATE TABLE `MUSIC_TICKET` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `MUSIC_TICKET`
+-- Gegevens worden geëxporteerd voor tabel `MUSIC_TICKET`
 --
 
 INSERT INTO `MUSIC_TICKET` (`music_ticket_id`, `ticket_id`, `qr_code`, `show_id`) VALUES
@@ -119,7 +118,7 @@ INSERT INTO `MUSIC_TICKET` (`music_ticket_id`, `ticket_id`, `qr_code`, `show_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ORDER`
+-- Tabelstructuur voor tabel `ORDER`
 --
 
 CREATE TABLE `ORDER` (
@@ -130,7 +129,7 @@ CREATE TABLE `ORDER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `ORDER`
+-- Gegevens worden geëxporteerd voor tabel `ORDER`
 --
 
 INSERT INTO `ORDER` (`order_id`, `order_date`, `total_amount`, `user_id`) VALUES
@@ -164,7 +163,7 @@ INSERT INTO `ORDER` (`order_id`, `order_date`, `total_amount`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Tabelstructuur voor tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -175,17 +174,22 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `password_resets`
+-- Gegevens worden geëxporteerd voor tabel `password_resets`
 --
 
 INSERT INTO `password_resets` (`id`, `email`, `token`, `expires_at`) VALUES
 (1, 'test123@live.nl', 'd57a45e26fab87b6720e75ec4cddf506', '2025-03-03 02:23:49'),
-(2, 'test123@live.nl', '4dd3654ac41f0b5089b587d4b6f6ed4e', '2025-03-03 02:26:47');
+(2, 'test123@live.nl', '4dd3654ac41f0b5089b587d4b6f6ed4e', '2025-03-03 02:26:47'),
+(3, 'customer@example.com', 'bc3ab45abff422d9ddfa8f3078a81ec8', '2025-03-11 04:14:10'),
+(4, 'customer@example.com', '11732816b25b07bd9ee39cdf2f473dda', '2025-03-11 04:25:31'),
+(5, 'customer@example.com', '1572e286ce7282199a5f7c55397546e7', '2025-03-11 04:29:01'),
+(6, 'customer@example.com', 'b9f701eba0a6ca8c8c36b4cfbe37b81a', '2025-03-11 04:29:15'),
+(7, 'customer@example.com', '13c413b773b8ce9174fc06ab843377fa', '2025-03-11 17:21:34');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESERVATION`
+-- Tabelstructuur voor tabel `RESERVATION`
 --
 
 CREATE TABLE `RESERVATION` (
@@ -200,7 +204,7 @@ CREATE TABLE `RESERVATION` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESTAURANT`
+-- Tabelstructuur voor tabel `RESTAURANT`
 --
 
 CREATE TABLE `RESTAURANT` (
@@ -212,7 +216,7 @@ CREATE TABLE `RESTAURANT` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESTAURANT_GENRE`
+-- Tabelstructuur voor tabel `RESTAURANT_GENRE`
 --
 
 CREATE TABLE `RESTAURANT_GENRE` (
@@ -223,7 +227,7 @@ CREATE TABLE `RESTAURANT_GENRE` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESTAURANT_GENRE_MAPPING`
+-- Tabelstructuur voor tabel `RESTAURANT_GENRE_MAPPING`
 --
 
 CREATE TABLE `RESTAURANT_GENRE_MAPPING` (
@@ -234,7 +238,7 @@ CREATE TABLE `RESTAURANT_GENRE_MAPPING` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SESSION`
+-- Tabelstructuur voor tabel `SESSION`
 --
 
 CREATE TABLE `SESSION` (
@@ -247,7 +251,7 @@ CREATE TABLE `SESSION` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SHOW`
+-- Tabelstructuur voor tabel `SHOW`
 --
 
 CREATE TABLE `SHOW` (
@@ -260,21 +264,19 @@ CREATE TABLE `SHOW` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `SHOW`
+-- Gegevens worden geëxporteerd voor tabel `SHOW`
 --
 
 INSERT INTO `SHOW` (`show_id`, `show_name`, `start_date`, `price`, `location_id`, `available_spots`) VALUES
-(1, 'Nicky Romero/Afrojack | Friday ticket', '2025-06-06 20:48:41', 75.00, 1, 300),
+(1, 'Nicky Romero/Afrojack | Friday ticket', '2025-06-07 21:00:00', 75.00, 1, 300),
 (2, 'Tiesto | Friday ticket', '2025-06-06 12:49:34', 60.00, 2, 300),
 (3, 'Hardwell | Friday ticket', '2025-06-06 12:49:34', 60.00, 3, 300),
-(4, 'Gumbo Kings| Thursday ticket', '2025-06-05 18:00:00', 15.00, 4, 100),
-(5, 'Evolve | Thursday ticket', '2025-06-05 13:04:40', 15.00, 4, 100),
-(6, 'Gare du Nord | Saturday ticket', '2025-06-07 13:05:11', 15.00, 4, 90);
+(4, 'Gumbo Kings| Thursday ticket', '2025-06-05 18:00:00', 15.00, 4, 110);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SHOW_ARTIST`
+-- Tabelstructuur voor tabel `SHOW_ARTIST`
 --
 
 CREATE TABLE `SHOW_ARTIST` (
@@ -283,7 +285,7 @@ CREATE TABLE `SHOW_ARTIST` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `SHOW_ARTIST`
+-- Gegevens worden geëxporteerd voor tabel `SHOW_ARTIST`
 --
 
 INSERT INTO `SHOW_ARTIST` (`show_id`, `artist_id`) VALUES
@@ -291,14 +293,12 @@ INSERT INTO `SHOW_ARTIST` (`show_id`, `artist_id`) VALUES
 (1, 2),
 (2, 3),
 (3, 4),
-(6, 5),
-(5, 6),
 (4, 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TICKET`
+-- Tabelstructuur voor tabel `TICKET`
 --
 
 CREATE TABLE `TICKET` (
@@ -307,7 +307,7 @@ CREATE TABLE `TICKET` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TICKET`
+-- Gegevens worden geëxporteerd voor tabel `TICKET`
 --
 
 INSERT INTO `TICKET` (`ticket_id`, `order_id`) VALUES
@@ -350,7 +350,7 @@ INSERT INTO `TICKET` (`ticket_id`, `order_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR`
+-- Tabelstructuur voor tabel `TOUR`
 --
 
 CREATE TABLE `TOUR` (
@@ -364,7 +364,7 @@ CREATE TABLE `TOUR` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TOUR`
+-- Gegevens worden geëxporteerd voor tabel `TOUR`
 --
 
 INSERT INTO `TOUR` (`tour_id`, `tour_name`, `start_date`, `end_date`, `price`, `location_id`, `available_spots`) VALUES
@@ -373,7 +373,7 @@ INSERT INTO `TOUR` (`tour_id`, `tour_name`, `start_date`, `end_date`, `price`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR_GUIDE`
+-- Tabelstructuur voor tabel `TOUR_GUIDE`
 --
 
 CREATE TABLE `TOUR_GUIDE` (
@@ -384,7 +384,7 @@ CREATE TABLE `TOUR_GUIDE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TOUR_GUIDE`
+-- Gegevens worden geëxporteerd voor tabel `TOUR_GUIDE`
 --
 
 INSERT INTO `TOUR_GUIDE` (`guide_id`, `name`, `contact_info`, `tour_id`) VALUES
@@ -393,7 +393,7 @@ INSERT INTO `TOUR_GUIDE` (`guide_id`, `name`, `contact_info`, `tour_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR_LANGUAGE`
+-- Tabelstructuur voor tabel `TOUR_LANGUAGE`
 --
 
 CREATE TABLE `TOUR_LANGUAGE` (
@@ -404,7 +404,7 @@ CREATE TABLE `TOUR_LANGUAGE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TOUR_LANGUAGE`
+-- Gegevens worden geëxporteerd voor tabel `TOUR_LANGUAGE`
 --
 
 INSERT INTO `TOUR_LANGUAGE` (`id`, `language`, `tour_guide_id`, `tour_id`) VALUES
@@ -413,7 +413,7 @@ INSERT INTO `TOUR_LANGUAGE` (`id`, `language`, `tour_guide_id`, `tour_id`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR_TICKET`
+-- Tabelstructuur voor tabel `TOUR_TICKET`
 --
 
 CREATE TABLE `TOUR_TICKET` (
@@ -424,7 +424,7 @@ CREATE TABLE `TOUR_TICKET` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TOUR_TICKET`
+-- Gegevens worden geëxporteerd voor tabel `TOUR_TICKET`
 --
 
 INSERT INTO `TOUR_TICKET` (`tour_ticket_id`, `tour_id`, `qr_code`, `ticket_id`) VALUES
@@ -454,7 +454,7 @@ INSERT INTO `TOUR_TICKET` (`tour_ticket_id`, `tour_id`, `qr_code`, `ticket_id`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `USER`
+-- Tabelstructuur voor tabel `USER`
 --
 
 CREATE TABLE `USER` (
@@ -468,44 +468,40 @@ CREATE TABLE `USER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `USER`
+-- Gegevens worden geëxporteerd voor tabel `USER`
 --
 
 INSERT INTO `USER` (`user_id`, `name`, `email`, `phone_number`, `pass_hash`, `role`, `registration_date`) VALUES
 (4, 'Asiel', 'admin@example.com', '1234567890', '713bfda78870bf9d1b261f565286f85e97ee614efe5f0faf7c34e7ca4f65baca', 'admin', '2025-03-05 03:49:29'),
-(5, 'Sofian', 'customer@example.com', '0987654321', '2cbe8f5ad512aa4440bd46dc0a598d1a3164f491254bc65c85d655897c356634', 'customer', '2025-03-05 03:49:29'),
-(6, 'Berk', 'test123@live.nl', '0612345678', '$2y$12$S/w9eWab/rX/dzWXQ9qm3eqXHWT.Hh.obylHXc9MXKXFWOJsIbctO', 'customer', '2025-03-05 03:49:29'),
-(7, 'adam', 'adam@live.nl', '06012345678', '$2y$12$sDjyxZgZKLTlaYhQ5bin6ufBPwl2uNZkvhk2WpoCOa8/8xoWAC6K2', 'customer', '2025-03-05 03:49:29'),
-(8, 'testuser', 'testuser@live.nl', '123456789', '$2y$12$5puA79p6y91E19oU6qhZ2.43q2jRXvuGrIwOcHLJ8dgvH6rTk/zBe', 'customer', '2025-03-05 03:49:29'),
-(9, 'customer1', 'customer1@live.nl', '6123456789', '$2y$12$JTA5K2J76hZHwSlbQTKjKew42M1OUoW28JrGBhibmDC0sFzfe/xZq', 'customer', '2025-03-05 03:49:29'),
-(11, 'Test Admin', 'admin@test.com', '06131417191', '$2y$12$kaPGv8UJ7y7Q1HWxScwIQeJLYs3/FaolaR8Zfnp1nXvlSocxgNYQC', 'admin', '2025-03-05 03:49:29'),
+(5, 'Sofian Said', 'sofian@example.com', '0642318194', '$2y$12$z3zssenqRzsdZzMgpbfWs.N/ZhLssytZD5fewTQfOZXyqNlSxMssG', 'customer', '2025-03-05 03:49:29'),
+(11, 'Admin1', 'admin@test.com', '06131417191', '$2y$12$kaPGv8UJ7y7Q1HWxScwIQeJLYs3/FaolaR8Zfnp1nXvlSocxgNYQC', 'admin', '2025-03-05 03:49:29'),
 (12, 'Asiel Elaouare', 'elaasiel@gmail.com', '+31 0625187218', '$2y$12$tvddAcwqu9sa/WqvPpS9ku2br8GOdECqYcubgtaMzyS7GwPpBtfGi', 'customer', '2025-03-08 13:47:01');
 
 --
--- Indexes for dumped tables
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `ACCESS_PASS`
+-- Indexen voor tabel `ACCESS_PASS`
 --
 ALTER TABLE `ACCESS_PASS`
   ADD PRIMARY KEY (`pass_id`),
   ADD KEY `music_ticket_id` (`music_ticket_id`);
 
 --
--- Indexes for table `ARTIST`
+-- Indexen voor tabel `ARTIST`
 --
 ALTER TABLE `ARTIST`
   ADD PRIMARY KEY (`artist_id`);
 
 --
--- Indexes for table `LOCATION`
+-- Indexen voor tabel `LOCATION`
 --
 ALTER TABLE `LOCATION`
   ADD PRIMARY KEY (`location_id`);
 
 --
--- Indexes for table `MUSIC_TICKET`
+-- Indexen voor tabel `MUSIC_TICKET`
 --
 ALTER TABLE `MUSIC_TICKET`
   ADD PRIMARY KEY (`music_ticket_id`),
@@ -513,20 +509,20 @@ ALTER TABLE `MUSIC_TICKET`
   ADD KEY `show_id` (`show_id`);
 
 --
--- Indexes for table `ORDER`
+-- Indexen voor tabel `ORDER`
 --
 ALTER TABLE `ORDER`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `password_resets`
+-- Indexen voor tabel `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `RESERVATION`
+-- Indexen voor tabel `RESERVATION`
 --
 ALTER TABLE `RESERVATION`
   ADD PRIMARY KEY (`reservation_id`),
@@ -534,68 +530,68 @@ ALTER TABLE `RESERVATION`
   ADD KEY `session_id` (`session_id`);
 
 --
--- Indexes for table `RESTAURANT`
+-- Indexen voor tabel `RESTAURANT`
 --
 ALTER TABLE `RESTAURANT`
   ADD PRIMARY KEY (`restaurant_id`);
 
 --
--- Indexes for table `RESTAURANT_GENRE`
+-- Indexen voor tabel `RESTAURANT_GENRE`
 --
 ALTER TABLE `RESTAURANT_GENRE`
   ADD PRIMARY KEY (`genre_id`);
 
 --
--- Indexes for table `RESTAURANT_GENRE_MAPPING`
+-- Indexen voor tabel `RESTAURANT_GENRE_MAPPING`
 --
 ALTER TABLE `RESTAURANT_GENRE_MAPPING`
   ADD PRIMARY KEY (`restaurant_id`,`genre_id`),
   ADD KEY `genre_id` (`genre_id`);
 
 --
--- Indexes for table `SESSION`
+-- Indexen voor tabel `SESSION`
 --
 ALTER TABLE `SESSION`
   ADD PRIMARY KEY (`session_id`),
   ADD KEY `restaurant_id` (`restaurant_id`);
 
 --
--- Indexes for table `SHOW`
+-- Indexen voor tabel `SHOW`
 --
 ALTER TABLE `SHOW`
   ADD PRIMARY KEY (`show_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
--- Indexes for table `SHOW_ARTIST`
+-- Indexen voor tabel `SHOW_ARTIST`
 --
 ALTER TABLE `SHOW_ARTIST`
   ADD PRIMARY KEY (`show_id`,`artist_id`),
   ADD KEY `artist_id` (`artist_id`);
 
 --
--- Indexes for table `TICKET`
+-- Indexen voor tabel `TICKET`
 --
 ALTER TABLE `TICKET`
   ADD PRIMARY KEY (`ticket_id`),
   ADD KEY `order_id` (`order_id`);
 
 --
--- Indexes for table `TOUR`
+-- Indexen voor tabel `TOUR`
 --
 ALTER TABLE `TOUR`
   ADD PRIMARY KEY (`tour_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
--- Indexes for table `TOUR_GUIDE`
+-- Indexen voor tabel `TOUR_GUIDE`
 --
 ALTER TABLE `TOUR_GUIDE`
   ADD PRIMARY KEY (`guide_id`),
   ADD KEY `tour_id` (`tour_id`);
 
 --
--- Indexes for table `TOUR_LANGUAGE`
+-- Indexen voor tabel `TOUR_LANGUAGE`
 --
 ALTER TABLE `TOUR_LANGUAGE`
   ADD PRIMARY KEY (`id`),
@@ -603,7 +599,7 @@ ALTER TABLE `TOUR_LANGUAGE`
   ADD KEY `tour_id` (`tour_id`);
 
 --
--- Indexes for table `TOUR_TICKET`
+-- Indexen voor tabel `TOUR_TICKET`
 --
 ALTER TABLE `TOUR_TICKET`
   ADD PRIMARY KEY (`tour_ticket_id`),
@@ -612,7 +608,7 @@ ALTER TABLE `TOUR_TICKET`
   ADD KEY `ticket_id` (`ticket_id`);
 
 --
--- Indexes for table `USER`
+-- Indexen voor tabel `USER`
 --
 ALTER TABLE `USER`
   ADD PRIMARY KEY (`user_id`),
@@ -620,194 +616,194 @@ ALTER TABLE `USER`
   ADD UNIQUE KEY `phone_number` (`phone_number`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `ACCESS_PASS`
+-- AUTO_INCREMENT voor een tabel `ACCESS_PASS`
 --
 ALTER TABLE `ACCESS_PASS`
   MODIFY `pass_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ARTIST`
+-- AUTO_INCREMENT voor een tabel `ARTIST`
 --
 ALTER TABLE `ARTIST`
   MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `LOCATION`
+-- AUTO_INCREMENT voor een tabel `LOCATION`
 --
 ALTER TABLE `LOCATION`
   MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `MUSIC_TICKET`
+-- AUTO_INCREMENT voor een tabel `MUSIC_TICKET`
 --
 ALTER TABLE `MUSIC_TICKET`
   MODIFY `music_ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
--- AUTO_INCREMENT for table `ORDER`
+-- AUTO_INCREMENT voor een tabel `ORDER`
 --
 ALTER TABLE `ORDER`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT for table `password_resets`
+-- AUTO_INCREMENT voor een tabel `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `RESERVATION`
+-- AUTO_INCREMENT voor een tabel `RESERVATION`
 --
 ALTER TABLE `RESERVATION`
   MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `RESTAURANT`
+-- AUTO_INCREMENT voor een tabel `RESTAURANT`
 --
 ALTER TABLE `RESTAURANT`
   MODIFY `restaurant_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `RESTAURANT_GENRE`
+-- AUTO_INCREMENT voor een tabel `RESTAURANT_GENRE`
 --
 ALTER TABLE `RESTAURANT_GENRE`
   MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `SESSION`
+-- AUTO_INCREMENT voor een tabel `SESSION`
 --
 ALTER TABLE `SESSION`
   MODIFY `session_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `SHOW`
+-- AUTO_INCREMENT voor een tabel `SHOW`
 --
 ALTER TABLE `SHOW`
-  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `TICKET`
+-- AUTO_INCREMENT voor een tabel `TICKET`
 --
 ALTER TABLE `TICKET`
   MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
--- AUTO_INCREMENT for table `TOUR`
+-- AUTO_INCREMENT voor een tabel `TOUR`
 --
 ALTER TABLE `TOUR`
   MODIFY `tour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `TOUR_GUIDE`
+-- AUTO_INCREMENT voor een tabel `TOUR_GUIDE`
 --
 ALTER TABLE `TOUR_GUIDE`
   MODIFY `guide_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `TOUR_LANGUAGE`
+-- AUTO_INCREMENT voor een tabel `TOUR_LANGUAGE`
 --
 ALTER TABLE `TOUR_LANGUAGE`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `TOUR_TICKET`
+-- AUTO_INCREMENT voor een tabel `TOUR_TICKET`
 --
 ALTER TABLE `TOUR_TICKET`
   MODIFY `tour_ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `USER`
+-- AUTO_INCREMENT voor een tabel `USER`
 --
 ALTER TABLE `USER`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints for dumped tables
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- Constraints for table `ACCESS_PASS`
+-- Beperkingen voor tabel `ACCESS_PASS`
 --
 ALTER TABLE `ACCESS_PASS`
   ADD CONSTRAINT `ACCESS_PASS_ibfk_1` FOREIGN KEY (`music_ticket_id`) REFERENCES `MUSIC_TICKET` (`music_ticket_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `MUSIC_TICKET`
+-- Beperkingen voor tabel `MUSIC_TICKET`
 --
 ALTER TABLE `MUSIC_TICKET`
   ADD CONSTRAINT `MUSIC_TICKET_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `TICKET` (`ticket_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `MUSIC_TICKET_ibfk_2` FOREIGN KEY (`show_id`) REFERENCES `SHOW` (`show_id`);
 
 --
--- Constraints for table `ORDER`
+-- Beperkingen voor tabel `ORDER`
 --
 ALTER TABLE `ORDER`
   ADD CONSTRAINT `ORDER_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `USER` (`user_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `RESERVATION`
+-- Beperkingen voor tabel `RESERVATION`
 --
 ALTER TABLE `RESERVATION`
   ADD CONSTRAINT `RESERVATION_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `TICKET` (`ticket_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `RESERVATION_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `SESSION` (`session_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `RESTAURANT_GENRE_MAPPING`
+-- Beperkingen voor tabel `RESTAURANT_GENRE_MAPPING`
 --
 ALTER TABLE `RESTAURANT_GENRE_MAPPING`
   ADD CONSTRAINT `RESTAURANT_GENRE_MAPPING_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `RESTAURANT` (`restaurant_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `RESTAURANT_GENRE_MAPPING_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `RESTAURANT_GENRE` (`genre_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `SESSION`
+-- Beperkingen voor tabel `SESSION`
 --
 ALTER TABLE `SESSION`
   ADD CONSTRAINT `SESSION_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `RESTAURANT` (`restaurant_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `SHOW`
+-- Beperkingen voor tabel `SHOW`
 --
 ALTER TABLE `SHOW`
   ADD CONSTRAINT `SHOW_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `LOCATION` (`location_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `SHOW_ARTIST`
+-- Beperkingen voor tabel `SHOW_ARTIST`
 --
 ALTER TABLE `SHOW_ARTIST`
   ADD CONSTRAINT `SHOW_ARTIST_ibfk_1` FOREIGN KEY (`show_id`) REFERENCES `SHOW` (`show_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `SHOW_ARTIST_ibfk_2` FOREIGN KEY (`artist_id`) REFERENCES `ARTIST` (`artist_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `TICKET`
+-- Beperkingen voor tabel `TICKET`
 --
 ALTER TABLE `TICKET`
   ADD CONSTRAINT `TICKET_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `ORDER` (`order_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `TOUR`
+-- Beperkingen voor tabel `TOUR`
 --
 ALTER TABLE `TOUR`
   ADD CONSTRAINT `TOUR_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `LOCATION` (`location_id`);
 
 --
--- Constraints for table `TOUR_GUIDE`
+-- Beperkingen voor tabel `TOUR_GUIDE`
 --
 ALTER TABLE `TOUR_GUIDE`
   ADD CONSTRAINT `TOUR_GUIDE_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `TOUR` (`tour_id`);
 
 --
--- Constraints for table `TOUR_LANGUAGE`
+-- Beperkingen voor tabel `TOUR_LANGUAGE`
 --
 ALTER TABLE `TOUR_LANGUAGE`
   ADD CONSTRAINT `TOUR_LANGUAGE_ibfk_1` FOREIGN KEY (`tour_guide_id`) REFERENCES `TOUR_GUIDE` (`guide_id`),
   ADD CONSTRAINT `TOUR_LANGUAGE_ibfk_2` FOREIGN KEY (`tour_id`) REFERENCES `TOUR` (`tour_id`);
 
 --
--- Constraints for table `TOUR_TICKET`
+-- Beperkingen voor tabel `TOUR_TICKET`
 --
 ALTER TABLE `TOUR_TICKET`
   ADD CONSTRAINT `TOUR_TICKET_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `TOUR` (`tour_id`) ON DELETE CASCADE,

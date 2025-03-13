@@ -1,5 +1,4 @@
 <?php
-ob_start();
 
 session_start();
 
@@ -10,4 +9,3 @@ $uri = trim($_SERVER['REQUEST_URI'], '/');
 $router = new App\PatternRouter();
 $router->route($uri);
 
-ob_end_flush();
