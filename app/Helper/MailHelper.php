@@ -8,36 +8,33 @@ use PHPMailer\PHPMailer\Exception;
 class MailHelper{
 
     private $password_smtp;
+    private $mail;
     public function __construct(){
         $this->password_smtp =  require __DIR__ ."/../config/SMTPconfig.php";
+        $this->mail = new PHPMailer();
+        $this->mail->SMTPDebug = 0;
+        $this->mail->isSMTP();
+        $this->mail->Host = "smtp.gmail.com";
+        $this->mail->SMTPAuth = true;
+        $this->mail->Username = "thefestival.haarlem.events@gmail.com";
+        $this->mail->Password = $this->password_smtp['pasword'];
+        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $this->mail->Port = 587;
+        $this->mail->setFrom("thefestival.haarlem.events@gmail.com","no-reply");
     }
 
-    public function sendTicketsViaEmail($attachmentPath){
-        $mail = new PHPMailer();
-
+    public function sendTicketsViaEmail($attachmentPathPDF, $customerMail){
         try{
-            $mail->SMTPDebug = 0;
-            $mail->isSMTP();
-            $mail->Host = "smtp.gmail.com";
-            $mail->SMTPAuth = true;
-            $mail->Username = "thefestival.haarlem.events@gmail.com";
-            $mail->Password = $this->password_smtp['pasword'];
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
-
-            $mail->setFrom("thefestival.haarlem.events@gmail.com","no-reply");
-            $mail->addAddress("relaouare@gmail.com",""); //change tobe dynamic
-
-            $mail->isHTML(true);
-            $mail->Subject = "TheFestival Tickets | Haarlem";
-            $mail->Body = $this->mailBodyHtml();
+            $this->mail->addAddress("{$customerMail}"); 
+            $this->mail->isHTML(true);
+            $this->mail->Subject = "TheFestival Tickets | Haarlem";
+            $this->mail->Body = $this->mailBodyHtml();
+            $this->mail->addAttachment($attachmentPathPDF);
+            $this->mail->send();
             
-            $mail->addAttachment($attachmentPath);
-            $mail->send();
-
         }catch(Exception $e){
-            $mail->ErrorInfo = $e->getMessage();
-            var_dump($mail->ErrorInfo);
+            $this->mail->ErrorInfo = $e->getMessage();
+            var_dump($this->mail->ErrorInfo);
         }
     }
 
@@ -77,6 +74,4 @@ class MailHelper{
         include __DIR__ . "/../views/mail/mailTemplate.php";
         return ob_get_clean();
     }
-
-
 }

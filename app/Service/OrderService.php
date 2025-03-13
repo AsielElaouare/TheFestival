@@ -36,14 +36,17 @@ class OrderService{
         $tickets = [];
         foreach ($ticketData as $ticket) {
             $ticketObject = null;
+            $costumerName = $_SESSION["userName"];
 
             for ($i = 0; $i < $ticket["quantity"]; $i++){
                 if ($ticket["artistsName"] === "") {
                     $ticketObject = new TourTicket($ticket['eventId'],  
-                    new DateTime($ticket['startDate']), null, null, null, null, null, null);
+                    new DateTime($ticket['startDate']), null, null, null, 
+                    null, $ticket["eventName"], null, $costumerName);
                 } else {
                     $ticketObject = new MusicTicket($ticket['eventId'], 
-                    new DateTime($ticket['startDate']), null, null, null, null, null, null);
+                    new DateTime($ticket['startDate']), null, null, 
+                    null, null, $ticket["eventName"], null, $costumerName);
                 }
                 $qrCode = new QrCodeGenerationHelper($ticketObject);
                 $qrCodePath = $qrCode->saveQrCode();

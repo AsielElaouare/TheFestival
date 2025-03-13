@@ -92,7 +92,7 @@
     spanQuantity.innerText = quantity;
 
     $.ajax({
-        url: "/tickets/saveSelectedTicketinShopingCart", 
+        url: "/cart/saveSelectedTicketinShoppingCart", 
         type: "POST",
         data: { ticket: ticketData, quantity: quantity },
         success: function(response) {
@@ -101,11 +101,7 @@
     });
     cartBadgeCount.innerText =ticketCount;
 }
-
-
 toggleCheckoutButton()
 </script>
-
-
 <style>
 </style>

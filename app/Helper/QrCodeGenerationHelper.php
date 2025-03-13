@@ -15,7 +15,7 @@ class QrCodeGenerationHelper {
     private $writer;
     private $result;
 
-    public function __construct(BaseTicket $ticket) {
+    public function __construct($ticket) {
         $this->text = $ticket->getText();
         $this->qrCode = new QrCode($this->text);
         $this->writer = new PngWriter();
