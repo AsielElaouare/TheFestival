@@ -92,7 +92,7 @@
     spanQuantity.innerText = quantity;
 
     $.ajax({
-        url: "/cart/saveSelectedTicketinShoppingCart", 
+        url: "/cart/saveSelectedTicketInShoppingCart", 
         type: "POST",
         data: { ticket: ticketData, quantity: quantity },
         success: function(response) {

@@ -25,6 +25,7 @@ class SuccessCheckoutController{
 
 
     public function index(){
+        //webhook implementatie 
         if(isset($_SESSION['cart'])){
             $orderId = $this->orderService->saveUserOrder($_SESSION['user_id'], $_SESSION['cart']);
 
