@@ -32,9 +32,8 @@ class PDFHelper {
     }
 
     private function generateTicketHTML($ticket): string {
-        $qrCodePath = $ticket->getQrCode();
-        $qrCodeBase64 = base64_encode(file_get_contents($qrCodePath));
-        $qrCodeUrl = "data:image/png;base64," . $qrCodeBase64;
+        $qrCodeBinary = $ticket->getQrCode();
+        $qrCodeUrl = "data:image/png;base64," . $qrCodeBinary;
         
 
         $html = $this->getTemplateStyle($ticket, $qrCodeUrl);
