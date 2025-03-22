@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 22, 2025 at 09:29 AM
+-- Generation Time: Mar 22, 2025 at 04:45 PM
 -- Server version: 11.5.2-MariaDB-ubu2404
 -- PHP Version: 8.2.25
 
@@ -72,6 +72,21 @@ CREATE TABLE `CONTENTBLOCK` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Dumping data for table `CONTENTBLOCK`
+--
+
+INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`, `created_at`, `updated_at`) VALUES
+(1, 'Festival Overview', '<p>ds</p>', 2, '2025-03-22 09:54:49', '2025-03-22 16:34:39'),
+(2, 'Welcome Message', '<p>Welcome to The Festival in Haarlem! Experience culture, music, and community with amazing events, food, and entertainment.</p>', 2, '2025-03-22 09:55:05', '2025-03-22 16:32:15'),
+(3, 'Festival Route', '<p>Here you can find the route.</p>', 3, '2025-03-22 09:55:05', '2025-03-22 16:32:15'),
+(4, 'Call to action', '<p>fd</p>', 4, '2025-03-22 09:55:05', '2025-03-22 16:34:25'),
+(5, 'FirstJazzSection', '<p>Get ready for an unforgettable weekend filled with soulful melodies, vibrant rhythms, and world-class musicians! Whether you&rsquo;re here to experience jazz legends or discover rising stars, Haarlem Jazz offers you four days of nonstop music and magic across the historic streets and stunning venues of Haarlem.</p>', 6, '2025-03-22 09:55:05', '2025-03-22 16:43:46'),
+(6, 'SecondJazzSection', '<p>dsadasdasdsa</p>', 7, '2025-03-22 09:55:05', '2025-03-22 16:43:46'),
+(7, 'ThirdJazzSection', '<p>Immerse yourself in the rich traditions of jazz, from smooth swing to lively bebop, and explore dsadasdas diversity of this iconic genre. Stroll through open-air performances, intimate club sessions, and captivating concerts in the heart of our beautiful city. Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. Let&rsquo;s make this a festival to remember-see you on the streets of Haarlem!</p>\n<p>&nbsp;</p>\n<p>Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. Let&rsquo;s make this a festival to remember-see you on the streets of Haarlem!</p>', 8, '2025-03-22 09:55:05', '2025-03-22 16:43:46'),
+(8, 'FourthJazzSection', 'Schedule', 9, '2025-03-22 09:55:05', '2025-03-22 16:14:16'),
+(9, 'last section', 'Join our world!', 5, '2025-03-22 16:38:01', '2025-03-22 16:38:01');
 
 -- --------------------------------------------------------
 
@@ -200,6 +215,14 @@ CREATE TABLE `PAGE` (
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
+--
+-- Dumping data for table `PAGE`
+--
+
+INSERT INTO `PAGE` (`page_id`, `title`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'home', 'home', '2025-03-22 09:40:14', '2025-03-22 16:24:33'),
+(2, 'jazz', 'jazz', '2025-03-22 09:40:14', '2025-03-22 16:24:40');
+
 -- --------------------------------------------------------
 
 --
@@ -289,6 +312,20 @@ CREATE TABLE `SECTION` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Dumping data for table `SECTION`
+--
+
+INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_at`, `updated_at`) VALUES
+(2, 'Festival Introduction', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(3, 'Festival Route', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(4, 'Call to action', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(5, 'last section', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(6, 'FirstJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(7, 'SecondJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(8, 'ThirdazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(9, 'FourthJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25');
 
 -- --------------------------------------------------------
 
@@ -679,7 +716,7 @@ ALTER TABLE `ARTIST`
 -- AUTO_INCREMENT for table `CONTENTBLOCK`
 --
 ALTER TABLE `CONTENTBLOCK`
-  MODIFY `contentblock_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `contentblock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `LOCATION`
@@ -709,7 +746,7 @@ ALTER TABLE `ORDER`
 -- AUTO_INCREMENT for table `PAGE`
 --
 ALTER TABLE `PAGE`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -739,7 +776,7 @@ ALTER TABLE `RESTAURANT_GENRE`
 -- AUTO_INCREMENT for table `SECTION`
 --
 ALTER TABLE `SECTION`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `SESSION`

@@ -7,11 +7,9 @@ include __DIR__. '/../header.php';
 <img src="/uploads/haarlemJazz_vector.svg" alt="haarlem jazz logo"> 
 
 <div class="text-center d-flex justify-content-center align-items-center">
-  <p class="fs-1 w-50 purple">
-    Get ready for an unforgettable weekend filled with soulful melodies, vibrant rhythms, and world-class musicians! 
-    Whether you’re here to experience jazz legends or discover rising stars, Haarlem Jazz offers you four days of 
-    nonstop music and magic across the historic streets and stunning venues of Haarlem.
-  </p>
+    <h6 class="fs-1 w-50 purple contenteditable" data-title="FirstJazzSection">
+      <?= html_entity_decode(getContentByTitle($blocks, 'FirstJazzSection')) ?>
+    </h6>
 </div>
 
 <div class="text-center">
@@ -39,19 +37,15 @@ include __DIR__. '/../header.php';
 </div>
 </div>
 
-<h1 class="text-center impact-font purple my-5 ">
-  MEET THE JAZZ STARS
-</h1>
-
 <section class="bg-yellow pt-5">
     <div class="position-relative">
         <img src="uploads/bg_section1.svg" class="w-100" alt="">
         <div class="position-absolute top-50 d-flex start-50  text-center translate-middle text-white">
             
         <div>
-                <h1 class="impact-font">Artists</h2>
-        
-            </div>
+                <h1 class="impact-font contenteditable" data-title="SecondJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'SecondJazzSection')) ?>
+                </h1>
+              </div>
     
     </div>
 </section>
@@ -63,9 +57,8 @@ include __DIR__. '/../header.php';
   <div class="fs-1 w-50">
     <h1>Haarlem Jazz!</h1>
     <p>
-      Immerse yourself in the rich traditions of jazz, from smooth swing to lively bebop, and explore a lineup 
-      that celebrates the diversity of this iconic genre. Stroll through open-air performances, intimate club 
-      sessions, and captivating concerts in the heart of our beautiful city.
+    <h1 class="impact-font contenteditable" data-title="ThirdJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'ThirdJazzSection')) ?>
+
     </p>
     <p>
       Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. 
@@ -120,22 +113,13 @@ include __DIR__. '/../header.php';
       </div>
     </div>
   </div>
-
 </div>
-
 <section class="bg-yellow pt-5">
     <div class="position-relative">
         <img src="uploads/bg_section1.svg" class="w-100" alt="">
         <div class="position-absolute top-50 d-flex start-50  text-center translate-middle text-white">
-            
-        <div>
-                <h1 class="impact-font">Schedule</h2>
-        
-            </div>
-    
     </div>
 </section>
-
  <img src="/uploads/jazz_plaatjes/sax_vector.svg" alt="a cool saxophone"> 
  
 </section>
@@ -143,3 +127,4 @@ include __DIR__. '/../header.php';
 <?php
 include __DIR__. '/../footer.php';
 ?>
+<script  src="/js/cms.js"></script>

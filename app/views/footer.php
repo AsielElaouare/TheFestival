@@ -1,6 +1,10 @@
+<?php if ($adminIsLoggedIn): ?>
+        <button type="button" onclick="submitChanges()">Submit</button>
+    </form>
+<?php endif; ?>
 <script>
     tinymce.init({
-        selector: '[contenteditable=true]',
+        selector: '.contenteditable',
         plugins: 'autoresize link image',
         toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
         menubar: false

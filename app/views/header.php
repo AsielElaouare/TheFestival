@@ -3,6 +3,14 @@ $adminIsLoggedIn = false;
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
   $adminIsLoggedIn = true;
 }
+function getContentByTitle($blocks, $title) {
+  foreach ($blocks as $block) {
+      if ($block->contentblock_title === $title) {
+          return $block->content;
+      }
+  }
+  return '';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,5 +78,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
   </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+<?php if ($adminIsLoggedIn): ?>
+  <form id="contentForm">
+<?php endif; ?>
