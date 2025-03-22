@@ -32,15 +32,16 @@ class PDFHelper {
     }
 
     private function generateTicketHTML($ticket): string {
-        $qrCodeBinary = $ticket->getQrCode();
-        $qrCodeUrl = "data:image/png;base64," . $qrCodeBinary;
+        $qrCodeBlob = $ticket->getQrCode();
+        $qrCodeBase64 = base64_encode($qrCodeBlob);
+        $qrCode = "data:image/png;base64," . $qrCodeBase64;
         
 
-        $html = $this->getTemplateStyle($ticket, $qrCodeUrl);
+        $html = $this->getTemplateStyle($ticket, $qrCode);
         return $html;
     }
 
-    private function getTemplateStyle(BaseTicket $ticket, string $qrCodeUrl): string {
+    private function getTemplateStyle(BaseTicket $ticket, string $qrCode): string {
         ob_start();
         include __DIR__ ."/../views/tickets/ticketTemplatePDF/ticketTemplate.php";
         return ob_get_clean();

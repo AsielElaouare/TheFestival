@@ -1,4 +1,8 @@
 <?php
+$adminIsLoggedIn = false;
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
+  $adminIsLoggedIn = true;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +12,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4c23360f25.js" crossorigin="anonymous"></script>
+  <?php if ($adminIsLoggedIn): ?>
+    <script src="https://cdn.tiny.cloud/1/vdqg157so7lar7lz3d1zqsr7achozkg808ozapxqjflce3u5/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+  <?php endif; ?>
   <link rel="stylesheet" href="/style/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -26,11 +33,12 @@
         <li class="nav-item impact-font"><a href="/" class="nav-link purple">Tylers</a></li>
         <li class="nav-item impact-font"><a href="/tickets" class="nav-link purple">Tickets</a></li>
         
-        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+        <?php if ($adminIsLoggedIn): ?>
           <!-- If an admin is logged in, show only the dashboard icon -->
           <li class="nav-item">
-            <a href="/admin/dashboard" class="nav-link purple" title="Admin Dashboard">
-              <i class="fa-solid fa-tachometer-alt" style="font-size:1.5rem;"></i>
+            <a href="/admin/dashboard" class="nav-link purple impact-font" title="Admin Dashboard">
+              <i class="bi bi-speedometer" style="font-size:1rem;"></i>
+              Admin 
             </a>
           </li>
         <?php else: ?>

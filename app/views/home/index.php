@@ -40,8 +40,8 @@ include __DIR__. '/../header.php';
         <img src="uploads/bg_section2.svg" class="w-100" alt="">
         <div class="position-absolute top-50 start-0 translate-middle-y w-100 d-flex justify-content-start">
             <div class="text-start ms-5 p-5 w-50">
-                <h1 class="impact-font yellow">Welcome to The Festival in Haarlem</h1>
-                <p class="yellow text-wrap">
+                <h1 class="impact-font yellow" contenteditable="true">Welcome to The Festival in Haarlem</h1>
+                <p class="yellow text-wrap" contenteditable="true">
                     Discover the best of Haarlem at The Festival, a vibrant celebration of culture, music, and community 
                     taking place across the city’s iconic venues. Savor delicious food at Yummy, groove to soulful tunes at 
                     the Jazz Event, and dance the night away at the high-energy Dance Event. Dive into the city’s past with 
@@ -86,7 +86,7 @@ include __DIR__. '/../header.php';
         <img src="uploads/buy-tickets-bg.svg" class="w-100" alt="">
         <div class="position-absolute bottom-0 start-50 translate-middle d-flex justify-content-center align-items-center w-100">
             <div class="text-center w-50 ">
-                <h1 class="yellow impact-font">Buy your tickets now</h1>
+                <h1 class="yellow impact-font" contenteditable="true">Buy your tickets now</h1>
                 <a href="/tickets" class="btn primary-button impact-font">Tickets</a>
             </div>
         </div>
@@ -94,7 +94,7 @@ include __DIR__. '/../header.php';
     </div>
     <div>
         <img src="/uploads/Flags.svg" class="w-100" alt="">
-        <h1 class="m-0 text-center p-5 impact-font purple" style="font-size: 4rem;">Join our World</h1>
+        <h1 class="m-0 text-center p-5 impact-font purple" style="font-size: 4rem;" contenteditable="true">Join our World</h1>
     </div>
 </section>
 

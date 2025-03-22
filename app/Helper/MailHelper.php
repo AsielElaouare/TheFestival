@@ -26,7 +26,6 @@ class MailHelper{
 
     public function sendTicketsViaEmail($attachmentPathPDF, $customerMail){
         try{
-            var_dump($customerMail);
             $this->mail->addAddress($customerMail); 
             $this->mail->isHTML(true);
             $this->mail->Subject = "TheFestival Tickets | Haarlem";

@@ -1,3 +1,11 @@
+<script>
+    tinymce.init({
+        selector: '[contenteditable=true]',
+        plugins: 'autoresize link image',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
+        menubar: false
+    });
+</script>
 <footer class="mt-auto w-100 mt-auto">
     <img src="/uploads/skyline.svg" alt="" class="w-100">
     <div class="container-fluid p-0 bg-purple-footer d-flex justify-content-between">

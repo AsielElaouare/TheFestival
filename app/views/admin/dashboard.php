@@ -23,6 +23,11 @@
           Tickets &amp; Availabilities
         </button>
       </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tickets-tab" data-bs-toggle="tab" data-bs-target="#cms" type="button" role="tab" aria-controls="cms" aria-selected="false">
+          CMS
+        </button>
+      </li>
     </ul>
     
     <div class="tab-content" id="dashboardTabContent">
@@ -150,8 +155,27 @@
       </div>
     </div>
 
-      
-    </div> 
+    <div class="tab-pane fade" id="cms" role="tabpanel" aria-labelledby="tickets-tab">
+      <ul class="nav nav-tabs" id="dashboardTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+            Home
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="dance-tab" data-bs-toggle="tab" data-bs-target="#dance" type="button" role="tab" aria-controls="dance" aria-selected="false">
+            Dance
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="jazz-tab" data-bs-toggle="tab" data-bs-target="#jazz" type="button" role="tab" aria-controls="jazz" aria-selected="false">
+            Jazz
+          </button>
+        </li>
+      </ul>
+        <div>
+                
+        </div>
   </div> 
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
