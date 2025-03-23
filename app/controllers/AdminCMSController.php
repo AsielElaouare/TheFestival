@@ -28,15 +28,13 @@ class AdminCMSController {
                 $data = json_decode($json, true); 
                 $slug = empty($data["page_slug"]) ? 'home' : strtolower($data["page_slug"]);
 
-                
                 if (json_last_error() === JSON_ERROR_NONE && is_array($data)) {
-    
-                    foreach ($data as $title => $content) {
-                        $this->cmsService->updateContentInDb($title, $content, $slug);
-                    }
-    
+
+                    $this->cmsService->updateContentInDb($data,  $slug);
+
                     header('Content-Type: application/json');
                     echo json_encode(['status' => 'success', 'message' => 'Content updated successfully']);
+
                 } else {
                     header('Content-Type: application/json', true, 400);
                     echo json_encode(['status' => 'error', 'message' => 'Invalid JSON data']);
@@ -49,8 +47,5 @@ class AdminCMSController {
         catch(Exception $e){
             echo $e->getMessage();
         }   
-       
     }
-
-    
 }

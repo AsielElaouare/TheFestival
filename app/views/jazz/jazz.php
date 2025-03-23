@@ -3,9 +3,8 @@ include __DIR__. '/../header.php';
 ?>
  
  
- <section class="bg-yellow p-0">
-<img src="/uploads/haarlemJazz_vector.svg" alt="haarlem jazz logo"> 
-
+<section class="bg-yellow p-0 mt-5">
+<img src="/uploads/jazz_pictures/haarlemJazz_vector.svg" alt="">
 <div class="text-center d-flex justify-content-center align-items-center">
     <h6 class="fs-1 w-50 purple contenteditable" data-title="FirstJazzSection">
       <?= html_entity_decode(getContentByTitle($blocks, 'FirstJazzSection')) ?>
@@ -123,8 +122,11 @@ include __DIR__. '/../header.php';
  <img src="/uploads/jazz_plaatjes/sax_vector.svg" alt="a cool saxophone"> 
  
 </section>
-
-<?php
-include __DIR__. '/../footer.php';
-?>
 <script  src="/js/cms.js"></script>
+<div class="bg-yellow">
+  <?php
+  include __DIR__. '/../footer.php';
+  ?>
+</div>
+
+

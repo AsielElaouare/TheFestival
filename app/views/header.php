@@ -11,6 +11,16 @@ function getContentByTitle($blocks, $title) {
   }
   return '';
 }
+
+function getMediaByTitle($blocks, $title)
+{
+    foreach ($blocks as $block) {
+        if ($block->contentblock_title === $title && !empty($block->media_url)) {
+            return $block->media_url;
+        }
+    }
+    return null;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,5 +90,5 @@ function getContentByTitle($blocks, $title) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <?php if ($adminIsLoggedIn): ?>
-  <form id="contentForm">
+  <form id="contentForm" class="bg-yellow">
 <?php endif; ?>

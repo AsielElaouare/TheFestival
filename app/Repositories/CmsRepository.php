@@ -8,7 +8,7 @@ use App\Models\ContentBlock;
 use PDOException;
 
 class CmsRepository extends Repository{
-    function getPageWithSections($page_id) {
+    function getPageWithSectionsById($page_id) {
         $results = null;
         try{
             $stmt = $this->connection->prepare("SELECT 
@@ -21,8 +21,6 @@ class CmsRepository extends Repository{
                 s.description AS section_description,
                 p.title AS page_title,
                 p.slug AS page_slug,
-                m.file_name AS media_file_name,
-                m.file_type AS media_file_type,
                 m.url AS media_url
             FROM 
                 CONTENTBLOCK cb
@@ -48,26 +46,31 @@ class CmsRepository extends Repository{
         return $results;
     }
 
-    public function updateContent($contentTitle, $content, $pageSlug) {
-        error_log($pageSlug);
+
+    public function updateContentBatch(array $updates, $pageSlug) {
         try {
+            $this->connection->beginTransaction();
+    
             $stmt = $this->connection->prepare(" UPDATE `CONTENTBLOCK` cb
                 JOIN `SECTION` s ON cb.section_id = s.section_id
                 JOIN `PAGE` p ON s.page_id = p.page_id
                 SET cb.content = :content
                 WHERE p.slug = :pageSlug AND cb.title = :contentTitle
             ");
-            $result = $stmt->execute(['content' => $content, 'pageSlug' => $pageSlug, 'contentTitle' => $contentTitle]);
-            
-            if ($result) {
-                return true; 
-            } else {
-                return false;
+    
+            foreach ($updates as $contentTitle => $content) {
+                $stmt->execute([
+                    'content' => $content,
+                    'pageSlug' => $pageSlug,
+                    'contentTitle' => $contentTitle
+                ]);
             }
+            $this->connection->commit();
+            return true; 
         } catch (PDOException $e) {
+            $this->connection->rollBack();
             error_log($e->getMessage());  
             return false; 
         }
     }
-    
 }

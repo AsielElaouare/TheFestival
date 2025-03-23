@@ -16,4 +16,17 @@ class JazzController
         require __DIR__ . '/../views/jazz/jazz.php';
     }
 
+    public function artistView(){
+        if($_SERVER["REQUEST_METHOD"] === 'GET'){
+            $pageId = isset($_GET['id']) ? $_GET['id'] : null;
+            if($pageId === null){
+                header("Location: /jazz");
+                exit();
+            }
+
+            $blocks = $this->cmsService->getPageById($pageId);
+
+            include __DIR__ . '/../views/jazz/detailPageJazz.php';
+        }
+    }
 }

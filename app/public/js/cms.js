@@ -20,7 +20,7 @@ function submitChanges() {
         }
     });
 
-    fetch('admincms/edit', {
+    fetch('/admincms/edit', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

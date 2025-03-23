@@ -18,13 +18,12 @@ class CmsService{
 
     
     public function getPageById($page_id){
-        $data =  $this->cmsRepo->getPageWithSections($page_id);
+        $data =  $this->cmsRepo->getPageWithSectionsById($page_id);
         return $data;
     }
 
-
-    public function updateContentInDb($contentTitle, $content, $pageSlug){
-        $this->cmsRepo->updateContent($contentTitle, $content, $pageSlug);
+    public function updateContentInDb($update, $pageSlug){
+        $this->cmsRepo->updateContentBatch($update,  $pageSlug);
     }
 
 }

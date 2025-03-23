@@ -1,5 +1,7 @@
 <?php if ($adminIsLoggedIn): ?>
-        <button type="button" onclick="submitChanges()">Submit</button>
+    <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
+        <button type="button" onclick="submitChanges()" class="btn primary-button">Submit Content Changes</button>
+    </div>
     </form>
 <?php endif; ?>
 <script>
