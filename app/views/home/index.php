@@ -15,7 +15,25 @@ include __DIR__. '/../header.php';
 <div class="w-100 bg-yellow">
     <img class="w-100 object-fit-cover" height="60px" src="/uploads/header-purple-waves.svg" alt="">
 </div>
-
+<section class="bg-yellow">
+    <div class="d-flex flex-wrap justify-content-center pt-5">
+        <div>
+            <img src="uploads/dance_event.svg" class="img-fluid" alt="">
+        </div>
+        <div>
+            <img src="uploads/jazz_event.svg" class="img-fluid" alt="">
+        </div>
+        <div>
+            <img src="uploads/magic_tylers.svg" class="img-fluid" alt="">
+        </div>
+        <div>
+            <img src="uploads/yummy_event.svg" class="img-fluid" alt="">
+        </div>
+        <div>
+            <img src="uploads/haarlem_history.png"class="img-fluid" alt="">
+        </div>
+    </div>
+</section>
 
     <section class="bg-yellow pt-5">
         <div class="position-relative">
@@ -42,7 +60,6 @@ include __DIR__. '/../header.php';
             <img src="/uploads/fireworks.svg" class="m-5" width="100px" alt="">
         </div>
     </section>
-
     <section class="bg-yellow">
         <div class="position-relative">
             <img src="uploads/buy-tickets-bg.svg" class="w-100" alt="">
@@ -62,8 +79,6 @@ include __DIR__. '/../header.php';
             </h1>
         </div>
     </section>
-
-
 <script src="/js/cms.js"></script>
 <div class="bg-yellow">
     <?php

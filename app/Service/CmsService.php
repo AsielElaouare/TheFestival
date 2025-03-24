@@ -22,8 +22,8 @@ class CmsService{
         return $data;
     }
 
-    public function updateContentInDb($update, $pageSlug){
-        $this->cmsRepo->updateContentBatch($update,  $pageSlug);
+    public function updateContentInDb($update, $pageIdentifier){
+        $this->cmsRepo->updateContentBatch($update,  $pageIdentifier);
     }
 
 }

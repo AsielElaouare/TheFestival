@@ -9,7 +9,11 @@
         selector: '.contenteditable',
         plugins: 'autoresize link image',
         toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
-        menubar: false
+        menubar: false,
+        images_upload_url: "/admincms/uploadimg",
+        automatic_uploads: true, 
+        images_upload_base_path: '', 
+        file_picker_types: 'image',  
     });
 </script>
 <footer class="mt-auto w-100 mt-auto">

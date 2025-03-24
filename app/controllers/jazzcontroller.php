@@ -8,7 +8,6 @@ class JazzController
     private $cmsService;
     public function __construct(){
         $this->cmsService = new CmsService();
-    
     }
 
     public function index(){
@@ -25,7 +24,10 @@ class JazzController
             }
 
             $blocks = $this->cmsService->getPageById($pageId);
-
+            if(empty($blocks)){
+                http_response_code(404);
+                return;
+            }
             include __DIR__ . '/../views/jazz/detailPageJazz.php';
         }
     }

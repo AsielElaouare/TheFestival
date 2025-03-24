@@ -4,9 +4,17 @@ function submitChanges() {
 
     const url = new URL(window.location.href);
     const pathSegments = url.pathname.split('/');
-    const slug = pathSegments[pathSegments.length - 1];
+
+    const queryParams = new URLSearchParams(url.search);
+    let result;
+
+    if (queryParams.has('id')) {
+        result = queryParams.get('id');
+    } else {
+        result = pathSegments[pathSegments.length - 1];
+    }
     
-    data.page_slug = slug;
+    data.page_identifier = result;
     
     form.querySelectorAll('.contenteditable').forEach((block) => {
         const contentblock_title = block.getAttribute('data-title');

@@ -18,20 +18,20 @@ include __DIR__. '/../header.php';
 
 <div class="d-flex justify-content-evenly">
 <div class="card card40 bg-pink">
-  <img src="/uploads/jazz_plaatjes/wouterhamel1.svg" class="card-img-top p-4" alt="Wouter Hamel">
+  <img src="/uploads/jazz_pictures/wouterhamel1.svg" class="card-img-top p-4" alt="Wouter Hamel">
   <div class="card-body">
     <h2 class="card-title text-center">Wouter Hamel</h2>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="/jazz/artistView?id=3" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
 
 <div class="card card40 bg-pink">
-  <img src="/uploads/jazz_plaatjes/ntjamrosie1.svg" class="card-img-top p-3" alt="Ntjam Rosie">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+  <img src="/uploads/jazz_pictures/ntjamrosie1.svg" class="card-img-top p-3" alt="Ntjam Rosie">
+  <div class="card-body"> 
+    <h5 class="card-title">Ntjam</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="/jazz/artistView?id=3" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
 </div>
@@ -51,12 +51,12 @@ include __DIR__. '/../header.php';
 
 <div class="d-flex align-items-center justify-content-evenly purple">
   <div>
-    <img src="/uploads/jazz_plaatjes/trumpet_vector.svg" class="img-fluid" alt="Haarlem Jazz">
+    <img src="/uploads/jazz_pictures/trumpet_vector.svg" class="img-fluid" alt="Haarlem Jazz">
   </div>
   <div class="fs-1 w-50">
     <h1>Haarlem Jazz!</h1>
     <p>
-    <h1 class="impact-font contenteditable" data-title="ThirdJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'ThirdJazzSection')) ?>
+    <p class="impact-font contenteditable" data-title="ThirdJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'ThirdJazzSection')) ?>
 
     </p>
     <p>
@@ -72,7 +72,7 @@ include __DIR__. '/../header.php';
     <div class="col-md-5">
       <h2>Thursday</h2>
       <div class="card">
-        <img src="/uploads/jazz_plaatjes/wickedjazz.svg" class="card-img-top p-3" alt="Wicked Jazz">
+        <img src="/uploads/jazz_pictures/wickedjazz.svg" class="card-img-top p-3" alt="Wicked Jazz">
         <div class="card-body">
           <p class="card-text purple impact-font fs-2">Wicked Jazz</p>
         </div>
@@ -82,7 +82,7 @@ include __DIR__. '/../header.php';
     <div class="col-md-5">
       <h2>Friday</h2>
       <div class="card">
-        <img src="/uploads/jazz_plaatjes/karsu.svg" class="card-img-top p-3" alt="Karsu">
+        <img src="/uploads/jazz_pictures/karsu.svg" class="card-img-top p-3" alt="Karsu">
         <div class="card-body">
           <p class="card-text purple impact-font fs-2">Karsu</p>
         </div>
@@ -95,7 +95,7 @@ include __DIR__. '/../header.php';
     <div class="col-md-5">
       <h2>Saturday</h2>
       <div class="card">
-        <img src="uploads/jazz_plaatjes/garedunord.svg" class="card-img-top p-3" alt="Gare Du Nord">
+        <img src="uploads/jazz_pictures/garedunord.svg" class="card-img-top p-3" alt="Gare Du Nord">
         <div class="card-body">
           <p class="card-text purple impact-font fs-2">Gare Du Nord</p>
         </div>
@@ -105,7 +105,7 @@ include __DIR__. '/../header.php';
     <div class="col-md-5">
       <h2>Sunday</h2>
       <div class="card">
-        <img src="uploads/jazz_plaatjes/ruis.svg" class="card-img-top p-3" alt="Ruis">
+        <img src="uploads/jazz_pictures/ruis.svg" class="card-img-top p-3" alt="Ruis">
         <div class="card-body">
           <p class="card-text purple impact-font fs-2">Ruis</p>
         </div>
@@ -119,7 +119,7 @@ include __DIR__. '/../header.php';
         <div class="position-absolute top-50 d-flex start-50  text-center translate-middle text-white">
     </div>
 </section>
- <img src="/uploads/jazz_plaatjes/sax_vector.svg" alt="a cool saxophone"> 
+ <img src="/uploads/jazz_pictures/sax_vector.svg" alt="a cool saxophone"> 
  
 </section>
 <script  src="/js/cms.js"></script>
