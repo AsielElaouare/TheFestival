@@ -1,23 +1,24 @@
 <?php
 namespace App\Controllers;
 
-use App\Repositories\UserRepository;
+use App\Service\UserService;
+use App\Helper\InputHelper;
 
 class AccountController {
-    private $userRepo;
+    private $userService;
     
     public function __construct() {
         if (!isset($_SESSION['user_id'])) {
             header("Location: /login");
             exit();
         }
-        $this->userRepo = new UserRepository();
+        $this->userService = new UserService();
     }
     
-    // laat edit form zien
+    // Laat edit form zien
     public function edit() {
         $userId = $_SESSION['user_id'];
-        $user = $this->userRepo->getUserById($userId);
+        $user = $this->userService->getUserById($userId);
         if (!$user) {
             header("Location: /?error=User+not+found");
             exit();
@@ -27,21 +28,21 @@ class AccountController {
     
     // Verwerk de accountupdate en verstuur bevestigingsmail als het e-mailadres is gewijzigd
     public function update() {
-        $userId = $_POST['user_id'] ?? null;
-        if (!$userId) {
+        $userId = InputHelper::sanitizeString($_POST['user_id'] ?? '');
+        if (empty($userId)) {
             header("Location: /account/edit?error=User+not+found");
             exit();
         }
         
-        // Haal formulierinvoer op
-        $name        = trim($_POST['name'] ?? '');
-        $email       = trim($_POST['email'] ?? '');
-        $phoneNumber = trim($_POST['phone_number'] ?? '');
+        // Haal en sanitize formulierinvoer op
+        $name        = InputHelper::sanitizeString($_POST['name'] ?? '');
+        $email       = InputHelper::sanitizeEmail($_POST['email'] ?? '');
+        $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
         $newPassword = $_POST['new_password'] ?? ''; 
         $currentPassword = $_POST['current_password'] ?? ''; 
         
         // Haal bestaande gebruikersgegevens op
-        $user = $this->userRepo->getUserById($userId);
+        $user = $this->userService->getUserById($userId);
         if (!$user) {
             header("Location: /account/edit?error=User+not+found");
             exit();
@@ -56,13 +57,16 @@ class AccountController {
                 header("Location: /account/edit?error=Current+password+is+incorrect");
                 exit();
             }
-            $passHash = password_hash($newPassword, PASSWORD_DEFAULT);
+            $pass = $newPassword;
         } else {
-            $passHash = $user->getPasswordHash();
+            $pass = ''; // Gebruik lege string om aan te geven dat geen nieuw wachtwoord is opgegeven.
         }
         
-        // Werk de gebruikersgegevens bij in de repository
-        $this->userRepo->updateUser($userId, $name, $email, $passHash, $user->getRole()->value, $phoneNumber);
+        $result = $this->userService->updateUser($userId, $name, $email, $pass, $user->getRole()->value, $phoneNumber);
+        if (!$result) {
+            header("Location: /account/edit?error=User+update+failed");
+            exit();
+        }
         
         header("Location: /?message=Account+updated");
         exit();
