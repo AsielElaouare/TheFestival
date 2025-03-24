@@ -1,8 +1,14 @@
 <?php
 namespace App\Controllers;
 
+use App\Service\UserService;
+use App\Helper\InputHelper;
+
 class ForgotPasswordController {
+    private $userService;
+
     public function __construct() {
+        $this->userService = new UserService();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->handlePost();
         } else {
@@ -15,17 +21,17 @@ class ForgotPasswordController {
     }
 
     private function handlePost() {
-        $email = $_POST['email'] ?? '';
-
+        // Sanitize en valideer het e-mailadres
+        $email = InputHelper::sanitizeEmail($_POST['email'] ?? '');
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Invalid email address.";
             return;
         }
 
-        // Load database configuration from dbconfig1.php
+        // Laad databaseconfiguratie
         require __DIR__ . '/../config/dbconfig1.php';
 
-        // Create a PDO connection
+        // Maak een PDO-verbinding
         try {
             $dsn = "$type:host=$servername;dbname=$database;charset=utf8";
             $pdo = new \PDO($dsn, $username, $password);
@@ -35,13 +41,13 @@ class ForgotPasswordController {
             return;
         }
 
-        // Check if email exists (for security, we do not reveal this information)
+        // Controleer of het e-mailadres bestaat
         $stmt = $pdo->prepare("SELECT * FROM `USER` WHERE email = :email");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-        // We don't reveal whether the email exists or not
+        // We onthullen niet of het e-mailadres bestaat
 
-        // Generate a secure random token.
+        // Genereer een secure random token.
         $token = bin2hex(random_bytes(16));
         $expires_at = date('Y-m-d H:i:s', strtotime('+1 hour'));
         $stmt = $pdo->prepare("INSERT INTO password_resets (email, token, expires_at) VALUES (:email, :token, :expires_at)");
@@ -51,10 +57,10 @@ class ForgotPasswordController {
             ':expires_at' => $expires_at
         ]);
 
-        // Compose the password reset link.
+        // Stel de password reset link samen
         $resetLink = "http://127.0.0.1/resetPassword?token=" . urlencode($token) . "&email=" . urlencode($email);
 
-        // Instead of sending the email, display the reset link on a success page.
+        // In plaats van de e-mail te versturen, toon de reset link op een succespagina.
         include __DIR__ . '/../views/login/forgot_password_success.php';
     }
 }

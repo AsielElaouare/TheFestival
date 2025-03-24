@@ -8,26 +8,37 @@
 </head>
 <body>
   <?php include __DIR__ . '/../partials/admin_header.php'; ?>
+  
   <div class="container my-5">
     <h2>Admin Dashboard</h2>
 
     <!-- Tab navigatie -->
     <ul class="nav nav-tabs" id="dashboardTab" role="tablist">
+      <!-- Users Tab -->
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="true">
           Users
         </button>
       </li>
+
+      <!-- Tickets Tab -->
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tickets-tab" data-bs-toggle="tab" data-bs-target="#tickets" type="button" role="tab" aria-controls="tickets" aria-selected="false">
           Tickets &amp; Availabilities
+        </button>
+      </li>
+
+      <!-- Locations Tab -->
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="locations-tab" data-bs-toggle="tab" data-bs-target="#locations" type="button" role="tab" aria-controls="locations" aria-selected="false">
+          Locations
         </button>
       </li>
     </ul>
     
     <div class="tab-content" id="dashboardTabContent">
       
-      <!-- Users Tab  -->
+      <!-- Users Tab Pane -->
       <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="users-tab">
         <div class="my-3">
           <?php if(isset($_GET['message'])): ?>
@@ -104,55 +115,65 @@
         </div>
       </div>
       
-      <!-- Dashboard: Tickets (shows) -->
-    <div class="tab-pane fade" id="tickets" role="tabpanel" aria-labelledby="tickets-tab">
-      <div class="my-3">
-        <h3>Tickets &amp; Availabilities</h3>
-        
-        <a href="/show/create" class="btn btn-success mb-3">Create New Show</a>
-        
-        <?php if (empty($shows)): ?>
-          <p>No shows found.</p>
-        <?php else: ?>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Event ID</th>
-                <th>Event Name</th>
-                <th>Event Date</th>
-                <th>Price</th>
-                <th>Location</th> 
-                <th>Available Spots</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($shows as $show): ?>
+      <!-- Tickets Tab Pane -->
+      <div class="tab-pane fade" id="tickets" role="tabpanel" aria-labelledby="tickets-tab">
+        <div class="my-3">
+          <h3>Tickets &amp; Availabilities</h3>
+          
+          <a href="/show/create" class="btn btn-success mb-3">Create New Show</a>
+          
+          <?php if (empty($shows)): ?>
+            <p>No shows found.</p>
+          <?php else: ?>
+            <table class="table table-bordered">
+              <thead>
                 <tr>
-                  <td><?= htmlspecialchars($show['show_id'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($show['show_name'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($show['start_date'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($show['price'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($show['venue_name'] ?? '') ?></td>
-                  <td><?= htmlspecialchars($show['available_spots'] ?? '') ?></td>
-                  <td>
-                    <a href="/show/edit?id=<?= htmlspecialchars($show['show_id'] ?? '') ?>" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="/show/destroy" method="POST" style="display:inline;">
-                      <input type="hidden" name="show_id" value="<?= htmlspecialchars($show['show_id'] ?? '') ?>">
-                      <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                    </form>
-                  </td>
+                  <th>Event ID</th>
+                  <th>Event Name</th>
+                  <th>Event Date</th>
+                  <th>Price</th>
+                  <th>Location</th>
+                  <th>Available Spots</th>
+                  <th>Actions</th>
                 </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
-        <?php endif; ?>
+              </thead>
+              <tbody>
+                <?php foreach ($shows as $show): ?>
+                  <tr>
+                    <td><?= htmlspecialchars($show['show_id'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($show['show_name'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($show['start_date'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($show['price'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($show['venue_name'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($show['available_spots'] ?? '') ?></td>
+                    <td>
+                      <a href="/show/edit?id=<?= htmlspecialchars($show['show_id'] ?? '') ?>" class="btn btn-sm btn-warning">Edit</a>
+                      <form action="/show/destroy" method="POST" style="display:inline;">
+                        <input type="hidden" name="show_id" value="<?= htmlspecialchars($show['show_id'] ?? '') ?>">
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          <?php endif; ?>
+        </div>
       </div>
-    </div>
-
       
-    </div> 
-  </div> 
+      <!-- Locations Tab Pane -->
+      <div class="tab-pane fade" id="locations" role="tabpanel" aria-labelledby="locations-tab">
+        <div class="my-3">
+          <h3>Locations</h3>
+          <!-- Optionally, link to a separate page for location management -->
+          <p>
+            <a href="/location/index" class="btn btn-primary">Manage Locations</a>
+          </p>
+        </div>
+      </div>
+      
+    </div> <!-- End of tab-content -->
+  </div> <!-- End of container -->
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/js/admin.js"></script>
