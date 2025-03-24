@@ -121,5 +121,4 @@ class LocationRepository extends Repository
             return false;
         }
     }
-    
 }

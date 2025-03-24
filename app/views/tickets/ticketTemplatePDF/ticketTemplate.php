@@ -25,7 +25,7 @@
                 <p><strong>Event location:</strong> <? echo $ticket->getLocation() ?></p>
             </div>
         <div class="qr-code">
-            <img src="<? echo $qrCodeUrl ?>" alt="QR Code" width="150">
+            <img src="<? echo $qrCode ?>" alt="QR Code" width="150">
         </div>
         <p class="text-center mt-3">This ticket is valid for one person only. Non-transferable.</p>
         <div class="disclaimer mt-4">

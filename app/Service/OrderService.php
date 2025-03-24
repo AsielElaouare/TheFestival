@@ -49,8 +49,8 @@ class OrderService{
                     null, null, $ticket["eventName"], null, $costumerName);
                 }
                 $qrCode = new QrCodeGenerationHelper($ticketObject);
-                $qrCodePath = $qrCode->saveQrCode();
-                $ticketObject->setQrCode($qrCodePath);
+                $qrCode = $qrCode->generateQrCodeAsBinary();
+                $ticketObject->setQrCode($qrCode);
                 $tickets[] = $ticketObject;
             }
         }

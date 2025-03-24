@@ -36,7 +36,7 @@ class PatternRouter
             $controllerObj = new $controllerName();
             $controllerObj->$methodName();
         } catch(\Error $e) {
-            error_log($e->getMessage()); // Log  error voor debugging
+            error_log($e->getMessage()); 
             http_response_code(500);
             echo "An error occurred: " . $e->getMessage();
         }

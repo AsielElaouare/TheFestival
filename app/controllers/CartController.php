@@ -13,8 +13,7 @@ class CartController{
         require __DIR__ . '/../views/tickets/shoppingCart.php';
     }
 
-
-    public function saveSelectedTicketinShoppingCart() {
+    public function saveSelectedTicketInShoppingCart() {
     
         $ticket = $_POST['ticket'] ?? null;
         $quantity = $_POST['quantity'] ?? 0;
@@ -28,9 +27,8 @@ class CartController{
             $_SESSION['cart'] = [];
         }
     
-        $ticketKey = md5($ticket['eventName'] . $ticket['location']); //unique identifier
+        $ticketKey = $ticket["eventId"];
 
-    
         if ($quantity > 0) {
             $_SESSION['cart'][$ticketKey] = [
                 "eventId" => $ticket["eventId"],

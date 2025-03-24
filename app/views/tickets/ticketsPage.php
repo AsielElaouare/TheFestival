@@ -60,12 +60,8 @@ require __DIR__ ."/../header.php";
     </div>
    
 </header>
-<div class="bg-purple w-100">
-    <ul class="list-unstyled d-flex text-white p-1" style="font-size: .7rem;">
-        <li class="ms-2 bg-coral p-1 round-boreder-4px">All</li>
-        <li class="ms-2 bg-coral p-1 round-boreder-4px">Day</li>
-        <li class="ms-2 bg-coral p-1 round-boreder-4px">All Access</li>
-    </ul>
+<div style="height: 20px;" class="bg-purple w-100">
+    
 </div>
 <div class="tickets-container">
     <!-- load tickets here -->
@@ -76,6 +72,11 @@ require __DIR__ ."/../header.php";
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 <script>
+
+    const danceBtn =  document.getElementById("dance-tickets-btn");
+    const  jazzBtn = document.getElementById("jazz-tickets-btn");
+    const shopingCart = document.getElementById("shopping-cart-button");
+
     document.addEventListener("DOMContentLoaded", () => {
     function loadContent(url, containerSelector) {
         fetch(url)
@@ -98,22 +99,26 @@ require __DIR__ ."/../header.php";
 
     loadContent("/tickets/showMusicTickets?genre=dance", '.tickets-container');
 
-    document.getElementById("dance-tickets-btn").addEventListener("click", () => {
+    danceBtn.addEventListener("click", () => {
         loadContent("/tickets/showMusicTickets?genre=dance", '.tickets-container');
+        changebtnColor(danceBtn);
     });
 
-    document.getElementById("jazz-tickets-btn").addEventListener("click", () => {
+    jazzBtn.addEventListener("click", () => {
         loadContent("/tickets/showMusicTickets?genre=jazz", '.tickets-container');
+        changebtnColor(jazzBtn);
     });
 
-    document.getElementById("history-tickets-btn").addEventListener("click", () => {
-        loadContent("/tickets/showHistoryTickets", '.tickets-container');
-    });
-
-    document.getElementById("shopping-cart-button").addEventListener("click", () => {
+    shopingCart.addEventListener("click", () => {
         loadContent("/cart/shoppingCart", '#shopping-cart-body' )
     })
 });
+
+    function changebtnColor(btn){
+        danceBtn.style.setProperty('color', '#fff', 'important');
+        jazzBtn.style.setProperty('color', '#fff', 'important');
+        btn.style.setProperty('color', '#E60077', 'important');
+    }
 </script>
 
 

@@ -36,20 +36,16 @@ class TicketsController{
     }
 
     public function showHistoryTickets(){
-        $events = $this->eventService->getAllTours();
-        if(isset($_SESSION['cart'])){
-            $this->showWantedQuantity($events);
-        }
-        require __DIR__ .'/../views/tickets/ticketsTable.php';
+        //onderdeel van adam
     }
     
     public function showPersonalProgram() {
-        
+        //onderdeel van Adam
     }
 
     private function showWantedQuantity(array $events){
             foreach ($events as $event) {
-                $ticketKey = md5($event->getEventName() . $event->location->getVenueName());
+                $ticketKey = $event->getEventId();
                 $quantityInCart = isset($_SESSION['cart'][$ticketKey]) ? $_SESSION['cart'][$ticketKey]['quantity'] : 0;
                 $event->setWantedQuantity($quantityInCart);
             }

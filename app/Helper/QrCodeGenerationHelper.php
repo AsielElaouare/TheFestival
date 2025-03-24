@@ -22,11 +22,19 @@ class QrCodeGenerationHelper {
         $this->result = $this->writer->write($this->qrCode);
     }
 
-    public function saveQrCode(): string {
-        $targetDir = __DIR__ . "/../storage/qr_codes/";
-        $fileName = 'qr_' . uniqid() . '.png';  
-        $filePath = $targetDir . $fileName;
-        file_put_contents($filePath, $this->result->getString());
-        return $filePath;
+    public function generateQrCodeAsBinary(){
+        $this->result = $this->writer->write($this->qrCode);
+        $binaryResult = $this->result->getString(); 
+        return $binaryResult;   
     }
+
+
+
+    // public function saveQrCode(): string {
+    //     $targetDir = __DIR__ . "/../storage/qr_codes/";
+    //     $fileName = 'qr_' . uniqid() . '.png';  
+    //     $filePath = $targetDir . $fileName;
+    //     file_put_contents($filePath, $this->result->getString());
+    //     return $filePath;
+    // }
 }

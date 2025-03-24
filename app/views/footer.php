@@ -1,3 +1,21 @@
+<?php if ($adminIsLoggedIn): ?>
+    <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
+        <button type="button" onclick="submitChanges()" class="btn primary-button">Submit Content Changes</button>
+    </div>
+    </form>
+<?php endif; ?>
+<script>
+    tinymce.init({
+        selector: '.contenteditable',
+        plugins: 'autoresize link image',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | link image',
+        menubar: false,
+        images_upload_url: "/admincms/uploadimg",
+        automatic_uploads: true, 
+        images_upload_base_path: '', 
+        file_picker_types: 'image',  
+    });
+</script>
 <footer class="mt-auto w-100 mt-auto">
     <img src="/uploads/skyline.svg" alt="" class="w-100">
     <div class="container-fluid p-0 bg-purple-footer d-flex justify-content-between">
