@@ -1,42 +1,34 @@
 <?php
 namespace App\Controllers;
 
-use App\Repositories\UserRepository;
+use App\Service\UserService;
 use App\Service\ShowService;
 use App\Repositories\ShowRepository;
-
-
+use App\Helper\InputHelper;
 
 class AdminController {
 
-    private $userRepo;
-
+    private $userService;
     private $showService;  
 
-    
     public function __construct() {
-
-        // alleen voor admins access
+        // Alleen voor admins
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
             header("Location: /");
             exit();
         }
-        $this->userRepo = new UserRepository();
-
+        $this->userService = new UserService();
         $this->showService = new ShowService(new ShowRepository());
-
     }
     
-    // dashboard laat alle user in een lijst zien met search,filter en sort.
+    // Dashboard toont alle gebruikers en shows (met zoek-, filter- en sorteermogelijkheden)
     public function dashboard() {
-        $search = $_GET['search'] ?? '';
-        $sortColumn = $_GET['sort'] ?? 'registration_date';
-        $sortDirection = $_GET['direction'] ?? 'DESC';
+        $search = InputHelper::sanitizeString($_GET['search'] ?? '');
+        $sortColumn = InputHelper::sanitizeString($_GET['sort'] ?? 'registration_date');
+        $sortDirection = InputHelper::sanitizeString($_GET['direction'] ?? 'DESC');
         
-        $users = $this->userRepo->getAllUsers($search, $sortColumn, $sortDirection);
-
+        $users = $this->userService->getAllUsers($search, $sortColumn, $sortDirection);
         $shows = $this->showService->getAllShows();
-
         
         include __DIR__ . '/../views/admin/dashboard.php';
     }
@@ -46,73 +38,64 @@ class AdminController {
     }
     
     public function store() {
-        $name        = trim($_POST['name'] ?? '');
-        $email       = trim($_POST['email'] ?? '');
+        $name        = InputHelper::sanitizeString($_POST['name'] ?? '');
+        $email       = InputHelper::sanitizeEmail($_POST['email'] ?? '');
         $password    = $_POST['password'] ?? '';
-        $role        = $_POST['role'] ?? 'visitor';
-        $phoneNumber = $_POST['phone_number'] ?? '';
+        $role        = InputHelper::sanitizeString($_POST['role'] ?? 'visitor');
+        $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
     
-        // basis validatie naam,email,ww verplicht.
+        // Basisvalidatie: naam, e-mail en wachtwoord zijn verplicht.
         if(empty($name) || empty($email) || empty($password)) {
             $error = "Name, email, and password are required.";
             include __DIR__ . '/../views/admin/users/create.php';
             return;
         }
         
-        $passHash = password_hash($password, PASSWORD_DEFAULT);
-        $this->userRepo->createUser($name, $email, $passHash, $role, $phoneNumber);
-        
+        $result = $this->userService->createUser($name, $email, $password, $role, $phoneNumber);
+        if (!$result) {
+            header("Location: /admin/dashboard?error=Could+not+create+user");
+            return;
+        }
         header("Location: /admin/dashboard?message=User+created");
         exit();
     }
     
-    
     public function edit() {
-        $id = $_GET['id'] ?? null;
-        $user = $this->userRepo->getUserById($id);
+        $id = InputHelper::sanitizeString($_GET['id'] ?? '');
+        $user = $this->userService->getUserById($id);
         include __DIR__ . '/../views/admin/users/edit.php';
     }
     
-   // verwerken van bijwerken gebruiker
-   public function update() {
-    $id = $_POST['user_id'] ?? null;
-    if (!$id) {
-        header("Location: /admin/dashboard?error=User+not+found");
-        exit();
-    }
-    $name = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $role = $_POST['role'] ?? 'visitor';
-    $phoneNumber = $_POST['phone_number'] ?? '';
-    $newPassword = $_POST['password'] ?? '';
-
-        // Haal de huidige gegevens van de gebruiker op.
-        $user = $this->userRepo->getUserById($id);
-        if (!$user) {
-        header("Location: /admin/dashboard?error=User+not+found");
-        exit();
-    }
-    
-        // Gebruik de nieuwe wachtwoord-hash indien verstrekt; anders behoud de bestaande hash.
-        if (!empty($newPassword)) {
-        $passHash = password_hash($newPassword, PASSWORD_DEFAULT);
-    } else {
-        $passHash = $user->getPasswordHash();
-    }
-    
-    $this->userRepo->updateUser($id, $name, $email, $passHash, $role, $phoneNumber);
-    header("Location: /admin/dashboard?message=User+updated");
-    exit();
-}
-    
-    // laat delete confirmatie pagina zien.
-    public function delete() {
-        $id = $_GET['id'] ?? null;
-        if (!$id) {
+    // Verwerken van het bijwerken van een gebruiker.
+    public function update() {
+        $id = InputHelper::sanitizeString($_POST['user_id'] ?? '');
+        if (empty($id)) {
             header("Location: /admin/dashboard?error=User+not+found");
             exit();
         }
-        $user = $this->userRepo->getUserById($id);
+        $name = InputHelper::sanitizeString($_POST['name'] ?? '');
+        $email = InputHelper::sanitizeEmail($_POST['email'] ?? '');
+        $role = InputHelper::sanitizeString($_POST['role'] ?? 'visitor');
+        $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
+        $newPassword = $_POST['password'] ?? '';
+    
+        $result = $this->userService->updateUser($id, $name, $email, $newPassword, $role, $phoneNumber);
+        if (!$result) {
+            header("Location: /admin/dashboard?error=User+update+failed");
+            exit();
+        }
+        header("Location: /admin/dashboard?message=User+updated");
+        exit();
+    }
+    
+    // Toon delete-confirmatiepagina
+    public function delete() {
+        $id = InputHelper::sanitizeString($_GET['id'] ?? '');
+        if (empty($id)) {
+            header("Location: /admin/dashboard?error=User+not+found");
+            exit();
+        }
+        $user = $this->userService->getUserById($id);
         if (!$user) {
             header("Location: /admin/dashboard?error=User+not+found");
             exit();
@@ -121,14 +104,17 @@ class AdminController {
     }
     
     public function destroy() {
-        $id = $_POST['user_id'] ?? null;
-        if (!$id) {
+        $id = InputHelper::sanitizeString($_POST['user_id'] ?? '');
+        if (empty($id)) {
             header("Location: /admin/dashboard?error=User+not+found");
             exit();
         }
-        $this->userRepo->deleteUser($id);
+        $result = $this->userService->deleteUser($id);
+        if (!$result) {
+            header("Location: /admin/dashboard?error=Could+not+delete+user");
+            exit();
+        }
         header("Location: /admin/dashboard?message=User+deleted");
         exit();
     }
-    
 }
