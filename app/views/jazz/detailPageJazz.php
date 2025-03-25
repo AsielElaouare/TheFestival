@@ -14,7 +14,7 @@ include __DIR__ . '/../header.php';
         <div class="position-absolute  top-50 d-flex start-50 text-center translate-middle text-white">
             <div class="flex">
                 <section class="contenteditable" data-title="imgBlock" >
-                    <img class="w-75 " src="<?= getMediaByTitle($blocks, 'imgBlock') ?: '' ?>" alt="">
+                    <img src="<?= getContentByTitle($blocks, 'imgBlock') ?: '' ?>" alt="">
                 </section>
                 <h1 class="impact-font contenteditable" data-title="SecondSection">
                     <?= getContentByTitle($blocks, 'SecondSection') ?>

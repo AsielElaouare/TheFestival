@@ -9,23 +9,35 @@ class InputHelper
      */
     public static function sanitizeString($input)
     {
-        // 1. Decode any HTML entities (&lt;script&gt; => <script>)
-        // Using ENT_QUOTES only, and specifying UTF-8 if needed
         $decoded = html_entity_decode($input, ENT_QUOTES, 'UTF-8');
-
-        // 2. Remove valid HTML tags (<script>, <b>, etc.)
         $stripped = strip_tags($decoded);
-
-        // 3. Remove any leftover angle brackets if the user typed something like "< script>"
         $clean = preg_replace('/[<>]/', '', $stripped);
-
-        // 4. Trim whitespace
         return trim($clean);
     }
 
+    public static function sanitizeSringForCMS($input)
+    {
+        // If the input contains an <img> tag, we need to extract the src attribute
+        if (strpos($input, '<img') !== false) {
+        // Extract the src attribute from <img> tags
+        preg_match_all('/<img[^>]+src=["\']([^"\']+)["\'][^>]*>/i', $input, $matches);
+
+        // If src is found, return the first src value (or modify to return all src if needed)
+        if (isset($matches[1]) && count($matches[1]) > 0) {
+            return $matches[1][0];  // Return the first 'src' value
+        }
+    }
+
+    // If no <img> tag is found, sanitize the string
+    $decoded = html_entity_decode($input, ENT_QUOTES, 'UTF-8');
+    $stripped = strip_tags($decoded);  // Remove HTML tags
+    $clean = preg_replace('/[<>]/', '', $stripped);  // Remove any < or > characters
+    return trim($clean);  // Return the sanitized string
+    }
+
+
     /**
      * Sanitize an email by removing illegal characters.
-     * We'll still do further validation with FILTER_VALIDATE_EMAIL if needed.
      */
     public static function sanitizeEmail($input)
     {

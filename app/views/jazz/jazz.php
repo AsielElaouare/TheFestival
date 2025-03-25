@@ -56,13 +56,9 @@ include __DIR__. '/../header.php';
   <div class="fs-1 w-50">
     <h1>Haarlem Jazz!</h1>
     <p>
-    <p class="impact-font contenteditable" data-title="ThirdJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'ThirdJazzSection')) ?>
-
-    </p>
-    <p>
-      Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. 
-      Let’s make this a festival to remember-see you on the streets of Haarlem!
-    </p>
+    <h6 class="impact-font contenteditable" data-title="ThirdJazzSection">  
+      <?= html_entity_decode(getContentByTitle($blocks, 'ThirdJazzSection')) ?>
+    </h6>
   </div>
 </div>
 <div class="container mt-5 purple impact-font">
