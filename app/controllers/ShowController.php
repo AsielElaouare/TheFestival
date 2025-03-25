@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Service\ShowService;
 use App\Repositories\ShowRepository;
 use App\Repositories\LocationRepository;
+use App\Repositories\ArtistRepository;
 use App\Helper\InputHelper;
 
 class ShowController
@@ -33,6 +34,10 @@ class ShowController
         // Haal alle locaties op
         $locationRepo = new LocationRepository();
         $locations = $locationRepo->getAllLocations();
+        
+        // Haal alle artiesten op
+        $artistRepo = new ArtistRepository();
+        $artists = $artistRepo->getAllArtists();
 
         include __DIR__ . '/../views/admin/shows/create.php';
     }
@@ -47,7 +52,14 @@ class ShowController
             'location_id'     => InputHelper::sanitizeString($_POST['location_id'] ?? 0),
             'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
         ];
-        $this->showService->createShow($data);
+        // Maak de show aan en ontvang de gegenereerde ID
+        $showId = $this->showService->createShow($data);
+        // Haal de geselecteerde artiest op uit het formulier
+        $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
+        if ($showId && !empty($artistId)) {
+            // Koppel de artiest aan de show via ShowService
+            $this->showService->linkArtist($showId, (int)$artistId);
+        }
         header("Location: /admin/dashboard?message=Show+created");
         exit();
     }
@@ -70,6 +82,10 @@ class ShowController
         $locationRepo = new LocationRepository();
         $locations = $locationRepo->getAllLocations();
         
+        // Haal alle artiesten op voor de dropdown
+        $artistRepo = new ArtistRepository();
+        $artists = $artistRepo->getAllArtists();
+        
         include __DIR__ . '/../views/admin/shows/edit.php';
     }
 
@@ -89,6 +105,14 @@ class ShowController
             'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
         ];
         $this->showService->updateShow($id, $data);
+        // Update de artiest-koppeling als er een nieuwe artiest is geselecteerd
+        $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
+        if (!empty($artistId)) {
+            // Eerst, verwijder bestaande koppeling
+            $this->showService->unlinkArtist($id);
+            // Link de nieuwe artiest
+            $this->showService->linkArtist($id, (int)$artistId);
+        }
         header("Location: /admin/dashboard?message=Show+updated");
         exit();
     }
