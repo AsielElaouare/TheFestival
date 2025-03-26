@@ -11,16 +11,6 @@ function getContentByTitle($blocks, $title) {
   }
   return '';
 }
-
-function getMediaByTitle($blocks, $title)
-{
-    foreach ($blocks as $block) {
-        if ($block->contentblock_title === $title && !empty($block->media_url)) {
-            return $block->media_url;
-        }
-    }
-    return null;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -3,6 +3,7 @@
         <button type="button" onclick="submitChanges()" class="btn primary-button">Submit Content Changes</button>
     </div>
     </form>
+  <script  src="/js/cms.js"></script>
 <?php endif; ?>
 <script>
     tinymce.init({

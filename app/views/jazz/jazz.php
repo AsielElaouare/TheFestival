@@ -4,13 +4,14 @@ include __DIR__. '/../header.php';
  
  
 <section class="bg-yellow p-0 mt-5">
-<img src="/uploads/jazz_pictures/haarlemJazz_vector.svg" alt="">
+<section data-title="JazzHeaderImg" class="contenteditable">
+          <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'JazzHeaderImg')) ?>" class="card-img-top p-3 w-50">
+        </section>
 <div class="text-center d-flex justify-content-center align-items-center">
     <h6 class="fs-1 w-50 purple contenteditable" data-title="FirstJazzSection">
       <?= html_entity_decode(getContentByTitle($blocks, 'FirstJazzSection')) ?>
     </h6>
 </div>
-
 <div class="text-center">
   <i class="fa-solid fa-circle-down icon-size purple"></i>
 </div>
@@ -20,8 +21,7 @@ include __DIR__. '/../header.php';
 <div class="card card40 bg-pink">
   <img src="/uploads/jazz_pictures/wouterhamel1.svg" class="card-img-top p-4" alt="Wouter Hamel">
   <div class="card-body">
-    <h2 class="card-title text-center">Wouter Hamel</h2>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h2 class="card-title text-center yellow">Wouter Hamel</h2>
     <a href="/jazz/artistView?id=3" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
@@ -29,9 +29,8 @@ include __DIR__. '/../header.php';
 <div class="card card40 bg-pink">
   <img src="/uploads/jazz_pictures/ntjamrosie1.svg" class="card-img-top p-3" alt="Ntjam Rosie">
   <div class="card-body"> 
-    <h5 class="card-title">Ntjam</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/jazz/artistView?id=3" class="btn btn-primary">Check Artist</a>
+  <h2 class="card-title text-center yellow">Natjam</h2>
+    <a href="/jazz/artistView?id=4" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
 </div>
@@ -51,7 +50,7 @@ include __DIR__. '/../header.php';
 
 <div class="d-flex align-items-center justify-content-evenly purple">
   <div>
-    <img src="/uploads/jazz_pictures/trumpet_vector.svg" class="img-fluid" alt="Haarlem Jazz">
+    <img src="/uploads/jazz_pictures/trumpet_vector.svg" class="w-75" alt="Haarlem Jazz">
   </div>
   <div class="fs-1 w-50">
     <h1>Haarlem Jazz!</h1>
@@ -61,64 +60,75 @@ include __DIR__. '/../header.php';
     </h6>
   </div>
 </div>
-<div class="container mt-5 purple impact-font">
 
- 
+
+<div class="container mt-5 purple impact-font">
   <div class="row justify-content-center text-center">
-    <div class="col-md-5">
+    <!-- Thursday Section -->
+    <div class="col-md-5 mb-4">
       <h2>Thursday</h2>
       <div class="card">
-        <img src="/uploads/jazz_pictures/wickedjazz.svg" class="card-img-top p-3" alt="Wicked Jazz">
-        <div class="card-body">
-          <p class="card-text purple impact-font fs-2">Wicked Jazz</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <h2>Friday</h2>
-      <div class="card">
-        <img src="/uploads/jazz_pictures/karsu.svg" class="card-img-top p-3" alt="Karsu">
-        <div class="card-body">
-          <p class="card-text purple impact-font fs-2">Karsu</p>
+        <section data-title="ArtsNr1CardJazzImg" class="contenteditable">
+          <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+        </section>
+        <div class="card-body ">
+          <p data-title="ArtsNr1JazzCardBody " class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
   </div>
 
-  
+  <!-- Saturday, Sunday, and Friday Section (3 Columns) -->
   <div class="row justify-content-center text-center mt-4">
-    <div class="col-md-5">
-      <h2>Saturday</h2>
+    <!-- Saturday Card -->
+    <div class="col-md-4 mb-4">
+      <h2>Friday</h2>
       <div class="card">
-        <img src="uploads/jazz_pictures/garedunord.svg" class="card-img-top p-3" alt="Gare Du Nord">
+        <section data-title="ArtsNr2CardJazzImg" class="contenteditable">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr2CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+        </section>
         <div class="card-body">
-          <p class="card-text purple impact-font fs-2">Gare Du Nord</p>
+          <p data-title="ArtsNr2JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr2JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
 
-    <div class="col-md-5">
+    <!-- Sunday Card -->
+    <div class="col-md-4 mb-4">
+      <h2>Saturday</h2>
+      <div class="card">
+        <section class="contenteditable">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+        </section>
+        <div class="card-body">
+          <p data-title="ArtsNr3JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3JazzCardBody')) ?></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Friday Card -->
+    <div class="col-md-4 mb-4">
       <h2>Sunday</h2>
       <div class="card">
-        <img src="uploads/jazz_pictures/ruis.svg" class="card-img-top p-3" alt="Ruis">
+        <section data-title="ArtsNr4CardJazzImg" class="contenteditable">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+        </section>
         <div class="card-body">
-          <p class="card-text purple impact-font fs-2">Ruis</p>
+          <p data-title="ArtsNr4JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<section class="bg-yellow pt-5">
-    <div class="position-relative">
-        <img src="uploads/bg_section1.svg" class="w-100" alt="">
-        <div class="position-absolute top-50 d-flex start-50  text-center translate-middle text-white">
-    </div>
 </section>
- <img src="/uploads/jazz_pictures/sax_vector.svg" alt="a cool saxophone"> 
- 
-</section>
-<script  src="/js/cms.js"></script>
+
+<div class="d-flex justify-content-around align-items-center">
+  <img class="w-25" src="/uploads/jazz_pictures/sax_vector.svg" alt="a cool saxophone">
+  <div>
+    <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>
+  </div>
+</div>
+
 <div class="bg-yellow">
   <?php
   include __DIR__. '/../footer.php';

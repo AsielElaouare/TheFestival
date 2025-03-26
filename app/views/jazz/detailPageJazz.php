@@ -32,7 +32,7 @@ include __DIR__ . '/../header.php';
         </div>
     </div>
 </section> 
-<script src="/js/cms.js?v=33"></script>
+<script src="/js/cms.js?v=65"></script>
 <div class="bg-yellow">
     <?php include __DIR__ . '/../footer.php'; ?>
 </div>

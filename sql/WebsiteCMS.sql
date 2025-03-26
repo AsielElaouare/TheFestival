@@ -54,7 +54,10 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (9, 'FourthJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
 (10, 'FirstSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
 (11, 'SecondSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(12, 'ThirdSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25');
+(12, 'ThirdSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(13, 'JazzArtistsSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(14, 'JazzHeader', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(15, 'Artist2', '', 4, '2025-03-22 09:54:25', '2025-03-22 09:54:25');
 
 
 -- CONTENTBLOCK table
@@ -81,7 +84,20 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (10, 'FirstSection', '<p><img src=\"../uploads/1742852725_fist.png\" alt=\"\" width=\"75\" height=\"105\">JAJADSJKFDFDS</p>', 10, '2025-03-22 16:38:01', '2025-03-24 21:46:32'),
 (11, 'SecondSection', '<p>asiel</p>', 11, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (12, 'ThirdSection', '<p>Asiel</p>', 12, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(13, 'imgBlock', '<p><img class=\"w-75 \" src=\"../uploads/1742852784_Screenshot 2024-01-27 124757.png\" alt=\"\" width=\"1363\" height=\"769\"></p>', 10, '2025-03-24 21:43:01', '2025-03-24 21:46:32');
+(13, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 10, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(14, 'ArtsNr1CardJazzImg', '/uploads/jazz_pictures/garedunord.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(15, 'ArtsNr1JazzCardBody', 'Garedunord', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(16, 'ArtsNr2CardJazzImg', '/uploads/jazz_pictures/karsu.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(17, 'ArtsNr2JazzCardBody', 'Karsu', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(18, 'ArtsNr3CardJazzImg', '/uploads/jazz_pictures/ruis.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(19, 'ArtsNr3JazzCardBody', 'Ruis', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(20, 'ArtsNr4CardJazzImg', '/uploads/jazz_pictures/wickedjazz.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(21, 'ArtsNr4JazzCardBody', 'WickedJazz', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(22, 'JazzHeaderImg', '/uploads/jazz_pictures/haarlemJazz_vector.svg', 14, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(23, 'FirstSection', '<p><img src=\"../uploads/1742852725_fist.png\" alt=\"\" width=\"75\" height=\"105\">JAJADSJKFDFDS</p>', 10, '2025-03-22 16:38:01', '2025-03-24 21:46:32'),
+(24, 'SecondSection', '<p>asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(25, 'ThirdSection', '<p>Asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(26, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 15, '2025-03-24 21:43:01', '2025-03-24 21:46:32');
 
 -- MEDIA_CONTENTBLOCK table (for the "holds" relationship)
 CREATE TABLE `MEDIA_CONTENTBLOCK` (
