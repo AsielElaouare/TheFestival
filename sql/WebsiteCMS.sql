@@ -23,6 +23,12 @@ CREATE TABLE PAGE (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+INSERT INTO `PAGE` (`page_id`, `title`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'home', 'home', '2025-03-22 09:40:14', '2025-03-22 16:24:33'),
+(2, 'jazz', 'jazz', '2025-03-22 09:40:14', '2025-03-22 16:24:40'),
+(3, 'artist', 'jazz/wouter', '2025-03-22 09:40:14', '2025-03-22 16:24:40'),
+(4, 'artist', 'jazz/ntjam', '2025-03-22 09:40:14', '2025-03-22 16:24:40');
+
 
 -- SECTION table
 CREATE TABLE SECTION (
@@ -34,6 +40,22 @@ CREATE TABLE SECTION (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (page_id) REFERENCES PAGE(page_id) ON DELETE CASCADE
 );
+
+
+
+INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_at`, `updated_at`) VALUES
+(2, 'Festival Introduction', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(3, 'Festival Route', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(4, 'Call to action', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(5, 'last section', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(6, 'FirstJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(7, 'SecondJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(8, 'ThirdazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(9, 'FourthJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(10, 'FirstSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(11, 'SecondSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
+(12, 'ThirdSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25');
+
 
 -- CONTENTBLOCK table
 CREATE TABLE `CONTENTBLOCK` (

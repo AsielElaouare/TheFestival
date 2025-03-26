@@ -455,9 +455,6 @@ ALTER TABLE `ARTIST`
 --
 -- Indexes for table `CONTENTBLOCK`
 --
-ALTER TABLE `CONTENTBLOCK`
-  ADD PRIMARY KEY (`contentblock_id`),
-  ADD KEY `section_id` (`section_id`);
 
 --
 -- Indexes for table `LOCATION`
@@ -468,15 +465,6 @@ ALTER TABLE `LOCATION`
 --
 -- Indexes for table `MEDIA`
 --
-ALTER TABLE `MEDIA`
-  ADD PRIMARY KEY (`media_id`);
-
---
--- Indexes for table `MEDIA_CONTENTBLOCK`
---
-ALTER TABLE `MEDIA_CONTENTBLOCK`
-  ADD PRIMARY KEY (`media_id`,`contentblock_id`),
-  ADD KEY `contentblock_id` (`contentblock_id`);
 
 --
 -- Indexes for table `MUSIC_TICKET`
@@ -495,12 +483,7 @@ ALTER TABLE `ORDER`
 
 --
 -- Indexes for table `PAGE`
---
-ALTER TABLE `PAGE`
-  ADD PRIMARY KEY (`page_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
 
---
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -536,9 +519,6 @@ ALTER TABLE `RESTAURANT_GENRE_MAPPING`
 --
 -- Indexes for table `SECTION`
 --
-ALTER TABLE `SECTION`
-  ADD PRIMARY KEY (`section_id`),
-  ADD KEY `page_id` (`page_id`);
 
 --
 -- Indexes for table `SESSION`
@@ -626,10 +606,7 @@ ALTER TABLE `ARTIST`
 --
 -- AUTO_INCREMENT for table `CONTENTBLOCK`
 --
-ALTER TABLE `CONTENTBLOCK`
-  MODIFY `contentblock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
 -- AUTO_INCREMENT for table `LOCATION`
 --
 ALTER TABLE `LOCATION`
@@ -638,8 +615,6 @@ ALTER TABLE `LOCATION`
 --
 -- AUTO_INCREMENT for table `MEDIA`
 --
-ALTER TABLE `MEDIA`
-  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `MUSIC_TICKET`
@@ -655,11 +630,7 @@ ALTER TABLE `ORDER`
 
 --
 -- AUTO_INCREMENT for table `PAGE`
---
-ALTER TABLE `PAGE`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -685,11 +656,7 @@ ALTER TABLE `RESTAURANT_GENRE`
 
 --
 -- AUTO_INCREMENT for table `SECTION`
---
-ALTER TABLE `SECTION`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
 -- AUTO_INCREMENT for table `SESSION`
 --
 ALTER TABLE `SESSION`
@@ -750,15 +717,6 @@ ALTER TABLE `ACCESS_PASS`
 --
 -- Constraints for table `CONTENTBLOCK`
 --
-ALTER TABLE `CONTENTBLOCK`
-  ADD CONSTRAINT `CONTENTBLOCK_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `SECTION` (`section_id`) ON DELETE CASCADE;
-
---
--- Constraints for table `MEDIA_CONTENTBLOCK`
---
-ALTER TABLE `MEDIA_CONTENTBLOCK`
-  ADD CONSTRAINT `MEDIA_CONTENTBLOCK_ibfk_1` FOREIGN KEY (`media_id`) REFERENCES `MEDIA` (`media_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `MEDIA_CONTENTBLOCK_ibfk_2` FOREIGN KEY (`contentblock_id`) REFERENCES `CONTENTBLOCK` (`contentblock_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `MUSIC_TICKET`
@@ -790,10 +748,7 @@ ALTER TABLE `RESTAURANT_GENRE_MAPPING`
 --
 -- Constraints for table `SECTION`
 --
-ALTER TABLE `SECTION`
-  ADD CONSTRAINT `SECTION_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `PAGE` (`page_id`) ON DELETE CASCADE;
 
---
 -- Constraints for table `SESSION`
 --
 ALTER TABLE `SESSION`

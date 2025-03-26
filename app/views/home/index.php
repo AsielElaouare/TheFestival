@@ -18,10 +18,10 @@ include __DIR__. '/../header.php';
 <section class="bg-yellow">
     <div class="d-flex flex-wrap justify-content-center pt-5">
         <div>
-            <img src="uploads/dance_event.svg" class="img-fluid" alt="">
+            <a href="/dance"><img src="uploads/dance_event.svg" class="img-fluid" alt=""></a>
         </div>
         <div>
-            <img src="uploads/jazz_event.svg" class="img-fluid" alt="">
+            <a href="/jazz"><img src="uploads/jazz_event.svg" class="img-fluid" alt=""></a>
         </div>
         <div>
             <img src="uploads/magic_tylers.svg" class="img-fluid" alt="">
