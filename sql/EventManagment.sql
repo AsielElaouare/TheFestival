@@ -64,34 +64,7 @@ INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
 -- Table structure for table `CONTENTBLOCK`
 --
 
-CREATE TABLE `CONTENTBLOCK` (
-  `contentblock_id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `content` text NOT NULL,
-  `section_id` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
--- Dumping data for table `CONTENTBLOCK`
---
-
-INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`, `created_at`, `updated_at`) VALUES
-(1, 'Festival Overview', '<p>This is haarlem festival&nbsp;</p>', 2, '2025-03-22 09:54:49', '2025-03-22 18:03:30'),
-(2, 'Welcome Message', '<p>dbitnzkndks</p>', 2, '2025-03-22 09:55:05', '2025-03-22 18:14:02'),
-(3, 'Festival Route', '<p>Here you can find the route.</p>', 3, '2025-03-22 09:55:05', '2025-03-22 16:32:15'),
-(4, 'Call to action', '<p>fd</p>', 4, '2025-03-22 09:55:05', '2025-03-22 16:34:25'),
-(5, 'FirstJazzSection', '<p>Get ready for an unforgettable weekend filled with soulful melodies, vibrant rhythms, and world-class musicians! Whether you&rsquo;re here to experience jazz legends or discover rising stars, Haarlem Jazz offers you four days of nonstop music and magic across the historic streets and stunning venues of Haarlem.</p>', 6, '2025-03-22 09:55:05', '2025-03-22 16:43:46'),
-(6, 'SecondJazzSection', '<p><strong><em>Artists</em></strong></p>', 7, '2025-03-22 09:55:05', '2025-03-22 21:18:04'),
-(7, 'ThirdJazzSection', '<p>Immerse yourself in the rich traditions of jazz, from smooth swing to lively bebop, and explore dsadasdas diversity of this iconic genre. Stroll through open-air performances, intimate club sessions, and captivating concerts in the heart of our beautiful city. Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. Let&rsquo;s make this a festival to remember-see you on the streets of Haarlem!</p>\n<p>&nbsp;</p>\n<p>Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. Let&rsquo;s make this a festival to remember-see you on the streets of Haarlem!</p>\n<p>&nbsp;</p>\n<p>Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. Let&rsquo;s make this a festival to remember-see you on the streets of Haarlem!</p>\n<p>&nbsp;</p>\n<p>Explore the schedule, enjoy the atmosphere, and let Haarlem Jazz ignite your passion for music. Let&rsquo;s make this a festival to remember-see you on the streets of Haarlem!</p>', 8, '2025-03-22 09:55:05', '2025-03-22 21:18:04'),
-(8, 'FourthJazzSection', 'Schedule', 9, '2025-03-22 09:55:05', '2025-03-22 16:14:16'),
-(9, 'last section', '<p>dsadsada</p>', 5, '2025-03-22 16:38:01', '2025-03-22 18:13:54'),
-(10, 'FirstSection', '<p>Test1</p>', 3, '2025-03-22 16:38:01', '2025-03-22 18:13:54'),
-(11, 'SecondSection', '<p>Test2</p>', 3, '2025-03-22 16:38:01', '2025-03-22 18:13:54'),
-(12, 'ThirdSection', '<p>Test3</p>', 3, '2025-03-22 16:38:01', '2025-03-22 18:13:54');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `LOCATION`
@@ -122,33 +95,7 @@ INSERT INTO `LOCATION` (`location_id`, `venue_name`, `postal_code`, `street_name
 -- Table structure for table `MEDIA`
 --
 
-CREATE TABLE `MEDIA` (
-  `media_id` int(11) NOT NULL,
-  `url` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
-
-
--- --------------------------------------------------------
-INSERT INTO `MEDIA` (`media_id`, `url`) VALUES
-(1, 'https://denuk.nl/wp-content/uploads/2022/05/IMG-20220513-WA0003.jpg');
-
---
--- Table structure for table `MEDIA_CONTENTBLOCK`
---
-
-CREATE TABLE `MEDIA_CONTENTBLOCK` (
-  `media_id` int(11) NOT NULL,
-  `contentblock_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
--- --------------------------------------------------------
-INSERT INTO `MEDIA_CONTENTBLOCK` (`media_id`, `contentblock_id`) VALUES
-(1, 10);
-
---
--- Table structure for table `MUSIC_TICKET`
---
 
 CREATE TABLE `MUSIC_TICKET` (
   `music_ticket_id` int(11) NOT NULL,
@@ -210,27 +157,7 @@ INSERT INTO `ORDER` (`order_id`, `order_date`, `total_amount`, `user_id`) VALUES
 
 --
 -- Table structure for table `PAGE`
---
-
-CREATE TABLE `PAGE` (
-  `page_id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
---
--- Dumping data for table `PAGE`
---
-
-INSERT INTO `PAGE` (`page_id`, `title`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'home', 'home', '2025-03-22 09:40:14', '2025-03-22 16:24:33'),
-(2, 'jazz', 'jazz', '2025-03-22 09:40:14', '2025-03-22 16:24:40'),
-(3, 'artist', 'jazz/wouter', '2025-03-22 09:40:14', '2025-03-22 16:24:40'),
-(4, 'artist', 'jazz/ntjam', '2025-03-22 09:40:14', '2025-03-22 16:24:40');
-
--- --------------------------------------------------------
+--------------------------------------------------
 
 --
 -- Table structure for table `password_resets`
@@ -311,33 +238,7 @@ CREATE TABLE `RESTAURANT_GENRE_MAPPING` (
 -- Table structure for table `SECTION`
 --
 
-CREATE TABLE `SECTION` (
-  `section_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `page_id` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
---
--- Dumping data for table `SECTION`
---
-
-INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_at`, `updated_at`) VALUES
-(2, 'Festival Introduction', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(3, 'Festival Route', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(4, 'Call to action', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(5, 'last section', '', 1, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(6, 'FirstJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(7, 'SecondJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(8, 'ThirdazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(9, 'FourthJazzSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(10, 'FirstSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(11, 'SecondSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(12, 'ThirdSection', '', 3, '2025-03-22 09:54:25', '2025-03-22 09:54:25');
-
--- --------------------------------------------------------
+-------------------------------------------------------
 
 --
 -- Table structure for table `SESSION`
@@ -554,9 +455,6 @@ ALTER TABLE `ARTIST`
 --
 -- Indexes for table `CONTENTBLOCK`
 --
-ALTER TABLE `CONTENTBLOCK`
-  ADD PRIMARY KEY (`contentblock_id`),
-  ADD KEY `section_id` (`section_id`);
 
 --
 -- Indexes for table `LOCATION`
@@ -567,15 +465,6 @@ ALTER TABLE `LOCATION`
 --
 -- Indexes for table `MEDIA`
 --
-ALTER TABLE `MEDIA`
-  ADD PRIMARY KEY (`media_id`);
-
---
--- Indexes for table `MEDIA_CONTENTBLOCK`
---
-ALTER TABLE `MEDIA_CONTENTBLOCK`
-  ADD PRIMARY KEY (`media_id`,`contentblock_id`),
-  ADD KEY `contentblock_id` (`contentblock_id`);
 
 --
 -- Indexes for table `MUSIC_TICKET`
@@ -594,12 +483,7 @@ ALTER TABLE `ORDER`
 
 --
 -- Indexes for table `PAGE`
---
-ALTER TABLE `PAGE`
-  ADD PRIMARY KEY (`page_id`),
-  ADD UNIQUE KEY `slug` (`slug`);
 
---
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -635,9 +519,6 @@ ALTER TABLE `RESTAURANT_GENRE_MAPPING`
 --
 -- Indexes for table `SECTION`
 --
-ALTER TABLE `SECTION`
-  ADD PRIMARY KEY (`section_id`),
-  ADD KEY `page_id` (`page_id`);
 
 --
 -- Indexes for table `SESSION`
@@ -725,10 +606,7 @@ ALTER TABLE `ARTIST`
 --
 -- AUTO_INCREMENT for table `CONTENTBLOCK`
 --
-ALTER TABLE `CONTENTBLOCK`
-  MODIFY `contentblock_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
 -- AUTO_INCREMENT for table `LOCATION`
 --
 ALTER TABLE `LOCATION`
@@ -737,8 +615,6 @@ ALTER TABLE `LOCATION`
 --
 -- AUTO_INCREMENT for table `MEDIA`
 --
-ALTER TABLE `MEDIA`
-  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `MUSIC_TICKET`
@@ -754,11 +630,7 @@ ALTER TABLE `ORDER`
 
 --
 -- AUTO_INCREMENT for table `PAGE`
---
-ALTER TABLE `PAGE`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -784,11 +656,7 @@ ALTER TABLE `RESTAURANT_GENRE`
 
 --
 -- AUTO_INCREMENT for table `SECTION`
---
-ALTER TABLE `SECTION`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
 -- AUTO_INCREMENT for table `SESSION`
 --
 ALTER TABLE `SESSION`
@@ -849,15 +717,6 @@ ALTER TABLE `ACCESS_PASS`
 --
 -- Constraints for table `CONTENTBLOCK`
 --
-ALTER TABLE `CONTENTBLOCK`
-  ADD CONSTRAINT `CONTENTBLOCK_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `SECTION` (`section_id`) ON DELETE CASCADE;
-
---
--- Constraints for table `MEDIA_CONTENTBLOCK`
---
-ALTER TABLE `MEDIA_CONTENTBLOCK`
-  ADD CONSTRAINT `MEDIA_CONTENTBLOCK_ibfk_1` FOREIGN KEY (`media_id`) REFERENCES `MEDIA` (`media_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `MEDIA_CONTENTBLOCK_ibfk_2` FOREIGN KEY (`contentblock_id`) REFERENCES `CONTENTBLOCK` (`contentblock_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `MUSIC_TICKET`
@@ -889,10 +748,7 @@ ALTER TABLE `RESTAURANT_GENRE_MAPPING`
 --
 -- Constraints for table `SECTION`
 --
-ALTER TABLE `SECTION`
-  ADD CONSTRAINT `SECTION_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `PAGE` (`page_id`) ON DELETE CASCADE;
 
---
 -- Constraints for table `SESSION`
 --
 ALTER TABLE `SESSION`
