@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="/" />
   <meta charset="UTF-8">
   <title>Admin Dashboard - User & Ticket Management</title>
   <link rel="stylesheet" href="/style/style.css">
@@ -20,18 +21,22 @@
           Users
         </button>
       </li>
-
       <!-- Tickets Tab -->
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tickets-tab" data-bs-toggle="tab" data-bs-target="#tickets" type="button" role="tab" aria-controls="tickets" aria-selected="false">
           Tickets &amp; Availabilities
         </button>
       </li>
-
       <!-- Locations Tab -->
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="locations-tab" data-bs-toggle="tab" data-bs-target="#locations" type="button" role="tab" aria-controls="locations" aria-selected="false">
           Locations
+        </button>
+      </li>
+      <!-- Artists Tab -->
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="artists-tab" data-bs-toggle="tab" data-bs-target="#artists" type="button" role="tab" aria-controls="artists" aria-selected="false">
+          Artists
         </button>
       </li>
     </ul>
@@ -48,7 +53,7 @@
             <div class="alert alert-danger"><?= htmlspecialchars((string) $_GET['error']) ?></div>
           <?php endif; ?>
           
-          <!-- Search, Filter, en Sort  -->
+          <!-- Search, Filter, en Sort -->
           <form method="GET" action="/admin/dashboard" class="mb-4">
             <div class="row g-2">
               <div class="col-md-4">
@@ -103,9 +108,7 @@
                     <td><?= htmlspecialchars($user['registration_date'] ?? '') ?></td>
                     <td>
                       <a href="/admin/edit?id=<?= htmlspecialchars((string) ($user['user_id'] ?? '')) ?>" class="btn btn-sm btn-warning">Edit</a>
-                      <a href="/admin/delete?id=<?= htmlspecialchars((string) ($user['user_id'] ?? '')) ?>" 
-                         class="btn btn-sm btn-danger btn-delete-user" 
-                         data-id="<?= htmlspecialchars((string) ($user['user_id'] ?? '')) ?>">Delete</a>
+                      <a href="/admin/delete?id=<?= htmlspecialchars((string) ($user['user_id'] ?? '')) ?>" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -134,6 +137,7 @@
                   <th>Price</th>
                   <th>Location</th>
                   <th>Available Spots</th>
+                  <th>Artist</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -146,6 +150,7 @@
                     <td><?= htmlspecialchars($show['price'] ?? '') ?></td>
                     <td><?= htmlspecialchars($show['venue_name'] ?? '') ?></td>
                     <td><?= htmlspecialchars($show['available_spots'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($show['artist_name'] ?? '') ?></td>
                     <td>
                       <a href="/show/edit?id=<?= htmlspecialchars($show['show_id'] ?? '') ?>" class="btn btn-sm btn-warning">Edit</a>
                       <form action="/show/destroy" method="POST" style="display:inline;">
@@ -165,10 +170,73 @@
       <div class="tab-pane fade" id="locations" role="tabpanel" aria-labelledby="locations-tab">
         <div class="my-3">
           <h3>Locations</h3>
-          <!-- Optionally, link to a separate page for location management -->
-          <p>
-            <a href="/location/index" class="btn btn-primary">Manage Locations</a>
-          </p>
+          <a href="/location/create" class="btn btn-success mb-3">Create New Location</a>
+          <?php if(empty($locations)): ?>
+            <p>No locations found.</p>
+          <?php else: ?>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Location ID</th>
+                  <th>Venue Name</th>
+                  <th>Postal Code</th>
+                  <th>Street Name</th>
+                  <th>City</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach($locations as $loc): ?>
+                  <tr>
+                    <td><?= htmlspecialchars($loc->getLocationId()) ?></td>
+                    <td><?= htmlspecialchars($loc->getVenueName()) ?></td>
+                    <td><?= htmlspecialchars($loc->getPostalCode()) ?></td>
+                    <td><?= htmlspecialchars($loc->getStreetName()) ?></td>
+                    <td><?= htmlspecialchars($loc->getCity()) ?></td>
+                    <td>
+                      <a href="/location/edit?id=<?= $loc->getLocationId() ?>" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="/location/delete?id=<?= $loc->getLocationId() ?>" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          <?php endif; ?>
+        </div>
+      </div>
+      
+      <!-- Artists Tab Pane -->
+      <div class="tab-pane fade" id="artists" role="tabpanel" aria-labelledby="artists-tab">
+        <div class="my-3">
+          <h3>Artists</h3>
+          <a href="/artist/create" class="btn btn-success mb-3">Create New Artist</a>
+          <?php if(empty($artists)): ?>
+            <p>No artists found.</p>
+          <?php else: ?>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Artist ID</th>
+                  <th>Name</th>
+                  <th>Genre</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach($artists as $artist): ?>
+                  <tr>
+                    <td><?= htmlspecialchars($artist['artist_id'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($artist['name'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($artist['genre'] ?? '') ?></td>
+                    <td>
+                      <a href="/artist/edit?id=<?= htmlspecialchars($artist['artist_id'] ?? '') ?>" class="btn btn-sm btn-warning">Edit</a>
+                      <a href="/artist/delete?id=<?= htmlspecialchars($artist['artist_id'] ?? '') ?>" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          <?php endif; ?>
         </div>
       </div>
       

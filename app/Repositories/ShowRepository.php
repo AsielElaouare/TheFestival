@@ -6,26 +6,33 @@ use PDO;
 class ShowRepository extends Repository
 {
     public function getAllShows(): array
-    {
-        try {
-            $sql = "SELECT 
-                        s.show_id, 
-                        s.show_name, 
-                        s.start_date, 
-                        s.price, 
-                        s.location_id, 
-                        s.available_spots,
-                        l.venue_name
-                    FROM `SHOW` s
-                    LEFT JOIN LOCATION l ON s.location_id = l.location_id";
-            $stmt = $this->connection->prepare($sql);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            error_log("getAllShows error: " . $e->getMessage());
-            return [];
-        }
+{
+    try {
+        $sql = "SELECT 
+                    s.show_id, 
+                    s.show_name, 
+                    s.start_date, 
+                    s.price, 
+                    s.location_id, 
+                    s.available_spots,
+                    l.venue_name,
+                    a.artist_id,
+                    a.name AS artist_name,
+                    a.genre AS artist_genre
+                FROM `SHOW` s
+                LEFT JOIN LOCATION l ON s.location_id = l.location_id
+                LEFT JOIN SHOW_ARTIST sa ON s.show_id = sa.show_id
+                LEFT JOIN ARTIST a ON sa.artist_id = a.artist_id";
+        
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (\PDOException $e) {
+        error_log("getAllShows error: " . $e->getMessage());
+        return [];
     }
+}
+
     
     public function getShowById(int $id): ?array {
         try {
@@ -90,4 +97,33 @@ class ShowRepository extends Repository
             return false;
         }
     }
+
+    public function linkArtistToShow(int $showId, int $artistId): bool
+{
+    try {
+        $sql = "INSERT INTO SHOW_ARTIST (show_id, artist_id) VALUES (:showId, :artistId)";
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([
+            ':showId' => $showId,
+            ':artistId' => $artistId
+        ]);
+    } catch (\PDOException $e) {
+        error_log("linkArtistToShow error: " . $e->getMessage());
+        return false;
+    }
+}
+
+public function unlinkArtistFromShow(int $showId): bool
+{
+    // If you want to remove existing link before re-linking (for updates)
+    try {
+        $sql = "DELETE FROM SHOW_ARTIST WHERE show_id = :showId";
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([':showId' => $showId]);
+    } catch (\PDOException $e) {
+        error_log("unlinkArtistFromShow error: " . $e->getMessage());
+        return false;
+    }
+}
+
 }

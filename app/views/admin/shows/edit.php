@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="/" />
   <meta charset="UTF-8">
   <title>Edit Show</title>
   <link rel="stylesheet" href="/style/style.css">
@@ -20,11 +21,11 @@
       </div>
       
       <div class="mb-3">
-            <label for="event_date" class="form-label">Event Date and Time:</label>
-            <input type="datetime-local" name="event_date" id="event_date" class="form-control"
-         value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($show['start_date'] ?? ''))) ?>"
-         min="<?= date('Y-m-d\TH:i'); ?>" required>
-    </div>
+        <label for="event_date" class="form-label">Event Date and Time:</label>
+        <input type="datetime-local" name="event_date" id="event_date" class="form-control"
+               value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($show['start_date'] ?? ''))) ?>"
+               min="<?= date('Y-m-d\TH:i'); ?>" required>
+      </div>
       
       <div class="mb-3">
         <label for="price" class="form-label">Price:</label>
@@ -35,17 +36,32 @@
       <div class="mb-3">
         <label for="location_id" class="form-label">Location:</label>
         <select name="location_id" id="location_id" class="form-select" required>
-            <option value="">Select a location</option>
-            <?php foreach ($locations as $location): 
-            $selected = ($location->getLocationId() == ($show['location_id'] ?? '')) ? 'selected' : ''; 
-            ?>
-            <option value="<?= htmlspecialchars($location->getLocationId()); ?>" <?= $selected; ?>>
-                <?= htmlspecialchars($location->getVenueName()); ?>
-            </option>
-            <?php endforeach; ?>
+          <option value="">Select a location</option>
+          <?php foreach ($locations as $location): 
+                $selected = ($location->getLocationId() == ($show['location_id'] ?? '')) ? 'selected' : ''; 
+          ?>
+          <option value="<?= htmlspecialchars($location->getLocationId()); ?>" <?= $selected; ?>>
+              <?= htmlspecialchars($location->getVenueName()); ?>
+          </option>
+          <?php endforeach; ?>
         </select>
-        </div>
-
+      </div>
+      
+      <!-- New Artist Dropdown -->
+      <div class="mb-3">
+        <label for="artist_id" class="form-label">Artist:</label>
+        <select name="artist_id" id="artist_id" class="form-select" required>
+          <option value="">Select an artist</option>
+          <?php foreach ($artists as $artist): 
+              // Assuming that $show['artist_id'] holds the current linked artist ID.
+              $selected = ($artist['artist_id'] == ($show['artist_id'] ?? '')) ? 'selected' : '';
+          ?>
+          <option value="<?= htmlspecialchars($artist['artist_id'] ?? ''); ?>" <?= $selected; ?>>
+              <?= htmlspecialchars($artist['name'] ?? ''); ?> (<?= htmlspecialchars($artist['genre'] ?? ''); ?>)
+          </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
       
       <div class="mb-3">
         <label for="available_spots" class="form-label">Available Spots:</label>

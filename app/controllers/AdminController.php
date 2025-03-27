@@ -30,8 +30,17 @@ class AdminController {
         $users = $this->userService->getAllUsers($search, $sortColumn, $sortDirection);
         $shows = $this->showService->getAllShows();
         
+        // Load locations
+        $locationRepo = new \App\Repositories\LocationRepository();
+        $locations = $locationRepo->getAllLocations();
+        
+        // Load artists (assuming you have an ArtistRepository with getAllArtists())
+        $artistRepo = new \App\Repositories\ArtistRepository();
+        $artists = $artistRepo->getAllArtists();
+        
         include __DIR__ . '/../views/admin/dashboard.php';
     }
+    
     
     public function create() {
         include __DIR__ . '/../views/admin/users/create.php';
