@@ -122,7 +122,7 @@ include __DIR__. '/../header.php';
 </div>
 </section>
 
-<div class="d-flex justify-content-around align-items-center">
+<div class="d-flex justify-content-around align-items-center bg-yellow">
   <img class="w-25" src="/uploads/jazz_pictures/sax_vector.svg" alt="a cool saxophone">
   <div>
     <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>

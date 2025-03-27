@@ -6,8 +6,8 @@ include __DIR__ . '/../header.php';
   <!-- Hero Section (background image is handled in style.css) -->
   <div class="hero-section">
     <div class="hero-overlay">
-      <h1 class="impact-font hero-title">DANCE HAARLEM!</h1>
-      <p class="hero-description">
+      <h1 class="impact-font hero-title contenteditable" >DANCE HAARLEM!</h1>
+      <p class="hero-description contenteditable" >
         Get ready for an unforgettable weekend filled with electrifying beats, spectacular performances, and world-class DJs!
         Whether you’re here for the biggest names in electronic music or discovering new favorites, DANCE brings you three days
         of nonstop music and energy across stunning venues. Explore our lineup, check out the schedules, and prepare to immerse
@@ -21,9 +21,12 @@ include __DIR__ . '/../header.php';
     <h2 class="impact-font purple mb-4">Featured Artists</h2>
     <div class="row justify-content-center">
       <div class="col-md-3 text-center mb-4">
-        <img src="/uploads/martingarrixfirst.jpg"
+        <section class="contenteditable">
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'headerDanceContent')) ?>" class="card-img-top p-3 w-50"
              class="img-fluid rounded-circle mb-2"
              style="width: 150px; height: 150px; object-fit: cover;">
+        </section>
+       
         <h5 class="pink">Martin Garrix</h5>
       </div>
       <div class="col-md-3 text-center mb-4">
