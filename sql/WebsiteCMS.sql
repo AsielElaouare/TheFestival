@@ -204,7 +204,7 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (46, 'martinHeroImg', '/uploads/martinhero.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:28', '2025-03-28 09:16:27');
 
 
 --
