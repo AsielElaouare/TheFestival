@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS WebsiteCMS;
+USE WebsiteCMS;
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -67,7 +70,40 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (24, 'SecondSection', '<p>asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (25, 'ThirdSection', '<p>Asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (26, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 15, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(26, 'headerDanceContent', '/uploads/martingarrixfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27');
+(27, 'headerDanceContent', '/uploads/martingarrixfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
+(28, 'headerDanceContent2', '/uploads/hardwellfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
+(29, 'ArtsNr1CardDanceName', 'Martin Garrix', 17, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(30, 'ArtsNr2CardDanceName', 'Hardwell', 17, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(31, 'FeaturedArtistText', 'Featured Artist', 17, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(32, 'LineUpTextDance', 'Line-Up', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(33, 'LineUpArt1Pic', '/uploads/arminvanbuurennoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(34, 'LineUpTextDanceArt1', 'Armin Van Buuren', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(35, 'LineUpArt2Pic', '/uploads\nickyromero.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(36, 'LineUpTextDanceArt2', 'Nicky Romero', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(37, 'LineUpArt3Pic', '/uploads/afrojack.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(38, 'LineUpTextDanceArt3', 'Afrojack', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(39, 'LineUpArt4Pic', '/uploads\tietsonoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(40, 'LineUpTextDanceArt4', 'Tiesto', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(41, 'LineUpArt5Pic', '/uploads/hardwellnoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(42, 'LineUpTextDanceArt5', 'Hardwell', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(43, 'LineUpArt6Pic', '/uploads/martingarrix.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(46, 'martinHeroImg', '/uploads/martinhero.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- --------------------------------------------------------
 
@@ -128,7 +164,11 @@ INSERT INTO `PAGE` (`page_id`, `title`, `slug`, `created_at`, `updated_at`) VALU
 (2, 'jazz', 'jazz', '2025-03-22 09:40:14', '2025-03-22 16:24:40'),
 (3, 'artist', 'jazz/wouter', '2025-03-22 09:40:14', '2025-03-22 16:24:40'),
 (4, 'artist', 'jazz/ntjam', '2025-03-22 09:40:14', '2025-03-22 16:24:40'),
-(5, 'dance', 'dance', '2025-03-27 09:13:19', '2025-03-27 09:13:19');
+(5, 'dance', 'dance', '2025-03-27 09:13:19', '2025-03-27 09:13:19'),
+(6, 'artist', 'dance/martin', '2025-03-27 09:13:19', '2025-03-27 09:13:19'),
+(7, 'artist', 'dance/hardwell', '2025-03-27 09:13:19', '2025-03-27 09:13:19'),
+
+
 
 -- --------------------------------------------------------
 
@@ -164,7 +204,15 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (13, 'JazzArtistsSection', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
 (14, 'JazzHeader', '', 2, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
 (15, 'Artist2', '', 4, '2025-03-22 09:54:25', '2025-03-22 09:54:25'),
-(16, 'headerDance', NULL, 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(16, 'headerDance', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(17, 'FeaturedArtistSection', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(18, 'LineUpSectionDance', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(19, 'martinHero', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(20, 'martinKeyTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+
+
+
+
 
 --
 -- Indexes for dumped tables

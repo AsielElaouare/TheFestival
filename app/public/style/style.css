@@ -146,11 +146,33 @@
 
 /* The entire dance page background */
 .dance-page {
-    background-color: #2C0A37; /* Dark purple background */
-    color: #fff;              /* White text on dark background */
+    background-color: #F9F871; /* Dark purple background */
+    color: #000;              /* White text on dark background */
     min-height: 100vh;
     padding: 0px;
 }
+
+.artist-name-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #E60077;
+    color: #FFD150;
+    font-weight: bold;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.artist-name-btn:hover {
+    background-color: #c40065;
+    color: white;
+    text-decoration: none;
+}
+
 
 /* Schedule section specifically with a yellow background */
 #schedule {
@@ -161,3 +183,202 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+/* === DETAIL DANCE PAGE === */
+
+.wave-svg-top,
+.wave-svg-bottom {
+    width: 100%;
+    display: block;
+}
+
+.artist-header {
+    padding: 20px 0;
+}
+
+.artist-header__name {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* Highlight Section */
+.artist-highlight {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.artist-highlight__image-container {
+    flex: 1 1 300px;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.artist-highlight__image {
+    max-width: 100%;
+    border-radius: 30px;
+}
+
+.artist-highlight__hashtags {
+    flex: 1 1 300px;
+    max-width: 600px;
+    padding: 0 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.hashtag-title {
+    color: #FF5733;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.hashtag-desc {
+    color: #800080;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+/* Albums Section */
+.artist-albums {
+    padding: 40px 20px;
+}
+
+.artist-albums__title {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+/* === ALBUM SECTION === */
+
+.albums-section {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.album-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #3a3a3a;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    width: 100%;
+    max-width: 900px;
+}
+
+.album-block__cover {
+    max-width: 250px;
+    border-radius: 10px;
+}
+
+.album-block__info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.album-block__title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.album-block__description {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.album-banner__image {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 50px;
+}
+
+/* === TRACK CARDS === */
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 950px;
+}
+
+.track-card {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.track-card__cover {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.track-card__info {
+    flex: 1;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    border-radius: 0 8px 8px 0;
+    background: #999; /* fallback */
+}
+
+.track-card__title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.track-card__buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.track-card__play {
+    background-color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-image: url('/uploads/play_icon.svg');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.track-card__spotify {
+    width: 25px;
+    height: 25px;
+}
+
+/* Gradients */
+.gradient-animals { background: linear-gradient(90deg, #000, #aaa); }
+.gradient-forever { background: linear-gradient(90deg, #663399, #8a2be2); }
+.gradient-nameoflove { background: linear-gradient(90deg, #800080, #e60077); }
+.gradient-sun { background: linear-gradient(90deg, #c97c39, #a08c68); }
+.gradient-scared { background: linear-gradient(90deg, #666, #aaa); }
+.gradient-forbidden { background: linear-gradient(90deg, #333, #999); }
+
+

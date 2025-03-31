@@ -27,6 +27,7 @@ class PatternRouter
         }
         $methodName = $explodedUri[1];
 
+        
         if(!class_exists($controllerName) || !method_exists($controllerName, $methodName)) {
             http_response_code(404);
             return;
