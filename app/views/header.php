@@ -3,6 +3,7 @@ $adminIsLoggedIn = false;
 if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){
   $adminIsLoggedIn = true;
 }
+
 function getContentByTitle($blocks, $title) {
   foreach ($blocks as $block) {
       if ($block->contentblock_title === $title) {

@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . '/../header.php';
 ?>
-<div class="dance-page">
+<div class="dance-page bg-yellow">
 
   <!-- Hero Section (background image is handled in style.css) -->
   <div class="hero-section">
@@ -18,39 +18,120 @@ include __DIR__ . '/../header.php';
 
   <!-- Featured Artists -->
   <section class="my-5 text-center" id="featured-artists">
-    <h2 class="impact-font purple mb-4">Featured Artists</h2>
-    <div class="row justify-content-center">
+  <h2 class="impact-font contenteditable" data-title="FeaturedArtistText">
+          <?= getContentByTitle($blocks, 'FeaturedArtistText') ?>
+        </h2> 
+
+            <div class="row justify-content-center">
       <div class="col-md-3 text-center mb-4">
+
         <section class="contenteditable">
-        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'headerDanceContent')) ?>" class="card-img-top p-3 w-50"
+        <img  src="<?= getContentByTitle($blocks, 'headerDanceContent') ?>" class="card-img-top p-3 w-50"
              class="img-fluid rounded-circle mb-2"
              style="width: 150px; height: 150px; object-fit: cover;">
         </section>
        
-        <h5 class="pink">Martin Garrix</h5>
+        <a href="/dance/artistView?id=5" class="btn artist-name-btn impact-font">
+          <?= getContentByTitle($blocks, 'ArtsNr1CardDanceName') ?>
+        </a>
       </div>
       <div class="col-md-3 text-center mb-4">
-        <img src="/uploads/hardwellfirst.jpg"
+      <section class="contenteditable">
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'headerDanceContent2')) ?>" class="card-img-top p-3 w-50"
              class="img-fluid rounded-circle mb-2"
              style="width: 150px; height: 150px; object-fit: cover;">
-        <h5 class="pink">Hardwell</h5>
+        </section>
+        <h5 class="impact-font contenteditable" data-title="ArtsNr2CardDanceName">
+          <?= getContentByTitle($blocks, 'ArtsNr2CardDanceName') ?>
+        </h5>        
       </div>
     </div>
   </section>
 
   <!-- Line-Up -->
   <section class="my-5" id="line-up">
-    <h2 class="impact-font purple mb-4 text-center">Line-Up</h2>
-    <div class="row">
+  <h2 class="impact-font contenteditable" data-title="LineUpTextDance">
+          <?= getContentByTitle($blocks, 'LineUpTextDance') ?>
+        </h2>     <div class="row">
       <!-- Example lineup cards -->
+      <section class="contenteditable">
       <div class="col-md-4 col-lg-2 mb-4">
         <div class="card">
-          <img src="/uploads/arminvanbuurennoback.png" class="card-img-top object-fit-cover">
-          <div class="card-body text-center p-2">
-            <h6 class="mb-0 pink">Armin van Buuren</h6>
-          </div>
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt1Pic')) ?>" class="card-img-top p-3 w-50"
+             class="img-fluid rounded-circle mb-2"
+             style="width: 150px; height: 150px; object-fit: cover;">
+        </section>          
+        <div class="card-body text-center p-2">
+        <h6 class="impact-font contenteditable" data-title="LineUpTextDanceArt1">
+          <?= getContentByTitle($blocks, 'LineUpTextDanceArt1') ?>
+        </h6>  
+                </div>
         </div>
       </div>
+      <section class="contenteditable">
+      <div class="col-md-4 col-lg-2 mb-4">
+        <div class="card">
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt2Pic')) ?>" class="card-img-top p-3 w-50"
+             class="img-fluid rounded-circle mb-2"
+             style="width: 150px; height: 150px; object-fit: cover;">
+        </section>  
+        <div class="card-body text-center p-2">
+        <h6 class="impact-font contenteditable" data-title="LineUpTextDanceArt2">
+          <?= getContentByTitle($blocks, 'LineUpTextDanceArt2') ?>
+        </h6> 
+                </div>
+
+        <section class="contenteditable">
+      <div class="col-md-4 col-lg-2 mb-4">
+        <div class="card">
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt3Pic')) ?>" class="card-img-top p-3 w-50"
+             class="img-fluid rounded-circle mb-2"
+             style="width: 150px; height: 150px; object-fit: cover;">
+        </section>  
+        <div class="card-body text-center p-2">
+        <h6 class="impact-font contenteditable" data-title="LineUpTextDanceArt3">
+          <?= getContentByTitle($blocks, 'LineUpTextDanceArt3') ?>
+        </h6> 
+                </div>
+
+        <section class="contenteditable">
+      <div class="col-md-4 col-lg-2 mb-4">
+        <div class="card">
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt4Pic')) ?>" class="card-img-top p-3 w-50"
+             class="img-fluid rounded-circle mb-2"
+             style="width: 150px; height: 150px; object-fit: cover;">
+        </section> 
+        <div class="card-body text-center p-2">
+        <h6 class="impact-font contenteditable" data-title="LineUpTextDanceArt4">
+          <?= getContentByTitle($blocks, 'LineUpTextDanceArt4') ?>
+        </h6> 
+                </div> 
+
+        <section class="contenteditable">
+      <div class="col-md-4 col-lg-2 mb-4">
+        <div class="card">
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt5Pic')) ?>" class="card-img-top p-3 w-50"
+             class="img-fluid rounded-circle mb-2"
+             style="width: 150px; height: 150px; object-fit: cover;">
+        </section> 
+        <div class="card-body text-center p-2">
+        <h6 class="impact-font contenteditable" data-title="LineUpTextDanceArt5">
+          <?= getContentByTitle($blocks, 'LineUpTextDanceArt5') ?>
+        </h6> 
+                </div> 
+
+        <section class="contenteditable">
+      <div class="col-md-4 col-lg-2 mb-4">
+        <div class="card">
+        <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt6Pic')) ?>" class="card-img-top p-3 w-50"
+             class="img-fluid rounded-circle mb-2"
+             style="width: 150px; height: 150px; object-fit: cover;">
+        </section> 
+        <div class="card-body text-center p-2">
+        <h6 class="impact-font contenteditable" data-title="LineUpTextDanceArt6">
+          <?= getContentByTitle($blocks, 'LineUpTextDanceArt6') ?>
+        </h6> 
+                </div> 
       <!-- Add more lineup cards as needed... -->
     </div>
   </section>
@@ -106,6 +187,7 @@ include __DIR__ . '/../header.php';
     <button class="primary-button impact-font icon-size">View Full Line-Up</button>
   </div>
 </div>
+<script src="/js/cms.js?v=65"></script>
 
 <?php
 include __DIR__ . '/../footer.php';
