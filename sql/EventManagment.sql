@@ -548,11 +548,8 @@ CREATE TABLE `USER` (
 --
 
 INSERT INTO `USER` (`user_id`, `name`, `email`, `phone_number`, `pass_hash`, `role`, `registration_date`) VALUES
-(4, 'Asiel', 'admin@example.com', '1234567890', '713bfda78870bf9d1b261f565286f85e97ee614efe5f0faf7c34e7ca4f65baca', 'admin', '2025-03-05 03:49:29'),
-(5, 'Sofian Said', 'sofian@example.nl', '0642318194', '$2y$12$z3zssenqRzsdZzMgpbfWs.N/ZhLssytZD5fewTQfOZXyqNlSxMssG', 'admin', '2025-03-05 03:49:29'),
-(11, 'Admin1', 'admin@test.com', '06131417191', '$2y$12$kaPGv8UJ7y7Q1HWxScwIQeJLYs3/FaolaR8Zfnp1nXvlSocxgNYQC', 'admin', '2025-03-05 03:49:29'),
-(12, 'Asiel Elaouare', 'elaasiel@gmail.com', '+31 0625187218', '$2y$12$tvddAcwqu9sa/WqvPpS9ku2br8GOdECqYcubgtaMzyS7GwPpBtfGi', 'admin', '2025-03-08 13:47:01'),
-(13, 'Asiel', 'elaouareasiel82@gmail.com', '+31 06 25187218', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'customer', '2025-03-13 09:13:12');
+(4, 'admin', 'admin@test.com', '1234567890', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'admin', '2025-03-05 03:49:29'),
+(5, 'customer', 'customer@test.com', '0642318194', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'customer', '2025-03-05 03:49:29');
 
 --
 -- Indexes for dumped tables
