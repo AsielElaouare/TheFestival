@@ -23,15 +23,15 @@ class CmsRepository extends Repository{
                 p.slug AS page_slug,
                 m.url AS media_url
             FROM 
-                WebsiteCMS.CONTENTBLOCK cb
+                CONTENTBLOCK cb
             JOIN 
-                WebsiteCMS.SECTION s ON cb.section_id = s.section_id
+                SECTION s ON cb.section_id = s.section_id
             JOIN 
-                WebsiteCMS.PAGE p ON s.page_id = p.page_id
+                PAGE p ON s.page_id = p.page_id
             LEFT JOIN 
-                WebsiteCMS.MEDIA_CONTENTBLOCK mcb ON cb.contentblock_id = mcb.contentblock_id
+                MEDIA_CONTENTBLOCK mcb ON cb.contentblock_id = mcb.contentblock_id
             LEFT JOIN 
-                WebsiteCMS.MEDIA m ON mcb.media_id = m.media_id
+                MEDIA m ON mcb.media_id = m.media_id
             WHERE p.page_id = :page_id
             ORDER BY 
                 cb.created_at DESC");
@@ -49,9 +49,9 @@ class CmsRepository extends Repository{
         public function updateContentBatch(array $updates, $pageIdentifier) {
             try {
                 $this->connection->beginTransaction();
-                $sql = "UPDATE WebsiteCMS.CONTENTBLOCK cb
-                        JOIN WebsiteCMS.SECTION s ON cb.section_id = s.section_id
-                        JOIN WebsiteCMS.PAGE p ON s.page_id = p.page_id
+                $sql = "UPDATE CONTENTBLOCK cb
+                        JOIN SECTION s ON cb.section_id = s.section_id
+                        JOIN PAGE p ON s.page_id = p.page_id
                         SET cb.content = :content
                         WHERE ";
         
