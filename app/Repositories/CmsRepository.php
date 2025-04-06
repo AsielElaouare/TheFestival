@@ -20,18 +20,13 @@ class CmsRepository extends Repository{
                 s.name AS section_name,
                 s.description AS section_description,
                 p.title AS page_title,
-                p.slug AS page_slug,
-                m.url AS media_url
+                p.slug AS page_slug
             FROM 
                 CONTENTBLOCK cb
             JOIN 
                 SECTION s ON cb.section_id = s.section_id
             JOIN 
                 PAGE p ON s.page_id = p.page_id
-            LEFT JOIN 
-                MEDIA_CONTENTBLOCK mcb ON cb.contentblock_id = mcb.contentblock_id
-            LEFT JOIN 
-                MEDIA m ON mcb.media_id = m.media_id
             WHERE p.page_id = :page_id
             ORDER BY 
                 cb.created_at DESC");
