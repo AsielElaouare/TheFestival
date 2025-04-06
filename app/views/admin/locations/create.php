@@ -14,7 +14,7 @@
     <?php if (isset($error)): ?>
         <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
-    <form method="POST" action="/location/store">
+    <form method="POST" action="/location/create">
         <div class="mb-3">
             <label for="venue_name" class="form-label">Venue Name:</label>
             <input type="text" name="venue_name" id="venue_name" class="form-control" required>

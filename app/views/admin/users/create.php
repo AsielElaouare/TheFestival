@@ -13,7 +13,7 @@
         <?php if(isset($error)): ?>
             <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
         <?php endif; ?>
-        <form method="POST" action="/admin/store">
+        <form method="POST" action="/admin/create">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
                 <input type="text" name="name" id="name" class="form-control" required>

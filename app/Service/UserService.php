@@ -7,7 +7,6 @@ class UserService {
     private $userRepo;
 
     public function __construct() {
-        // Initialize the repository (which already uses the shared DB connection)
         $this->userRepo = new UserRepository();
     }
 

@@ -115,7 +115,6 @@ class ShowRepository extends Repository
 
 public function unlinkArtistFromShow(int $showId): bool
 {
-    // If you want to remove existing link before re-linking (for updates)
     try {
         $sql = "DELETE FROM SHOW_ARTIST WHERE show_id = :showId";
         $stmt = $this->connection->prepare($sql);

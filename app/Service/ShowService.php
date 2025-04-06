@@ -36,7 +36,7 @@ class ShowService
 {
     $showId = $this->createShow($data);
     if ($showId) {
-        // Link the show to the artist
+        // Link show aan artiest
         $this->showRepository->linkArtistToShow($showId, $artistId);
     }
     return $showId;
@@ -44,12 +44,12 @@ class ShowService
 
 public function updateShowWithArtist(int $id, array $data, int $artistId): bool
 {
-    // Unlink old artist(s)
+    // unlink oude artist of artiesten
     $this->showRepository->unlinkArtistFromShow($id);
-    // Update the show data
+    // Update the data van show 
     $success = $this->updateShow($id, $data);
     if ($success) {
-        // Link new artist
+        // Link nnieuwe artiest
         $this->showRepository->linkArtistToShow($id, $artistId);
     }
     return $success;
