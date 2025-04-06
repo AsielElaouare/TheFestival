@@ -10,7 +10,7 @@
 <?php include __DIR__ . '/../../partials/admin_header.php'; ?>
     <div class="container my-5">
         <h2>Edit User</h2>
-        <form method="POST" action="/admin/update">
+        <form method="POST" action="/admin/edit">
             <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user->getUserId()); ?>">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>

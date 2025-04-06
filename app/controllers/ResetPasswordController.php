@@ -36,9 +36,6 @@ class ResetPasswordController {
             echo "Please provide a new password.";
             return;
         }
-
-        // Optioneel: valideer hier het token en de e-mail met behulp van je password_resets-tabel.
-        // Voor eenvoud, ga ervan uit dat het geldig is.
         
         // Haal de gebruiker op basis van e-mail
         $user = $this->userService->findByEmail($email);
@@ -53,12 +50,10 @@ class ResetPasswordController {
             $user->getUserId(),
             $user->getName(),
             $user->getEmail(),
-            $newPassword, // we pass new password here so service re-hashes it
+            $newPassword, // rehash
             $user->getRole()->value,
             $user->getPhoneNumber()
         );
-
-        // Verwijder eventueel het token uit de password_resets-tabel.
 
         echo "Your password has been reset successfully. <a href='/login'>Click here to login</a>.";
     }

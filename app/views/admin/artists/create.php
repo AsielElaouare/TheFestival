@@ -14,7 +14,7 @@
     <div class="alert alert-danger"><?= htmlspecialchars($error); ?></div>
   <?php endif; ?>
 
-  <form method="POST" action="/artist/store">
+  <form method="POST" action="/artist/create">
     <div class="mb-3">
       <label for="name" class="form-label">Artist Name:</label>
       <input type="text" name="name" id="name" class="form-control" required>

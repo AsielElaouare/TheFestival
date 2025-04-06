@@ -11,7 +11,7 @@
 <div class="container my-5">
   <h2>Confirm Delete</h2>
   <p>Are you sure you want to delete artist "<strong><?= htmlspecialchars($artist['name']); ?></strong>"?</p>
-  <form method="POST" action="/artist/destroy">
+  <form method="POST" action="/artist/delete">
     <input type="hidden" name="artist_id" value="<?= htmlspecialchars($artist['artist_id']); ?>">
     <button type="submit" class="btn btn-danger">Yes, Delete</button>
     <a href="/artist/index" class="btn btn-secondary">Cancel</a>

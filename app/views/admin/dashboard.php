@@ -153,10 +153,7 @@
                     <td><?= htmlspecialchars($show['artist_name'] ?? '') ?></td>
                     <td>
                       <a href="/show/edit?id=<?= htmlspecialchars($show['show_id'] ?? '') ?>" class="btn btn-sm btn-warning">Edit</a>
-                      <form action="/show/destroy" method="POST" style="display:inline;">
-                        <input type="hidden" name="show_id" value="<?= htmlspecialchars($show['show_id'] ?? '') ?>">
-                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                      </form>
+                      <a href="/show/delete?id=<?= htmlspecialchars($show['show_id'] ?? '') ?>" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                   </tr>
                 <?php endforeach; ?>
