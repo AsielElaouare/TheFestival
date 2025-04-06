@@ -15,7 +15,7 @@
         <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
 
-    <form method="POST" action="/location/update">
+    <form method="POST" action="/location/edit">
         <input type="hidden" name="location_id" value="<?= htmlspecialchars($location->getLocationId()) ?>">
 
         <div class="mb-3">

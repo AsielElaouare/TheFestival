@@ -10,6 +10,8 @@ use App\Helper\InputHelper;
 class ShowController
 {
     private ShowService $showService;
+    private LocationRepository $locationRepo;
+    private ArtistRepository $artistRepo;
 
     public function __construct()
     {
@@ -19,114 +21,108 @@ class ShowController
         }
         
         $this->showService = new ShowService(new ShowRepository());
+        $this->locationRepo = new LocationRepository();
+        $this->artistRepo = new ArtistRepository();
     }
 
-    // Laat alle shows zien
+    // Toon alle shows
     public function index()
     {
         $shows = $this->showService->getAllShows();
         include __DIR__ . '/../views/admin/shows/index.php';
     }
 
-    // Toon het formulier voor het aanmaken van een nieuwe show
+    // Combineer Create en Store: GET toont formulier, POST verwerkt creatie
     public function create()
     {
-        // Haal alle locaties op
-        $locationRepo = new LocationRepository();
-        $locations = $locationRepo->getAllLocations();
-        
-        // Haal alle artiesten op
-        $artistRepo = new ArtistRepository();
-        $artists = $artistRepo->getAllArtists();
-
-        include __DIR__ . '/../views/admin/shows/create.php';
-    }
-
-    // Verwerk de inzending van het formulier voor een nieuwe show
-    public function store()
-    {
-        $data = [
-            'show_name'       => InputHelper::sanitizeString($_POST['show_name'] ?? ''),
-            'start_date'      => InputHelper::sanitizeString($_POST['event_date'] ?? ''),
-            'price'           => InputHelper::sanitizeString($_POST['price'] ?? 0),
-            'location_id'     => InputHelper::sanitizeString($_POST['location_id'] ?? 0),
-            'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
-        ];
-        // Maak de show aan en ontvang de gegenereerde ID
-        $showId = $this->showService->createShow($data);
-        // Haal de geselecteerde artiest op uit het formulier
-        $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
-        if ($showId && !empty($artistId)) {
-            // Koppel de artiest aan de show via ShowService
-            $this->showService->linkArtist($showId, (int)$artistId);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = [
+                'show_name'       => InputHelper::sanitizeString($_POST['show_name'] ?? ''),
+                'start_date'      => InputHelper::sanitizeString($_POST['event_date'] ?? ''),
+                'price'           => InputHelper::sanitizeString($_POST['price'] ?? 0),
+                'location_id'     => InputHelper::sanitizeString($_POST['location_id'] ?? 0),
+                'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
+            ];
+            $showId = $this->showService->createShow($data);
+            $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
+            if ($showId && !empty($artistId)) {
+                $this->showService->linkArtist($showId, (int)$artistId);
+            }
+            header("Location: /admin/dashboard?message=Show+created");
+            exit();
+        } else {
+            $locations = $this->locationRepo->getAllLocations();
+            $artists = $this->artistRepo->getAllArtists();
+            include __DIR__ . '/../views/admin/shows/create.php';
         }
-        header("Location: /admin/dashboard?message=Show+created");
-        exit();
     }
 
-    // Toon het formulier voor het editen van een bestaande show
+    // Combineer Edit en Update: GET toont formulier, POST verwerkt update
     public function edit()
     {
-        $id = InputHelper::sanitizeString($_GET['id'] ?? '');
-        if (empty($id)) {
-            header("Location: /admin/dashboard?error=Show+not+found");
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = InputHelper::sanitizeString($_POST['show_id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=Show+not+found");
+                exit();
+            }
+            $data = [
+                'show_name'       => InputHelper::sanitizeString($_POST['show_name'] ?? ''),
+                'start_date'      => InputHelper::sanitizeString($_POST['event_date'] ?? ''),
+                'price'           => InputHelper::sanitizeString($_POST['price'] ?? 0),
+                'location_id'     => InputHelper::sanitizeString($_POST['location_id'] ?? 0),
+                'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
+            ];
+            $this->showService->updateShow($id, $data);
+            $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
+            if (!empty($artistId)) {
+                // Verwijder bestaande koppeling en koppel de nieuwe artiest
+                $this->showService->unlinkArtist($id);
+                $this->showService->linkArtist($id, (int)$artistId);
+            }
+            header("Location: /admin/dashboard?message=Show+updated");
             exit();
+        } else {
+            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=Show+not+found");
+                exit();
+            }
+            $show = $this->showService->getShowById($id);
+            if (!$show) {
+                header("Location: /admin/dashboard?error=Show+not+found");
+                exit();
+            }
+            $locations = $this->locationRepo->getAllLocations();
+            $artists = $this->artistRepo->getAllArtists();
+            include __DIR__ . '/../views/admin/shows/edit.php';
         }
-        $show = $this->showService->getShowById($id);
-        if (!$show) {
-            header("Location: /admin/dashboard?error=Show+not+found");
-            exit();
-        }
-        
-        // Haal alle beschikbare locaties op voor de dropdown
-        $locationRepo = new LocationRepository();
-        $locations = $locationRepo->getAllLocations();
-        
-        // Haal alle artiesten op voor de dropdown
-        $artistRepo = new ArtistRepository();
-        $artists = $artistRepo->getAllArtists();
-        
-        include __DIR__ . '/../views/admin/shows/edit.php';
     }
 
-    // Verwerk de inzending van het formulier voor bijwerken van een show
-    public function update()
+    // Combineer Delete bevestiging en verwijdering: GET toont bevestigingspagina, POST verwerkt verwijdering
+    public function delete()
     {
-        $id = InputHelper::sanitizeString($_POST['show_id'] ?? '');
-        if (empty($id)) {
-            header("Location: /admin/dashboard?error=Show+not+found");
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = InputHelper::sanitizeString($_POST['show_id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=Show+not+found");
+                exit();
+            }
+            $this->showService->deleteShow($id);
+            header("Location: /admin/dashboard?message=Show+deleted");
             exit();
+        } else {
+            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=Show+not+found");
+                exit();
+            }
+            $show = $this->showService->getShowById($id);
+            if (!$show) {
+                header("Location: /admin/dashboard?error=Show+not+found");
+                exit();
+            }
+            include __DIR__ . '/../views/admin/shows/delete.php';
         }
-        $data = [
-            'show_name'       => InputHelper::sanitizeString($_POST['show_name'] ?? ''),
-            'start_date'      => InputHelper::sanitizeString($_POST['event_date'] ?? ''),
-            'price'           => InputHelper::sanitizeString($_POST['price'] ?? 0),
-            'location_id'     => InputHelper::sanitizeString($_POST['location_id'] ?? 0),
-            'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
-        ];
-        $this->showService->updateShow($id, $data);
-        // Update de artiest-koppeling als er een nieuwe artiest is geselecteerd
-        $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
-        if (!empty($artistId)) {
-            // Eerst, verwijder bestaande koppeling
-            $this->showService->unlinkArtist($id);
-            // Link de nieuwe artiest
-            $this->showService->linkArtist($id, (int)$artistId);
-        }
-        header("Location: /admin/dashboard?message=Show+updated");
-        exit();
-    }
-
-    // Verwerk het verwijderen van een show
-    public function destroy()
-    {
-        $id = InputHelper::sanitizeString($_POST['show_id'] ?? '');
-        if (empty($id)) {
-            header("Location: /admin/dashboard?error=Show+not+found");
-            exit();
-        }
-        $this->showService->deleteShow($id);
-        header("Location: /admin/dashboard?message=Show+deleted");
-        exit();
     }
 }

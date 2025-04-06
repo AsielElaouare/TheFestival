@@ -30,11 +30,11 @@ class AdminController {
         $users = $this->userService->getAllUsers($search, $sortColumn, $sortDirection);
         $shows = $this->showService->getAllShows();
         
-        // Load locations
+        // laad locaties 
         $locationRepo = new \App\Repositories\LocationRepository();
         $locations = $locationRepo->getAllLocations();
         
-        // Load artists (assuming you have an ArtistRepository with getAllArtists())
+        // laad artiesten
         $artistRepo = new \App\Repositories\ArtistRepository();
         $artists = $artistRepo->getAllArtists();
         
@@ -42,88 +42,98 @@ class AdminController {
     }
     
     
+    // Combineer Create en Store: als GET tonen we het formulier, als POST verwerken we de creatie
     public function create() {
-        include __DIR__ . '/../views/admin/users/create.php';
-    }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name        = InputHelper::sanitizeString($_POST['name'] ?? '');
+            $email       = InputHelper::sanitizeEmail($_POST['email'] ?? '');
+            $password    = $_POST['password'] ?? '';
+            $role        = InputHelper::sanitizeString($_POST['role'] ?? 'visitor');
+            $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
     
-    public function store() {
-        $name        = InputHelper::sanitizeString($_POST['name'] ?? '');
-        $email       = InputHelper::sanitizeEmail($_POST['email'] ?? '');
-        $password    = $_POST['password'] ?? '';
-        $role        = InputHelper::sanitizeString($_POST['role'] ?? 'visitor');
-        $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
-    
-        // Basisvalidatie: naam, e-mail en wachtwoord zijn verplicht.
-        if(empty($name) || empty($email) || empty($password)) {
-            $error = "Name, email, and password are required.";
+            // Basisvalidatie: naam, e-mail en wachtwoord zijn verplicht.
+            if(empty($name) || empty($email) || empty($password)) {
+                $error = "Name, email, and password are required.";
+                include __DIR__ . '/../views/admin/users/create.php';
+                return;
+            }
+            
+            $result = $this->userService->createUser($name, $email, $password, $role, $phoneNumber);
+            if (!$result) {
+                header("Location: /admin/dashboard?error=Could+not+create+user");
+                exit();
+            }
+            header("Location: /admin/dashboard?message=User+created");
+            exit();
+        } else {
             include __DIR__ . '/../views/admin/users/create.php';
-            return;
         }
-        
-        $result = $this->userService->createUser($name, $email, $password, $role, $phoneNumber);
-        if (!$result) {
-            header("Location: /admin/dashboard?error=Could+not+create+user");
-            return;
-        }
-        header("Location: /admin/dashboard?message=User+created");
-        exit();
     }
     
+    // Combineer Edit en Update: als GET tonen we het formulier, als POST verwerken we de update
     public function edit() {
-        $id = InputHelper::sanitizeString($_GET['id'] ?? '');
-        $user = $this->userService->getUserById($id);
-        include __DIR__ . '/../views/admin/users/edit.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = InputHelper::sanitizeString($_POST['user_id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=User+not+found");
+                exit();
+            }
+            $name        = InputHelper::sanitizeString($_POST['name'] ?? '');
+            $email       = InputHelper::sanitizeEmail($_POST['email'] ?? '');
+            $role        = InputHelper::sanitizeString($_POST['role'] ?? 'visitor');
+            $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
+            $newPassword = $_POST['password'] ?? '';
+    
+            $result = $this->userService->updateUser($id, $name, $email, $newPassword, $role, $phoneNumber);
+            if (!$result) {
+                header("Location: /admin/dashboard?error=User+update+failed");
+                exit();
+            }
+            header("Location: /admin/dashboard?message=User+updated");
+            exit();
+        } else {
+            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=User+not+found");
+                exit();
+            }
+            $user = $this->userService->getUserById($id);
+            if (!$user) {
+                header("Location: /admin/dashboard?error=User+not+found");
+                exit();
+            }
+            include __DIR__ . '/../views/admin/users/edit.php';
+        }
     }
     
-    // Verwerken van het bijwerken van een gebruiker.
-    public function update() {
-        $id = InputHelper::sanitizeString($_POST['user_id'] ?? '');
-        if (empty($id)) {
-            header("Location: /admin/dashboard?error=User+not+found");
-            exit();
-        }
-        $name = InputHelper::sanitizeString($_POST['name'] ?? '');
-        $email = InputHelper::sanitizeEmail($_POST['email'] ?? '');
-        $role = InputHelper::sanitizeString($_POST['role'] ?? 'visitor');
-        $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
-        $newPassword = $_POST['password'] ?? '';
-    
-        $result = $this->userService->updateUser($id, $name, $email, $newPassword, $role, $phoneNumber);
-        if (!$result) {
-            header("Location: /admin/dashboard?error=User+update+failed");
-            exit();
-        }
-        header("Location: /admin/dashboard?message=User+updated");
-        exit();
-    }
-    
-    // Toon delete-confirmatiepagina
+    // Combineer Delete bevestiging en verwijdering: als GET tonen we de bevestigingspagina, als POST verwerken we de verwijdering
     public function delete() {
-        $id = InputHelper::sanitizeString($_GET['id'] ?? '');
-        if (empty($id)) {
-            header("Location: /admin/dashboard?error=User+not+found");
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = InputHelper::sanitizeString($_POST['user_id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=User+not+found");
+                exit();
+            }
+            $result = $this->userService->deleteUser($id);
+            if (!$result) {
+                header("Location: /admin/dashboard?error=Could+not+delete+user");
+                exit();
+            }
+            header("Location: /admin/dashboard?message=User+deleted");
             exit();
+        } else {
+            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
+            if (empty($id)) {
+                header("Location: /admin/dashboard?error=User+not+found");
+                exit();
+            }
+            $user = $this->userService->getUserById($id);
+            if (!$user) {
+                header("Location: /admin/dashboard?error=User+not+found");
+                exit();
+            }
+            include __DIR__ . '/../views/admin/users/delete.php';
         }
-        $user = $this->userService->getUserById($id);
-        if (!$user) {
-            header("Location: /admin/dashboard?error=User+not+found");
-            exit();
-        }
-        include __DIR__ . '/../views/admin/users/delete.php';
     }
-    
-    public function destroy() {
-        $id = InputHelper::sanitizeString($_POST['user_id'] ?? '');
-        if (empty($id)) {
-            header("Location: /admin/dashboard?error=User+not+found");
-            exit();
-        }
-        $result = $this->userService->deleteUser($id);
-        if (!$result) {
-            header("Location: /admin/dashboard?error=Could+not+delete+user");
-            exit();
-        }
-        header("Location: /admin/dashboard?message=User+deleted");
-        exit();
-    }
+
 }

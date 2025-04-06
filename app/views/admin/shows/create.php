@@ -16,7 +16,7 @@
           <div class="alert alert-danger"><?= htmlspecialchars($error); ?></div>
       <?php endif; ?>
       
-      <form method="POST" action="/show/store">
+      <form method="POST" action="/show/create">
           <div class="mb-3">
               <label for="show_name" class="form-label">Show Name:</label>
               <input type="text" name="show_name" id="show_name" class="form-control" required>

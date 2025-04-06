@@ -11,7 +11,7 @@
     <div class="container my-5">
         <h2>Confirm Delete</h2>
         <p>Are you sure you want to delete user "<?php echo htmlspecialchars($user->getName()); ?>"?</p>
-        <form method="POST" action="/admin/destroy">
+        <form method="POST" action="/admin/delete">
             <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($user->getUserId()); ?>">
             <button type="submit" class="btn btn-danger">Yes, Delete</button>
             <a href="/admin/dashboard" class="btn btn-secondary">Cancel</a>

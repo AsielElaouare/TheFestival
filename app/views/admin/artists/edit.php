@@ -14,7 +14,7 @@
     <div class="alert alert-danger"><?= htmlspecialchars($error); ?></div>
   <?php endif; ?>
 
-  <form method="POST" action="/artist/update">
+  <form method="POST" action="/artist/edit">
     <input type="hidden" name="artist_id" value="<?= htmlspecialchars($artist['artist_id']); ?>">
     <div class="mb-3">
       <label for="name" class="form-label">Artist Name:</label>

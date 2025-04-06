@@ -11,7 +11,7 @@
   <?php include __DIR__ . '/../../partials/admin_header.php'; ?>
   <div class="container my-5">
     <h2>Edit Show</h2>
-    <form method="POST" action="/show/update">
+    <form method="POST" action="/show/edit">
       <input type="hidden" name="show_id" value="<?= htmlspecialchars((string) ($show['show_id'] ?? '')) ?>">
       
       <div class="mb-3">

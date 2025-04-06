@@ -12,7 +12,7 @@
 <div class="container my-5">
     <h2>Confirm Delete</h2>
     <p>Are you sure you want to delete location "<strong><?= htmlspecialchars($location->getVenueName()) ?></strong>"?</p>
-    <form method="POST" action="/location/destroy">
+    <form method="POST" action="/location/delete">
         <input type="hidden" name="location_id" value="<?= htmlspecialchars($location->getLocationId()) ?>">
         <button type="submit" class="btn btn-danger">Yes, Delete</button>
         <a href="/location/index" class="btn btn-secondary">Cancel</a>

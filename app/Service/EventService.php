@@ -39,7 +39,7 @@ class EventService{
             $data[$type . '_id'],
             $data[$type . '_name'],
             new DateTime($data['start_date']),
-            new DateTime($data['end_date'] ?? 'now'), // 'end_date' only for tours
+            new DateTime($data['end_date'] ?? 'now'), 
             $data['price'],
             new Location(
                 $data['location_id'],
