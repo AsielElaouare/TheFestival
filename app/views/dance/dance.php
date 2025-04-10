@@ -46,7 +46,7 @@
         <section class="contenteditable">
           <img src="<?= getContentByTitle($blocks, 'headerDanceContent2') ?>" class="featured-artist-img" />
         </section>
-        <a href="/dance/artistView?id=5" class="btn artist-name-btn impact-font mt-2">
+        <a href="/dance/artistView?id=7" class="btn artist-name-btn impact-font mt-2">
           <?= getContentByTitle($blocks, 'ArtsNr2CardDanceName') ?>
         </a>
       </div>

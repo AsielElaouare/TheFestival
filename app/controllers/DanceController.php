@@ -4,32 +4,28 @@ namespace App\Controllers;
 use App\Service\CmsService;
 use App\Service\ShowService;
 use App\Service\ScheduleService;
-use App\Service\ArtistService;
 use App\Repositories\ShowRepository;
-
 
 class DanceController
 {
-    private $cmsService;
-    private $showService;  //call methode getshowforartist
-    private $scheduleService; //call methode getdanceschedule
+    private CmsService $cmsService;
+    private ShowService $showService;
+    private ScheduleService $scheduleService;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->cmsService = new CmsService();
-
         $this->showService = new ShowService(new ShowRepository());
-
         $this->scheduleService = new ScheduleService($this->showService);
     }
 
-    public function index(){
-         $blocks = $this->cmsService->getPageById(5);
+    public function index()
+    {
+        $blocks = $this->cmsService->getPageById(5);
         $schedule = $this->scheduleService->getDanceSchedule();
+        $showsForMartin = $this->showService->getShowsForArtist(8);
 
-         $showsForMartin = $this->showService->getShowsForArtist(8);
-
-
-         require __DIR__ . '/../views/dance/dance.php';
+        require __DIR__ . '/../views/dance/dance.php';
     }
 
     public function artistView() {
@@ -46,8 +42,10 @@ class DanceController
                 return;
             }
     
+            // Map page IDs to artist IDs
             $pageIdToArtistId = [
                 6 => 8, // Martin Garrix
+                7 => 4, // Hardwell
             ];
     
             $artistId = $pageIdToArtistId[$pageId] ?? null;
@@ -59,7 +57,22 @@ class DanceController
     
             $orderedSchedule = $this->scheduleService->getScheduleForArtist($artistId);
     
-            include __DIR__ . '/../views/dance/detailPageDance.php';
+                        echo "Loading detail for page ID: $pageId<br>";
+            echo "Artist ID: $artistId<br>";
+            echo "Loading file: ";
+
+            if ($pageId == 6) {
+                echo "detailPageDance.php";
+                include __DIR__ . '/../views/dance/detailPageDance.php';
+            } elseif ($pageId == 7) {
+                echo "detailPageDance2.php";
+                include __DIR__ . '/../views/dance/detailPageDance2.php';
+            } else {
+                http_response_code(404);
+                echo "No detail page available.";
+            }
+            exit;
+
         }
     }
     

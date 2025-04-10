@@ -58,7 +58,9 @@ INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
 (4, 'Hardwell', 'dance'),
 (5, 'Gare du Nord ', 'jazz'),
 (6, 'Evolve', 'jazz'),
-(7, 'Gumbo Kings', 'jazz');
+(7, 'Gumbo Kings', 'jazz'),
+(8, 'Martin Garrix', 'dance');
+
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,7 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (46, 'martinHeroImg', '/uploads/martingarrixtrophy.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(47, 'martinHeroRightText', '#YoungestNo1DJ', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (48, 'martinAlbumTitle', 'SENTIO MARTIN GARRIX THE ALBUM', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (49, 'martinAlbumImg', '/uploads/sentiomg.jpeg', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (50, 'martinBannerPerf', '/uploads/martingarrixperf.jpeg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
@@ -141,7 +143,32 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (59, 'martinTrack5Img', '/uploads/scaredtobelonely.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (60, 'martinTrack5Txt', 'Scared to be lonely', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (61, 'martinTrack6Img', '/uploads/forbiddenvoices.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(62, 'martinTrack6Txt', 'Forbidden voices', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+(62, 'martinTrack6Txt', 'Forbidden voices', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(63, 'hardwellHeroTitle', 'Hardwell', 23, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(64, 'hardwellHeroImg', '/uploads/hardwelltrophy.png', 23, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(65, 'hardwellHeroRightText', '#PioneerOfBigRoom Revolutionized EDM with his iconic Big Room House sound, inspiring countless artists worldwide.
+#SpacemanAnthem Released the legendary track "Spaceman" in 2012, which became a festival anthem and a defining moment in his career.
+#WorldsNo1DJ Crowned DJ Mag’s #1 DJ in the World in 2013 and 2014, solidifying his place as a global EDM icon.
+#RevealedRecordings Founded his own label, Revealed Recordings, nurturing young talent and delivering chart-topping hits.', 23, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(66, 'hardwellAlbumTitle1', 'REBELS NEVER DIE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(67, 'hardwellAlbumImg1', '/uploads/REBELSNEVERDIE.png', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(68, 'hardwellAlbumTitle2', 'UNITED WE ARE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(69, 'hardwellAlbumImg2', '/uploads/United_We_Are.jpg', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(70, 'hardwellAlbumTitle3', 'I AM HARDWELL', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(71, 'hardwellAlbumImg3', '/uploads/iamhardwell.jpg', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(72, 'hardwellBannerPerf', '/uploads/hardwell performing.jpg', 25, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(73, 'hardwellTrack1Img', '/uploads/Apollo_Hardwell.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(74, 'hardwellTrack1Txt', 'Apollo', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(75, 'hardwellTrack2Img', '/uploads/ANYBODY.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(76, 'hardwellTrack2Txt', 'Anybody out there', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(77, 'hardwellTrack3Img', '/uploads/FOLLOWTHE LIGHT.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(78, 'hardwellTrack3Txt', 'Follow the light', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(79, 'hardwellTrack4Img', '/uploads/HOWWEDO.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(80, 'hardwellTrack4Txt', 'How we do', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(81, 'hardwellTrack5Img', '/uploads/youngagain.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(82, 'hardwellTrack5Txt', 'Young again', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(83, 'hardwellTrack6Img', '/uploads/Spaceman_Hardwell.png', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(84, 'hardwellTrack6Txt', 'Spaceman', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
 
 
 
@@ -376,7 +403,11 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (19, 'martinHero', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (20, 'martinKeyAlbum', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (21, 'martinPerformanceBanner', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
-(22, 'martinTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(22, 'martinTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(23, 'hardwellHero', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(24, 'hardwellKeyAlbum', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(25, 'hardwellPerformanceBanner', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(26, 'hardwellTracks', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
 
 
 -- --------------------------------------------------------
