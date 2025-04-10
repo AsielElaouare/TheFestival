@@ -56,6 +56,8 @@ class DanceController
             }
     
             $orderedSchedule = $this->scheduleService->getScheduleForArtist($artistId);
+    
+                       
 
             if ($pageId == 6) {
                 include __DIR__ . '/../views/dance/detailPageDance.php';
@@ -63,7 +65,6 @@ class DanceController
                 include __DIR__ . '/../views/dance/detailPageDance2.php';
             } else {
                 http_response_code(404);
-                echo "No detail page available.";
             }
             exit;
 
