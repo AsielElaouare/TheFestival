@@ -126,7 +126,11 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (46, 'martinHeroImg', '/uploads/martinhero.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(48, 'ArtistCard1Intro', '/uploads/jazz_pictures/wouterhamel1.svg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(49, 'ArtistCard2Intro', '/uploads/jazz_pictures/ntjamrosie1.svg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(50, 'ArtistCard1IntroText', 'Wouter Hamel', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(51, 'ArtistCard2IntroText', 'Natjam', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
 
 -- --------------------------------------------------------
 
@@ -355,7 +359,8 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (17, 'FeaturedArtistSection', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (18, 'LineUpSectionDance', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (19, 'martinHero', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
-(20, 'martinKeyTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(20, 'martinKeyTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(21, 'artistsCardsSection', '', 2, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
 
 -- --------------------------------------------------------
 

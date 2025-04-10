@@ -19,17 +19,25 @@ include __DIR__. '/../header.php';
 
 <div class="d-flex justify-content-evenly">
 <div class="card card40 bg-pink">
-  <img src="/uploads/jazz_pictures/wouterhamel1.svg" class="card-img-top p-4" alt="Wouter Hamel">
+<section data-title="ArtistCard1Intro" class="contenteditable">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard1Intro')) ?>" class="card-img-top p-3" >
+  </section>
   <div class="card-body">
-    <h2 class="card-title text-center yellow">Wouter Hamel</h2>
+    <h2 class="card-title text-center yellow contenteditable" data-title="ArtistCard1IntroText">          
+      <?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard1IntroText')) ?>
+    </h2>
     <a href="/jazz/artistView?id=3" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
 
 <div class="card card40 bg-pink">
-  <img src="/uploads/jazz_pictures/ntjamrosie1.svg" class="card-img-top p-3" alt="Ntjam Rosie">
+<section data-title="ArtistCard2Intro" class="contenteditable">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard2Intro')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+  </section>
   <div class="card-body"> 
-  <h2 class="card-title text-center yellow">Natjam</h2>
+  <h2 class="card-title text-center yellow contenteditable" data-title="ArtistCard2IntroText">          
+      <?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard2IntroText')) ?>
+    </h2>
     <a href="/jazz/artistView?id=4" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
@@ -123,7 +131,7 @@ include __DIR__. '/../header.php';
 </section>
 <section class="bg-yellow">
 <div class="container mt-5 bg-yellow mb-5">
-    <h2 class="impact-font text-center purple">Available Tickets</h2>
+    <h2 class="impact-font text-center purple">Schedule</h2>
     <table class="table table-striped table-bordered ">
         <thead class="table-dark">
             <tr>
