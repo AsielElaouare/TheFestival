@@ -123,38 +123,32 @@ include __DIR__. '/../header.php';
   </div>
 </div>
 </section>
-<?php
-// Group shows by day
-$groupedShows = [];
-foreach ($jazzShows as $show) {
-    $day = $show->startDate->format('l');
-    $groupedShows[$day][] = $show;
-}
-?>
+
 <section class="bg-yellow">
 <h1 style="margin-top: 160px; font-size: 4rem;" class="purple text-center impact-font">Schedule</h1>
 <div class="schedule-container text-center mt-5">
     <?php foreach ($groupedShows as $day => $shows): ?>
       <div class="d-flex justify-content-center">
-      <div class="day-section d-flex w-50  ">
+      <div class="day-section d-flex w-75 justify-content-center">
             <div class="day-label pink"><?= strtoupper($day) ?></div>
-            <div class="schedule">
-                <?php foreach ($shows as $show): ?>
+            <div class="schedule w-50 ">
+              <?php foreach ($shows as $show): ?>
                     <div class="event">
                         <div class="time bg-purple"><?= $show->startDate->format('H:i') ?></div>
                         <div class="artist bg-purple"><?= htmlspecialchars($show->getArtistName()) ?></div>
                         <div class="location bg-purple"><?= htmlspecialchars($show->location->getVenueName()) ?></div>
                     </div>
                 <?php endforeach; ?>
-            </div>
+              </div>
         </div>
       </div>
-        
     <?php endforeach; ?>
     <div class="buy-tickets">
         <a href="/tickets" class="btn primary-button">Buy your tickets</a>
     </div>
 </div>
+</section>
+
 <div class="bg-yellow">
   <?php
   include __DIR__. '/../footer.php';

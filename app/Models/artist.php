@@ -34,4 +34,7 @@ class Artist
   {
     return $this->genre;
   }
+  public function getArtistName(){
+    
+  }
 }

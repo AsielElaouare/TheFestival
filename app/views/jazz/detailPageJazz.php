@@ -1,16 +1,27 @@
 <?php
 include __DIR__ . '/../header.php';
-
 ?>
 <section class="flex bg-yellow">
-    <img class="w-50" src="/uploads/jazz_pictures/haarlemJazz_vector.svg" >
-    <h1 class="fs-1 purple contenteditable text-center impact-font" data-title="FirstSection">
-        <?= getContentByTitle($blocks, 'FirstSection') ?>
-    </h1>
+  <img class="w-50" src="/uploads/jazz_pictures/haarlemJazz_vector.svg">
+  <h1 id="selected-artist" class="fs-1 purple text-center impact-font contenteditable-no-editor" data-title="FirstSection">
+      <?= getContentByTitle($blocks, 'FirstSection') ?>
+  </h1>
+    <?php if ($adminIsLoggedIn): ?>
+      <div class="d-flex justify-content-center mt-2">
+      <label for="artist" class="h3 impact-font me-5">Select Artist:</label>
+        <select name="artist" id="artist" onchange="updateArtistName()">
+          <?php foreach ($allArtists as $artist): ?>
+            <option value="<?= htmlspecialchars($artist["name"]) ?>">
+                <?= htmlspecialchars($artist["name"]) ?>
+            </option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+      <?php endif; ?>
 </section>
 
 <section class="bg-yellow pt-5">
-    <div >
+    <div class="d-flex flex-column align-item-center" >
         <div class=" d-flex justify-content-center text-white">
             <div class="d-flex flex-row justify-content-center">
                 <section class="contenteditable" data-title="imgBlock" >
@@ -21,8 +32,34 @@ include __DIR__ . '/../header.php';
                 </p>
             </div>
         </div>
+        <?php foreach ($groupedShows as $day => $shows): ?>
+        <div class="d-flex ">
+        <div class="day-section d-flex w-100  justify-content-center">
+              <div class="schedule w-50 mt-5">
+                <?php foreach ($shows as $show): ?>
+                      <div class="event d-flex mt-5 justify-content-center">
+                          <div class="time bg-purple coral"><?= strtoupper($day) ?></div>
+                          <div class="time bg-purple"><?= $show->startDate->format('H:i') ?></div>
+                          <div class="artist bg-purple"><?= htmlspecialchars($show->getArtistName()) ?></div>
+                          <div class="location bg-purple"><?= htmlspecialchars($show->location->getVenueName()) ?></div>
+                      </div>
+                  <?php endforeach; ?>
+                </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
 </section>
+
+<section class="bg-yellow">
+<div class="schedule-container text-center mt-5">
+    
+    <div class="buy-tickets">
+        <a href="/tickets" class="btn primary-button">Buy your tickets</a>
+    </div>
+</div>
+</section>
+
 <section class="bg-yellow pt-5">
     <div class="position-relative">
         <img src="/uploads/bg_section1.svg" class="w-100" alt="">
@@ -84,7 +121,14 @@ include __DIR__ . '/../header.php';
 </div>
 </section>
 
-<script src="/js/cms.js?v=65"></script>
+
+<script>
+    function updateArtistName() {
+        const select = document.getElementById('artist');
+        const selectedArtist = select.options[select.selectedIndex].text;
+        document.getElementById('selected-artist').innerText = selectedArtist;
+    }
+</script>
 <div class="bg-yellow">
     <?php include __DIR__ . '/../footer.php'; ?>
 </div>
