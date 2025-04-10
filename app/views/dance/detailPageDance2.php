@@ -1,36 +1,46 @@
-<?php
-include __DIR__ . '/../header.php';
-?>
+<?php include __DIR__ . '/../header.php'; ?>
 
 <div class="dance-page">
 
-  <!-- Hero Section -->
-  <div class="hero-section">
-    <div class="hero-overlay">
-      <div class="contenteditable" data-title="hardwellHeroTitle">
-        <?= htmlspecialchars(getContentByTitle($blocks, 'hardwellHeroTitle')) ?>
-      </div>
-    </div>
+ <!-- Hero Section -->
+<div class="hero-section">
+  <div class="hero-overlay">
   </div>
+</div>
 
-  <!-- Purple Wave (Top) -->
-  <img src="/uploads/header-purple-waves.svg" alt="Purple wave" class="wave-svg-top" />
+<!-- Purple Wave (Top) -->
+<img src="/uploads/header-purple-waves.svg" alt="Purple wave" class="wave-svg-top" />
+
+<!-- Hardwell Title (below the wave) -->
+<div class="artist-hero-name contenteditable" data-title="hardwellHeroTitle">
+  <?= htmlspecialchars(getContentByTitle($blocks, 'hardwellHeroTitle')) ?>
+</div>
+
 
   <!-- Highlight Section -->
   <div class="artist-highlight bg-yellow">
-    <section data-title="hardwellHeroImg" class="contenteditable">
-      <img src="<?= html_entity_decode(getContentByTitle($blocks, 'hardwellHeroImg')) ?>" alt="Hardwell Hero" class="artist-highlight__image" />
-    </section>
-    <div class="contenteditable" data-title="hardwellHeroRightText">
-      <?= html_entity_decode(getContentByTitle($blocks, 'hardwellHeroRightText')) ?>
-    </div>
+  <section data-title="hardwellHeroImg" class="contenteditable">
+    <img src="<?= html_entity_decode(getContentByTitle($blocks, 'hardwellHeroImg')) ?>" alt="Hardwell Hero" class="artist-highlight__image" />
+  </section>
+  <div class="contenteditable" data-title="hardwellHeroRightText">
+    <?= html_entity_decode(getContentByTitle($blocks, 'hardwellHeroRightText')) ?>
   </div>
+</div>
 
-  <!-- Purple Wave (Bottom) -->
-  <img src="/uploads/bg_section1.svg" alt="Purple wave bottom" class="wave-svg-bottom" />
+
+  <section class="position-relative">
+  <img src="/uploads/bg_section1.svg" class="wave-svg" alt="Wave Background">
+  <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+    <h2 class="impact-font display-3 contenteditable" data-title="HardwellTrackTitle">
+      KEY TRACKS AND ALBUMS
+    </h2>
+  </div>
+</section>
+
+
 
   <!-- Albums Section -->
-  <div class="albums-section bg-yellow">
+<div class="albums-section bg-yellow">
 
     <!-- Album 1 -->
     <div class="album-block">
@@ -67,12 +77,15 @@ include __DIR__ . '/../header.php';
         <img src="<?= html_entity_decode(getContentByTitle($blocks, 'hardwellAlbumImg3')) ?>" alt="Album Cover 3" class="album-block__cover" />
       </section>
     </div>
+</div>
+
 
     <!-- Performance Banner -->
-    <section data-title="hardwellBannerPerf" class="contenteditable album-banner">
-      <img src="<?= html_entity_decode(getContentByTitle($blocks, 'hardwellBannerPerf')) ?>" alt="Performance Banner" class="album-banner__image" />
+    <div class="section-wrapper">
+    <section data-title="hardwellBannerPerf" class="contenteditable album-banner mt-5">
+    <img src="<?= html_entity_decode(getContentByTitle($blocks, 'hardwellBannerPerf')) ?>" alt="Performance Banner" class="album-banner__image" />
     </section>
-  </div>
+    </div>
 
   <!-- Tracks Section -->
   <div class="tracks-grid">
@@ -86,8 +99,8 @@ include __DIR__ . '/../header.php';
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
-        </div>
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
+          </div>
       </div>
     </div>
 
@@ -101,8 +114,8 @@ include __DIR__ . '/../header.php';
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
-        </div>
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
+          </div>
       </div>
     </div>
 
@@ -116,8 +129,8 @@ include __DIR__ . '/../header.php';
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
-        </div>
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
+          </div>
       </div>
     </div>
 
@@ -131,8 +144,8 @@ include __DIR__ . '/../header.php';
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
-        </div>
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
+          </div>
       </div>
     </div>
 
@@ -146,8 +159,8 @@ include __DIR__ . '/../header.php';
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
-        </div>
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
+          </div>
       </div>
     </div>
 
@@ -161,12 +174,20 @@ include __DIR__ . '/../header.php';
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
-        </div>
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
+          </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Purple Wave Title -->
+<section class="position-relative">
+<img src="/uploads/bg_section1.svg" class="wave-svg" alt="Wave Background">
+  <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+    <h2 class="impact-font display-3">SCHEDULE FOR HAARLEM</h2>
+  </div>
+</section>
 
 <!-- Schedule Section for Hardwell -->
 <section class="schedule-section">
@@ -191,6 +212,8 @@ include __DIR__ . '/../header.php';
     <p class="no-schedule-message">No shows found for Hardwell.</p>
   <?php endif; ?>
 </section>
+
+</div>
 
 
 <script src="/js/cms.js?v=65"></script>

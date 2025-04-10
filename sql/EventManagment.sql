@@ -125,7 +125,10 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (46, 'martinHeroImg', '/uploads/martingarrixtrophy.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', '#YoungestNo1DJ', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(47, 'martinHeroRightText', '<p>#YoungestNo1DJ Crowned the youngest DJ to ever top DJ MAG top 100 DJS in 2016,holding the title for multiple years.</p>
+                             <p>#STMPDRCRDS Founded his own record label in 2016 to support emerging talent and push creative boundaries in electronic music.</p>
+                             <p>#FestivalHeadliner Headlined the worlds biggest festivals, including Tomorrowland, Ultra Music Festival, and Coachella.</p>
+                             <p>#IconicCollabs Partnered with global stars like Dua Lipa (Scared to Be Lonely) and Bebe Rexha (In the Name of Love), bridging EDM with mainstream music.</p>', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (48, 'martinAlbumTitle', 'SENTIO MARTIN GARRIX THE ALBUM', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (49, 'martinAlbumImg', '/uploads/sentiomg.jpeg', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (50, 'martinBannerPerf', '/uploads/martingarrixperf.jpeg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
@@ -143,7 +146,10 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (62, 'martinTrack6Txt', 'Forbidden voices', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (63, 'hardwellHeroTitle', 'Hardwell', 23, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (64, 'hardwellHeroImg', '/uploads/hardwelltrophy.png', 23, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(65, 'hardwellHeroRightText', '#PioneerOfBigRoom Revolutionized EDM with his iconic Big Room House sound, inspiring countless artists worldwide.\n#SpacemanAnthem Released the legendary track \"Spaceman\" in 2012, which became a festival anthem and a defining moment in his career.\n#WorldsNo1DJ Crowned DJ Mag’s #1 DJ in the World in 2013 and 2014, solidifying his place as a global EDM icon.\n#RevealedRecordings Founded his own label, Revealed Recordings, nurturing young talent and delivering chart-topping hits.', 23, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(65, 'hardwellHeroRightText', '<p>#PioneerOfBigRoom Revolutionized EDM with his iconic Big Room House sound, inspiring countless artists worldwide.</p>
+                              <p>#SpacemanAnthem Released the legendary track \"Spaceman\" in 2012, which became a festival anthem and a defining moment in his career.</p>
+                              <p>#WorldsNo1DJ Crowned DJ Mag’s #1 DJ in the World in 2013 and 2014, solidifying his place as a global EDM icon.</p>
+                              <p>#RevealedRecordings Founded his own label, Revealed Recordings, nurturing young talent and delivering chart-topping hits.</p>', 23, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (66, 'hardwellAlbumTitle1', 'REBELS NEVER DIE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (67, 'hardwellAlbumImg1', '/uploads/REBELSNEVERDIE.png', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (68, 'hardwellAlbumTitle2', 'UNITED WE ARE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),

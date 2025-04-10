@@ -63,7 +63,7 @@
     height: 400px; /* Adjust as needed */
     background: url('/uploads/bar_dancinghead.jpg') center center no-repeat;
     background-size: cover;
-    margin-bottom: 20px;
+    padding: 0;
 }
 
 /* Dark overlay on top of hero image */
@@ -81,6 +81,40 @@
     justify-content: center;
     text-align: center;
 }
+
+.artist-hero-name-wrapper {
+    text-align: center;
+    margin-top: -40px;
+  }
+  
+  .artist-hero-name-box {
+    display: inline-block;
+    background-color: #800080;
+    padding: 10px 30px;
+    color: white;
+    border-radius: 8px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+
+.artist-hero-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    background-color: #800080;
+    padding: 10px 20px;
+    margin: 0 auto;
+    margin-top: -30px; 
+    width: fit-content;
+    border-radius: 8px;
+    z-index: 5;
+    position: relative;
+  }
+  
+
 
 .hero-title {
     font-size: 3rem;
@@ -211,6 +245,20 @@
     justify-content: center;
     margin-bottom: -20px;
   }
+  .wave-svg {
+    width: 100%;
+    margin-top: -5px;
+    display: block;
+    height: 100px; 
+    object-fit: cover;
+  }
+  
+  .wave-section {
+    position: relative;
+    background-color: #800080;
+    padding-top: 0;
+    margin-top: -1px;
+  }
   
   .wave-title-bg {
     position: absolute;
@@ -261,59 +309,73 @@
 
 .wave-svg-top,
 .wave-svg-bottom {
-    width: 100%;
     display: block;
+    margin-top: -5px;
+    width: 100%;
+    height: auto;
 }
 
-.artist-header {
-    padding: 20px 0;
-}
-
-.artist-header__name {
+/* Hero title section */
+.hero-section .contenteditable {
+    text-align: center;
+    font-size: 3rem;
     color: white;
     font-weight: bold;
-    font-size: 2rem;
-    text-transform: uppercase;
+    padding: 60px 0 20px;
 }
 
-/* Highlight Section */
+/* Highlight section */
 .artist-highlight {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    gap: 40px;
     padding: 40px 20px;
-}
-
-.artist-highlight__image-container {
-    flex: 1 1 300px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .artist-highlight__image {
     max-width: 400px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.artist-highlight__image {
-    max-width: 100%;
     border-radius: 30px;
-}
-
-.artist-highlight__hashtags {
-    flex: 1 1 300px;
+    max-height: 400px;
+  }
+  
+  .artist-highlight .contenteditable[data-title="hardwellHeroRightText"] {
+    flex: 1 1 400px;
     max-width: 600px;
-    padding: 0 20px;
-    font-weight: bold;
+    padding: 20px;
+    color: #800080;
     font-size: 1.1rem;
-}
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .contenteditable[data-title="hardwellHeroRightText"] {
+    white-space: pre-line;
+    line-height: 1.8;
+    color: #800080;
+    font-size: 1.1rem;
+    padding: 0 20px;
+    max-width: 600px;
+  }
+  
+  .contenteditable[data-title="hardwellHeroRightText"]::first-line {
+    font-weight: bold;
+  }
+  
 
 .hashtag-title {
     color: #FF5733;
-    display: inline-block;
+    font-size: 1.2rem;
+    display: block;
     margin-bottom: 5px;
 }
 
 .hashtag-desc {
     color: #800080;
-    display: inline-block;
+    display: block;
     margin-bottom: 25px;
 }
 
@@ -331,30 +393,47 @@
 
 /* === ALBUM SECTION === */
 
+/* Albums section container (grijs blok om 3 albums) */
 .albums-section {
-    padding: 40px 20px;
+    padding: 40px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    background-color: #3a3a3a;
+    border-radius: 25px;
+    max-width: 1100px;
+    margin: 50px auto; /* ruimte boven/onder */
+  }
+  
+  /* Album block binnenin (één album) */
+  .album-block {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-}
-
-.album-block {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    background-color: #3a3a3a;
-    padding: 20px;
-    border-radius: 10px;
-    color: #fff;
-    width: 100%;
-    max-width: 900px;
-}
-
-.album-block__cover {
     max-width: 250px;
-    border-radius: 10px;
-}
+    background-color: transparent;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Afbeelding styling */
+  .album-block__cover {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  
+  /* Titel van album */
+  .album-block__info .contenteditable {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
 
 .album-block__info {
     flex: 1;
@@ -374,29 +453,50 @@
     color: #fff;
 }
 
-.album-banner__image {
+.album-banner {
+    display: flex;
+    justify-content: center;
+    margin: 60px auto 40px auto;
     width: 100%;
-    max-width: 900px;
+  }
+
+.album-banner__image {
+    max-width: 950px;
+    width: 100%;
     border-radius: 50px;
-}
+  }
+
+  .section-wrapper {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
 
 /* === TRACK CARDS === */
 .tracks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    width: 100%;
     max-width: 950px;
+    margin: 0 auto 100px auto;
+    padding: 0 20px;
+  }
+  
+
+.track-card__img {
+    flex-shrink: 0;
 }
+  
 
 .track-card {
     display: flex;
     flex-direction: row;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
 
 .track-card__cover {
     width: 120px;
@@ -407,13 +507,14 @@
 .track-card__info {
     flex: 1;
     padding: 10px 15px;
+    background: #999;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    color: #fff;
-    border-radius: 0 8px 8px 0;
-    background: #999; /* fallback */
-}
+    border-radius: 0 10px 10px 0;
+  }
+  
 
 .track-card__title {
     font-weight: bold;
@@ -426,7 +527,9 @@
     display: flex;
     gap: 10px;
     align-items: center;
-}
+    margin-top: 10px;
+  }
+  
 
 .track-card__play {
     background-color: #fff;
@@ -434,7 +537,7 @@
     height: 30px;
     border-radius: 50%;
     border: none;
-    background-image: url('/uploads/play_icon.svg');
+    background-image: url('/uploads/play_icon.png');
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
@@ -442,10 +545,11 @@
 }
 
 .track-card__spotify {
-    width: 25px;
-    height: 25px;
+    width: 60px;
+    height: 50px;
+    margin-left: auto; 
 }
-
+  
 /* Gradients */
 .gradient-animals { background: linear-gradient(90deg, #000, #aaa); }
 .gradient-forever { background: linear-gradient(90deg, #663399, #8a2be2); }

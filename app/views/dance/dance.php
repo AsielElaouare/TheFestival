@@ -1,7 +1,7 @@
 <?php include __DIR__ . '/../header.php'; ?>
 <link rel="stylesheet" href="/style/style.css">
 
-<div class="dance-page bg-yellow">
+<div class="dance-page">
 
   <!-- Hero Section -->
   <div class="hero-section">
@@ -16,15 +16,21 @@
     </div>
   </div>
 
-   <!-- Featured Artists Title with SVG Background -->
-   <section class="position-relative">
-    <img src="/uploads/bg_section1.svg" class="w-100" alt="Featured Artists Wave Background">
-    <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-      <h2 class="impact-font display-3 contenteditable" data-title="FeaturedArtistText">
-        <?= getContentByTitle($blocks, 'FeaturedArtistText') ?>
-      </h2>
-    </div>
-  </section>
+   <!-- Purple Wave + Featured Title -->
+<section class="position-relative wave-section">
+  <img src="/uploads/bg_section1.svg" class="wave-svg" alt="Wave">
+  <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+    <h2 class="impact-font display-3 contenteditable" data-title="FeaturedArtistText">
+      <?= getContentByTitle($blocks, 'FeaturedArtistText') ?>
+    </h2>
+  </div>
+</section>
+
+<!-- Yellow Background Starts Here -->
+<div class="bg-yellow py-5">
+  <!-- Your featured artists and lineup content -->
+</div>
+
 
 <!-- Featured Artists Section -->
 <section class="my-5" id="featured-artists">
