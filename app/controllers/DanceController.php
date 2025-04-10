@@ -57,19 +57,14 @@ class DanceController
     
             $orderedSchedule = $this->scheduleService->getScheduleForArtist($artistId);
     
-                        echo "Loading detail for page ID: $pageId<br>";
-            echo "Artist ID: $artistId<br>";
-            echo "Loading file: ";
+                       
 
             if ($pageId == 6) {
-                echo "detailPageDance.php";
                 include __DIR__ . '/../views/dance/detailPageDance.php';
             } elseif ($pageId == 7) {
-                echo "detailPageDance2.php";
                 include __DIR__ . '/../views/dance/detailPageDance2.php';
             } else {
                 http_response_code(404);
-                echo "No detail page available.";
             }
             exit;
 
