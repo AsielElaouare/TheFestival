@@ -49,10 +49,9 @@ include __DIR__. '/../header.php';
         <div class="position-absolute top-50 d-flex start-50  text-center translate-middle text-white">
             
         <div>
-                <h1 class="impact-font contenteditable" data-title="SecondJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'SecondJazzSection')) ?>
+                <h1 class="impact-font contenteditable yellow" style="font-size: 4rem;" data-title="SecondJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'SecondJazzSection')) ?>
                 </h1>
               </div>
-    
     </div>
 </section>
 
@@ -68,60 +67,55 @@ include __DIR__. '/../header.php';
     </h6>
   </div>
 </div>
-
-
 <div class="container mt-5 purple impact-font">
   <div class="row justify-content-center text-center">
     <!-- Thursday Section -->
-    <div class="col-md-5 mb-4">
+    <div class="col-md-6 mb-5">
       <h2>Thursday</h2>
-      <div class="card">
+      <div class="card h-100 bg-coral">
         <section data-title="ArtsNr1CardJazzImg" class="contenteditable">
-          <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
         </section>
-        <div class="card-body ">
-          <p data-title="ArtsNr1JazzCardBody " class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1JazzCardBody')) ?></p>
+        <div class="card-body d-flex flex-column justify-content-center">
+          <p data-title="ArtsNr1JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Saturday, Sunday, and Friday Section (3 Columns) -->
-  <div class="row justify-content-center text-center mt-4">
-    <!-- Saturday Card -->
-    <div class="col-md-4 mb-4">
-      <h2>Friday</h2>
-      <div class="card">
+    <!-- Friday Section -->
+    <div class="col-md-6 mb-5">
+      <h2 class="">Friday</h2>
+      <div class="card h-100 bg-coral">
         <section data-title="ArtsNr2CardJazzImg" class="contenteditable">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr2CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
         </section>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-center">
           <p data-title="ArtsNr2JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr2JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
 
-    <!-- Sunday Card -->
-    <div class="col-md-4 mb-4">
-      <h2>Saturday</h2>
-      <div class="card">
+    <!-- Saturday Section -->
+    <div class="col-md-6 mb-5">
+      <h2 class="mt-5">Saturday</h2>
+      <div class="card h-100 bg-coral">
         <section class="contenteditable">
-          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3CardJazzImg')) ?>" class="card-img-top p-3 rounded" alt="Wicked Jazz">
         </section>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-center">
           <p data-title="ArtsNr3JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
 
-    <!-- Friday Card -->
-    <div class="col-md-4 mb-4">
-      <h2>Sunday</h2>
-      <div class="card">
+    <!-- Sunday Section -->
+    <div class="col-md-6 mb-5">
+      <h2 class="mt-5">Sunday</h2>
+      <div class="card h-100 bg-coral">
         <section data-title="ArtsNr4CardJazzImg" class="contenteditable">
-          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4CardJazzImg')) ?>" class="card-img-top p-3 rounded" alt="Wicked Jazz">
         </section>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-center">
           <p data-title="ArtsNr4JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4JazzCardBody')) ?></p>
         </div>
       </div>
@@ -129,38 +123,34 @@ include __DIR__. '/../header.php';
   </div>
 </div>
 </section>
+<?php
+// Group shows by day
+$groupedShows = [];
+foreach ($jazzShows as $show) {
+    $day = $show->startDate->format('l');
+    $groupedShows[$day][] = $show;
+}
+?>
 <section class="bg-yellow">
-<div class="container mt-5 bg-yellow mb-5">
-    <h2 class="impact-font text-center purple">Schedule</h2>
-    <table class="table table-striped table-bordered ">
-        <thead class="table-dark">
-            <tr>
-                <th>Artist</th>
-                <th>Event Name</th>
-                <th>Start Date</th>
-                <th>Location</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($jazzShows as $show): ?>
-                <tr>
-                    <td><?= htmlspecialchars($show->getArtistName()) ?></td>
-                    <td><?= htmlspecialchars($show->name) ?></td>
-                    <td><?= $show->startDate->format('Y-m-d H:i') ?></td>
-                    <td>
-                        <?= htmlspecialchars($show->location->getVenueName()) ?><br>
-                        <?= htmlspecialchars($show->location->getStreetName()) ?>, <?= htmlspecialchars($show->location->getPostalCode()) ?><br>
-                        <?= htmlspecialchars($show->location->getCity()) ?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="">
-    <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>
-  </div>
+<div class="schedule-container text-center mt-5">
+    <?php foreach ($groupedShows as $day => $shows): ?>
+        <div class="day-section d-flex align-items-center justify-content-center">
+            <div class="day-label pink"><?= strtoupper($day) ?></div>
+            <div class="schedule">
+                <?php foreach ($shows as $show): ?>
+                    <div class="event">
+                        <div class="time bg-purple"><?= $show->startDate->format('H:i') ?></div>
+                        <div class="artist bg-purple"><?= htmlspecialchars($show->getArtistName()) ?></div>
+                        <div class="location bg-purple"><?= htmlspecialchars($show->location->getVenueName()) ?></div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <div class="buy-tickets">
+        <a href="/tickets" class="btn primary-button">Buy your tickets</a>
+    </div>
 </div>
-</section>
 <div class="bg-yellow">
   <?php
   include __DIR__. '/../footer.php';
