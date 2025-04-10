@@ -121,14 +121,38 @@ include __DIR__. '/../header.php';
   </div>
 </div>
 </section>
-
-<div class="d-flex justify-content-around align-items-center bg-yellow">
-  <img class="w-25" src="/uploads/jazz_pictures/sax_vector.svg" alt="a cool saxophone">
-  <div>
+<section class="bg-yellow">
+<div class="container mt-5 bg-yellow mb-5">
+    <h2 class="impact-font text-center purple">Available Tickets</h2>
+    <table class="table table-striped table-bordered ">
+        <thead class="table-dark">
+            <tr>
+                <th>Artist</th>
+                <th>Event Name</th>
+                <th>Start Date</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($jazzShows as $show): ?>
+                <tr>
+                    <td><?= htmlspecialchars($show->getArtistName()) ?></td>
+                    <td><?= htmlspecialchars($show->name) ?></td>
+                    <td><?= $show->startDate->format('Y-m-d H:i') ?></td>
+                    <td>
+                        <?= htmlspecialchars($show->location->getVenueName()) ?><br>
+                        <?= htmlspecialchars($show->location->getStreetName()) ?>, <?= htmlspecialchars($show->location->getPostalCode()) ?><br>
+                        <?= htmlspecialchars($show->location->getCity()) ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="">
     <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>
   </div>
 </div>
-
+</section>
 <div class="bg-yellow">
   <?php
   include __DIR__. '/../footer.php';

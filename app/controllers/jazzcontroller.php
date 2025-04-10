@@ -1,17 +1,22 @@
 <?php
 namespace App\Controllers;
 use App\Service\CmsService;
+use App\Service\EventService;
+use App\Models\Enums\MusicGenre;
 
 class JazzController
 {
 
     private $cmsService;
+    private $eventService;
     public function __construct(){
         $this->cmsService = new CmsService();
+        $this->eventService = new EventService();
     }
 
     public function index(){
         $blocks = $this->cmsService->getPageById(2);
+        $jazzShows = $this->eventService->getAllShowsByGenre(MusicGenre::JAZZ->value);
         require __DIR__ . '/../views/jazz/jazz.php';
     }
 

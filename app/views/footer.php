@@ -1,6 +1,6 @@
 <?php if ($adminIsLoggedIn): ?>
     <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
-        <button type="button" onclick="submitChanges()" class="btn primary-button">Submit Content Changes</button>
+        <button type="button" onclick="submitChanges()" class="btn primary-button position-fixed bottom-0 end-0 m-4">Submit Content Changes</button>
     </div>
     </form>
   <script  src="/js/cms.js"></script>
