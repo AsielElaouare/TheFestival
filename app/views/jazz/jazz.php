@@ -132,9 +132,11 @@ foreach ($jazzShows as $show) {
 }
 ?>
 <section class="bg-yellow">
+<h1 style="margin-top: 160px; font-size: 4rem;" class="purple text-center impact-font">Schedule</h1>
 <div class="schedule-container text-center mt-5">
     <?php foreach ($groupedShows as $day => $shows): ?>
-        <div class="day-section d-flex align-items-center justify-content-center">
+      <div class="d-flex justify-content-center">
+      <div class="day-section d-flex w-50  ">
             <div class="day-label pink"><?= strtoupper($day) ?></div>
             <div class="schedule">
                 <?php foreach ($shows as $show): ?>
@@ -146,6 +148,8 @@ foreach ($jazzShows as $show) {
                 <?php endforeach; ?>
             </div>
         </div>
+      </div>
+        
     <?php endforeach; ?>
     <div class="buy-tickets">
         <a href="/tickets" class="btn primary-button">Buy your tickets</a>

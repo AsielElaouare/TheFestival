@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 10, 2025 at 08:58 PM
+-- Generation Time: Apr 10, 2025 at 09:54 PM
 -- Server version: 11.5.2-MariaDB-ubu2404
 -- PHP Version: 8.2.25
 
@@ -56,7 +56,22 @@ INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
 (4, 'Hardwell', 'dance'),
 (5, 'Gare du Nord ', 'jazz'),
 (6, 'Evolve', 'jazz'),
-(7, 'Gumbo Kings', 'jazz');
+(7, 'Gumbo Kings', 'jazz'),
+(8, 'Ntjam Rosie', 'jazz'),
+(9, 'Wicked Jazz Sounds', 'jazz'),
+(10, 'Jonna Frazer', 'jazz'),
+(11, 'Wouter Hamel', 'jazz'),
+(12, 'Karsu', 'jazz'),
+(13, 'Uncle sue', 'jazz'),
+(14, 'Chris Allen', 'jazz'),
+(15, 'Myles Sanko', 'jazz'),
+(16, 'Ilse Huizinga', 'jazz'),
+(17, 'Eric Vloeimans & Hotspot!', 'jazz'),
+(18, 'Gare du Nord', 'jazz'),
+(19, 'Rilan & The Bombadiers', 'jazz'),
+(20, 'Soul Six', 'jazz'),
+(21, 'Ruis Soundsystem', 'jazz'),
+(22, 'Wicked Jazz Sounds', 'jazz');
 
 -- --------------------------------------------------------
 
@@ -100,7 +115,7 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (20, 'ArtsNr4CardJazzImg', '/uploads/jazz_pictures/wickedjazz.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (21, 'ArtsNr4JazzCardBody', 'WickedJazz', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (22, 'JazzHeaderImg', '/uploads/jazz_pictures/haarlemJazz_vector.svg', 14, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(23, 'FirstSection', 'Wouter Hamel', 15, '2025-03-22 16:38:01', '2025-04-10 20:57:01'),
+(23, 'FirstSection', 'Natjam Rosie', 15, '2025-03-22 16:38:01', '2025-04-10 21:04:38'),
 (24, 'SecondSection', 'A Fusion of Soul, Jazz, and Global RhythmsWith a voice that blends warmth, depth, and effortless elegance, Ntjam Rosie is a true force in contemporary jazz and soul. Her music is a reflection of her multicultural roots, seamlessly weaving together elements of jazz, soul, Afrobeat, and R&B into a sound that is both timeless and refreshingly modern.At Haarlem Jazz Festival, Ntjam Rosie brings her signature sound to the stage, delivering a performance filled with passion, energy, and authenticity. Whether you’re drawn to smooth jazz, soulful melodies, or rhythmic Afro-inspired grooves, her music is an experience not to be missed. Get ready to be moved by one of the most dynamic voices in jazz today!', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
 (25, 'ThirdSection', 'Elle (2010)Rosie’s second album, Elle, significantly elevated her presence in the jazz and soul music scenes. The album showcases a harmonious blend of jazz, soul, and pop influences, reflecting Rosie\'s diverse musical background.The album features tracks that highlight Rosie\'s rich vocals and intricate arrangements, offering listeners a journey through contemporary jazz infused with soulful melodies. Elle not only solidified Ntjam Rosie\'s reputation as a formidable artist but also contributed to the broader appreciation of modern jazz and soul music.', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
 (26, 'imgBlock', '../uploads/1744318142_1744316035_natjam.jpg', 15, '2025-03-24 21:43:01', '2025-04-10 20:49:04'),
@@ -407,7 +422,20 @@ INSERT INTO `SHOW` (`show_id`, `show_name`, `start_date`, `price`, `location_id`
 (2, 'Tiesto | Friday ticket', '2025-06-06 12:49:34', 60.00, 2, 300),
 (3, 'Hardwell | Friday ticket', '2025-06-06 12:49:34', 60.00, 3, 300),
 (4, 'Gumbo Kings| Thursday ticket', '2025-06-05 18:00:00', 15.00, 4, 110),
-(8, '<script>alert(\"hoi Karin\")</script>', '2025-03-13 10:51:00', 34.00, 2, 23);
+(9, 'Evolve', '2025-07-24 19:00:00', 15.00, 4, 100),
+(10, 'Ntjam Rosie', '2025-07-24 21:00:00', 15.00, 4, 100),
+(11, 'Wicked Jazz Sounds', '2025-07-24 18:00:00', 15.00, 4, 100),
+(12, 'Wouter Hamel', '2025-07-24 19:30:00', 15.00, 4, 100),
+(13, 'Jonna Frazer', '2025-07-24 21:00:00', 15.00, 4, 100),
+(14, 'Karsu', '2025-07-25 18:00:00', 15.00, 4, 100),
+(15, 'Uncle sue', '2025-07-25 19:30:00', 15.00, 4, 100),
+(16, 'Chris Allen', '2025-07-25 21:00:00', 15.00, 4, 100),
+(17, 'Myles Sanko', '2025-07-25 18:00:00', 15.00, 4, 100),
+(18, 'Gare du Nord', '2025-07-26 18:00:00', 15.00, 4, 100),
+(19, 'Rilan & The Bombadiers', '2025-07-26 19:30:00', 15.00, 4, 100),
+(20, 'Soul Six', '2025-07-26 21:00:00', 15.00, 4, 100),
+(21, 'Wicked Jazz Sounds', '2025-07-27 15:00:00', 15.00, 4, 100),
+(22, 'Evolve', '2025-07-27 17:00:00', 100.00, 4, 100);
 
 -- --------------------------------------------------------
 
@@ -429,7 +457,21 @@ INSERT INTO `SHOW_ARTIST` (`show_id`, `artist_id`) VALUES
 (1, 2),
 (2, 3),
 (3, 4),
-(4, 7);
+(9, 6),
+(22, 6),
+(4, 7),
+(10, 8),
+(11, 9),
+(21, 9),
+(13, 10),
+(12, 11),
+(14, 12),
+(15, 13),
+(16, 14),
+(17, 15),
+(18, 18),
+(19, 19),
+(20, 20);
 
 -- --------------------------------------------------------
 
@@ -730,7 +772,7 @@ ALTER TABLE `ACCESS_PASS`
 -- AUTO_INCREMENT for table `ARTIST`
 --
 ALTER TABLE `ARTIST`
-  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `LOCATION`
@@ -796,7 +838,7 @@ ALTER TABLE `SESSION`
 -- AUTO_INCREMENT for table `SHOW`
 --
 ALTER TABLE `SHOW`
-  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `TICKET`
