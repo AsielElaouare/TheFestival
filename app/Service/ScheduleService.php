@@ -41,4 +41,29 @@ class ScheduleService
         }
         return $ordered;
     }
+
+    public function getScheduleForArtist(int $artistId): array
+{
+    $artistShows = $this->showService->getShowsForArtist($artistId);
+
+    // Group shows by weekday (Fri-Sun only)
+    $grouped = [];
+    foreach ($artistShows as $show) {
+        $day = date('l', strtotime($show['start_date']));
+        if (in_array($day, ['Friday', 'Saturday', 'Sunday'])) {
+            $grouped[$day][] = $show;
+        }
+    }
+
+    // Return ordered array: Fri → Sun
+    $ordered = [];
+    foreach (['Friday', 'Saturday', 'Sunday'] as $day) {
+        if (isset($grouped[$day])) {
+            $ordered[$day] = $grouped[$day];
+        }
+    }
+
+    return $ordered;
+}
+
 }

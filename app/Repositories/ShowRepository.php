@@ -124,22 +124,27 @@ public function unlinkArtistFromShow(int $showId): bool
         return false;
     }
 }
-
 public function getShowsForArtist(int $artistId): array
 {
     $sql = "
       SELECT s.show_id, s.show_name, s.start_date, s.price,
              s.available_spots, l.venue_name, a.name AS artist_name, a.genre
-        FROM `SHOW` s
-        JOIN SHOW_ARTIST sa ON s.show_id = sa.show_id
-        JOIN ARTIST a       ON sa.artist_id = a.artist_id
-        JOIN LOCATION l     ON s.location_id = l.location_id
-       WHERE a.artist_id = :artistId
+      FROM `SHOW` s
+      JOIN SHOW_ARTIST sa ON s.show_id = sa.show_id
+      JOIN ARTIST a ON sa.artist_id = a.artist_id
+      JOIN LOCATION l ON s.location_id = l.location_id
+      WHERE sa.artist_id = :artistId
     ";
+    
     $stmt = $this->connection->prepare($sql);
-    $stmt->execute([':artistId' => $artistId]);
-    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    $stmt->bindValue(':artistId', (int)$artistId, \PDO::PARAM_INT);
+    $stmt->execute();
+    
+    $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    error_log("getShowsForArtist($artistId) returned: " . print_r($result, true));
+    return $result;
 }
 
 
 }
+

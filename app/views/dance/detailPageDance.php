@@ -2,6 +2,7 @@
 include __DIR__ . '/../header.php';
 ?>
 
+
 <div class="dance-page">
 
   <!-- Hero Section -->
