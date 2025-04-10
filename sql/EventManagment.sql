@@ -114,19 +114,38 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (32, 'LineUpTextDance', 'Line-Up', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (33, 'LineUpArt1Pic', '/uploads/arminvanbuurennoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (34, 'LineUpTextDanceArt1', 'Armin Van Buuren', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(35, 'LineUpArt2Pic', '/uploads\nickyromero.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(35, 'LineUpArt2Pic', '/uploads/nickyromero.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (36, 'LineUpTextDanceArt2', 'Nicky Romero', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (37, 'LineUpArt3Pic', '/uploads/afrojack.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (38, 'LineUpTextDanceArt3', 'Afrojack', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(39, 'LineUpArt4Pic', '/uploads	ietsonoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(39, 'LineUpArt4Pic', '/uploads/tietsonoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (40, 'LineUpTextDanceArt4', 'Tiesto', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (41, 'LineUpArt5Pic', '/uploads/hardwellnoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (42, 'LineUpTextDanceArt5', 'Hardwell', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (43, 'LineUpArt6Pic', '/uploads/martingarrix.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(46, 'martinHeroImg', '/uploads/martinhero.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+(46, 'martinHeroImg', '/uploads/martingarrixtrophy.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(48, 'martinAlbumTitle', 'SENTIO MARTIN GARRIX THE ALBUM', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(49, 'martinAlbumImg', '/uploads/sentiomg.jpeg', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(50, 'martinBannerPerf', '/uploads/martingarrixperf.jpeg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(51, 'martinTrack1Img', '/uploads/animals.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(52, 'martinTrack1Txt', 'Animals', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(53, 'martinTrack2Img', '/uploads/forever.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(54, 'martinTrack2Txt', 'Forever', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(55, 'martinTrack3Img', '/uploads/inthenameoflove.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(56, 'martinTrack3Txt', 'In the name of love', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(57, 'martinTrack4Img', '/uploads/sunisnevergingdown.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(58, 'martinTrack4Txt', 'Sun is never going down', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(59, 'martinTrack5Img', '/uploads/scaredtobelonely.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(60, 'martinTrack5Txt', 'Scared to be lonely', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(61, 'martinTrack6Img', '/uploads/forbiddenvoices.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(62, 'martinTrack6Txt', 'Forbidden voices', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+
+
+
+
 
 -- --------------------------------------------------------
 
@@ -355,7 +374,10 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (17, 'FeaturedArtistSection', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (18, 'LineUpSectionDance', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (19, 'martinHero', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
-(20, 'martinKeyTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(20, 'martinKeyAlbum', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(21, 'martinPerformanceBanner', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(22, 'martinTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+
 
 -- --------------------------------------------------------
 

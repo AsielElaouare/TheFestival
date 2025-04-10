@@ -33,37 +33,41 @@ class ShowService
     }
 
     public function createShowWithArtist(array $data, int $artistId): int
-{
+    {
     $showId = $this->createShow($data);
     if ($showId) {
         // Link show aan artiest
         $this->showRepository->linkArtistToShow($showId, $artistId);
     }
     return $showId;
-}
-
-public function updateShowWithArtist(int $id, array $data, int $artistId): bool
-{
-    // unlink oude artist of artiesten
-    $this->showRepository->unlinkArtistFromShow($id);
-    // Update the data van show 
-    $success = $this->updateShow($id, $data);
-    if ($success) {
-        // Link nnieuwe artiest
-        $this->showRepository->linkArtistToShow($id, $artistId);
     }
-    return $success;
-}
 
-public function linkArtist(int $showId, int $artistId): bool
-{
-    return $this->showRepository->linkArtistToShow($showId, $artistId);
-}
+    public function updateShowWithArtist(int $id, array $data, int $artistId): bool
+    {
+        // unlink oude artist of artiesten
+        $this->showRepository->unlinkArtistFromShow($id);
+        // Update the data van show 
+        $success = $this->updateShow($id, $data);
+        if ($success) {
+            // Link nnieuwe artiest
+            $this->showRepository->linkArtistToShow($id, $artistId);
+        }
+        return $success;
+    }
 
-public function unlinkArtist(int $showId): bool
-{
-    return $this->showRepository->unlinkArtistFromShow($showId);
-}
+    public function getShowsForArtist(int $artistId): array {
+        return $this->showRepository->getShowsForArtist($artistId);
+    }
+    
+    public function linkArtist(int $showId, int $artistId): bool
+    {
+        return $this->showRepository->linkArtistToShow($showId, $artistId);
+    }
+
+    public function unlinkArtist(int $showId): bool
+    {
+        return $this->showRepository->unlinkArtistFromShow($showId);
+    }
 
 
 }
