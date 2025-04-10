@@ -168,6 +168,31 @@ include __DIR__ . '/../header.php';
   </div>
 </div>
 
+<!-- Schedule Section for Hardwell -->
+<section class="schedule-section">
+  <div class="schedule-header">
+    <h1 class="impact-font">Schedule</h1>
+  </div>
+
+  <?php if (!empty($orderedSchedule)): ?>
+    <?php foreach ($orderedSchedule as $day => $shows): ?>
+      <div class="schedule-day">
+        <h2 class="schedule-day-title"><?= htmlspecialchars($day) ?></h2>
+        <?php foreach ($shows as $show): ?>
+          <div class="schedule-show">
+            <span class="schedule-show-time"><?= date('H:i', strtotime($show['start_date'])) ?></span>
+            <span class="schedule-show-artist"><?= htmlspecialchars($show['artist_name'] ?? 'Unknown Artist') ?></span>
+            <span class="schedule-show-venue"><?= htmlspecialchars($show['venue_name'] ?? 'Unknown Venue') ?></span>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <p class="no-schedule-message">No shows found for Hardwell.</p>
+  <?php endif; ?>
+</section>
+
+
 <script src="/js/cms.js?v=65"></script>
 <div class="bg-yellow">
   <?php include __DIR__ . '/../footer.php'; ?>
