@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
 
+use App\Models\Artist;
 use App\Repositories\ArtistRepository;
 
 class ArtistService
@@ -17,7 +18,7 @@ class ArtistService
         return $this->artistRepo->getAllArtists();
     }
 
-    public function getArtistById(int $artistId): ?array
+    public function getArtistById(int $artistId): ?Artist
     {
         return $this->artistRepo->getArtistById($artistId);
     }

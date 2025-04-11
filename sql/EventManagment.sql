@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 06, 2025 at 05:46 PM
--- Server version: 11.5.2-MariaDB-ubu2404
--- PHP Version: 8.2.25
+-- Gegenereerd op: 11 apr 2025 om 02:43
+-- Serverversie: 11.5.2-MariaDB-ubu2404
+-- PHP-versie: 8.2.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,13 +20,11 @@ SET time_zone = "+00:00";
 --
 -- Database: `EventManagement`
 --
-CREATE DATABASE IF NOT EXISTS `EventManagement` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci;
-USE `EventManagement`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ACCESS_PASS`
+-- Tabelstructuur voor tabel `ACCESS_PASS`
 --
 
 CREATE TABLE `ACCESS_PASS` (
@@ -38,7 +36,7 @@ CREATE TABLE `ACCESS_PASS` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ARTIST`
+-- Tabelstructuur voor tabel `ARTIST`
 --
 
 CREATE TABLE `ARTIST` (
@@ -48,7 +46,7 @@ CREATE TABLE `ARTIST` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `ARTIST`
+-- Gegevens worden geëxporteerd voor tabel `ARTIST`
 --
 
 INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
@@ -58,12 +56,28 @@ INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
 (4, 'Hardwell', 'dance'),
 (5, 'Gare du Nord ', 'jazz'),
 (6, 'Evolve', 'jazz'),
-(7, 'Gumbo Kings', 'jazz');
+(7, 'Gumbo Kings', 'jazz'),
+(8, 'Martin Garrix', 'dance'),
+(9, 'Wicked Jazz Sounds', 'jazz'),
+(10, 'Jonna Frazer', 'jazz'),
+(11, 'Wouter Hamel', 'jazz'),
+(12, 'Karsu', 'jazz'),
+(13, 'Uncle sue', 'jazz'),
+(14, 'Chris Allen', 'jazz'),
+(15, 'Myles Sanko', 'jazz'),
+(16, 'Ilse Huizinga', 'jazz'),
+(17, 'Eric Vloeimans & Hotspot!', 'jazz'),
+(18, 'Gare du Nord', 'jazz'),
+(19, 'Rilan & The Bombadiers', 'jazz'),
+(20, 'Soul Six', 'jazz'),
+(21, 'Ruis Soundsystem', 'jazz'),
+(22, 'Wicked Jazz Sounds', 'jazz'),
+(23, 'Ntjam Rosie', 'jazz');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `CONTENTBLOCK`
+-- Tabelstructuur voor tabel `CONTENTBLOCK`
 --
 
 CREATE TABLE `CONTENTBLOCK` (
@@ -76,7 +90,7 @@ CREATE TABLE `CONTENTBLOCK` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `CONTENTBLOCK`
+-- Gegevens worden geëxporteerd voor tabel `CONTENTBLOCK`
 --
 
 INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`, `created_at`, `updated_at`) VALUES
@@ -84,28 +98,29 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (2, 'Welcome Message', 'Testing Testing ', 2, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
 (3, 'Festival Route', 'Join our world', 3, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
 (4, 'Call to action', 'Buy your tickets', 4, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
-(5, 'FirstJazzSection', '<p>Yo this is jazz event</p>', 6, '2025-03-22 09:55:05', '2025-03-24 17:17:42'),
-(6, 'SecondJazzSection', '<p>Testing</p>', 7, '2025-03-22 09:55:05', '2025-03-25 15:29:34'),
-(7, 'ThirdJazzSection', '', 8, '2025-03-22 09:55:05', '2025-03-25 15:29:34'),
+(5, 'FirstJazzSection', 'Yo this is jazz event', 6, '2025-03-22 09:55:05', '2025-04-11 02:39:02'),
+(6, 'SecondJazzSection', 'More Artists', 7, '2025-03-22 09:55:05', '2025-04-11 02:39:40'),
+(7, 'ThirdJazzSection', 'Testing', 8, '2025-03-22 09:55:05', '2025-04-11 02:39:25'),
 (8, 'FourthJazzSection', 'Schedule', 9, '2025-03-22 09:55:05', '2025-03-22 16:14:16'),
 (9, 'last section', 'jddn', 5, '2025-03-22 16:38:01', '2025-03-27 08:49:23'),
-(10, 'FirstSection', '<p><img src=\"../uploads/1742852725_fist.png\" alt=\"\" width=\"75\" height=\"105\">JAJADSJKFDFDS</p>', 10, '2025-03-22 16:38:01', '2025-03-24 21:46:32'),
-(11, 'SecondSection', '<p>asiel</p>', 11, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(12, 'ThirdSection', '<p>Asiel</p>', 12, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(13, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 10, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(14, 'ArtsNr1CardJazzImg', '/uploads/jazz_pictures/garedunord.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(10, 'FirstSection', 'Wouter Hamel', 10, '2025-03-22 16:38:01', '2025-04-11 02:24:17'),
+(11, 'SecondSection', ' A Voice That Transcends TimeGet ready to experience the magic of Wouter Hamel, one of the most captivating voices in contemporary jazz-pop! With his signature blend of smooth vocals, infectious melodies, and timeless charm, Hamel brings a fresh energy to the stage, bridging the golden era of jazz with modern-day soul.Whether delivering a heartfelt ballad or an upbeat groove, his performances exude warmth, charisma, and an effortless cool that makes every audience feel like they’re part of something special.At Haarlem Jazz Festival, Wouter Hamel is set to take you on a musical journey—one filled with emotion, elegance, and a deep love for storytelling through song. Don’t miss the chance to see one of the Netherlands’ finest talents bring the streets of Haarlem to life! 🎶✨', 11, '2025-03-22 16:38:01', '2025-04-11 02:24:17'),
+(12, 'ThirdSection', 'Hamel (2007)Wouter Hamel’s self-titled debut album, is the record that launched him into the international spotlight. Blending jazz, pop, and soulful melodies, the album introduced a fresh, modern take on vocal jazz, making it a standout release in the genre.Praised for its balance of vintage jazz inspiration and contemporary appeal, Hamel remains a defining work in his career, setting the stage for his continued evolution as a singer-songwriter. It’s the album that proved jazz could feel both nostalgic and refreshingly new, a perfect reflection of Hamel’s timeless artistry.', 12, '2025-03-22 16:38:01', '2025-04-10 20:34:21'),
+(13, 'imgBlock', '../uploads/1744317211_wouter-img.png', 10, '2025-03-24 21:43:01', '2025-04-10 20:34:21'),
+(14, 'ArtsNr1CardJazzImg', 'uploads/jazz_pictures/garedunord.svg', 13, '2025-03-24 21:43:01', '2025-04-11 02:39:02'),
 (15, 'ArtsNr1JazzCardBody', 'Garedunord', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(16, 'ArtsNr2CardJazzImg', '/uploads/jazz_pictures/karsu.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(16, 'ArtsNr2CardJazzImg', 'uploads/jazz_pictures/karsu.svg', 13, '2025-03-24 21:43:01', '2025-04-11 02:39:02'),
 (17, 'ArtsNr2JazzCardBody', 'Karsu', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(18, 'ArtsNr3CardJazzImg', '/uploads/jazz_pictures/ruis.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(18, 'ArtsNr3CardJazzImg', '', 13, '2025-03-24 21:43:01', '2025-04-11 02:40:56'),
 (19, 'ArtsNr3JazzCardBody', 'Ruis', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(20, 'ArtsNr4CardJazzImg', '/uploads/jazz_pictures/wickedjazz.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(20, 'ArtsNr4CardJazzImg', 'uploads/jazz_pictures/wickedjazz.svg', 13, '2025-03-24 21:43:01', '2025-04-11 02:39:02'),
 (21, 'ArtsNr4JazzCardBody', 'WickedJazz', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(22, 'JazzHeaderImg', '/uploads/jazz_pictures/haarlemJazz_vector.svg', 14, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(23, 'FirstSection', '<p><img src=\"../uploads/1742852725_fist.png\" alt=\"\" width=\"75\" height=\"105\">JAJADSJKFDFDS</p>', 10, '2025-03-22 16:38:01', '2025-03-24 21:46:32'),
-(24, 'SecondSection', '<p>asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(25, 'ThirdSection', '<p>Asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(22, 'JazzHeaderImg', 'uploads/jazz_pictures/haarlemJazz_vector.svg', 14, '2025-03-24 21:43:01', '2025-04-11 02:39:02'),
+(23, 'FirstSection', 'Natjam Rosie', 15, '2025-03-22 16:38:01', '2025-04-10 21:04:38'),
+(24, 'SecondSection', 'A Fusion of Soul, Jazz, and Global RhythmsWith a voice that blends warmth, depth, and effortless elegance, Ntjam Rosie is a true force in contemporary jazz and soul. Her music is a reflection of her multicultural roots, seamlessly weaving together elements of jazz, soul, Afrobeat, and R&B into a sound that is both timeless and refreshingly modern.At Haarlem Jazz Festival, Ntjam Rosie brings her signature sound to the stage, delivering a performance filled with passion, energy, and authenticity. Whether you’re drawn to smooth jazz, soulful melodies, or rhythmic Afro-inspired grooves, her music is an experience not to be missed. Get ready to be moved by one of the most dynamic voices in jazz today!', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
+(25, 'ThirdSection', 'Elle (2010)Rosie’s second album, Elle, significantly elevated her presence in the jazz and soul music scenes. The album showcases a harmonious blend of jazz, soul, and pop influences, reflecting Rosies diverse musical background.The album features tracks that highlight Rosie\'s rich vocals and intricate arrangements, offering listeners a journey through contemporary jazz infused with soulful melodies. Elle not only solidified Ntjam Rosie\'s reputation as a formidable artist but also contributed to the broader appreciation of modern jazz and soul music.', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
 (26, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 15, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(26, 'imgBlock', '../uploads/1744318142_1744316035_natjam.jpg', 15, '2025-03-24 21:43:01', '2025-04-10 20:49:04'),
 (27, 'headerDanceContent', '/uploads/martingarrixfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
 (28, 'headerDanceContent2', '/uploads/hardwellfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
 (29, 'ArtsNr1CardDanceName', 'Martin Garrix', 17, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
@@ -114,24 +129,73 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (32, 'LineUpTextDance', 'Line-Up', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (33, 'LineUpArt1Pic', '/uploads/arminvanbuurennoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (34, 'LineUpTextDanceArt1', 'Armin Van Buuren', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(35, 'LineUpArt2Pic', '/uploads\nickyromero.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(35, 'LineUpArt2Pic', '/uploads/nickyromero.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (36, 'LineUpTextDanceArt2', 'Nicky Romero', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (37, 'LineUpArt3Pic', '/uploads/afrojack.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (38, 'LineUpTextDanceArt3', 'Afrojack', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(39, 'LineUpArt4Pic', '/uploads	ietsonoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(39, 'LineUpArt4Pic', '/uploads/tietsonoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (40, 'LineUpTextDanceArt4', 'Tiesto', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (41, 'LineUpArt5Pic', '/uploads/hardwellnoback.png', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (42, 'LineUpTextDanceArt5', 'Hardwell', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (43, 'LineUpArt6Pic', '/uploads/martingarrix.jpg', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(46, 'martinHeroImg', '/uploads/martinhero.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+(46, 'martinHeroImg', '/uploads/martingarrixtrophy.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(47, 'martinHeroRightText', '<p>#YoungestNo1DJ Crowned the youngest DJ to ever top DJ MAG top 100 DJS in 2016,holding the title for multiple years.</p>\n                             <p>#STMPDRCRDS Founded his own record label in 2016 to support emerging talent and push creative boundaries in electronic music.</p>\n                             <p>#FestivalHeadliner Headlined the worlds biggest festivals, including Tomorrowland, Ultra Music Festival, and Coachella.</p>\n                             <p>#IconicCollabs Partnered with global stars like Dua Lipa (Scared to Be Lonely) and Bebe Rexha (In the Name of Love), bridging EDM with mainstream music.</p>', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(48, 'martinAlbumTitle', 'SENTIO MARTIN GARRIX THE ALBUM', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(49, 'martinAlbumImg', '/uploads/sentiomg.jpeg', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(50, 'martinBannerPerf', '/uploads/martingarrixperf.jpeg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(51, 'martinTrack1Img', '/uploads/animals.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(52, 'martinTrack1Txt', 'Animals', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(53, 'martinTrack2Img', '/uploads/forever.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(54, 'martinTrack2Txt', 'Forever', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(55, 'martinTrack3Img', '/uploads/inthenameoflove.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(56, 'martinTrack3Txt', 'In the name of love', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(57, 'martinTrack4Img', '/uploads/sunisnevergingdown.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(58, 'martinTrack4Txt', 'Sun is never going down', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(59, 'martinTrack5Img', '/uploads/scaredtobelonely.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(60, 'martinTrack5Txt', 'Scared to be lonely', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(61, 'martinTrack6Img', '/uploads/forbiddenvoices.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(62, 'martinTrack6Txt', 'Forbidden voices', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(63, 'hardwellHeroTitle', 'Hardwell', 23, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
+(64, 'hardwellHeroImg', '../uploads/hardwelltrophy.png', 23, '2025-03-22 16:38:01', '2025-04-10 18:22:43'),
+(65, 'hardwellHeroRightText', '#PioneerOfBigRoom Revolutionized EDM with his iconic Big Room House sound, inspiring countless artists worldwide.\n#SpacemanAnthem Released the legendary track \"Spaceman\" in 2012, which became a festival anthem and a defining moment in his career.\n#WorldsNo1DJ Crowned DJ Mag’s #1 DJ in the World in 2013 and 2014, solidifying his place as a global EDM icon.\n#RevealedRecordings Founded his own label, Revealed Recordings, nurturing young talent and delivering chart-topping hits.', 23, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(66, 'hardwellAlbumTitle1', 'REBELS NEVER DIE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(67, 'hardwellAlbumImg1', '../uploads/REBELSNEVERDIE.png', 24, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(68, 'hardwellAlbumTitle2', 'UNITED WE ARE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(69, 'hardwellAlbumImg2', '../uploads/United_We_Are.jpg', 24, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(70, 'hardwellAlbumTitle3', 'I AM HARDWELL', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(71, 'hardwellAlbumImg3', '../uploads/iamhardwell.jpg', 24, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(72, 'hardwellBannerPerf', '../uploads/hardwell performing.jpg', 25, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(73, 'hardwellTrack1Img', '../uploads/Apollo_Hardwell.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(74, 'hardwellTrack1Txt', 'Apollo', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(75, 'hardwellTrack2Img', '../uploads/ANYBODY.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(76, 'hardwellTrack2Txt', 'Anybody out there', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(77, 'hardwellTrack3Img', '../uploads/FOLLOWTHE LIGHT.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(78, 'hardwellTrack3Txt', 'Follow the light', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(79, 'hardwellTrack4Img', '../uploads/HOWWEDO.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(80, 'hardwellTrack4Txt', 'How we do', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(81, 'hardwellTrack5Img', '../uploads/youngagain.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(82, 'hardwellTrack5Txt', 'Young againnnnnnnnnntest', 26, '2025-03-28 09:16:27', '2025-04-10 18:24:05'),
+(83, 'hardwellTrack6Img', '../uploads/Spaceman_Hardwell.png', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(84, 'hardwellTrack6Txt', 'Spaceman', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(85, 'ArtistCard1Intro', 'uploads/jazz_pictures/wouterhamel1.svg', 27, '2025-03-28 09:16:27', '2025-04-11 02:39:02'),
+(86, 'ArtistCard2Intro', 'uploads/jazz_pictures/ntjamrosie1.svg', 27, '2025-03-28 09:16:27', '2025-04-11 02:39:02'),
+(87, 'ArtistCard1IntroText', 'Wouter Hamel', 30, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(88, 'ArtistCard2IntroText', 'Ntjam Rosie', 30, '2025-03-28 09:16:27', '2025-04-11 02:39:13'),
+(89, 'ArtsCardJazzImgTrack1', '../uploads/1744338309_wouter1.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(90, 'ArtsCardJazzImgTrack2', '../uploads/1744338346_wouter2.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(91, 'ArtsCardJazzImgTrack3', '../uploads/1744338362_wouter3.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(92, 'ArtsCardJazzImgTrack4', '../uploads/1744338354_wouter4.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(93, 'ArtsCardJazzImgTrack1', '../uploads/1744318093_track1.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(94, 'ArtsCardJazzImgTrack2', '../uploads/1744318101_track2.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(95, 'ArtsCardJazzImgTrack3', '../uploads/1744318110_track3.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(96, 'ArtsCardJazzImgTrack4', '../uploads/1744318116_track4.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `LOCATION`
+-- Tabelstructuur voor tabel `LOCATION`
 --
 
 CREATE TABLE `LOCATION` (
@@ -143,7 +207,7 @@ CREATE TABLE `LOCATION` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `LOCATION`
+-- Gegevens worden geëxporteerd voor tabel `LOCATION`
 --
 
 INSERT INTO `LOCATION` (`location_id`, `venue_name`, `postal_code`, `street_name`, `city`) VALUES
@@ -156,7 +220,7 @@ INSERT INTO `LOCATION` (`location_id`, `venue_name`, `postal_code`, `street_name
 -- --------------------------------------------------------
 
 --
--- Table structure for table `MUSIC_TICKET`
+-- Tabelstructuur voor tabel `MUSIC_TICKET`
 --
 
 CREATE TABLE `MUSIC_TICKET` (
@@ -167,7 +231,7 @@ CREATE TABLE `MUSIC_TICKET` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `MUSIC_TICKET`
+-- Gegevens worden geëxporteerd voor tabel `MUSIC_TICKET`
 --
 
 INSERT INTO `MUSIC_TICKET` (`music_ticket_id`, `ticket_id`, `qr_code`, `show_id`) VALUES
@@ -192,7 +256,7 @@ INSERT INTO `MUSIC_TICKET` (`music_ticket_id`, `ticket_id`, `qr_code`, `show_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ORDER`
+-- Tabelstructuur voor tabel `ORDER`
 --
 
 CREATE TABLE `ORDER` (
@@ -203,7 +267,7 @@ CREATE TABLE `ORDER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `ORDER`
+-- Gegevens worden geëxporteerd voor tabel `ORDER`
 --
 
 INSERT INTO `ORDER` (`order_id`, `order_date`, `total_amount`, `user_id`) VALUES
@@ -218,7 +282,7 @@ INSERT INTO `ORDER` (`order_id`, `order_date`, `total_amount`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `PAGE`
+-- Tabelstructuur voor tabel `PAGE`
 --
 
 CREATE TABLE `PAGE` (
@@ -230,7 +294,7 @@ CREATE TABLE `PAGE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `PAGE`
+-- Gegevens worden geëxporteerd voor tabel `PAGE`
 --
 
 INSERT INTO `PAGE` (`page_id`, `title`, `slug`, `created_at`, `updated_at`) VALUES
@@ -245,7 +309,7 @@ INSERT INTO `PAGE` (`page_id`, `title`, `slug`, `created_at`, `updated_at`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Tabelstructuur voor tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -256,7 +320,7 @@ CREATE TABLE `password_resets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `password_resets`
+-- Gegevens worden geëxporteerd voor tabel `password_resets`
 --
 
 INSERT INTO `password_resets` (`id`, `email`, `token`, `expires_at`) VALUES
@@ -266,12 +330,13 @@ INSERT INTO `password_resets` (`id`, `email`, `token`, `expires_at`) VALUES
 (4, 'customer@example.com', '11732816b25b07bd9ee39cdf2f473dda', '2025-03-11 04:25:31'),
 (5, 'customer@example.com', '1572e286ce7282199a5f7c55397546e7', '2025-03-11 04:29:01'),
 (6, 'customer@example.com', 'b9f701eba0a6ca8c8c36b4cfbe37b81a', '2025-03-11 04:29:15'),
-(7, 'customer@example.com', '13c413b773b8ce9174fc06ab843377fa', '2025-03-11 17:21:34');
+(7, 'customer@example.com', '13c413b773b8ce9174fc06ab843377fa', '2025-03-11 17:21:34'),
+(8, 'update@live.nl', '998bd7039c4f39902401226ff20e4cbc', '2025-04-10 21:56:40');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESERVATION`
+-- Tabelstructuur voor tabel `RESERVATION`
 --
 
 CREATE TABLE `RESERVATION` (
@@ -286,7 +351,7 @@ CREATE TABLE `RESERVATION` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESTAURANT`
+-- Tabelstructuur voor tabel `RESTAURANT`
 --
 
 CREATE TABLE `RESTAURANT` (
@@ -298,7 +363,7 @@ CREATE TABLE `RESTAURANT` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESTAURANT_GENRE`
+-- Tabelstructuur voor tabel `RESTAURANT_GENRE`
 --
 
 CREATE TABLE `RESTAURANT_GENRE` (
@@ -309,7 +374,7 @@ CREATE TABLE `RESTAURANT_GENRE` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `RESTAURANT_GENRE_MAPPING`
+-- Tabelstructuur voor tabel `RESTAURANT_GENRE_MAPPING`
 --
 
 CREATE TABLE `RESTAURANT_GENRE_MAPPING` (
@@ -320,7 +385,7 @@ CREATE TABLE `RESTAURANT_GENRE_MAPPING` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SECTION`
+-- Tabelstructuur voor tabel `SECTION`
 --
 
 CREATE TABLE `SECTION` (
@@ -333,7 +398,7 @@ CREATE TABLE `SECTION` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `SECTION`
+-- Gegevens worden geëxporteerd voor tabel `SECTION`
 --
 
 INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_at`, `updated_at`) VALUES
@@ -355,12 +420,22 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (17, 'FeaturedArtistSection', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (18, 'LineUpSectionDance', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (19, 'martinHero', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
-(20, 'martinKeyTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(20, 'martinKeyAlbum', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(21, 'martinPerformanceBanner', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(22, 'martinTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(23, 'hardwellHero', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(24, 'hardwellKeyAlbum', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(25, 'hardwellPerformanceBanner', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(26, 'hardwellTracks', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(27, 'artistsCardsSection', '', 2, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(28, 'artistsTracksJazz1', '', 3, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(29, 'artistsTracksJazz2', '', 4, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(30, 'artistsTracksJazz2', '', 2, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SESSION`
+-- Tabelstructuur voor tabel `SESSION`
 --
 
 CREATE TABLE `SESSION` (
@@ -373,7 +448,7 @@ CREATE TABLE `SESSION` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SHOW`
+-- Tabelstructuur voor tabel `SHOW`
 --
 
 CREATE TABLE `SHOW` (
@@ -386,7 +461,7 @@ CREATE TABLE `SHOW` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `SHOW`
+-- Gegevens worden geëxporteerd voor tabel `SHOW`
 --
 
 INSERT INTO `SHOW` (`show_id`, `show_name`, `start_date`, `price`, `location_id`, `available_spots`) VALUES
@@ -394,12 +469,27 @@ INSERT INTO `SHOW` (`show_id`, `show_name`, `start_date`, `price`, `location_id`
 (2, 'Tiesto | Friday ticket', '2025-06-06 12:49:34', 60.00, 2, 300),
 (3, 'Hardwell | Friday ticket', '2025-06-06 12:49:34', 60.00, 3, 300),
 (4, 'Gumbo Kings| Thursday ticket', '2025-06-05 18:00:00', 15.00, 4, 110),
-(8, '<script>alert(\"hoi Karin\")</script>', '2025-03-13 10:51:00', 34.00, 2, 23);
+(9, 'Martin Garrix | Sunday ticket', '2025-06-01 20:00:00', 60.00, 4, 340),
+(10, 'Martin Garrix | Saturday ticket', '2025-05-10 22:00:00', 60.00, 2, 300),
+(11, 'Evolve', '2025-07-24 19:00:00', 15.00, 4, 100),
+(12, 'Ntjam Rosie', '2025-07-24 21:00:00', 15.00, 4, 100),
+(13, 'Wicked Jazz Sounds', '2025-07-24 18:00:00', 15.00, 4, 100),
+(14, 'Wouter Hamel', '2025-07-24 19:30:00', 15.00, 4, 100),
+(15, 'Jonna Frazer', '2025-07-24 21:00:00', 15.00, 4, 100),
+(16, 'Karsu', '2025-07-25 18:00:00', 15.00, 4, 100),
+(17, 'Uncle sue', '2025-07-25 19:30:00', 15.00, 4, 100),
+(18, 'Chris Allen', '2025-07-25 21:00:00', 15.00, 4, 100),
+(19, 'Myles Sanko', '2025-07-25 18:00:00', 15.00, 4, 100),
+(20, 'Gare du Nord', '2025-07-26 18:00:00', 15.00, 4, 100),
+(21, 'Rilan & The Bombadiers', '2025-07-26 19:30:00', 15.00, 4, 100),
+(22, 'Soul Six', '2025-07-26 21:00:00', 15.00, 4, 100),
+(23, 'Wicked Jazz Sounds', '2025-07-27 15:00:00', 15.00, 4, 100),
+(24, 'Evolve', '2025-07-27 17:00:00', 100.00, 4, 100);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SHOW_ARTIST`
+-- Tabelstructuur voor tabel `SHOW_ARTIST`
 --
 
 CREATE TABLE `SHOW_ARTIST` (
@@ -408,7 +498,7 @@ CREATE TABLE `SHOW_ARTIST` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `SHOW_ARTIST`
+-- Gegevens worden geëxporteerd voor tabel `SHOW_ARTIST`
 --
 
 INSERT INTO `SHOW_ARTIST` (`show_id`, `artist_id`) VALUES
@@ -416,12 +506,28 @@ INSERT INTO `SHOW_ARTIST` (`show_id`, `artist_id`) VALUES
 (1, 2),
 (2, 3),
 (3, 4),
-(4, 7);
+(20, 5),
+(11, 6),
+(24, 6),
+(4, 7),
+(9, 8),
+(10, 8),
+(13, 9),
+(15, 10),
+(14, 11),
+(16, 12),
+(17, 13),
+(18, 14),
+(19, 15),
+(21, 19),
+(22, 20),
+(23, 22),
+(12, 23);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TICKET`
+-- Tabelstructuur voor tabel `TICKET`
 --
 
 CREATE TABLE `TICKET` (
@@ -430,7 +536,7 @@ CREATE TABLE `TICKET` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TICKET`
+-- Gegevens worden geëxporteerd voor tabel `TICKET`
 --
 
 INSERT INTO `TICKET` (`ticket_id`, `order_id`) VALUES
@@ -454,7 +560,7 @@ INSERT INTO `TICKET` (`ticket_id`, `order_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR`
+-- Tabelstructuur voor tabel `TOUR`
 --
 
 CREATE TABLE `TOUR` (
@@ -468,7 +574,7 @@ CREATE TABLE `TOUR` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TOUR`
+-- Gegevens worden geëxporteerd voor tabel `TOUR`
 --
 
 INSERT INTO `TOUR` (`tour_id`, `tour_name`, `start_date`, `end_date`, `price`, `location_id`, `available_spots`) VALUES
@@ -477,7 +583,7 @@ INSERT INTO `TOUR` (`tour_id`, `tour_name`, `start_date`, `end_date`, `price`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR_GUIDE`
+-- Tabelstructuur voor tabel `TOUR_GUIDE`
 --
 
 CREATE TABLE `TOUR_GUIDE` (
@@ -488,7 +594,7 @@ CREATE TABLE `TOUR_GUIDE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TOUR_GUIDE`
+-- Gegevens worden geëxporteerd voor tabel `TOUR_GUIDE`
 --
 
 INSERT INTO `TOUR_GUIDE` (`guide_id`, `name`, `contact_info`, `tour_id`) VALUES
@@ -497,7 +603,7 @@ INSERT INTO `TOUR_GUIDE` (`guide_id`, `name`, `contact_info`, `tour_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR_LANGUAGE`
+-- Tabelstructuur voor tabel `TOUR_LANGUAGE`
 --
 
 CREATE TABLE `TOUR_LANGUAGE` (
@@ -508,7 +614,7 @@ CREATE TABLE `TOUR_LANGUAGE` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `TOUR_LANGUAGE`
+-- Gegevens worden geëxporteerd voor tabel `TOUR_LANGUAGE`
 --
 
 INSERT INTO `TOUR_LANGUAGE` (`id`, `language`, `tour_guide_id`, `tour_id`) VALUES
@@ -517,7 +623,7 @@ INSERT INTO `TOUR_LANGUAGE` (`id`, `language`, `tour_guide_id`, `tour_id`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TOUR_TICKET`
+-- Tabelstructuur voor tabel `TOUR_TICKET`
 --
 
 CREATE TABLE `TOUR_TICKET` (
@@ -530,7 +636,7 @@ CREATE TABLE `TOUR_TICKET` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `USER`
+-- Tabelstructuur voor tabel `USER`
 --
 
 CREATE TABLE `USER` (
@@ -544,38 +650,43 @@ CREATE TABLE `USER` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
--- Dumping data for table `USER`
+-- Gegevens worden geëxporteerd voor tabel `USER`
 --
 
 INSERT INTO `USER` (`user_id`, `name`, `email`, `phone_number`, `pass_hash`, `role`, `registration_date`) VALUES
-(4, 'admin', 'admin@test.com', '1234567890', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'admin', '2025-03-05 03:49:29'),
-(5, 'customer', 'customer@test.com', '0642318194', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'customer', '2025-03-05 03:49:29');
+(4, 'Asiel', 'admin@example.com', '1234567890', '713bfda78870bf9d1b261f565286f85e97ee614efe5f0faf7c34e7ca4f65baca', 'admin', '2025-03-05 03:49:29'),
+(5, 'Sofian Said', 'sofian@example.nl', '0642318194', '$2y$12$z3zssenqRzsdZzMgpbfWs.N/ZhLssytZD5fewTQfOZXyqNlSxMssG', 'admin', '2025-03-05 03:49:29'),
+(11, 'Admin1', 'admin@test.com', '06131417191', '$2y$12$kaPGv8UJ7y7Q1HWxScwIQeJLYs3/FaolaR8Zfnp1nXvlSocxgNYQC', 'admin', '2025-03-05 03:49:29'),
+(12, 'Asiel Elaouare', 'elaasiel@gmail.com', '+31 0625187218', '$2y$12$tvddAcwqu9sa/WqvPpS9ku2br8GOdECqYcubgtaMzyS7GwPpBtfGi', 'admin', '2025-03-08 13:47:01'),
+(13, 'Asiel', 'elaouareasiel82@gmail.com', '+31 06 25187218', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'customer', '2025-03-13 09:13:12'),
+(15, 'newuser', 'testuser@live.nl', '0673314586', '$2y$12$wyDOsTVgnUww/HCcXpiVne3Ju9vkh41mIPtCMCi8i48kV4nAkFm4G', 'customer', '2025-04-10 19:49:17'),
+(16, 'updated', 'update@live.nl', '5758428235', '$2y$12$PYN1ga/rou8rjO0mpmQo1./mNGxUO55AiKy9.Lt0Pvzs1lpiFr0n6', 'customer', '2025-04-10 20:25:54');
 
 --
--- Indexes for dumped tables
+-- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexes for table `ACCESS_PASS`
+-- Indexen voor tabel `ACCESS_PASS`
 --
 ALTER TABLE `ACCESS_PASS`
   ADD PRIMARY KEY (`pass_id`),
   ADD KEY `music_ticket_id` (`music_ticket_id`);
 
 --
--- Indexes for table `ARTIST`
+-- Indexen voor tabel `ARTIST`
 --
 ALTER TABLE `ARTIST`
   ADD PRIMARY KEY (`artist_id`);
 
 --
--- Indexes for table `LOCATION`
+-- Indexen voor tabel `LOCATION`
 --
 ALTER TABLE `LOCATION`
   ADD PRIMARY KEY (`location_id`);
 
 --
--- Indexes for table `MUSIC_TICKET`
+-- Indexen voor tabel `MUSIC_TICKET`
 --
 ALTER TABLE `MUSIC_TICKET`
   ADD PRIMARY KEY (`music_ticket_id`),
@@ -583,27 +694,27 @@ ALTER TABLE `MUSIC_TICKET`
   ADD KEY `show_id` (`show_id`);
 
 --
--- Indexes for table `ORDER`
+-- Indexen voor tabel `ORDER`
 --
 ALTER TABLE `ORDER`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `PAGE`
+-- Indexen voor tabel `PAGE`
 --
 ALTER TABLE `PAGE`
   ADD PRIMARY KEY (`page_id`),
   ADD UNIQUE KEY `slug` (`slug`);
 
 --
--- Indexes for table `password_resets`
+-- Indexen voor tabel `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `RESERVATION`
+-- Indexen voor tabel `RESERVATION`
 --
 ALTER TABLE `RESERVATION`
   ADD PRIMARY KEY (`reservation_id`),
@@ -611,75 +722,75 @@ ALTER TABLE `RESERVATION`
   ADD KEY `session_id` (`session_id`);
 
 --
--- Indexes for table `RESTAURANT`
+-- Indexen voor tabel `RESTAURANT`
 --
 ALTER TABLE `RESTAURANT`
   ADD PRIMARY KEY (`restaurant_id`);
 
 --
--- Indexes for table `RESTAURANT_GENRE`
+-- Indexen voor tabel `RESTAURANT_GENRE`
 --
 ALTER TABLE `RESTAURANT_GENRE`
   ADD PRIMARY KEY (`genre_id`);
 
 --
--- Indexes for table `RESTAURANT_GENRE_MAPPING`
+-- Indexen voor tabel `RESTAURANT_GENRE_MAPPING`
 --
 ALTER TABLE `RESTAURANT_GENRE_MAPPING`
   ADD PRIMARY KEY (`restaurant_id`,`genre_id`),
   ADD KEY `genre_id` (`genre_id`);
 
 --
--- Indexes for table `SECTION`
+-- Indexen voor tabel `SECTION`
 --
 ALTER TABLE `SECTION`
   ADD PRIMARY KEY (`section_id`),
   ADD KEY `page_id` (`page_id`);
 
 --
--- Indexes for table `SESSION`
+-- Indexen voor tabel `SESSION`
 --
 ALTER TABLE `SESSION`
   ADD PRIMARY KEY (`session_id`),
   ADD KEY `restaurant_id` (`restaurant_id`);
 
 --
--- Indexes for table `SHOW`
+-- Indexen voor tabel `SHOW`
 --
 ALTER TABLE `SHOW`
   ADD PRIMARY KEY (`show_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
--- Indexes for table `SHOW_ARTIST`
+-- Indexen voor tabel `SHOW_ARTIST`
 --
 ALTER TABLE `SHOW_ARTIST`
   ADD PRIMARY KEY (`show_id`,`artist_id`),
   ADD KEY `artist_id` (`artist_id`);
 
 --
--- Indexes for table `TICKET`
+-- Indexen voor tabel `TICKET`
 --
 ALTER TABLE `TICKET`
   ADD PRIMARY KEY (`ticket_id`),
   ADD KEY `order_id` (`order_id`);
 
 --
--- Indexes for table `TOUR`
+-- Indexen voor tabel `TOUR`
 --
 ALTER TABLE `TOUR`
   ADD PRIMARY KEY (`tour_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
--- Indexes for table `TOUR_GUIDE`
+-- Indexen voor tabel `TOUR_GUIDE`
 --
 ALTER TABLE `TOUR_GUIDE`
   ADD PRIMARY KEY (`guide_id`),
   ADD KEY `tour_id` (`tour_id`);
 
 --
--- Indexes for table `TOUR_LANGUAGE`
+-- Indexen voor tabel `TOUR_LANGUAGE`
 --
 ALTER TABLE `TOUR_LANGUAGE`
   ADD PRIMARY KEY (`id`),
@@ -687,7 +798,7 @@ ALTER TABLE `TOUR_LANGUAGE`
   ADD KEY `tour_id` (`tour_id`);
 
 --
--- Indexes for table `TOUR_TICKET`
+-- Indexen voor tabel `TOUR_TICKET`
 --
 ALTER TABLE `TOUR_TICKET`
   ADD PRIMARY KEY (`tour_ticket_id`),
@@ -696,7 +807,7 @@ ALTER TABLE `TOUR_TICKET`
   ADD KEY `ticket_id` (`ticket_id`);
 
 --
--- Indexes for table `USER`
+-- Indexen voor tabel `USER`
 --
 ALTER TABLE `USER`
   ADD PRIMARY KEY (`user_id`),
@@ -704,212 +815,212 @@ ALTER TABLE `USER`
   ADD UNIQUE KEY `phone_number` (`phone_number`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT for table `ACCESS_PASS`
+-- AUTO_INCREMENT voor een tabel `ACCESS_PASS`
 --
 ALTER TABLE `ACCESS_PASS`
   MODIFY `pass_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ARTIST`
+-- AUTO_INCREMENT voor een tabel `ARTIST`
 --
 ALTER TABLE `ARTIST`
-  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `LOCATION`
+-- AUTO_INCREMENT voor een tabel `LOCATION`
 --
 ALTER TABLE `LOCATION`
   MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `MUSIC_TICKET`
+-- AUTO_INCREMENT voor een tabel `MUSIC_TICKET`
 --
 ALTER TABLE `MUSIC_TICKET`
   MODIFY `music_ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
--- AUTO_INCREMENT for table `ORDER`
+-- AUTO_INCREMENT voor een tabel `ORDER`
 --
 ALTER TABLE `ORDER`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
--- AUTO_INCREMENT for table `PAGE`
+-- AUTO_INCREMENT voor een tabel `PAGE`
 --
 ALTER TABLE `PAGE`
   MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `password_resets`
+-- AUTO_INCREMENT voor een tabel `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `RESERVATION`
+-- AUTO_INCREMENT voor een tabel `RESERVATION`
 --
 ALTER TABLE `RESERVATION`
   MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `RESTAURANT`
+-- AUTO_INCREMENT voor een tabel `RESTAURANT`
 --
 ALTER TABLE `RESTAURANT`
   MODIFY `restaurant_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `RESTAURANT_GENRE`
+-- AUTO_INCREMENT voor een tabel `RESTAURANT_GENRE`
 --
 ALTER TABLE `RESTAURANT_GENRE`
   MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `SECTION`
+-- AUTO_INCREMENT voor een tabel `SECTION`
 --
 ALTER TABLE `SECTION`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `SESSION`
+-- AUTO_INCREMENT voor een tabel `SESSION`
 --
 ALTER TABLE `SESSION`
   MODIFY `session_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `SHOW`
+-- AUTO_INCREMENT voor een tabel `SHOW`
 --
 ALTER TABLE `SHOW`
-  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `TICKET`
+-- AUTO_INCREMENT voor een tabel `TICKET`
 --
 ALTER TABLE `TICKET`
   MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
--- AUTO_INCREMENT for table `TOUR`
+-- AUTO_INCREMENT voor een tabel `TOUR`
 --
 ALTER TABLE `TOUR`
   MODIFY `tour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `TOUR_GUIDE`
+-- AUTO_INCREMENT voor een tabel `TOUR_GUIDE`
 --
 ALTER TABLE `TOUR_GUIDE`
   MODIFY `guide_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `TOUR_LANGUAGE`
+-- AUTO_INCREMENT voor een tabel `TOUR_LANGUAGE`
 --
 ALTER TABLE `TOUR_LANGUAGE`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `TOUR_TICKET`
+-- AUTO_INCREMENT voor een tabel `TOUR_TICKET`
 --
 ALTER TABLE `TOUR_TICKET`
   MODIFY `tour_ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `USER`
+-- AUTO_INCREMENT voor een tabel `USER`
 --
 ALTER TABLE `USER`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- Constraints for dumped tables
+-- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- Constraints for table `ACCESS_PASS`
+-- Beperkingen voor tabel `ACCESS_PASS`
 --
 ALTER TABLE `ACCESS_PASS`
   ADD CONSTRAINT `ACCESS_PASS_ibfk_1` FOREIGN KEY (`music_ticket_id`) REFERENCES `MUSIC_TICKET` (`music_ticket_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `MUSIC_TICKET`
+-- Beperkingen voor tabel `MUSIC_TICKET`
 --
 ALTER TABLE `MUSIC_TICKET`
   ADD CONSTRAINT `MUSIC_TICKET_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `TICKET` (`ticket_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `MUSIC_TICKET_ibfk_2` FOREIGN KEY (`show_id`) REFERENCES `SHOW` (`show_id`);
 
 --
--- Constraints for table `ORDER`
+-- Beperkingen voor tabel `ORDER`
 --
 ALTER TABLE `ORDER`
   ADD CONSTRAINT `ORDER_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `USER` (`user_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `RESERVATION`
+-- Beperkingen voor tabel `RESERVATION`
 --
 ALTER TABLE `RESERVATION`
   ADD CONSTRAINT `RESERVATION_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `TICKET` (`ticket_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `RESERVATION_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `SESSION` (`session_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `RESTAURANT_GENRE_MAPPING`
+-- Beperkingen voor tabel `RESTAURANT_GENRE_MAPPING`
 --
 ALTER TABLE `RESTAURANT_GENRE_MAPPING`
   ADD CONSTRAINT `RESTAURANT_GENRE_MAPPING_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `RESTAURANT` (`restaurant_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `RESTAURANT_GENRE_MAPPING_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `RESTAURANT_GENRE` (`genre_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `SECTION`
+-- Beperkingen voor tabel `SECTION`
 --
 ALTER TABLE `SECTION`
   ADD CONSTRAINT `SECTION_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `PAGE` (`page_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `SESSION`
+-- Beperkingen voor tabel `SESSION`
 --
 ALTER TABLE `SESSION`
   ADD CONSTRAINT `SESSION_ibfk_1` FOREIGN KEY (`restaurant_id`) REFERENCES `RESTAURANT` (`restaurant_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `SHOW`
+-- Beperkingen voor tabel `SHOW`
 --
 ALTER TABLE `SHOW`
   ADD CONSTRAINT `SHOW_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `LOCATION` (`location_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `SHOW_ARTIST`
+-- Beperkingen voor tabel `SHOW_ARTIST`
 --
 ALTER TABLE `SHOW_ARTIST`
   ADD CONSTRAINT `SHOW_ARTIST_ibfk_1` FOREIGN KEY (`show_id`) REFERENCES `SHOW` (`show_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `SHOW_ARTIST_ibfk_2` FOREIGN KEY (`artist_id`) REFERENCES `ARTIST` (`artist_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `TICKET`
+-- Beperkingen voor tabel `TICKET`
 --
 ALTER TABLE `TICKET`
   ADD CONSTRAINT `TICKET_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `ORDER` (`order_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `TOUR`
+-- Beperkingen voor tabel `TOUR`
 --
 ALTER TABLE `TOUR`
   ADD CONSTRAINT `TOUR_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `LOCATION` (`location_id`);
 
 --
--- Constraints for table `TOUR_GUIDE`
+-- Beperkingen voor tabel `TOUR_GUIDE`
 --
 ALTER TABLE `TOUR_GUIDE`
   ADD CONSTRAINT `TOUR_GUIDE_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `TOUR` (`tour_id`);
 
 --
--- Constraints for table `TOUR_LANGUAGE`
+-- Beperkingen voor tabel `TOUR_LANGUAGE`
 --
 ALTER TABLE `TOUR_LANGUAGE`
   ADD CONSTRAINT `TOUR_LANGUAGE_ibfk_1` FOREIGN KEY (`tour_guide_id`) REFERENCES `TOUR_GUIDE` (`guide_id`),
   ADD CONSTRAINT `TOUR_LANGUAGE_ibfk_2` FOREIGN KEY (`tour_id`) REFERENCES `TOUR` (`tour_id`);
 
 --
--- Constraints for table `TOUR_TICKET`
+-- Beperkingen voor tabel `TOUR_TICKET`
 --
 ALTER TABLE `TOUR_TICKET`
   ADD CONSTRAINT `TOUR_TICKET_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `TOUR` (`tour_id`) ON DELETE CASCADE,

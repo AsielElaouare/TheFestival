@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 class Show extends BaseEvent
 {
   private $artistName;

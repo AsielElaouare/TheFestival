@@ -55,4 +55,24 @@ class UserService {
     public function checkEmailOrPhoneNumberExists($email, $phoneNumber) {
         return $this->userRepo->checkEmailOrPhoneNumberExists($email, $phoneNumber);
     }
+
+
+    // Controleer of e-mail is gewijzigd
+public function hasEmailChanged(string $oldEmail, string $newEmail): bool {
+    return strtolower(trim($oldEmail)) !== strtolower(trim($newEmail));
+}
+
+// Valideer wachtwoordwijziging
+public function validatePasswordUpdate($user, string $newPassword, string $currentPassword) {
+    if (empty($newPassword)) {
+        return ''; // No new password — keep old hash
+    }
+
+    if (empty($currentPassword) || !password_verify($currentPassword, $user->getPasswordHash())) {
+        return false; // Invalid attempt
+    }
+
+    return $newPassword; // Valid — return it for further processing
+}
+
 }

@@ -4,7 +4,7 @@ namespace App\Controllers;
 use App\Service\ArtistService;
 use App\Helper\InputHelper;
 
-class ArtistController
+class ArtistController extends BaseController
 {
     private ArtistService $artistService;
 
@@ -27,87 +27,84 @@ class ArtistController
     // Combineer Create: toont het formulier (GET) en verwerkt nieuwe artiesten (POST)
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            include __DIR__ . '/../views/admin/artists/create.php';
-        } else { // POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name  = InputHelper::sanitizeString($_POST['name'] ?? '');
             $genre = InputHelper::sanitizeString($_POST['genre'] ?? '');
+
             if (empty($name) || empty($genre)) {
                 $error = "Name and genre are required.";
                 include __DIR__ . '/../views/admin/artists/create.php';
                 return;
             }
-            $newId = $this->artistService->createArtist($name, $genre);
-            if (!$newId) {
-                header("Location: /artist/index?error=Could+not+create+artist");
-                exit();
+
+            if (!$this->artistService->createArtist($name, $genre)) {
+                $this->redirectWithError("Could not create artist", "/artist/index");
             }
-            header("Location: /artist/index?message=Artist+created");
-            exit();
+
+            $this->redirectWithMessage("Artist created", "/artist/index");
         }
+
+        include __DIR__ . '/../views/admin/artists/create.php';
     }
 
     // Combineer Edit en Update: toont het formulier (GET) en verwerkt de update (POST)
     public function edit()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = (int) ($_GET['id'] ?? 0);
-            if (!$id) {
-                header("Location: /artist/index?error=Artist+not+found");
-                exit();
-            }
-            $artist = $this->artistService->getArtistById($id);
-            if (!$artist) {
-                header("Location: /artist/index?error=Artist+not+found");
-                exit();
-            }
-            include __DIR__ . '/../views/admin/artists/edit.php';
-        } else { // POST request: update de artiest
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id    = (int) ($_POST['artist_id'] ?? 0);
             $name  = InputHelper::sanitizeString($_POST['name'] ?? '');
             $genre = InputHelper::sanitizeString($_POST['genre'] ?? '');
+
             if (!$id || empty($name) || empty($genre)) {
-                header("Location: /artist/index?error=Artist+not+found+or+invalid+data");
-                exit();
+                $this->redirectWithError("Invalid data", "/artist/index");
             }
-            $success = $this->artistService->updateArtist($id, $name, $genre);
-            if (!$success) {
-                header("Location: /artist/index?error=Could+not+update+artist");
-                exit();
+
+            if (!$this->artistService->updateArtist($id, $name, $genre)) {
+                $this->redirectWithError("Could not update artist", "/artist/index");
             }
-            header("Location: /artist/index?message=Artist+updated");
-            exit();
+
+            $this->redirectWithMessage("Artist updated", "/artist/index");
         }
+
+        $id = (int) ($_GET['id'] ?? 0);
+        if (!$id) {
+            $this->redirectWithError("Artist not found", "/artist/index");
+        }
+
+        $artist = $this->artistService->getArtistById($id);
+        if (!$artist) {
+            $this->redirectWithError("Artist not found", "/artist/index");
+        }
+
+        include __DIR__ . '/../views/admin/artists/edit.php';
     }
 
     // Combineer Delete bevestiging en verwerking: als GET, toon de bevestiging; als POST, voer de verwijdering uit.
     public function delete()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = (int) ($_GET['id'] ?? 0);
-            if (!$id) {
-                header("Location: /artist/index?error=Artist+not+found");
-                exit();
-            }
-            $artist = $this->artistService->getArtistById($id);
-            if (!$artist) {
-                header("Location: /artist/index?error=Artist+not+found");
-                exit();
-            }
-            include __DIR__ . '/../views/admin/artists/delete.php';
-        } else { // POST: verwijder de artiest
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = (int) ($_POST['artist_id'] ?? 0);
             if (!$id) {
-                header("Location: /artist/index?error=Artist+not+found");
-                exit();
+                $this->redirectWithError("Artist not found", "/artist/index");
             }
-            $success = $this->artistService->deleteArtist($id);
-            if (!$success) {
-                header("Location: /artist/index?error=Could+not+delete+artist+(maybe+in+use)");
-                exit();
+
+            if (!$this->artistService->deleteArtist($id)) {
+                $this->redirectWithError("Could not delete artist (maybe in use)", "/artist/index");
             }
-            header("Location: /artist/index?message=Artist+deleted");
-            exit();
+
+            $this->redirectWithMessage("Artist deleted", "/artist/index");
         }
+
+        $id = (int) ($_GET['id'] ?? 0);
+        if (!$id) {
+            $this->redirectWithError("Artist not found", "/artist/index");
+        }
+
+        $artist = $this->artistService->getArtistById($id);
+        if (!$artist) {
+            $this->redirectWithError("Artist not found", "/artist/index");
+        }
+
+        include __DIR__ . '/../views/admin/artists/delete.php';
     }
 }

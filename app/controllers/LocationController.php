@@ -4,43 +4,33 @@ namespace App\Controllers;
 use App\Repositories\LocationRepository;
 use App\Helper\InputHelper;
 
-class LocationController
+class LocationController extends BaseController
 {
     private LocationRepository $locationRepo;
 
     public function __construct()
     {
-        // Start sessie indien nodig en controleer admin-toegang
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header("Location: /");
-            exit();
+            $this->redirectWithError("Unauthorized", "/");
         }
 
         $this->locationRepo = new LocationRepository();
     }
 
-    // Toon alle locaties
     public function index()
     {
         $locations = $this->locationRepo->getAllLocations();
         include __DIR__ . '/../views/admin/locations/index.php';
     }
 
-    // Combineer Create: Als GET tonen we het formulier, als POST verwerken we de creatie
     public function create()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            include __DIR__ . '/../views/admin/locations/create.php';
-        } else { // POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $venueName  = InputHelper::sanitizeString($_POST['venue_name'] ?? '');
             $postalCode = InputHelper::sanitizeString($_POST['postal_code'] ?? '');
             $streetName = InputHelper::sanitizeString($_POST['street_name'] ?? '');
             $city       = InputHelper::sanitizeString($_POST['city'] ?? '');
 
-            // Basisvalidatie
             if (empty($venueName) || empty($postalCode) || empty($streetName) || empty($city)) {
                 $error = "Alle velden zijn verplicht.";
                 include __DIR__ . '/../views/admin/locations/create.php';
@@ -48,82 +38,74 @@ class LocationController
             }
 
             $this->locationRepo->createLocation($venueName, $postalCode, $streetName, $city);
-            header("Location: /location/index?message=Location+created");
-            exit();
+            $this->redirectWithMessage("Location created", "/location/index");
         }
+
+        include __DIR__ . '/../views/admin/locations/create.php';
     }
 
-    // Combineer Edit en Update: Als GET tonen we het formulier, als POST verwerken we de update
     public function edit()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
-            if (empty($id)) {
-                header("Location: /admin/locations?error=Location+not+found");
-                exit();
-            }
-            $location = $this->locationRepo->getLocationById((int)$id);
-            if (!$location) {
-                header("Location: /admin/locations?error=Location+not+found");
-                exit();
-            }
-            include __DIR__ . '/../views/admin/locations/edit.php';
-        } else { // POST: verwerk update
-            $id = InputHelper::sanitizeString($_POST['location_id'] ?? '');
-            if (empty($id)) {
-                header("Location: /admin/locations?error=Location+not+found");
-                exit();
-            }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id         = (int) ($_POST['location_id'] ?? 0);
             $venueName  = InputHelper::sanitizeString($_POST['venue_name'] ?? '');
             $postalCode = InputHelper::sanitizeString($_POST['postal_code'] ?? '');
             $streetName = InputHelper::sanitizeString($_POST['street_name'] ?? '');
             $city       = InputHelper::sanitizeString($_POST['city'] ?? '');
 
-            if (empty($venueName) || empty($postalCode) || empty($streetName) || empty($city)) {
+            if (!$id || empty($venueName) || empty($postalCode) || empty($streetName) || empty($city)) {
                 $error = "Alle velden zijn verplicht.";
+                $location = $this->locationRepo->getLocationById($id);
                 include __DIR__ . '/../views/admin/locations/edit.php';
                 return;
             }
 
-            $this->locationRepo->updateLocation((int)$id, $venueName, $postalCode, $streetName, $city);
-            header("Location: /location/index?message=Location+updated");
-            exit();
+            $this->locationRepo->updateLocation($id, $venueName, $postalCode, $streetName, $city);
+            $this->redirectWithMessage("Location updated", "/location/index");
         }
+
+        $id = (int) ($_GET['id'] ?? 0);
+        if (!$id) {
+            $this->redirectWithError("Location not found", "/location/index");
+        }
+
+        $location = $this->locationRepo->getLocationById($id);
+        if (!$location) {
+            $this->redirectWithError("Location not found", "/location/index");
+        }
+
+        include __DIR__ . '/../views/admin/locations/edit.php';
     }
 
-    // Combineer Delete bevestiging en Verwerking: Als GET tonen we bevestiging, als POST verwerken we de verwijdering
     public function delete()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
-            if (empty($id)) {
-                header("Location: /admin/locations?error=Location+not+found");
-                exit();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = (int) ($_POST['location_id'] ?? 0);
+            if (!$id) {
+                $this->redirectWithError("Location not found", "/location/index");
             }
-            $location = $this->locationRepo->getLocationById((int)$id);
-            if (!$location) {
-                header("Location: /admin/locations?error=Location+not+found");
-                exit();
+
+            if ($this->locationRepo->hasDependentShows($id)) {
+                $this->redirectWithError("Cannot delete location because it is in use", "/location/index");
             }
-            include __DIR__ . '/../views/admin/locations/delete.php';
-        } else { // POST: verwerk verwijdering
-            $id = InputHelper::sanitizeString($_POST['location_id'] ?? '');
-            if (empty($id)) {
-                header("Location: /location/index?error=Location+not+found");
-                exit();
+
+            if (!$this->locationRepo->deleteLocation($id)) {
+                $this->redirectWithError("An error occurred", "/location/index");
             }
-            // Controleer of er afhankelijkheden zijn (bijv. shows)
-            if ($this->locationRepo->hasDependentShows((int)$id)) {
-                header("Location: /location/index?error=Cannot+delete+location+because+it+is+in+use");
-                exit();
-            }
-            $result = $this->locationRepo->deleteLocation((int)$id);
-            if (!$result) {
-                header("Location: /location/index?error=An+error+occurred");
-                exit();
-            }
-            header("Location: /location/index?message=Location+deleted");
-            exit();
+
+            $this->redirectWithMessage("Location deleted", "/location/index");
         }
+
+        $id = (int) ($_GET['id'] ?? 0);
+        if (!$id) {
+            $this->redirectWithError("Location not found", "/location/index");
+        }
+
+        $location = $this->locationRepo->getLocationById($id);
+        if (!$location) {
+            $this->redirectWithError("Location not found", "/location/index");
+        }
+
+        include __DIR__ . '/../views/admin/locations/delete.php';
     }
 }

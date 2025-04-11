@@ -19,17 +19,25 @@ include __DIR__. '/../header.php';
 
 <div class="d-flex justify-content-evenly">
 <div class="card card40 bg-pink">
-  <img src="/uploads/jazz_pictures/wouterhamel1.svg" class="card-img-top p-4" alt="Wouter Hamel">
+<section data-title="ArtistCard1Intro" class="contenteditable">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard1Intro')) ?>" class="card-img-top p-3" >
+  </section>
   <div class="card-body">
-    <h2 class="card-title text-center yellow">Wouter Hamel</h2>
+    <h2 class="card-title text-center yellow contenteditable" data-title="ArtistCard1IntroText">          
+      <?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard1IntroText')) ?>
+    </h2>
     <a href="/jazz/artistView?id=3" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
 
 <div class="card card40 bg-pink">
-  <img src="/uploads/jazz_pictures/ntjamrosie1.svg" class="card-img-top p-3" alt="Ntjam Rosie">
+<section data-title="ArtistCard2Intro" class="contenteditable">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard2Intro')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+  </section>
   <div class="card-body"> 
-  <h2 class="card-title text-center yellow">Natjam</h2>
+  <h2 class="card-title text-center yellow contenteditable" data-title="ArtistCard2IntroText">          
+      <?= html_entity_decode(getContentByTitle($blocks, 'ArtistCard2IntroText')) ?>
+    </h2>
     <a href="/jazz/artistView?id=4" class="btn btn-primary">Check Artist</a>
   </div>
 </div>
@@ -41,10 +49,9 @@ include __DIR__. '/../header.php';
         <div class="position-absolute top-50 d-flex start-50  text-center translate-middle text-white">
             
         <div>
-                <h1 class="impact-font contenteditable" data-title="SecondJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'SecondJazzSection')) ?>
+                <h1 class="impact-font contenteditable yellow" style="font-size: 4rem;" data-title="SecondJazzSection">  <?= html_entity_decode(getContentByTitle($blocks, 'SecondJazzSection')) ?>
                 </h1>
               </div>
-    
     </div>
 </section>
 
@@ -60,60 +67,55 @@ include __DIR__. '/../header.php';
     </h6>
   </div>
 </div>
-
-
 <div class="container mt-5 purple impact-font">
   <div class="row justify-content-center text-center">
     <!-- Thursday Section -->
-    <div class="col-md-5 mb-4">
+    <div class="col-md-6 mb-5">
       <h2>Thursday</h2>
-      <div class="card">
+      <div class="card h-100 bg-coral">
         <section data-title="ArtsNr1CardJazzImg" class="contenteditable">
-          <img  src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
         </section>
-        <div class="card-body ">
-          <p data-title="ArtsNr1JazzCardBody " class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1JazzCardBody')) ?></p>
+        <div class="card-body d-flex flex-column justify-content-center">
+          <p data-title="ArtsNr1JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr1JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Saturday, Sunday, and Friday Section (3 Columns) -->
-  <div class="row justify-content-center text-center mt-4">
-    <!-- Saturday Card -->
-    <div class="col-md-4 mb-4">
-      <h2>Friday</h2>
-      <div class="card">
+    <!-- Friday Section -->
+    <div class="col-md-6 mb-5">
+      <h2 class="">Friday</h2>
+      <div class="card h-100 bg-coral">
         <section data-title="ArtsNr2CardJazzImg" class="contenteditable">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr2CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
         </section>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-center">
           <p data-title="ArtsNr2JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr2JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
 
-    <!-- Sunday Card -->
-    <div class="col-md-4 mb-4">
-      <h2>Saturday</h2>
-      <div class="card">
-        <section class="contenteditable">
-          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+    <!-- Saturday Section -->
+    <div class="col-md-6 mb-5">
+      <h2 class="mt-5">Saturday</h2>
+      <div class="card h-100 bg-coral">
+        <section class="contenteditable" data-title="ArtsNr3CardJazzImg">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3CardJazzImg')) ?>" class="card-img-top p-3 rounded" alt="Wicked Jazz">
         </section>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-center">
           <p data-title="ArtsNr3JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3JazzCardBody')) ?></p>
         </div>
       </div>
     </div>
 
-    <!-- Friday Card -->
-    <div class="col-md-4 mb-4">
-      <h2>Sunday</h2>
-      <div class="card">
+    <!-- Sunday Section -->
+    <div class="col-md-6 mb-5">
+      <h2 class="mt-5">Sunday</h2>
+      <div class="card h-100 bg-coral">
         <section data-title="ArtsNr4CardJazzImg" class="contenteditable">
-          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4CardJazzImg')) ?>" class="card-img-top p-3" alt="Wicked Jazz">
+          <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4CardJazzImg')) ?>" class="card-img-top p-3 rounded" alt="Wicked Jazz">
         </section>
-        <div class="card-body">
+        <div class="card-body d-flex flex-column justify-content-center">
           <p data-title="ArtsNr4JazzCardBody" class="card-text purple impact-font fs-2 contenteditable"><?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr4JazzCardBody')) ?></p>
         </div>
       </div>
@@ -122,12 +124,30 @@ include __DIR__. '/../header.php';
 </div>
 </section>
 
-<div class="d-flex justify-content-around align-items-center bg-yellow">
-  <img class="w-25" src="/uploads/jazz_pictures/sax_vector.svg" alt="a cool saxophone">
-  <div>
-    <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>
-  </div>
+<section class="bg-yellow">
+<h1 style="margin-top: 160px; font-size: 4rem;" class="purple text-center impact-font">Schedule</h1>
+<div class="schedule-container text-center mt-5">
+    <?php foreach ($groupedShows as $day => $shows): ?>
+      <div class="d-flex justify-content-center">
+      <div class="day-section d-flex w-75 justify-content-center">
+            <div class="day-label pink"><?= strtoupper($day) ?></div>
+            <div class="schedule w-50 ">
+              <?php foreach ($shows as $show): ?>
+                    <div class="event">
+                        <div class="time bg-purple"><?= $show->startDate->format('H:i') ?></div>
+                        <div class="artist bg-purple"><?= htmlspecialchars($show->getArtistName()) ?></div>
+                        <div class="location bg-purple"><?= htmlspecialchars($show->location->getVenueName()) ?></div>
+                    </div>
+                <?php endforeach; ?>
+              </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+    <div class="buy-tickets">
+        <a href="/tickets" class="btn primary-button">Buy your tickets</a>
+    </div>
 </div>
+</section>
 
 <div class="bg-yellow">
   <?php

@@ -2,33 +2,73 @@
 namespace App\Controllers;
 
 use App\Service\CmsService;
+use App\Service\ShowService;
+use App\Service\ScheduleService;
+use App\Repositories\ShowRepository;
 
 class DanceController
 {
-    private $cmsService;
-    public function __construct(){
+    private CmsService $cmsService;
+    private ShowService $showService;
+    private ScheduleService $scheduleService;
+
+    public function __construct()
+    {
         $this->cmsService = new CmsService();
+        $this->showService = new ShowService(new ShowRepository());
+        $this->scheduleService = new ScheduleService($this->showService);
     }
 
-    public function index(){
+    public function index()
+    {
         $blocks = $this->cmsService->getPageById(5);
+        $schedule = $this->scheduleService->getDanceSchedule();
+        $showsForMartin = $this->showService->getShowsForArtist(8);
+
         require __DIR__ . '/../views/dance/dance.php';
     }
 
-    public function artistView(){
-        if($_SERVER["REQUEST_METHOD"] === 'GET'){
+    public function artistView() {
+        if ($_SERVER["REQUEST_METHOD"] === 'GET') {
             $pageId = isset($_GET['id']) ? $_GET['id'] : null;
-            if($pageId === null){
+            if ($pageId === null) {
                 header("Location: /dance");
                 exit();
             }
-
+    
             $blocks = $this->cmsService->getPageById($pageId);
-            if(empty($blocks)){
+            if (empty($blocks)) {
                 http_response_code(404);
                 return;
             }
-            include __DIR__ . '/../views/dance/detailPageDance.php';
+    
+            // Map page IDs to artist IDs
+            $pageIdToArtistId = [
+                6 => 8, // Martin Garrix
+                7 => 4, // Hardwell
+            ];
+    
+            $artistId = $pageIdToArtistId[$pageId] ?? null;
+            if (!$artistId) {
+                http_response_code(404);
+                echo "Unknown artist for this page.";
+                exit();
+            }
+    
+            $orderedSchedule = $this->scheduleService->getScheduleForArtist($artistId);
+    
+                       
+
+            if ($pageId == 6) {
+                include __DIR__ . '/../views/dance/detailPageDance.php';
+            } elseif ($pageId == 7) {
+                include __DIR__ . '/../views/dance/detailPageDance2.php';
+            } else {
+                http_response_code(404);
+            }
+            exit;
+
         }
     }
+    
 }
