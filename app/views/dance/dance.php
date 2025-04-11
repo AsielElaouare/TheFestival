@@ -182,7 +182,7 @@
     <div class="container d-flex flex-column align-items-center">
       <?php foreach ($schedule as $day => $dayShows): ?>
         <!-- Block for each day -->
-        <div class="schedule-day contenteditable">
+        <div class="schedule-day ">
           <h2 class="impact-font schedule-day-title">
             <?= htmlspecialchars($day) ?>
           </h2>
