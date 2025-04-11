@@ -40,17 +40,18 @@ require __DIR__ ."/../header.php";
                 <div class="d-flex justify-content-center ">
                     <img src="/uploads/logo.svg" class="logo-tickets-page" width="200px m-0">
                 </div>
-                
-                <h2 class="impact-font light-yellow">Tickets</h2>
-                <div class="menu impact-font" >
-                        <button id="dance-tickets-btn" class=" p-0 btn text-white btn-font-size">Dance</button>
-                        <button id="jazz-tickets-btn" class=" p-1 btn text-white btn-font-size">| Jazz</button>
-                        <button id="history-tickets-btn" class=" p-1 btn text-white btn-font-size ">| History</button>
-                        <button id="personal-program-tickets-btn" class=" p-1 btn text-white btn-font-size">| Personal Program</button>
+                <div style="margin: 0px 48px 0px 48px" class="">
+                    <h1 style="font-size: 4rem;" class="impact-font light-yellow">Tickets</h1>
+                    <div class="menu impact-font mb-2" >
+                            <button id="dance-tickets-btn" class=" p-0 btn text-white btn-font-size">Dance</button>
+                            <button id="jazz-tickets-btn" class=" p-1 btn text-white btn-font-size">| Jazz</button>
+                            <button id="history-tickets-btn" class=" p-1 btn text-white btn-font-size ">| History</button>
+                            <button id="personal-program-tickets-btn" class=" p-1 btn text-white btn-font-size">| Personal Program</button>
+                    </div>
                 </div>
             </div>
     </div>
-    <div class="festival-info ms-2" style="font-size: 0.7rem;">  
+    <div class="festival-info mt-2 " style="font-size: 0.7rem; margin: 0px 0px 0px 53px;">  
         <h5>Entrance Tickets</h5>
         <ul class="list-unstyled">
             <li>Festival Haarlem</li>
