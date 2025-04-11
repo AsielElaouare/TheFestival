@@ -12,7 +12,7 @@
 
 <section class="bg-yellow py-5">
 <div class="container text-center">
-      <p class="hero-description contenteditable">
+      <p class="hero-description ">
         Get ready for an unforgettable weekend filled with electrifying beats, spectacular performances, and world-class DJs!
         Whether you’re here for the biggest names in electronic music or discovering new favorites, DANCE brings you three days
         of nonstop music and energy across stunning venues. Explore our lineup, check out the schedules, and prepare to immerse
@@ -41,7 +41,7 @@
 
         <!-- Martin Garrix -->
         <div class="col-md-4 d-flex flex-column align-items-center mb-4">
-          <section class="contenteditable">
+          <section class="contenteditable" data-title="headerDanceContent">
             <img src="<?= getContentByTitle($blocks, 'headerDanceContent') ?>" class="featured-artist-img" />
           </section>
           <a href="/dance/artistView?id=6" class="btn artist-name-btn impact-font mt-2">
@@ -51,7 +51,7 @@
 
         <!-- Hardwell -->
         <div class="col-md-4 d-flex flex-column align-items-center mb-4">
-          <section class="contenteditable">
+          <section class="contenteditable" data-title="headerDanceContent2">
             <img src="<?= getContentByTitle($blocks, 'headerDanceContent2') ?>" class="featured-artist-img" />
           </section>
           <a href="/dance/artistView?id=7" class="btn artist-name-btn impact-font mt-2">
@@ -83,7 +83,7 @@
     <!-- Artist 1 -->
     <div class="col-md-4 col-lg-2 mb-4">
       <div class="card text-center">
-        <section class="contenteditable">
+        <section class="contenteditable" data-title="LineUpArt1Pic">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt1Pic')) ?>"
                class="card-img-top artist-img lineup-img">
         </section>
@@ -98,7 +98,7 @@
     <!-- Artist 2 -->
     <div class="col-md-4 col-lg-2 mb-4">
       <div class="card text-center">
-        <section class="contenteditable">
+        <section class="contenteditable" data-title="LineUpArt2Pic">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt2Pic')) ?>"
                class="card-img-top artist-img lineup-img">
         </section>
@@ -113,7 +113,7 @@
     <!-- Artist 3 -->
     <div class="col-md-4 col-lg-2 mb-4">
       <div class="card text-center">
-        <section class="contenteditable">
+        <section class="contenteditable" data-title="LineUpArt3Pic">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt3Pic')) ?>"
                class="card-img-top artist-img lineup-img">
         </section>
@@ -128,7 +128,7 @@
     <!-- Artist 4 -->
     <div class="col-md-4 col-lg-2 mb-4">
       <div class="card text-center">
-        <section class="contenteditable">
+        <section class="contenteditable" data-title="LineUpArt4Pic">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt4Pic')) ?>"
                class="card-img-top artist-img lineup-img">
         </section>
@@ -143,7 +143,7 @@
     <!-- Artist 5 -->
     <div class="col-md-4 col-lg-2 mb-4">
       <div class="card text-center">
-        <section class="contenteditable">
+        <section class="contenteditable" data-title="LineUpArt5Pic">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt5Pic')) ?>"
                class="card-img-top artist-img lineup-img">
         </section>
@@ -158,7 +158,7 @@
     <!-- Artist 6 -->
     <div class="col-md-4 col-lg-2 mb-4">
       <div class="card text-center">
-        <section class="contenteditable">
+        <section class="contenteditable" data-title="LineUpArt6Pic">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'LineUpArt6Pic')) ?>"
                class="card-img-top artist-img lineup-img">
         </section>
