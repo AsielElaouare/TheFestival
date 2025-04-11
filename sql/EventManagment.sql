@@ -181,8 +181,8 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (84, 'hardwellTrack6Txt', 'Spaceman', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (85, 'ArtistCard1Intro', '/uploads/jazz_pictures/wouterhamel1.svg', 27, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (86, 'ArtistCard2Intro', '/uploads/jazz_pictures/ntjamrosie1.svg', 27, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(87, 'ArtistCard1IntroText', 'Wouter Hamel', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(88, 'ArtistCard2IntroText', '', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(87, 'ArtistCard1IntroText', 'Wouter Hamel', 30, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(88, 'ArtistCard2IntroText', '', 30, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (89, 'ArtsCardJazzImgTrack1', '../uploads/1744338309_wouter1.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
 (90, 'ArtsCardJazzImgTrack2', '../uploads/1744338346_wouter2.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
 (91, 'ArtsCardJazzImgTrack3', '../uploads/1744338362_wouter3.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
@@ -429,7 +429,8 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (26, 'hardwellTracks', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (27, 'artistsCardsSection', '', 2, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (28, 'artistsTracksJazz1', '', 3, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
-(29, 'artistsTracksJazz2', '', 4, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(29, 'artistsTracksJazz2', '', 4, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(30, 'artistsTracksJazz2', '', 2, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
 
 -- --------------------------------------------------------
 

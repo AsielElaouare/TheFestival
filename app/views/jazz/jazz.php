@@ -99,7 +99,7 @@ include __DIR__. '/../header.php';
     <div class="col-md-6 mb-5">
       <h2 class="mt-5">Saturday</h2>
       <div class="card h-100 bg-coral">
-        <section class="contenteditable">
+        <section class="contenteditable" data-title="ArtsNr3CardJazzImg">
           <img src="<?= html_entity_decode(getContentByTitle($blocks, 'ArtsNr3CardJazzImg')) ?>" class="card-img-top p-3 rounded" alt="Wicked Jazz">
         </section>
         <div class="card-body d-flex flex-column justify-content-center">
