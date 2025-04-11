@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use PDO;
 use App\Models\Artist;
+use App\Models\Enums\MusicGenre;
 
 class ArtistRepository extends Repository
 {
@@ -20,15 +21,23 @@ class ArtistRepository extends Repository
         }
     }
 
-    // Haal één artiest op via ID
-    public function getArtistById(int $artistId): ?array
+    // Haal één artiest op via ID en geef een Artist object terug
+    public function getArtistById(int $artistId): ?Artist
     {
         try {
             $sql = "SELECT artist_id, name, genre FROM ARTIST WHERE artist_id = :id LIMIT 1";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([':id' => $artistId]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $row ?: null;
+            if (!$row) {
+                return null;
+            }
+
+            return new Artist(
+                $row['artist_id'],
+                null, // Geen event_id 
+                MusicGenre::from(strtolower($row['genre']))
+            );
         } catch (\PDOException $e) {
             error_log("getArtistById error: " . $e->getMessage());
             return null;

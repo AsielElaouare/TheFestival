@@ -7,7 +7,7 @@ use App\Repositories\LocationRepository;
 use App\Repositories\ArtistRepository;
 use App\Helper\InputHelper;
 
-class ShowController
+class ShowController extends BaseController
 {
     private ShowService $showService;
     private LocationRepository $locationRepo;
@@ -16,113 +16,109 @@ class ShowController
     public function __construct()
     {
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-            header("Location: /");
-            exit();
+            $this->redirectWithError("Unauthorized access", "/");
         }
-        
-        $this->showService = new ShowService(new ShowRepository());
+
+        $this->showService  = new ShowService(new ShowRepository());
         $this->locationRepo = new LocationRepository();
-        $this->artistRepo = new ArtistRepository();
+        $this->artistRepo   = new ArtistRepository();
     }
 
-    // Toon alle shows
-    public function index()
+    public function index(): void
     {
         $shows = $this->showService->getAllShows();
         include __DIR__ . '/../views/admin/shows/index.php';
     }
 
-    // Combineer Create en Store: GET toont formulier, POST verwerkt creatie
-    public function create()
+    public function create(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $data = [
-                'show_name'       => InputHelper::sanitizeString($_POST['show_name'] ?? ''),
-                'start_date'      => InputHelper::sanitizeString($_POST['event_date'] ?? ''),
-                'price'           => InputHelper::sanitizeString($_POST['price'] ?? 0),
-                'location_id'     => InputHelper::sanitizeString($_POST['location_id'] ?? 0),
-                'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
-            ];
+            $data = $this->collectShowData();
             $showId = $this->showService->createShow($data);
-            $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
-            if ($showId && !empty($artistId)) {
-                $this->showService->linkArtist($showId, (int)$artistId);
+
+            $artistId = (int) ($_POST['artist_id'] ?? 0);
+            if ($showId && $artistId > 0) {
+                $this->showService->linkArtist($showId, $artistId);
             }
-            header("Location: /admin/dashboard?message=Show+created");
-            exit();
-        } else {
-            $locations = $this->locationRepo->getAllLocations();
-            $artists = $this->artistRepo->getAllArtists();
-            include __DIR__ . '/../views/admin/shows/create.php';
+
+            $this->redirectWithMessage("Show created", "/admin/dashboard");
         }
+
+        $locations = $this->locationRepo->getAllLocations();
+        $artists   = $this->artistRepo->getAllArtists();
+        include __DIR__ . '/../views/admin/shows/create.php';
     }
 
-    // Combineer Edit en Update: GET toont formulier, POST verwerkt update
-    public function edit()
+    public function edit(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = InputHelper::sanitizeString($_POST['show_id'] ?? '');
-            if (empty($id)) {
-                header("Location: /admin/dashboard?error=Show+not+found");
-                exit();
+            $id = (int) ($_POST['show_id'] ?? 0);
+            if (!$id) {
+                $this->redirectWithError("Show not found", "/admin/dashboard");
             }
-            $data = [
-                'show_name'       => InputHelper::sanitizeString($_POST['show_name'] ?? ''),
-                'start_date'      => InputHelper::sanitizeString($_POST['event_date'] ?? ''),
-                'price'           => InputHelper::sanitizeString($_POST['price'] ?? 0),
-                'location_id'     => InputHelper::sanitizeString($_POST['location_id'] ?? 0),
-                'available_spots' => InputHelper::sanitizeString($_POST['available_spots'] ?? 0)
-            ];
+
+            $data = $this->collectShowData();
             $this->showService->updateShow($id, $data);
-            $artistId = InputHelper::sanitizeString($_POST['artist_id'] ?? '');
-            if (!empty($artistId)) {
-                // Verwijder bestaande koppeling en koppel de nieuwe artiest
+
+            $artistId = (int) ($_POST['artist_id'] ?? 0);
+            if ($artistId) {
                 $this->showService->unlinkArtist($id);
-                $this->showService->linkArtist($id, (int)$artistId);
+                $this->showService->linkArtist($id, $artistId);
             }
-            header("Location: /admin/dashboard?message=Show+updated");
-            exit();
-        } else {
-            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
-            if (empty($id)) {
-                header("Location: /admin/dashboard?error=Show+not+found");
-                exit();
-            }
-            $show = $this->showService->getShowById($id);
-            if (!$show) {
-                header("Location: /admin/dashboard?error=Show+not+found");
-                exit();
-            }
-            $locations = $this->locationRepo->getAllLocations();
-            $artists = $this->artistRepo->getAllArtists();
-            include __DIR__ . '/../views/admin/shows/edit.php';
+
+            $this->redirectWithMessage("Show updated", "/admin/dashboard");
         }
+
+        $id = (int) ($_GET['id'] ?? 0);
+        if (!$id) {
+            $this->redirectWithError("Show not found", "/admin/dashboard");
+        }
+
+        $show = $this->showService->getShowById($id);
+        if (!$show) {
+            $this->redirectWithError("Show not found", "/admin/dashboard");
+        }
+
+        $locations = $this->locationRepo->getAllLocations();
+        $artists   = $this->artistRepo->getAllArtists();
+
+        include __DIR__ . '/../views/admin/shows/edit.php';
     }
 
-    // Combineer Delete bevestiging en verwijdering: GET toont bevestigingspagina, POST verwerkt verwijdering
-    public function delete()
+    public function delete(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = InputHelper::sanitizeString($_POST['show_id'] ?? '');
-            if (empty($id)) {
-                header("Location: /admin/dashboard?error=Show+not+found");
-                exit();
+            $id = (int) ($_POST['show_id'] ?? 0);
+            if (!$id) {
+                $this->redirectWithError("Show not found", "/admin/dashboard");
             }
+
             $this->showService->deleteShow($id);
-            header("Location: /admin/dashboard?message=Show+deleted");
-            exit();
-        } else {
-            $id = InputHelper::sanitizeString($_GET['id'] ?? '');
-            if (empty($id)) {
-                header("Location: /admin/dashboard?error=Show+not+found");
-                exit();
-            }
-            $show = $this->showService->getShowById($id);
-            if (!$show) {
-                header("Location: /admin/dashboard?error=Show+not+found");
-                exit();
-            }
-            include __DIR__ . '/../views/admin/shows/delete.php';
+            $this->redirectWithMessage("Show deleted", "/admin/dashboard");
         }
+
+        $id = (int) ($_GET['id'] ?? 0);
+        if (!$id) {
+            $this->redirectWithError("Show not found", "/admin/dashboard");
+        }
+
+        $show = $this->showService->getShowById($id);
+        if (!$show) {
+            $this->redirectWithError("Show not found", "/admin/dashboard");
+        }
+
+        include __DIR__ . '/../views/admin/shows/delete.php';
+    }
+
+    // Verzamel en filter alle show-data
+    private function collectShowData(): array
+    {
+        return [
+            'show_name'       => InputHelper::sanitizeString($_POST['show_name'] ?? ''),
+            'start_date'      => InputHelper::sanitizeString($_POST['event_date'] ?? ''),
+            'price'           => (float) ($_POST['price'] ?? 0),
+            'location_id'     => (int) ($_POST['location_id'] ?? 0),
+            'available_spots' => (int) ($_POST['available_spots'] ?? 0)
+        ];
     }
 }
