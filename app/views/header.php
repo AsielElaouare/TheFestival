@@ -21,8 +21,9 @@ function getContentByTitle($blocks, $title) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4c23360f25.js" crossorigin="anonymous"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <?php if ($adminIsLoggedIn): ?>
-    <script src="https://cdn.tiny.cloud/1/vdqg157so7lar7lz3d1zqsr7achozkg808ozapxqjflce3u5/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ho7c7ke8cs9ykaxznotza1qf56jj6ljuc2umaouva9id4cv1/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
   <?php endif; ?>
   <link rel="stylesheet" href="/style/style.css">
 </head>
@@ -80,6 +81,6 @@ function getContentByTitle($blocks, $title) {
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<?php if ($adminIsLoggedIn): ?>
+<?php if ($adminIsLoggedIn && $_SERVER['REQUEST_URI'] != "/tickets"): ?>
   <form id="contentForm" class="bg-yellow">
 <?php endif; ?>

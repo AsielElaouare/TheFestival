@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Apr 06, 2025 at 05:46 PM
+-- Generation Time: Apr 10, 2025 at 09:54 PM
 -- Server version: 11.5.2-MariaDB-ubu2404
 -- PHP Version: 8.2.25
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `EventManagement`
 --
-CREATE DATABASE IF NOT EXISTS `EventManagement` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci;
-USE `EventManagement`;
 
 -- --------------------------------------------------------
 
@@ -58,7 +56,22 @@ INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
 (4, 'Hardwell', 'dance'),
 (5, 'Gare du Nord ', 'jazz'),
 (6, 'Evolve', 'jazz'),
-(7, 'Gumbo Kings', 'jazz');
+(7, 'Gumbo Kings', 'jazz'),
+(8, 'Ntjam Rosie', 'jazz'),
+(9, 'Wicked Jazz Sounds', 'jazz'),
+(10, 'Jonna Frazer', 'jazz'),
+(11, 'Wouter Hamel', 'jazz'),
+(12, 'Karsu', 'jazz'),
+(13, 'Uncle sue', 'jazz'),
+(14, 'Chris Allen', 'jazz'),
+(15, 'Myles Sanko', 'jazz'),
+(16, 'Ilse Huizinga', 'jazz'),
+(17, 'Eric Vloeimans & Hotspot!', 'jazz'),
+(18, 'Gare du Nord', 'jazz'),
+(19, 'Rilan & The Bombadiers', 'jazz'),
+(20, 'Soul Six', 'jazz'),
+(21, 'Ruis Soundsystem', 'jazz'),
+(22, 'Wicked Jazz Sounds', 'jazz');
 
 -- --------------------------------------------------------
 
@@ -84,15 +97,15 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (2, 'Welcome Message', 'Testing Testing ', 2, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
 (3, 'Festival Route', 'Join our world', 3, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
 (4, 'Call to action', 'Buy your tickets', 4, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
-(5, 'FirstJazzSection', '<p>Yo this is jazz event</p>', 6, '2025-03-22 09:55:05', '2025-03-24 17:17:42'),
+(5, 'FirstJazzSection', 'Yo this is jazz event', 6, '2025-03-22 09:55:05', '2025-03-24 17:17:42'),
 (6, 'SecondJazzSection', '<p>Testing</p>', 7, '2025-03-22 09:55:05', '2025-03-25 15:29:34'),
 (7, 'ThirdJazzSection', '', 8, '2025-03-22 09:55:05', '2025-03-25 15:29:34'),
 (8, 'FourthJazzSection', 'Schedule', 9, '2025-03-22 09:55:05', '2025-03-22 16:14:16'),
 (9, 'last section', 'jddn', 5, '2025-03-22 16:38:01', '2025-03-27 08:49:23'),
-(10, 'FirstSection', '<p><img src=\"../uploads/1742852725_fist.png\" alt=\"\" width=\"75\" height=\"105\">JAJADSJKFDFDS</p>', 10, '2025-03-22 16:38:01', '2025-03-24 21:46:32'),
-(11, 'SecondSection', '<p>asiel</p>', 11, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(12, 'ThirdSection', '<p>Asiel</p>', 12, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(13, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 10, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(10, 'FirstSection', 'Wouter Hamel', 10, '2025-03-22 16:38:01', '2025-04-10 20:34:21'),
+(11, 'SecondSection', ' A Voice That Transcends TimeGet ready to experience the magic of Wouter Hamel, one of the most captivating voices in contemporary jazz-pop! With his signature blend of smooth vocals, infectious melodies, and timeless charm, Hamel brings a fresh energy to the stage, bridging the golden era of jazz with modern-day soul.Whether delivering a heartfelt ballad or an upbeat groove, his performances exude warmth, charisma, and an effortless cool that makes every audience feel like they’re part of something special.At Haarlem Jazz Festival, Wouter Hamel is set to take you on a musical journey—one filled with emotion, elegance, and a deep love for storytelling through song. Don’t miss the chance to see one of the Netherlands’ finest talents bring the streets of Haarlem to life! 🎶✨', 11, '2025-03-22 16:38:01', '2025-04-10 20:37:41'),
+(12, 'ThirdSection', 'Hamel (2007)Wouter Hamel’s self-titled debut album, is the record that launched him into the international spotlight. Blending jazz, pop, and soulful melodies, the album introduced a fresh, modern take on vocal jazz, making it a standout release in the genre.Praised for its balance of vintage jazz inspiration and contemporary appeal, Hamel remains a defining work in his career, setting the stage for his continued evolution as a singer-songwriter. It’s the album that proved jazz could feel both nostalgic and refreshingly new, a perfect reflection of Hamel’s timeless artistry.', 12, '2025-03-22 16:38:01', '2025-04-10 20:34:21'),
+(13, 'imgBlock', '../uploads/1744317211_wouter-img.png', 10, '2025-03-24 21:43:01', '2025-04-10 20:34:21'),
 (14, 'ArtsNr1CardJazzImg', '/uploads/jazz_pictures/garedunord.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (15, 'ArtsNr1JazzCardBody', 'Garedunord', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (16, 'ArtsNr2CardJazzImg', '/uploads/jazz_pictures/karsu.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
@@ -102,10 +115,10 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (20, 'ArtsNr4CardJazzImg', '/uploads/jazz_pictures/wickedjazz.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (21, 'ArtsNr4JazzCardBody', 'WickedJazz', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (22, 'JazzHeaderImg', '/uploads/jazz_pictures/haarlemJazz_vector.svg', 14, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
-(23, 'FirstSection', '<p><img src=\"../uploads/1742852725_fist.png\" alt=\"\" width=\"75\" height=\"105\">JAJADSJKFDFDS</p>', 10, '2025-03-22 16:38:01', '2025-03-24 21:46:32'),
-(24, 'SecondSection', '<p>asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(25, 'ThirdSection', '<p>Asiel</p>', 15, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(26, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 15, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
+(23, 'FirstSection', 'Natjam Rosie', 15, '2025-03-22 16:38:01', '2025-04-10 21:04:38'),
+(24, 'SecondSection', 'A Fusion of Soul, Jazz, and Global RhythmsWith a voice that blends warmth, depth, and effortless elegance, Ntjam Rosie is a true force in contemporary jazz and soul. Her music is a reflection of her multicultural roots, seamlessly weaving together elements of jazz, soul, Afrobeat, and R&B into a sound that is both timeless and refreshingly modern.At Haarlem Jazz Festival, Ntjam Rosie brings her signature sound to the stage, delivering a performance filled with passion, energy, and authenticity. Whether you’re drawn to smooth jazz, soulful melodies, or rhythmic Afro-inspired grooves, her music is an experience not to be missed. Get ready to be moved by one of the most dynamic voices in jazz today!', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
+(25, 'ThirdSection', 'Elle (2010)Rosie’s second album, Elle, significantly elevated her presence in the jazz and soul music scenes. The album showcases a harmonious blend of jazz, soul, and pop influences, reflecting Rosie\'s diverse musical background.The album features tracks that highlight Rosie\'s rich vocals and intricate arrangements, offering listeners a journey through contemporary jazz infused with soulful melodies. Elle not only solidified Ntjam Rosie\'s reputation as a formidable artist but also contributed to the broader appreciation of modern jazz and soul music.', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
+(26, 'imgBlock', '../uploads/1744318142_1744316035_natjam.jpg', 15, '2025-03-24 21:43:01', '2025-04-10 20:49:04'),
 (27, 'headerDanceContent', '/uploads/martingarrixfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
 (28, 'headerDanceContent2', '/uploads/hardwellfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
 (29, 'ArtsNr1CardDanceName', 'Martin Garrix', 17, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
@@ -126,7 +139,19 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (46, 'martinHeroImg', '/uploads/martinhero.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+(47, 'martinHeroRightText', 'Some hashtags or short text', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(48, 'ArtistCard1Intro', '/uploads/jazz_pictures/wouterhamel1.svg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(49, 'ArtistCard2Intro', '/uploads/jazz_pictures/ntjamrosie1.svg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(50, 'ArtistCard1IntroText', 'Wouter Hamel', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(51, 'ArtistCard2IntroText', '', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(52, 'ArtsCardJazzImgTrack1', '../uploads/1744316035_natjam.jpg', 22, '2025-03-28 09:16:27', '2025-04-10 20:14:20'),
+(53, 'ArtsCardJazzImgTrack2', '../uploads/1744316043_natjam.jpg', 22, '2025-03-28 09:16:27', '2025-04-10 20:14:20'),
+(54, 'ArtsCardJazzImgTrack3', '../uploads/1744316050_wouter-img.png', 22, '2025-03-28 09:16:27', '2025-04-10 20:14:20'),
+(55, 'ArtsCardJazzImgTrack4', '../uploads/1744316057_download.png', 22, '2025-03-28 09:16:27', '2025-04-10 20:14:20'),
+(56, 'ArtsCardJazzImgTrack1', '../uploads/1744318093_track1.png', 23, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(57, 'ArtsCardJazzImgTrack2', '../uploads/1744318101_track2.png', 23, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(58, 'ArtsCardJazzImgTrack3', '../uploads/1744318110_track3.png', 23, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(59, 'ArtsCardJazzImgTrack4', '../uploads/1744318116_track4.png', 23, '2025-03-28 09:16:27', '2025-04-10 20:48:39');
 
 -- --------------------------------------------------------
 
@@ -355,7 +380,10 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (17, 'FeaturedArtistSection', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (18, 'LineUpSectionDance', '', 5, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (19, 'martinHero', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
-(20, 'martinKeyTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(20, 'martinKeyTracks', '', 6, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(21, 'artistsCardsSection', '', 2, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(22, 'artistsTracksJazz1', '', 3, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(23, 'artistsTracksJazz2', '', 4, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
 
 -- --------------------------------------------------------
 
@@ -394,7 +422,20 @@ INSERT INTO `SHOW` (`show_id`, `show_name`, `start_date`, `price`, `location_id`
 (2, 'Tiesto | Friday ticket', '2025-06-06 12:49:34', 60.00, 2, 300),
 (3, 'Hardwell | Friday ticket', '2025-06-06 12:49:34', 60.00, 3, 300),
 (4, 'Gumbo Kings| Thursday ticket', '2025-06-05 18:00:00', 15.00, 4, 110),
-(8, '<script>alert(\"hoi Karin\")</script>', '2025-03-13 10:51:00', 34.00, 2, 23);
+(9, 'Evolve', '2025-07-24 19:00:00', 15.00, 4, 100),
+(10, 'Ntjam Rosie', '2025-07-24 21:00:00', 15.00, 4, 100),
+(11, 'Wicked Jazz Sounds', '2025-07-24 18:00:00', 15.00, 4, 100),
+(12, 'Wouter Hamel', '2025-07-24 19:30:00', 15.00, 4, 100),
+(13, 'Jonna Frazer', '2025-07-24 21:00:00', 15.00, 4, 100),
+(14, 'Karsu', '2025-07-25 18:00:00', 15.00, 4, 100),
+(15, 'Uncle sue', '2025-07-25 19:30:00', 15.00, 4, 100),
+(16, 'Chris Allen', '2025-07-25 21:00:00', 15.00, 4, 100),
+(17, 'Myles Sanko', '2025-07-25 18:00:00', 15.00, 4, 100),
+(18, 'Gare du Nord', '2025-07-26 18:00:00', 15.00, 4, 100),
+(19, 'Rilan & The Bombadiers', '2025-07-26 19:30:00', 15.00, 4, 100),
+(20, 'Soul Six', '2025-07-26 21:00:00', 15.00, 4, 100),
+(21, 'Wicked Jazz Sounds', '2025-07-27 15:00:00', 15.00, 4, 100),
+(22, 'Evolve', '2025-07-27 17:00:00', 100.00, 4, 100);
 
 -- --------------------------------------------------------
 
@@ -416,7 +457,21 @@ INSERT INTO `SHOW_ARTIST` (`show_id`, `artist_id`) VALUES
 (1, 2),
 (2, 3),
 (3, 4),
-(4, 7);
+(9, 6),
+(22, 6),
+(4, 7),
+(10, 8),
+(11, 9),
+(21, 9),
+(13, 10),
+(12, 11),
+(14, 12),
+(15, 13),
+(16, 14),
+(17, 15),
+(18, 18),
+(19, 19),
+(20, 20);
 
 -- --------------------------------------------------------
 
@@ -717,7 +772,7 @@ ALTER TABLE `ACCESS_PASS`
 -- AUTO_INCREMENT for table `ARTIST`
 --
 ALTER TABLE `ARTIST`
-  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `LOCATION`
@@ -771,7 +826,7 @@ ALTER TABLE `RESTAURANT_GENRE`
 -- AUTO_INCREMENT for table `SECTION`
 --
 ALTER TABLE `SECTION`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `SESSION`
@@ -783,7 +838,7 @@ ALTER TABLE `SESSION`
 -- AUTO_INCREMENT for table `SHOW`
 --
 ALTER TABLE `SHOW`
-  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `TICKET`

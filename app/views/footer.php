@@ -1,9 +1,9 @@
-<?php if ($adminIsLoggedIn): ?>
+<?php if ($adminIsLoggedIn && $_SERVER['REQUEST_URI'] != "/tickets"): ?>
     <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
-        <button type="button" onclick="submitChanges()" class="btn primary-button">Submit Content Changes</button>
+        <button type="button" onclick="submitChanges()" class="btn primary-button position-fixed bottom-0 end-0 m-4">Submit Content Changes</button>
     </div>
     </form>
-  <script  src="/js/cms.js"></script>
+  <script  src="/js/cms.js?63"></script>
 <?php endif; ?>
 <script>
     tinymce.init({

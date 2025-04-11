@@ -6,6 +6,9 @@
     font-size: 2.2rem;
 }
 
+.round-boreder-10px{
+    border-radius: 15px;
+}
 /***** Website color classes *****/
 .purple { color: #800080; }
 .pink { color: #E60077; }
@@ -380,5 +383,56 @@
 .gradient-sun { background: linear-gradient(90deg, #c97c39, #a08c68); }
 .gradient-scared { background: linear-gradient(90deg, #666, #aaa); }
 .gradient-forbidden { background: linear-gradient(90deg, #333, #999); }
+
+.schedule-container {
+    margin-top: 80px;
+    padding: 30px;
+    font-family: 'Impact', sans-serif;
+}
+
+.day-section {
+    margin-bottom: 40px;
+}
+
+.day-label {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    font-size: 66px;
+    font-weight: bold;
+    margin-right: 30px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.schedule {
+    display: inline-block;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.time, .artist, .location {
+    color: white;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+.time {
+    font-weight: bold;
+}
+
+.buy-tickets {
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+
+/* Overall ticket style */
 
 
