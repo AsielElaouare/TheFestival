@@ -16,7 +16,7 @@ function submitChanges() {
     
     data.page_identifier = result;
     
-    form.querySelectorAll('.contenteditable').forEach((block) => {
+    form.querySelectorAll('.contenteditable, .contenteditable-no-editor').forEach((block) => {
         const contentblock_title = block.getAttribute('data-title');
         
         if (tinymce.get(block.id)) {
@@ -28,12 +28,14 @@ function submitChanges() {
         }
     });
 
+
     fetch('/admincms/edit', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
+        
     })
     .then(response => {
         if (!response.ok) {

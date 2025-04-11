@@ -56,7 +56,7 @@ class AdminCMSController {
             $fileName = time() . '_' . basename($file['name']);
             $filePath = $uploadDirectory . $fileName;
         
-            $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', "image/svg+xml"];
         
             if (in_array($file['type'], $allowedTypes)) {
                 if (move_uploaded_file($file['tmp_name'], $filePath)) {
@@ -71,7 +71,7 @@ class AdminCMSController {
                 }
             } else {
                 http_response_code(400);
-                echo json_encode(['error' => 'Invalid file type. Only JPEG, PNG, and GIF are allowed.']);
+                echo json_encode(['error' => 'Invalid file type. Only JPEG, PNG, JPG, and SVG are allowed.']);
             }
         } else {
             http_response_code(400);

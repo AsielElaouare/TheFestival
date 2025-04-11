@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link rel="stylesheet" href="/style/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<?php
+include __DIR__ . '/../header.php';
+?>
 
-</head>
-<body>
   <div class="container my-5">
     <h1>Register</h1>
     <form action="/register/processRegister" method="post">
