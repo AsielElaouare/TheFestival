@@ -2,6 +2,8 @@
 namespace App\Controllers;
 
 use App\Repositories\UserRepository;
+use App\Helper\InputHelper;
+
 
 class LoginController
 {
@@ -24,35 +26,47 @@ class LoginController
     public function processLogin()
     {
         try {
-            $email    = htmlspecialchars($_POST['email']) ?? '';
+            $email    = InputHelper::sanitizeEmail($_POST['email'] ?? '');
             $password = $_POST['password'] ?? '';
+
+            if (empty($email) || empty($password)) {
+                $error = "Please enter both email and password.";
+                require __DIR__ . '/../views/login/login.php';
+                return;
+            }
 
             $user = $this->userRepo->findByEmail($email);
 
-            // verifieer ww (getpasswarodhas returnt de gehaste ww)
             if ($user && password_verify($password, $user->getPasswordHash())) {
-                $_SESSION['user_id'] = $user->getUserId();
-                $_SESSION['userName'] = $user->getName();
+                $_SESSION['user_id']   = $user->getUserId();
+                $_SESSION['userName']  = $user->getName();
+                $_SESSION['role']      = $user->getRole()->value;
+                $_SESSION['email']     = $user->getEmail();
 
-                $_SESSION['role']    = $user->getRole()->value;
-                $_SESSION['email']   = $user->getEmail();
-                header("Location: /"); 
+                header("Location: /");
                 exit;
             } else {
-                $error = "Invalid password or email";
+                $error = "Invalid email or password.";
                 require __DIR__ . '/../views/login/login.php';
+                return;
             }
         } catch (\Throwable $e) {
-            echo "Error: " . $e->getMessage();
-            exit;
+            $error = "Something went wrong. Please try again later.";
+            require __DIR__ . '/../views/login/login.php';
+            return;
         }
     }
 
+
     public function logout()
     {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    
         session_destroy();
         header("Location: /");  
         exit;
     }
+    
 }

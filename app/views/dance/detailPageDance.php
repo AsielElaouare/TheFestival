@@ -2,10 +2,13 @@
 
 <div class="dance-page">
 
-  <!-- Hero Section -->
-  <div class="hero-section">
-    <div class="hero-overlay"></div>
+<!-- Hero Section -->
+<div class="hero-section">
+  <div class="hero-overlay">
+    <img src="/uploads/DANCEHAARLEMwit.png" alt="Dance Haarlem Logo" class="dance-banner-logo" />
   </div>
+</div>
+
 
   <!-- Purple Wave (Top) -->
   <img src="/uploads/header-purple-waves.svg" alt="Purple wave" class="wave-svg-top" />
@@ -59,7 +62,7 @@
     </section>
   </div>
 
-  <!-- Tracks Section (NO LOOP) -->
+  <!-- Tracks Section ) -->
   <div class="tracks-grid">
     <div class="track-card">
       <section data-title="martinTrack1Img" class="contenteditable track-card__img">
@@ -71,7 +74,7 @@
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
         </div>
       </div>
     </div>
@@ -86,7 +89,7 @@
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
         </div>
       </div>
     </div>
@@ -101,7 +104,7 @@
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
         </div>
       </div>
     </div>
@@ -116,7 +119,7 @@
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
         </div>
       </div>
     </div>
@@ -131,7 +134,7 @@
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
         </div>
       </div>
     </div>
@@ -146,7 +149,7 @@
         </div>
         <div class="track-card__buttons">
           <button class="track-card__play"></button>
-          <img src="/uploads/spotify_icon.svg" alt="Spotify" class="track-card__spotify" />
+          <img src="/uploads/spotify.png" alt="Spotify" class="track-card__spotify" />
         </div>
       </div>
     </div>
@@ -155,7 +158,7 @@
 </div>
 
 <!-- Schedule Section for Martin Garrix -->
-<section class="schedule-section">
+<section class="schedule-section bg-purple text-center text-white py-5">
   <div class="schedule-header">
     <h1 class="impact-font">Schedule</h1>
   </div>
@@ -177,6 +180,10 @@
     <p class="no-schedule-message">No shows found for Martin Garrix.</p>
   <?php endif; ?>
 </section>
+
+<div class="text-center my-5">
+  <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>
+  </div>
 
 <script src="/js/cms.js?v=65"></script>
 <div class="bg-yellow">

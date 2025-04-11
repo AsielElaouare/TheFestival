@@ -2,11 +2,13 @@
 
 <div class="dance-page">
 
- <!-- Hero Section -->
+<!-- Hero Section -->
 <div class="hero-section">
   <div class="hero-overlay">
+    <img src="/uploads/DANCEHAARLEMwit.png" alt="Dance Haarlem Logo" class="dance-banner-logo" />
   </div>
 </div>
+
 
 <!-- Purple Wave (Top) -->
 <img src="/uploads/header-purple-waves.svg" alt="Purple wave" class="wave-svg-top" />
@@ -190,7 +192,7 @@
 </section>
 
 <!-- Schedule Section for Hardwell -->
-<section class="schedule-section">
+<section class="schedule-section bg-purple text-center text-white py-5">
   <div class="schedule-header">
     <h1 class="impact-font">Schedule</h1>
   </div>
@@ -212,6 +214,10 @@
     <p class="no-schedule-message">No shows found for Hardwell.</p>
   <?php endif; ?>
 </section>
+
+<div class="text-center my-5">
+  <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>
+  </div>
 
 </div>
 

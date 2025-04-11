@@ -1,7 +1,6 @@
 <?php
-namespace App\Service;
 
-use App\Service\ShowService;
+namespace App\Service;
 
 class ScheduleService
 {
@@ -11,59 +10,52 @@ class ScheduleService
     {
         $this->showService = $showService;
     }
-    
+
     /**
-     * geef array terug van danceshows gegroepeerd op dag
+     * Geeft alle shows met genre 'dance', gegroepeerd op vrijdag t/m zondag.
      */
     public function getDanceSchedule(): array
     {
         $allShows = $this->showService->getAllShows();
 
-        $danceShows = array_filter($allShows, function($show) {
+        $danceShows = array_filter($allShows, function ($show) {
             return isset($show['artist_genre']) && strtolower(trim($show['artist_genre'])) === 'dance';
         });
-        
-        // Group shows by weekday name. Only include Friday, Saturday and Sunday.
+
+        return $this->groupShowsByWeekendDays($danceShows);
+    }
+
+    /**
+     * Geef het schema voor één artiest terug, gegroepeerd per dag (vrij-zon).
+     */
+    public function getScheduleForArtist(int $artistId): array
+    {
+        $artistShows = $this->showService->getShowsForArtist($artistId);
+        return $this->groupShowsByWeekendDays($artistShows);
+    }
+
+    /**
+     * Hulpfunctie om shows te groeperen per vrijdag, zaterdag en zondag.
+     */
+    private function groupShowsByWeekendDays(array $shows): array
+    {
         $grouped = [];
-        foreach ($danceShows as $show) {
-            $day = date('l', strtotime($show['start_date']));
+
+        foreach ($shows as $show) {
+            $day = date('l', strtotime($show['start_date'])); //string naar timestamp
             if (in_array($day, ['Friday', 'Saturday', 'Sunday'])) {
                 $grouped[$day][] = $show;
             }
         }
-        
-        // Order groups in the fixed order: Friday, Saturday, Sunday.
+
+        // Zorg dat de volgorde altijd Friday → Saturday → Sunday is
         $ordered = [];
         foreach (['Friday', 'Saturday', 'Sunday'] as $day) {
             if (isset($grouped[$day])) {
                 $ordered[$day] = $grouped[$day];
             }
         }
+
         return $ordered;
     }
-
-    public function getScheduleForArtist(int $artistId): array
-{
-    $artistShows = $this->showService->getShowsForArtist($artistId);
-
-    // Group shows by weekday (Fri-Sun only)
-    $grouped = [];
-    foreach ($artistShows as $show) {
-        $day = date('l', strtotime($show['start_date']));
-        if (in_array($day, ['Friday', 'Saturday', 'Sunday'])) {
-            $grouped[$day][] = $show;
-        }
-    }
-
-    // Return ordered array: Fri → Sun
-    $ordered = [];
-    foreach (['Friday', 'Saturday', 'Sunday'] as $day) {
-        if (isset($grouped[$day])) {
-            $ordered[$day] = $grouped[$day];
-        }
-    }
-
-    return $ordered;
-}
-
 }

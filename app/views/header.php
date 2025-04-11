@@ -61,8 +61,8 @@ function getContentByTitle($blocks, $title) {
                 <ul class="dropdown-menu" aria-labelledby="accountDropdown">
                   <li><a class="dropdown-item" href="/account/edit">Edit Account</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                </ul>
+                  <li><a class="dropdown-item" href="/login/logout">Logout</a></li>
+                  </ul>
               </div>
             </li>
           <?php else: ?>

@@ -117,7 +117,7 @@
 
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: bold;
     color: #FF5733; /* or #fff if you prefer */
     text-transform: uppercase;
@@ -125,12 +125,23 @@
 }
 
 .hero-description {
-    color: #fff;
-    max-width: 80%;
-    margin: 0 auto;
-    font-size: 1rem;
-    font-weight: 500;
+  color: #800080;
+  font-size: 1.8rem;  
+  font-weight: 700;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  text-align: center;
 }
+
+.dance-logo-img {
+  max-width: 600px;
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
 
 /* Sticky footer example */
 .footer {
@@ -247,18 +258,79 @@
   }
   .wave-svg {
     width: 100%;
+    height: 120px; 
+    object-fit: cover;
     margin-top: -5px;
     display: block;
-    height: 100px; 
-    object-fit: cover;
-  }
+}
   
   .wave-section {
     position: relative;
     background-color: #800080;
-    padding-top: 0;
-    margin-top: -1px;
-  }
+    margin-bottom: -1px; 
+    z-index: 2;
+}
+
+.wave-lineup-section {
+  height: 120px; 
+  position: relative;
+  margin-bottom: -30px;
+  overflow: hidden;
+}
+
+.lineup-wave-svg {
+  width: 100%;
+  height: 100px; 
+  object-fit: cover;
+  display: block;
+}
+
+/* Line-up artist card update */
+.lineup-img {
+  width: 90%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px; /* voor zachte hoekjes, geen cirkel */
+}
+
+#line-up .card {
+  background-color: #E60077;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  height: 340px; /* zorgt dat de kaart groter is dan de afbeelding */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 15px;
+}
+
+#line-up .card-body {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Artist name in yellow */
+#line-up .card h6 {
+  color: #F9F871;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 1rem;
+  text-align: center;
+
+}
+
+
+
+.bg-yellow {
+  position: relative;
+  z-index: 1;
+  padding-top: 80px; 
+}
   
   .wave-title-bg {
     position: absolute;
@@ -559,64 +631,84 @@
 .gradient-forbidden { background: linear-gradient(90deg, #333, #999); }
 
 
-/* ===== Schedule Section Styles ===== */
+/* ===== Schedule Section Styles (Optimized) ===== */
 .schedule-section {
-    background-color: purple;
-    padding: 2rem;
-    margin-top: 2rem;
-  }
+  background-color: #800080; /* Diep paars */
+  padding: 4rem 1rem;
+  color: #FFD150; /* Geel voor tekst */
+  text-align: center;
+}
+
+.schedule-section-header {
+  background-color: #800080;
+  padding: 3rem 1rem 1.5rem 1rem;
+  text-align: center;
+}
 
 .schedule-header {
-    text-align: center;
-    color: #FF7367;
+  margin-bottom: 2rem;
 }
 
 .schedule-header h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  font-size: 3.2rem;
+  font-family: Impact, sans-serif;
+  color: #FF7367;
+  text-transform: uppercase;
+  margin: 0;
 }
-  
-  .schedule-day {
-    background: purple;
-    color: #FF7367;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px 0;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-
-  }
-  
-  .schedule-day-title {
-    font-size: 3rem; 
-    margin-bottom: 15px;
-  }
-  
-  .schedule-show {
-    background: #8A2BE2;
-    margin: 5px auto;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 1.8rem;
-    color: #FF7367;
-    max-width: 90%;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+.schedule-section-content {
+  padding: 2rem 1rem 4rem;
 }
 
-.schedule-show-time,
+
+.schedule-day {
+  background: #800080; /* Zorg dat het blendt in met de sectie */
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-day-title {
+  font-size: 2.8rem;
+  font-family: Impact, sans-serif;
+  color: #FFA54F; /* Oranjeachtig */
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.schedule-show {
+  background: #8A2BE2; /* Paarse blokjes */
+  color: #FFD150;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 8px auto;
+  max-width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.schedule-show-time {
+  font-weight: bold;
+}
+
 .schedule-show-artist,
 .schedule-show-venue {
-    font-size: 1.8rem;
+  font-weight: normal;
 }
 
 .no-schedule-message {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #FF7367;
+  font-size: 1.8rem;
+  color: #FF7367;
+  margin-top: 2rem;
 }
-  
+
 
 

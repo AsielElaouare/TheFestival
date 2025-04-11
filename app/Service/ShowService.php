@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Service;
 
+use App\Models\Show;
 use App\Repositories\ShowRepository;
 
 class ShowService
@@ -11,54 +13,37 @@ class ShowService
     {
         $this->showRepository = $showRepository;
     }
-    
-    public function getAllShows(): array {
+
+    public function getAllShows(): array
+    {
         return $this->showRepository->getAllShows();
     }
-    
-    public function getShowById(int $id): ?array {
+
+    public function getShowById(int $id)
+    {
         return $this->showRepository->getShowById($id);
     }
-    
-    public function createShow(array $data): int {
+
+    public function createShow(array $data): int
+    {
         return $this->showRepository->createShow($data);
     }
-    
-    public function updateShow(int $id, array $data): bool {
+
+    public function updateShow(int $id, array $data): bool
+    {
         return $this->showRepository->updateShow($id, $data);
     }
-    
-    public function deleteShow(int $id): bool {
+
+    public function deleteShow(int $id): bool
+    {
         return $this->showRepository->deleteShow($id);
     }
 
-    public function createShowWithArtist(array $data, int $artistId): int
+    public function getShowsForArtist(int $artistId): array
     {
-    $showId = $this->createShow($data);
-    if ($showId) {
-        // Link show aan artiest
-        $this->showRepository->linkArtistToShow($showId, $artistId);
-    }
-    return $showId;
-    }
-
-    public function updateShowWithArtist(int $id, array $data, int $artistId): bool
-    {
-        // unlink oude artist of artiesten
-        $this->showRepository->unlinkArtistFromShow($id);
-        // Update the data van show 
-        $success = $this->updateShow($id, $data);
-        if ($success) {
-            // Link nnieuwe artiest
-            $this->showRepository->linkArtistToShow($id, $artistId);
-        }
-        return $success;
-    }
-
-    public function getShowsForArtist(int $artistId): array {
         return $this->showRepository->getShowsForArtist($artistId);
     }
-    
+
     public function linkArtist(int $showId, int $artistId): bool
     {
         return $this->showRepository->linkArtistToShow($showId, $artistId);
@@ -69,5 +54,29 @@ class ShowService
         return $this->showRepository->unlinkArtistFromShow($showId);
     }
 
+    //Maakt een show aan en koppelt direct een artiest.
+    public function createShowWithArtist(array $data, int $artistId): int
+    {
+        $showId = $this->createShow($data);
 
+        if ($showId) {
+            $this->linkArtist($showId, $artistId);
+        }
+
+        return $showId;
+    }
+
+     //Update een show én vervangt de gekoppelde artiest.
+    public function updateShowWithArtist(int $id, array $data, int $artistId): bool
+    {
+        $this->unlinkArtist($id);
+
+        $success = $this->updateShow($id, $data);
+
+        if ($success) {
+            $this->linkArtist($id, $artistId);
+        }
+
+        return $success;
+    }
 }

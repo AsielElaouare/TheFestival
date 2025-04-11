@@ -4,7 +4,7 @@ namespace App\Controllers;
 use App\Service\UserService;
 use App\Helper\InputHelper;
 
-class AccountController {
+class AccountController extends BaseController {
     private $userService;
     
     public function __construct() {
@@ -19,10 +19,11 @@ class AccountController {
     public function edit() {
         $userId = $_SESSION['user_id'];
         $user = $this->userService->getUserById($userId);
+
         if (!$user) {
-            header("Location: /?error=User+not+found");
-            exit();
+            $this->redirectWithError("User not found");
         }
+
         include __DIR__ . '/../views/account/edit.php';
     }
     
@@ -30,44 +31,45 @@ class AccountController {
     public function update() {
         $userId = InputHelper::sanitizeString($_POST['user_id'] ?? '');
         if (empty($userId)) {
-            header("Location: /account/edit?error=User+not+found");
-            exit();
+            $this->redirectWithError("User not found");
         }
         
         // Haal en sanitize formulierinvoer op
-        $name        = InputHelper::sanitizeString($_POST['name'] ?? '');
-        $email       = InputHelper::sanitizeEmail($_POST['email'] ?? '');
-        $phoneNumber = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
-        $newPassword = $_POST['new_password'] ?? ''; 
-        $currentPassword = $_POST['current_password'] ?? ''; 
+        $name           = InputHelper::sanitizeString($_POST['name'] ?? '');
+        $email          = InputHelper::sanitizeEmail($_POST['email'] ?? '');
+        $phoneNumber    = InputHelper::sanitizeString($_POST['phone_number'] ?? '');
+        $newPassword    = $_POST['new_password'] ?? '';
+        $currentPassword = $_POST['current_password'] ?? '';
         
         // Haal bestaande gebruikersgegevens op
         $user = $this->userService->getUserById($userId);
         if (!$user) {
-            header("Location: /account/edit?error=User+not+found");
-            exit();
+            $this->redirectWithError("User not found");
         }
+
+        $emailChanged = $this->userService->hasEmailChanged($user->getEmail(), $email);
+
         
-        // Controleer of het e-mailadres is gewijzigd
-        $emailChanged = ($email !== $user->getEmail());
-        
-        // Als er een nieuw wachtwoord is ingevoerd, controleer dan het huidige wachtwoord en maak een hash van het nieuwe wachtwoord.
-        if (!empty($newPassword)) {
-            if (empty($currentPassword) || !password_verify($currentPassword, $user->getPasswordHash())) {
-                header("Location: /account/edit?error=Current+password+is+incorrect");
-                exit();
-            }
-            $pass = $newPassword;
-        } else {
-            $pass = ''; // Gebruik lege string om aan te geven dat geen nieuw wachtwoord is opgegeven.
+        // Handle password update check
+        $pass = $this->userService->validatePasswordUpdate($user, $newPassword, $currentPassword);
+        if ($pass === false) {
+            $this->redirectWithError("Current password is incorrect");
         }
-        
-        $result = $this->userService->updateUser($userId, $name, $email, $pass, $user->getRole()->value, $phoneNumber);
+
+          // Perform update
+          $result = $this->userService->updateUser(
+            $userId,
+            $name,
+            $email,
+            $pass,
+            $user->getRole()->value,
+            $phoneNumber
+        );
+
         if (!$result) {
-            header("Location: /account/edit?error=User+update+failed");
-            exit();
+            $this->redirectWithError("User update failed");
         }
-        
+
         header("Location: /?message=Account+updated");
         exit();
     }
