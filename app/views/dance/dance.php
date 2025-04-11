@@ -174,36 +174,30 @@
 </section>
 
 <!-- Schedule Section -->
-    <section class="schedule-section bg-purple text-center text-white py-5">
-    <div class="schedule-header">
-      <h1 class="impact-font">Schedule</h1>
-    </div>    
-    
-    <div class="container d-flex flex-column align-items-center">
-      <?php foreach ($schedule as $day => $dayShows): ?>
-        <!-- Block for each day -->
-        <div class="schedule-day ">
-          <h2 class="impact-font schedule-day-title">
-            <?= htmlspecialchars($day) ?>
-          </h2>
-          <?php foreach ($dayShows as $show): ?>
-            <div class="schedule-show">
-              <strong><?= date('H:i', strtotime($show['start_date'])) ?></strong>
-              – <?= htmlspecialchars($show['artist_name'] ?? 'Unknown Artist') ?>
-              – <?= htmlspecialchars($show['venue_name'] ?? 'Unknown Venue') ?>
-            </div>
-          <?php endforeach; ?>
+<section class="bg-yellow">
+<h1 style="margin-top: 160px; font-size: 4rem;" class="purple text-center impact-font">Schedule</h1>
+<div class="schedule-container text-center mt-5">
+    <?php foreach ($groupedShows as $day => $shows): ?>
+      <div class="d-flex justify-content-center">
+      <div class="day-section d-flex w-75 justify-content-center">
+            <div class="day-label pink"><?= strtoupper($day) ?></div>
+            <div class="schedule w-50 ">
+              <?php foreach ($shows as $show): ?>
+                    <div class="event">
+                        <div class="time bg-purple"><?= $show->startDate->format('H:i') ?></div>
+                        <div class="artist bg-purple"><?= htmlspecialchars($show->getArtistName()) ?></div>
+                        <div class="location bg-purple"><?= htmlspecialchars($show->location->getVenueName()) ?></div>
+                    </div>
+                <?php endforeach; ?>
+              </div>
         </div>
-      <?php endforeach; ?>
+      </div>
+    <?php endforeach; ?>
+    <div class="buy-tickets">
+        <a href="/tickets" class="btn primary-button">Buy your tickets</a>
     </div>
-  </section>
-
-
-
-  <div class="text-center my-5">
-  <a href="/tickets" class="btn primary-button mx-auto">Buy your tickets</a>
-  </div>
-
+</div>
+</section>
 </div>
 
 <script src="/js/cms.js?v=65"></script>

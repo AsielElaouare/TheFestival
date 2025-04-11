@@ -5,27 +5,46 @@ use App\Service\CmsService;
 use App\Service\ShowService;
 use App\Service\ScheduleService;
 use App\Repositories\ShowRepository;
+use App\Service\EventService;
+use App\Service\ArtistService;
+use App\Models\Enums\MusicGenre;
 
 class DanceController
 {
     private CmsService $cmsService;
     private ShowService $showService;
     private ScheduleService $scheduleService;
-
+    private EventService $eventService;
+    private $artistService;
+    private $danceShows;
     public function __construct()
     {
         $this->cmsService = new CmsService();
         $this->showService = new ShowService(new ShowRepository());
         $this->scheduleService = new ScheduleService($this->showService);
+        $this->eventService = new EventService();
+        $this->artistService = new ArtistService();
+        $this->danceShows = $this->eventService->getAllShowsByGenre(MusicGenre::DANCE->value);
+
     }
 
     public function index()
     {
         $blocks = $this->cmsService->getPageById(5);
         $schedule = $this->scheduleService->getDanceSchedule();
+        $groupedShows = $this->groupShows();
         $showsForMartin = $this->showService->getShowsForArtist(8);
 
         require __DIR__ . '/../views/dance/dance.php';
+    }
+
+    private function groupShows(){
+        $groupedShows = [];
+        foreach ($this->danceShows as $show) {
+            $day = $show->startDate->format('l');
+            $groupedShows[$day][] = $show;
+        }
+        return $groupedShows;
     }
 
     public function artistView() {
@@ -58,7 +77,7 @@ class DanceController
             $orderedSchedule = $this->scheduleService->getScheduleForArtist($artistId);
     
                        
-
+    
             if ($pageId == 6) {
                 include __DIR__ . '/../views/dance/detailPageDance.php';
             } elseif ($pageId == 7) {
@@ -70,5 +89,4 @@ class DanceController
 
         }
     }
-    
 }
