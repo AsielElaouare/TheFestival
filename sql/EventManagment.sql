@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Gegenereerd op: 10 apr 2025 om 12:48
--- Serverversie: 11.7.2-MariaDB-ubu2404
--- PHP-versie: 8.2.28
+-- Gegenereerd op: 11 apr 2025 om 02:28
+-- Serverversie: 11.5.2-MariaDB-ubu2404
+-- PHP-versie: 8.2.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,7 +57,22 @@ INSERT INTO `ARTIST` (`artist_id`, `name`, `genre`) VALUES
 (5, 'Gare du Nord ', 'jazz'),
 (6, 'Evolve', 'jazz'),
 (7, 'Gumbo Kings', 'jazz'),
-(8, 'Martin Garrix', 'dance');
+(8, 'Martin Garrix', 'dance'),
+(9, 'Wicked Jazz Sounds', 'jazz'),
+(10, 'Jonna Frazer', 'jazz'),
+(11, 'Wouter Hamel', 'jazz'),
+(12, 'Karsu', 'jazz'),
+(13, 'Uncle sue', 'jazz'),
+(14, 'Chris Allen', 'jazz'),
+(15, 'Myles Sanko', 'jazz'),
+(16, 'Ilse Huizinga', 'jazz'),
+(17, 'Eric Vloeimans & Hotspot!', 'jazz'),
+(18, 'Gare du Nord', 'jazz'),
+(19, 'Rilan & The Bombadiers', 'jazz'),
+(20, 'Soul Six', 'jazz'),
+(21, 'Ruis Soundsystem', 'jazz'),
+(22, 'Wicked Jazz Sounds', 'jazz'),
+(23, 'Ntjam Rosie', 'jazz');
 
 -- --------------------------------------------------------
 
@@ -83,13 +98,13 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (2, 'Welcome Message', 'Testing Testing ', 2, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
 (3, 'Festival Route', 'Join our world', 3, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
 (4, 'Call to action', 'Buy your tickets', 4, '2025-03-22 09:55:05', '2025-03-27 08:49:23'),
-(5, 'FirstJazzSection', 'Yo this is jazz event', 6, '2025-03-22 09:55:05', '2025-03-24 17:17:42'),
+(5, 'FirstJazzSection', '<p>Yo this is jazz event</p>', 6, '2025-03-22 09:55:05', '2025-03-24 17:17:42'),
 (6, 'SecondJazzSection', '<p>Testing</p>', 7, '2025-03-22 09:55:05', '2025-03-25 15:29:34'),
 (7, 'ThirdJazzSection', '', 8, '2025-03-22 09:55:05', '2025-03-25 15:29:34'),
 (8, 'FourthJazzSection', 'Schedule', 9, '2025-03-22 09:55:05', '2025-03-22 16:14:16'),
 (9, 'last section', 'jddn', 5, '2025-03-22 16:38:01', '2025-03-27 08:49:23'),
-(10, 'FirstSection', 'Wouter Hamel', 10, '2025-03-22 16:38:01', '2025-04-10 20:34:21'),
-(11, 'SecondSection', ' A Voice That Transcends TimeGet ready to experience the magic of Wouter Hamel, one of the most captivating voices in contemporary jazz-pop! With his signature blend of smooth vocals, infectious melodies, and timeless charm, Hamel brings a fresh energy to the stage, bridging the golden era of jazz with modern-day soul.Whether delivering a heartfelt ballad or an upbeat groove, his performances exude warmth, charisma, and an effortless cool that makes every audience feel like they’re part of something special.At Haarlem Jazz Festival, Wouter Hamel is set to take you on a musical journey—one filled with emotion, elegance, and a deep love for storytelling through song. Don’t miss the chance to see one of the Netherlands’ finest talents bring the streets of Haarlem to life! 🎶✨', 11, '2025-03-22 16:38:01', '2025-04-10 20:37:41'),
+(10, 'FirstSection', 'Wouter Hamel', 10, '2025-03-22 16:38:01', '2025-04-11 02:24:17'),
+(11, 'SecondSection', ' A Voice That Transcends TimeGet ready to experience the magic of Wouter Hamel, one of the most captivating voices in contemporary jazz-pop! With his signature blend of smooth vocals, infectious melodies, and timeless charm, Hamel brings a fresh energy to the stage, bridging the golden era of jazz with modern-day soul.Whether delivering a heartfelt ballad or an upbeat groove, his performances exude warmth, charisma, and an effortless cool that makes every audience feel like they’re part of something special.At Haarlem Jazz Festival, Wouter Hamel is set to take you on a musical journey—one filled with emotion, elegance, and a deep love for storytelling through song. Don’t miss the chance to see one of the Netherlands’ finest talents bring the streets of Haarlem to life! 🎶✨', 11, '2025-03-22 16:38:01', '2025-04-11 02:24:17'),
 (12, 'ThirdSection', 'Hamel (2007)Wouter Hamel’s self-titled debut album, is the record that launched him into the international spotlight. Blending jazz, pop, and soulful melodies, the album introduced a fresh, modern take on vocal jazz, making it a standout release in the genre.Praised for its balance of vintage jazz inspiration and contemporary appeal, Hamel remains a defining work in his career, setting the stage for his continued evolution as a singer-songwriter. It’s the album that proved jazz could feel both nostalgic and refreshingly new, a perfect reflection of Hamel’s timeless artistry.', 12, '2025-03-22 16:38:01', '2025-04-10 20:34:21'),
 (13, 'imgBlock', '../uploads/1744317211_wouter-img.png', 10, '2025-03-24 21:43:01', '2025-04-10 20:34:21'),
 (14, 'ArtsNr1CardJazzImg', '/uploads/jazz_pictures/garedunord.svg', 13, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
@@ -103,7 +118,8 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (22, 'JazzHeaderImg', '/uploads/jazz_pictures/haarlemJazz_vector.svg', 14, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (23, 'FirstSection', 'Natjam Rosie', 15, '2025-03-22 16:38:01', '2025-04-10 21:04:38'),
 (24, 'SecondSection', 'A Fusion of Soul, Jazz, and Global RhythmsWith a voice that blends warmth, depth, and effortless elegance, Ntjam Rosie is a true force in contemporary jazz and soul. Her music is a reflection of her multicultural roots, seamlessly weaving together elements of jazz, soul, Afrobeat, and R&B into a sound that is both timeless and refreshingly modern.At Haarlem Jazz Festival, Ntjam Rosie brings her signature sound to the stage, delivering a performance filled with passion, energy, and authenticity. Whether you’re drawn to smooth jazz, soulful melodies, or rhythmic Afro-inspired grooves, her music is an experience not to be missed. Get ready to be moved by one of the most dynamic voices in jazz today!', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
-(25, 'ThirdSection', 'Elle (2010)Rosie’s second album, Elle, significantly elevated her presence in the jazz and soul music scenes. The album showcases a harmonious blend of jazz, soul, and pop influences, reflecting Rosie\'s diverse musical background.The album features tracks that highlight Rosie\'s rich vocals and intricate arrangements, offering listeners a journey through contemporary jazz infused with soulful melodies. Elle not only solidified Ntjam Rosie\'s reputation as a formidable artist but also contributed to the broader appreciation of modern jazz and soul music.', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
+(25, 'ThirdSection', 'Elle (2010)Rosie’s second album, Elle, significantly elevated her presence in the jazz and soul music scenes. The album showcases a harmonious blend of jazz, soul, and pop influences, reflecting Rosies diverse musical background.The album features tracks that highlight Rosie\'s rich vocals and intricate arrangements, offering listeners a journey through contemporary jazz infused with soulful melodies. Elle not only solidified Ntjam Rosie\'s reputation as a formidable artist but also contributed to the broader appreciation of modern jazz and soul music.', 15, '2025-03-22 16:38:01', '2025-04-10 20:48:39'),
+(26, 'imgBlock', '/uploads/1742852784_Screenshot 2024-01-27 124757.png', 15, '2025-03-24 21:43:01', '2025-03-24 21:46:32'),
 (26, 'imgBlock', '../uploads/1744318142_1744316035_natjam.jpg', 15, '2025-03-24 21:43:01', '2025-04-10 20:49:04'),
 (27, 'headerDanceContent', '/uploads/martingarrixfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
 (28, 'headerDanceContent2', '/uploads/hardwellfirst.jpg', 16, '2025-03-27 09:16:27', '2025-03-27 09:16:27'),
@@ -125,10 +141,7 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (44, 'LineUpTextDanceArt6', 'Martin Garrix', 18, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (45, 'martinHeroTitle', 'Martin Garrix', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
 (46, 'martinHeroImg', '/uploads/martingarrixtrophy.jpg', 19, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(47, 'martinHeroRightText', '<p>#YoungestNo1DJ Crowned the youngest DJ to ever top DJ MAG top 100 DJS in 2016,holding the title for multiple years.</p>
-                             <p>#STMPDRCRDS Founded his own record label in 2016 to support emerging talent and push creative boundaries in electronic music.</p>
-                             <p>#FestivalHeadliner Headlined the worlds biggest festivals, including Tomorrowland, Ultra Music Festival, and Coachella.</p>
-                             <p>#IconicCollabs Partnered with global stars like Dua Lipa (Scared to Be Lonely) and Bebe Rexha (In the Name of Love), bridging EDM with mainstream music.</p>', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(47, 'martinHeroRightText', '<p>#YoungestNo1DJ Crowned the youngest DJ to ever top DJ MAG top 100 DJS in 2016,holding the title for multiple years.</p>\n                             <p>#STMPDRCRDS Founded his own record label in 2016 to support emerging talent and push creative boundaries in electronic music.</p>\n                             <p>#FestivalHeadliner Headlined the worlds biggest festivals, including Tomorrowland, Ultra Music Festival, and Coachella.</p>\n                             <p>#IconicCollabs Partnered with global stars like Dua Lipa (Scared to Be Lonely) and Bebe Rexha (In the Name of Love), bridging EDM with mainstream music.</p>', 19, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (48, 'martinAlbumTitle', 'SENTIO MARTIN GARRIX THE ALBUM', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (49, 'martinAlbumImg', '/uploads/sentiomg.jpeg', 20, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (50, 'martinBannerPerf', '/uploads/martingarrixperf.jpeg', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
@@ -145,30 +158,39 @@ INSERT INTO `CONTENTBLOCK` (`contentblock_id`, `title`, `content`, `section_id`,
 (61, 'martinTrack6Img', '/uploads/forbiddenvoices.jpeg', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (62, 'martinTrack6Txt', 'Forbidden voices', 22, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
 (63, 'hardwellHeroTitle', 'Hardwell', 23, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(64, 'hardwellHeroImg', '/uploads/hardwelltrophy.png', 23, '2025-03-22 16:38:01', '2025-03-24 20:40:20'),
-(65, 'hardwellHeroRightText', '<p>#PioneerOfBigRoom Revolutionized EDM with his iconic Big Room House sound, inspiring countless artists worldwide.</p>
-                              <p>#SpacemanAnthem Released the legendary track \"Spaceman\" in 2012, which became a festival anthem and a defining moment in his career.</p>
-                              <p>#WorldsNo1DJ Crowned DJ Mag’s #1 DJ in the World in 2013 and 2014, solidifying his place as a global EDM icon.</p>
-                              <p>#RevealedRecordings Founded his own label, Revealed Recordings, nurturing young talent and delivering chart-topping hits.</p>', 23, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(64, 'hardwellHeroImg', '../uploads/hardwelltrophy.png', 23, '2025-03-22 16:38:01', '2025-04-10 18:22:43'),
+(65, 'hardwellHeroRightText', '#PioneerOfBigRoom Revolutionized EDM with his iconic Big Room House sound, inspiring countless artists worldwide.\n#SpacemanAnthem Released the legendary track \"Spaceman\" in 2012, which became a festival anthem and a defining moment in his career.\n#WorldsNo1DJ Crowned DJ Mag’s #1 DJ in the World in 2013 and 2014, solidifying his place as a global EDM icon.\n#RevealedRecordings Founded his own label, Revealed Recordings, nurturing young talent and delivering chart-topping hits.', 23, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
 (66, 'hardwellAlbumTitle1', 'REBELS NEVER DIE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(67, 'hardwellAlbumImg1', '/uploads/REBELSNEVERDIE.png', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(67, 'hardwellAlbumImg1', '../uploads/REBELSNEVERDIE.png', 24, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
 (68, 'hardwellAlbumTitle2', 'UNITED WE ARE', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(69, 'hardwellAlbumImg2', '/uploads/United_We_Are.jpg', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(69, 'hardwellAlbumImg2', '../uploads/United_We_Are.jpg', 24, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
 (70, 'hardwellAlbumTitle3', 'I AM HARDWELL', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(71, 'hardwellAlbumImg3', '/uploads/iamhardwell.jpg', 24, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(72, 'hardwellBannerPerf', '/uploads/hardwell performing.jpg', 25, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(73, 'hardwellTrack1Img', '/uploads/Apollo_Hardwell.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(71, 'hardwellAlbumImg3', '../uploads/iamhardwell.jpg', 24, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(72, 'hardwellBannerPerf', '../uploads/hardwell performing.jpg', 25, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(73, 'hardwellTrack1Img', '../uploads/Apollo_Hardwell.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
 (74, 'hardwellTrack1Txt', 'Apollo', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(75, 'hardwellTrack2Img', '/uploads/ANYBODY.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(75, 'hardwellTrack2Img', '../uploads/ANYBODY.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
 (76, 'hardwellTrack2Txt', 'Anybody out there', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(77, 'hardwellTrack3Img', '/uploads/FOLLOWTHE LIGHT.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(77, 'hardwellTrack3Img', '../uploads/FOLLOWTHE LIGHT.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
 (78, 'hardwellTrack3Txt', 'Follow the light', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(79, 'hardwellTrack4Img', '/uploads/HOWWEDO.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(79, 'hardwellTrack4Img', '../uploads/HOWWEDO.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
 (80, 'hardwellTrack4Txt', 'How we do', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(81, 'hardwellTrack5Img', '/uploads/youngagain.jpg', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(82, 'hardwellTrack5Txt', 'Young again', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(83, 'hardwellTrack6Img', '/uploads/Spaceman_Hardwell.png', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
-(84, 'hardwellTrack6Txt', 'Spaceman', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27');
+(81, 'hardwellTrack5Img', '../uploads/youngagain.jpg', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(82, 'hardwellTrack5Txt', 'Young againnnnnnnnnntest', 26, '2025-03-28 09:16:27', '2025-04-10 18:24:05'),
+(83, 'hardwellTrack6Img', '../uploads/Spaceman_Hardwell.png', 26, '2025-03-28 09:16:27', '2025-04-10 18:22:43'),
+(84, 'hardwellTrack6Txt', 'Spaceman', 26, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(85, 'ArtistCard1Intro', '/uploads/jazz_pictures/wouterhamel1.svg', 27, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(86, 'ArtistCard2Intro', '/uploads/jazz_pictures/ntjamrosie1.svg', 27, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(87, 'ArtistCard1IntroText', 'Wouter Hamel', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(88, 'ArtistCard2IntroText', '', 21, '2025-03-28 09:16:27', '2025-03-28 09:16:27'),
+(89, 'ArtsCardJazzImgTrack1', '../uploads/1744338309_wouter1.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(90, 'ArtsCardJazzImgTrack2', '../uploads/1744338346_wouter2.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(91, 'ArtsCardJazzImgTrack3', '../uploads/1744338362_wouter3.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(92, 'ArtsCardJazzImgTrack4', '../uploads/1744338354_wouter4.png', 28, '2025-03-28 09:16:27', '2025-04-11 02:26:07'),
+(93, 'ArtsCardJazzImgTrack1', '../uploads/1744318093_track1.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(94, 'ArtsCardJazzImgTrack2', '../uploads/1744318101_track2.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(95, 'ArtsCardJazzImgTrack3', '../uploads/1744318110_track3.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39'),
+(96, 'ArtsCardJazzImgTrack4', '../uploads/1744318116_track4.png', 29, '2025-03-28 09:16:27', '2025-04-10 20:48:39');
 
 -- --------------------------------------------------------
 
@@ -308,7 +330,8 @@ INSERT INTO `password_resets` (`id`, `email`, `token`, `expires_at`) VALUES
 (4, 'customer@example.com', '11732816b25b07bd9ee39cdf2f473dda', '2025-03-11 04:25:31'),
 (5, 'customer@example.com', '1572e286ce7282199a5f7c55397546e7', '2025-03-11 04:29:01'),
 (6, 'customer@example.com', 'b9f701eba0a6ca8c8c36b4cfbe37b81a', '2025-03-11 04:29:15'),
-(7, 'customer@example.com', '13c413b773b8ce9174fc06ab843377fa', '2025-03-11 17:21:34');
+(7, 'customer@example.com', '13c413b773b8ce9174fc06ab843377fa', '2025-03-11 17:21:34'),
+(8, 'update@live.nl', '998bd7039c4f39902401226ff20e4cbc', '2025-04-10 21:56:40');
 
 -- --------------------------------------------------------
 
@@ -403,7 +426,10 @@ INSERT INTO `SECTION` (`section_id`, `name`, `description`, `page_id`, `created_
 (23, 'hardwellHero', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (24, 'hardwellKeyAlbum', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
 (25, 'hardwellPerformanceBanner', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
-(26, 'hardwellTracks', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
+(26, 'hardwellTracks', '', 7, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(27, 'artistsCardsSection', '', 2, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(28, 'artistsTracksJazz1', '', 3, '2025-03-27 09:14:27', '2025-03-27 09:14:27'),
+(29, 'artistsTracksJazz2', '', 4, '2025-03-27 09:14:27', '2025-03-27 09:14:27');
 
 -- --------------------------------------------------------
 
@@ -442,7 +468,22 @@ INSERT INTO `SHOW` (`show_id`, `show_name`, `start_date`, `price`, `location_id`
 (2, 'Tiesto | Friday ticket', '2025-06-06 12:49:34', 60.00, 2, 300),
 (3, 'Hardwell | Friday ticket', '2025-06-06 12:49:34', 60.00, 3, 300),
 (4, 'Gumbo Kings| Thursday ticket', '2025-06-05 18:00:00', 15.00, 4, 110),
-(9, 'Martin Garrix | Sunday ticket', '2025-06-01 20:00:00', 60.00, 4, 340);
+(9, 'Martin Garrix | Sunday ticket', '2025-06-01 20:00:00', 60.00, 4, 340),
+(10, 'Martin Garrix | Saturday ticket', '2025-05-10 22:00:00', 60.00, 2, 300),
+(11, 'Evolve', '2025-07-24 19:00:00', 15.00, 4, 100),
+(12, 'Ntjam Rosie', '2025-07-24 21:00:00', 15.00, 4, 100),
+(13, 'Wicked Jazz Sounds', '2025-07-24 18:00:00', 15.00, 4, 100),
+(14, 'Wouter Hamel', '2025-07-24 19:30:00', 15.00, 4, 100),
+(15, 'Jonna Frazer', '2025-07-24 21:00:00', 15.00, 4, 100),
+(16, 'Karsu', '2025-07-25 18:00:00', 15.00, 4, 100),
+(17, 'Uncle sue', '2025-07-25 19:30:00', 15.00, 4, 100),
+(18, 'Chris Allen', '2025-07-25 21:00:00', 15.00, 4, 100),
+(19, 'Myles Sanko', '2025-07-25 18:00:00', 15.00, 4, 100),
+(20, 'Gare du Nord', '2025-07-26 18:00:00', 15.00, 4, 100),
+(21, 'Rilan & The Bombadiers', '2025-07-26 19:30:00', 15.00, 4, 100),
+(22, 'Soul Six', '2025-07-26 21:00:00', 15.00, 4, 100),
+(23, 'Wicked Jazz Sounds', '2025-07-27 15:00:00', 15.00, 4, 100),
+(24, 'Evolve', '2025-07-27 17:00:00', 100.00, 4, 100);
 
 -- --------------------------------------------------------
 
@@ -464,8 +505,23 @@ INSERT INTO `SHOW_ARTIST` (`show_id`, `artist_id`) VALUES
 (1, 2),
 (2, 3),
 (3, 4),
+(20, 5),
+(11, 6),
+(24, 6),
 (4, 7),
-(9, 8);
+(9, 8),
+(10, 8),
+(13, 9),
+(15, 10),
+(14, 11),
+(16, 12),
+(17, 13),
+(18, 14),
+(19, 15),
+(21, 19),
+(22, 20),
+(23, 22),
+(12, 23);
 
 -- --------------------------------------------------------
 
@@ -597,8 +653,13 @@ CREATE TABLE `USER` (
 --
 
 INSERT INTO `USER` (`user_id`, `name`, `email`, `phone_number`, `pass_hash`, `role`, `registration_date`) VALUES
-(4, 'admin', 'admin@test.com', '1234567890', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'admin', '2025-03-05 03:49:29'),
-(5, 'customer', 'customer@test.com', '0642318194', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'customer', '2025-03-05 03:49:29');
+(4, 'Asiel', 'admin@example.com', '1234567890', '713bfda78870bf9d1b261f565286f85e97ee614efe5f0faf7c34e7ca4f65baca', 'admin', '2025-03-05 03:49:29'),
+(5, 'Sofian Said', 'sofian@example.nl', '0642318194', '$2y$12$z3zssenqRzsdZzMgpbfWs.N/ZhLssytZD5fewTQfOZXyqNlSxMssG', 'admin', '2025-03-05 03:49:29'),
+(11, 'Admin1', 'admin@test.com', '06131417191', '$2y$12$kaPGv8UJ7y7Q1HWxScwIQeJLYs3/FaolaR8Zfnp1nXvlSocxgNYQC', 'admin', '2025-03-05 03:49:29'),
+(12, 'Asiel Elaouare', 'elaasiel@gmail.com', '+31 0625187218', '$2y$12$tvddAcwqu9sa/WqvPpS9ku2br8GOdECqYcubgtaMzyS7GwPpBtfGi', 'admin', '2025-03-08 13:47:01'),
+(13, 'Asiel', 'elaouareasiel82@gmail.com', '+31 06 25187218', '$2y$12$ig7r9h/RIavICRpcsiWhveTe3Y3YlBN8QbTcawT7s.R2Hkiek71ge', 'customer', '2025-03-13 09:13:12'),
+(15, 'newuser', 'testuser@live.nl', '0673314586', '$2y$12$wyDOsTVgnUww/HCcXpiVne3Ju9vkh41mIPtCMCi8i48kV4nAkFm4G', 'customer', '2025-04-10 19:49:17'),
+(16, 'updated', 'update@live.nl', '5758428235', '$2y$12$PYN1ga/rou8rjO0mpmQo1./mNGxUO55AiKy9.Lt0Pvzs1lpiFr0n6', 'customer', '2025-04-10 20:25:54');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -766,7 +827,7 @@ ALTER TABLE `ACCESS_PASS`
 -- AUTO_INCREMENT voor een tabel `ARTIST`
 --
 ALTER TABLE `ARTIST`
-  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `artist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT voor een tabel `LOCATION`
@@ -796,7 +857,7 @@ ALTER TABLE `PAGE`
 -- AUTO_INCREMENT voor een tabel `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT voor een tabel `RESERVATION`
@@ -820,7 +881,7 @@ ALTER TABLE `RESTAURANT_GENRE`
 -- AUTO_INCREMENT voor een tabel `SECTION`
 --
 ALTER TABLE `SECTION`
-  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT voor een tabel `SESSION`
@@ -832,7 +893,7 @@ ALTER TABLE `SESSION`
 -- AUTO_INCREMENT voor een tabel `SHOW`
 --
 ALTER TABLE `SHOW`
-  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `show_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT voor een tabel `TICKET`
@@ -868,7 +929,7 @@ ALTER TABLE `TOUR_TICKET`
 -- AUTO_INCREMENT voor een tabel `USER`
 --
 ALTER TABLE `USER`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

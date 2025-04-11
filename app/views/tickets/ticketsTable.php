@@ -21,7 +21,7 @@
         ?>
 <?php foreach ($groupedEvents as $day => $dayEvents): ?>
     <div class="day-column d-inline">
-        <h3 class="day-name bg-yellow pink d-inline ps-2 pe-2 round-boreder-10px mb-4"><?php echo $day; ?></h3>
+        <h3 class="day-name bg-yellow pink d-inline ps-2 pe-2 p-0 round-boreder-10px mb-4"><?php echo $day; ?></h3>
         <?php foreach ($dayEvents as $event): ?>
             <div class="ticket d-flex justify-content-between align-items-center flex-wrap w-100 mt-4">
     <div class="event-info d-grid" style="grid-template-columns: 220px 210px 100px 150px;">
